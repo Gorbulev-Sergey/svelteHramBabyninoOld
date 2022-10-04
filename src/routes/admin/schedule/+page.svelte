@@ -3,40 +3,31 @@
 
 	import { goto } from '$app/navigation';
 	import ComponentPageTitle from '$lib/components/ComponentPageTitle.svelte';
+	import ComponentScheduleString from '$lib/components/schedule/admin/ComponentScheduleString.svelte';
 	import { Post } from '$lib/models/Post';
+	import ScheduleString from '$lib/models/ScheduleString';
 	import { Tag } from '$lib/models/Tag';
 	import { db } from '$lib/scripts/firebase';
 	import { ref, get, set, update, push } from 'firebase/database';
 	import { onMount } from 'svelte';
 
-	let month = {
-		'9': {
-			'9:00': {
-				event: 'Преподобного Сергия Радонежского',
-				prayer: ['Литургия', 'молебен']
-			},
-			'16:30': {
-				prayer: ['Всенощное бдение']
-			}
-		},
-		'10': {
-			'9:00': {
-				event: 'Апостола и евангелиста Иоанна Богослова',
-				prayer: ['Литургия', 'молебен', 'панихида']
-			}
-		}
-	};
+	let month = 10;
+	let schedule = {};
 </script>
 
 <ComponentPageTitle title="Редактировать расписание">
 	<div slot="navigation">
-		<button class="btn btn-dark">Сохранить</button>
+		<button
+			class="btn btn-dark"
+			on:click={() => {
+				update(ref(db, 'schedule/2022/январь'), month);
+			}}>Сохранить</button
+		>
 	</div>
 </ComponentPageTitle>
 
-<button
-	class="btn btn-light"
-	on:click={() => {
-		update(ref(db, 'schedule/2022/январь'), month);
-	}}>Добавить</button
->
+<div class="bg-white p-2 rounded">
+	{#each Array(new Date(2022, month, 0).getDate()) as _, i}
+		<ComponentScheduleString {month} string={new ScheduleString(i)} />
+	{/each}
+</div>

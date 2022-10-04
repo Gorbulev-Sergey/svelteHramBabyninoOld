@@ -3,6 +3,6 @@
 </script>
 
 <ComponentNavigation />
-<div class="container" style="margin-top:5em; min-height:70vh;">
+<div class="container" style="margin-top:5em; min-height:60vh;">
 	<slot />
 </div>

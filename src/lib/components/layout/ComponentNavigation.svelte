@@ -9,7 +9,7 @@
 	];
 </script>
 
-<div class="fixed-top bg-light py-1">
+<div class="fixed-top bg-light py-1 border-bottom">
 	<div class="container-fluid d-flex justify-content-between align-items-center">
 		<div class="flex-grow-1 d-flex justify-content-start align-items-center">
 			<button class="btn btn-light text-uppercase me-2" on:click={() => goto('/')}
