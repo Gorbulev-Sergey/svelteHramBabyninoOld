@@ -2,6 +2,7 @@
 	// @ts-nocheck
 
 	import { goto } from '$app/navigation';
+	import ComponentPageTitle from '$lib/components/ComponentPageTitle.svelte';
 	import { Post } from '$lib/models/Post';
 	import { Tag } from '$lib/models/Tag';
 	import { db } from '$lib/scripts/firebase';
@@ -26,6 +27,12 @@
 		}
 	};
 </script>
+
+<ComponentPageTitle title="Редактировать расписание">
+	<div slot="navigation">
+		<button class="btn btn-dark">Сохранить</button>
+	</div>
+</ComponentPageTitle>
 
 <button
 	class="btn btn-light"
