@@ -1,4 +1,6 @@
 <script>
+	import { remove } from 'firebase/database';
+	import { now } from 'svelte/internal';
 	import ComponentSubFild from './ComponentSubFild.svelte';
 	import Fild from './Fild';
 	import SubFild from './SubFild';
@@ -8,15 +10,24 @@
 
 <div class="d-flex align-items-start">
 	<div class="btn me-1">{fild.date.toLocaleDateString()}</div>
-	<button
-		class="btn btn-light me-1"
-		on:click={() => (fild.subfilds = [...fild.subfilds, new SubFild(new Date(), '', new Array())])}
-	>
-		<i class="fa-solid fa-circle-plus" />
-	</button>
 	<div class="flex-grow-1">
-		{#each fild.subfilds as item}
-			<ComponentSubFild {item} />
+		{#each fild.subfilds as item, i}
+			{#if i == 0}
+				<ComponentSubFild
+					{item}
+					onAdd={() => {
+						fild.subfilds = [...fild.subfilds, new SubFild(new Date(Date.now()), '', new Array())];
+					}}
+				/>
+			{:else}
+				<ComponentSubFild
+					{item}
+					isRemove={true}
+					onRemove={() => {
+						fild.subfilds = [...fild.subfilds.filter((i) => i != item)];
+					}}
+				/>
+			{/if}
 		{/each}
 	</div>
 </div>
