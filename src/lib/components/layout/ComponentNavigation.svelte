@@ -5,6 +5,10 @@
 		{
 			url: '/posts',
 			title: 'Публикации'
+		},
+		{
+			url: '/schedule',
+			title: 'Расписание'
 		}
 	];
 </script>
