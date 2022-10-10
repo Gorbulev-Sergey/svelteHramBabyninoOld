@@ -1,15 +1,24 @@
 <script>
-	import ComponentPageTitle from '$lib/components/ComponentPageTitle.svelte';
-	import ComponentNavigation from '$lib/components/layout/ComponentNavigation.svelte';
-	import ComponentFild from './ComponentFild.svelte';
-	import Fild from './Fild';
+	// @ts-nocheck
 
-	let listFild = [];
-	for (let i = 1; i <= 30; i++) {
-		listFild.push(new Fild(new Date(2022, 10, i)));
-	}
+	import { db } from '$lib/scripts/firebase';
+	import { push, ref, set, update } from 'firebase/database';
+	import ComponentMonth from './ComponentMonth.svelte';
+
+	let items = new Array();
+	let month = { i: 10, name: 'октябрь' };
 </script>
 
-{#each listFild as item}
-	<ComponentFild fild={item} />
-{/each}
+<button
+	class="btn btn-dark"
+	on:click={() => {
+		console.log(items);
+		let filterItems = items.filter((fild) => fild.subfilds.some((subfild) => subfild.event != ''));
+		let it = new Map(filterItems.map((x) => [x.date, x.subfilds]));
+		console.log(it);
+		update(ref(db, `/schedule/2022/${month.name}`), Object.fromEntries(it));
+		//filterItems.forEach((i) => push(ref(db, `/schedule/2022/${month.name}`), i));
+	}}>Сохранить</button
+>
+
+<ComponentMonth class="mt-2" year={2022} month={month.i} bind:listFild={items} />

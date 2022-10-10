@@ -1,6 +1,4 @@
 <script>
-	import { remove } from 'firebase/database';
-	import { now } from 'svelte/internal';
 	import ComponentSubFild from './ComponentSubFild.svelte';
 	import Fild from './Fild';
 	import SubFild from './SubFild';
@@ -9,14 +7,14 @@
 </script>
 
 <div class="d-flex align-items-start">
-	<div class="btn me-1">{fild.date.toLocaleDateString()}</div>
+	<div class="btn me-1">{fild.date}</div>
 	<div class="flex-grow-1">
 		{#each fild.subfilds as item, i}
 			{#if i == 0}
 				<ComponentSubFild
 					{item}
 					onAdd={() => {
-						fild.subfilds = [...fild.subfilds, new SubFild(new Date(Date.now()), '', new Array())];
+						fild.subfilds = [...fild.subfilds, new SubFild()];
 					}}
 				/>
 			{:else}

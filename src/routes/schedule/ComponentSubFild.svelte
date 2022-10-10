@@ -14,7 +14,7 @@
 		</button>
 	{:else}
 		<button class="btn btn-light me-1" on:click={onRemove}>
-			<i class="fa-solid fa-minus" />
+			<i class="fa-solid fa-circle-minus" />
 		</button>
 	{/if}
 

@@ -1,6 +1,6 @@
 export default class SubFild {
-	constructor(date = new Date(), event = '', prayer = new Array()) {
-		this.date = date;
+	constructor(time = new Date(), event = '', prayer = new Array()) {
+		this.time = time;
 		this.event = event;
 		this.prayer = prayer;
 	}
