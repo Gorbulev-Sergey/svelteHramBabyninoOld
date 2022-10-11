@@ -4,16 +4,16 @@
 
 	export let year = new Date(Date.now()).getFullYear();
 	export let month = new Date().getMonth();
-	export let listFild = new Array();
+	export let filds = new Array();
 	for (let i = 1; i <= new Date(year, month, 0).getDate(); i++) {
-		listFild.push(new Fild(new Date(year, month, i)));
+		filds.push(new Fild(new Date(year, month, i)));
 	}
-	let className = '';
-	export { className as class };
+	let _class = '';
+	export { _class as class };
 </script>
 
-<div class={className}>
-	{#each listFild as item}
+<div class={_class}>
+	{#each filds as item}
 		<ComponentFild fild={item} />
 	{/each}
 </div>
