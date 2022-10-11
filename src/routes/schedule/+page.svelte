@@ -6,7 +6,7 @@
 	import ComponentMonth from './ComponentMonth.svelte';
 
 	let items = new Array();
-	let month = { i: 10, name: 'октябрь' };
+	let month = { i: 9, name: 'октябрь' };
 </script>
 
 <button

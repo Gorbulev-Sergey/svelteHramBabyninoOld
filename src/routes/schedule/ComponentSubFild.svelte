@@ -22,7 +22,7 @@
 		<input class="form-control" bind:value={item.event} />
 	</div>
 	<div class="me-1">
-		<input type="time" class="form-control" bind:value={item.date} />
+		<input type="time" class="form-control" bind:value={item.time} />
 	</div>
 	<div>
 		<input class="form-control" bind:value={item.prayer} />
