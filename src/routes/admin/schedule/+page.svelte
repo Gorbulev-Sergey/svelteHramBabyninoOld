@@ -19,7 +19,7 @@
 					fild.subfilds.some((subfild) => subfild.event != '')
 				);
 				let fildsNoEmptyMap = new Map(fildsNoEmpty.map((x) => [x.date, x.subfilds]));
-				console.log(fildsNoEmptyMap);
+				console.log(Object.fromEntries(fildsNoEmptyMap));
 				update(ref(db, `/schedule/2022/${month.name}`), Object.fromEntries(fildsNoEmptyMap));
 			}}>Сохранить</button
 		>
