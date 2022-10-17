@@ -5,11 +5,11 @@
 </script>
 
 <div class="col mb-4">
-	<div class="card bg-light text-dark h-100 border-0">
+	<div class="card bg-light text-dark h-100 border">
 		<div class="card-header bg-light text-dark border-0">
 			<h5 class="card-title">{@html post.title}</h5>
 			<div class="d-flex justify-content-between align-items-center">
-				<div class="small text-danger">{post.created}</div>
+				<div class="small text-danger">{new Date(post.created).toLocaleDateString()}</div>
 				<div>
 					{#if post.tags}
 						{#each post.tags as tag}
@@ -42,9 +42,10 @@
 		{#if post.content}
 			<div class="card-footer bg-light text-dark border-0">
 				<div class="d-flex align-items-center justify-content-between">
-					<button class="btn btn-sm btn-light text-dark" on:click={() => {}}
-						>Подробнее<i class="fas fa-chevron-right ml-2" /></button
-					>
+					<button class="btn btn-sm btn-light text-dark" on:click={() => {}}>
+						Подробнее
+						<i class="fas fa-chevron-right mr-2" />
+					</button>
 					<div>
 						<button
 							class="btn btn-light text-dark"

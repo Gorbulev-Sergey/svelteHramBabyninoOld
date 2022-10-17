@@ -3,8 +3,8 @@
 	import { db } from '$lib/scripts/firebase';
 	import { onValue, push, query, ref } from 'firebase/database';
 	import { onMount } from 'svelte';
-	import ComponentPost from '$lib/components/post/ComponentPost.svelte';
 	import { Post } from '$lib/models/Post';
+	import ComponentPost from './ComponentPost.svelte';
 
 	let posts = [];
 

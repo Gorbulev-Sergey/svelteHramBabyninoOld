@@ -1,5 +1,5 @@
 <script>
-	import ComponentNavigation from '$lib/components/layout/ComponentNavigation.svelte';
+	import ComponentNavigation from '$lib/components/ComponentNavigation.svelte';
 </script>
 
 <ComponentNavigation />

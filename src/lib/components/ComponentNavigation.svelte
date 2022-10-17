@@ -9,6 +9,10 @@
 		{
 			url: '/schedule',
 			title: 'Расписание'
+		},
+		{
+			url: '/check',
+			title: 'Проверка'
 		}
 	];
 </script>

@@ -1,9 +1,10 @@
 <script>
 	import ComponentSubFild from './ComponentSubFild.svelte';
 	import Fild from './Fild';
+	import ScheduleFild from './ScheduleFild';
 	import SubFild from './SubFild';
 
-	export let fild = new Fild();
+	export let fild = new ScheduleFild();
 </script>
 
 <div class="d-flex align-items-start">
