@@ -5,8 +5,10 @@
 	export let month = new Month();
 </script>
 
-<div class="border rounded">
-	{#each month.fildsDayAll as item}
-		<ComponentFildDate fildDate={item} />
-	{/each}
-</div>
+{#if month.fildsDayNotEmpty != null}
+	<div class="border rounded">
+		{#each month.fildsDayNotEmpty as item}
+			<ComponentFildDate fildDate={item} />
+		{/each}
+	</div>
+{/if}

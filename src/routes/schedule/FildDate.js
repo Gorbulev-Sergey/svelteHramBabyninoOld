@@ -17,6 +17,8 @@ export default class FildDate {
 				return 'пятница';
 			case 6:
 				return 'суббота';
+			default:
+				return '';
 		}
 	}
 	constructor(date = new Date(), fildsTime = new Array(new FildTime())) {

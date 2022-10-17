@@ -7,7 +7,8 @@
 </script>
 
 <div
-	class="border-bottom {fildDate._dayOfWeek(new Date(fildDate.date).getDay()) === 'воскресенье'
+	class="border-bottom {new FildDate()._dayOfWeek(new Date(fildDate.date).getDay()) ===
+	'воскресенье'
 		? 'bg-primary text-light border-primary'
 		: ''}"
 	style="display: grid; grid-template-columns: .14fr 1fr"
@@ -20,7 +21,7 @@
 		).monthName()}
 		{@html new Date(fildDate.date).getFullYear()}
 		<br />
-		<i>{@html fildDate._dayOfWeek(new Date(fildDate.date).getDay())}</i>
+		<i>{@html new FildDate()._dayOfWeek(new Date(fildDate.date).getDay())}</i>
 	</div>
 	<div>
 		{#each fildDate.fildsTime as item}
