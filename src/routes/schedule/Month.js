@@ -1,3 +1,5 @@
+import FildDate from './FildDate';
+
 export default class Month {
 	constructor(month = 1, year = new Date(Date.now()).getFullYear()) {
 		this.month = month;
@@ -32,5 +34,11 @@ export default class Month {
 					return 'декабря';
 			}
 		};
+
+		this.fildsDayAll = new Array();
+		for (let i = 1; i <= this.daysInMonth; i++) {
+			this.fildsDayAll.push(new FildDate(new Date(year, month, i)));
+		}
+		this.fildsDayNotEmpty = new Array();
 	}
 }

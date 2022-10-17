@@ -1,7 +1,9 @@
 <script>
 	import ComponentFildDate from '../schedule/ComponentFildDate.svelte';
+	import ComponentMonth from '../schedule/ComponentMonth.svelte';
 	import FildDate from '../schedule/FildDate';
 	import FildTime from '../schedule/FildTime';
+	import Month from '../schedule/Month';
 
 	let filds = new Array();
 	class Fild {
@@ -104,8 +106,4 @@
 	</div>
 </div>
 
-<div class="mt-3">
-	<ComponentFildDate
-		fildDate={new FildDate(new Date(), new Array(new FildTime(), new FildTime()))}
-	/>
-</div>
+<ComponentMonth month={new Month(10, 2022)} />
