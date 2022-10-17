@@ -16,14 +16,10 @@
 		<button
 			class="btn btn-light"
 			on:click={async () => {
-				month.fildsDayAll.forEach((fDate) => {
-					let fildDate = fDate;
-					console.log(fDate);
-					fDate.fildsTime.forEach((fTime) => {
-						if (fTime.event != '') fildDate.fildsTime.push(fTime);
-					});
-					if (FildDate.length > 0) month.fildsDayNotEmpty.push(fildDate);
-				});
+				// ВАЖНЫЙ ФИЛЬТР
+				month.fildsDayNotEmpty = month.fildsDayAll.filter((fDate) =>
+					fDate.fildsTime.some((fTime) => fTime.event != '')
+				);
 				console.log(month.fildsDayNotEmpty);
 				set(ref(db, `schedule/${month.monthName()}`), month.fildsDayNotEmpty);
 			}}>Сохранить</button
