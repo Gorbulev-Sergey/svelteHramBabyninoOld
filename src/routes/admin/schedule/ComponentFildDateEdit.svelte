@@ -18,7 +18,7 @@
 		{@html new Month(
 			new Date(fildDate.date).getMonth() + 1,
 			new Date(fildDate.date).getFullYear()
-		).monthName()}
+		).monthNameS()}
 		{@html new Date(fildDate.date).getFullYear()}
 		<br />
 		<i>{@html new FildDate()._dayOfWeek(new Date(fildDate.date).getDay())}</i>

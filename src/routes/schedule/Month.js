@@ -18,7 +18,7 @@ export default class Month {
 		this.year = year;
 
 		this.daysInMonth = new Date(year, month - 1, 0).getDate();
-		this.monthName = () => {
+		this.monthNameS = () => {
 			switch (this.month - 1) {
 				case 1:
 					return 'января';
@@ -44,6 +44,34 @@ export default class Month {
 					return 'ноября';
 				case 12:
 					return 'декабря';
+			}
+		};
+		this.monthName = () => {
+			switch (this.month - 1) {
+				case 1:
+					return 'январь';
+				case 2:
+					return 'февраль';
+				case 3:
+					return 'март';
+				case 4:
+					return 'апрель';
+				case 5:
+					return 'май';
+				case 6:
+					return 'июнь';
+				case 7:
+					return 'июль';
+				case 8:
+					return 'август';
+				case 9:
+					return 'сентябрь';
+				case 10:
+					return 'октябрь';
+				case 11:
+					return 'ноябрь';
+				case 12:
+					return 'декабрь';
 			}
 		};
 
