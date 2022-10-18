@@ -20,7 +20,10 @@
 					fDate.fildsTime.some((fTime) => fTime.event != '')
 				);
 				console.log(month.fildsDayNotEmpty);
-				set(ref(db, `schedule/${month.year}/${month.monthName()}`), month.fildsDayNotEmpty);
+				update(
+					ref(db, `schedule/${month.year}/${month.monthName()}`),
+					Object.assign({}, month.fildsDayNotEmpty)
+				);
 			}}>Сохранить</button
 		>
 	</div>
