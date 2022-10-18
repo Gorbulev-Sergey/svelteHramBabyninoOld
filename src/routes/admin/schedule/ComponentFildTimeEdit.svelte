@@ -4,8 +4,16 @@
 	export let fildTime = new FildTime();
 </script>
 
-<div style="display: grid; grid-template-columns: 1fr .11fr .3fr">
-	<div class="ps-1 py-2">
+<div style="display: grid; grid-template-columns: auto 1fr .11fr .3fr">
+	<div class="py-2">
+		<button
+			class="btn btn-light bg-transparent px-2 border-0"
+			style="border-top-right-radius: 0; border-bottom-right-radius: 0;"
+		>
+			<i class="fa-regular fa-square-plus" />
+		</button>
+	</div>
+	<div class="form-group ps-1 py-2">
 		<input class="form-control border-0 rounded-0" bind:value={fildTime.event} />
 	</div>
 	<div class="text-end ps-1 py-2">
