@@ -3,11 +3,18 @@
 
 	import ComponentPageTitle from '$lib/components/ComponentPageTitle.svelte';
 	import { db } from '$lib/scripts/firebase';
-	import { push, ref, set, update } from 'firebase/database';
+	import { onValue, push, ref, set, update } from 'firebase/database';
+	import { onMount } from 'svelte';
 	import Month from '../../schedule/Month';
 	import ComponentMonthEdit from './ComponentMonthEdit.svelte';
 
 	let month = new Month(10, 2022);
+	onMount(async () => {
+		onValue(ref(db, `schedule/${month.year}/${month.monthName()}`), (result) => {
+			month.fildsDayNotEmpty = result.val();
+			month.updateFildsDayAll();
+		});
+	});
 </script>
 
 <ComponentPageTitle title="Редактировать расписание">

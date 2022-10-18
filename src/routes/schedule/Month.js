@@ -1,6 +1,18 @@
 import FildDate from './FildDate';
 
 export default class Month {
+	setFildsDayAll = () => {
+		for (let i = 1; i <= this.daysInMonth; i++) {
+			this.fildsDayAll.push(new FildDate(new Date(this.year, this.month - 1, i)));
+		}
+	};
+	updateFildsDayAll = () => {
+		this.fildsDayNotEmpty.forEach((fDay) => {
+			this.fildsDayAll[
+				this.fildsDayAll.indexOf(this.fildsDayAll.filter((f) => f.date == fDay.date)[0])
+			] = fDay;
+		});
+	};
 	constructor(month = 1, year = new Date(Date.now()).getFullYear()) {
 		this.month = month;
 		this.year = year;
@@ -36,9 +48,8 @@ export default class Month {
 		};
 
 		this.fildsDayAll = new Array();
-		for (let i = 1; i <= this.daysInMonth; i++) {
-			this.fildsDayAll.push(new FildDate(new Date(year, month - 1, i)));
-		}
+		this.setFildsDayAll();
 		this.fildsDayNotEmpty = new Array();
+		this.updateFildsDayAll();
 	}
 }
