@@ -1,4 +1,5 @@
 <script>
+	import FildTime from '../../schedule/FildTime';
 	import FildDate from '../../schedule/FildDate';
 	import Month from '../../schedule/Month';
 	import ComponentFildTimeEdit from './ComponentFildTimeEdit.svelte';
@@ -24,8 +25,20 @@
 		<i>{@html new FildDate()._dayOfWeek(new Date(fildDate.date).getDay())}</i>
 	</div>
 	<div>
-		{#each fildDate.fildsTime as item}
-			<ComponentFildTimeEdit fildTime={item} />
+		{#each fildDate.fildsTime as item, i}
+			{#if i == 0}
+				<ComponentFildTimeEdit
+					fildTime={item}
+					onAdd={() => (fildDate.fildsTime = [...fildDate.fildsTime, new FildTime()])}
+				/>
+			{:else}
+				<ComponentFildTimeEdit
+					fildTime={item}
+					isCanRemove={true}
+					onRemove={() =>
+						(fildDate.fildsTime = [...fildDate.fildsTime.filter((fTime) => fTime != item)])}
+				/>
+			{/if}
 		{/each}
 	</div>
 </div>

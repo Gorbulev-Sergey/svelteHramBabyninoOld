@@ -2,16 +2,30 @@
 	import FildTime from '../../schedule/FildTime';
 
 	export let fildTime = new FildTime();
+	export let isCanRemove = false;
+	export let onAdd = () => {};
+	export let onRemove = () => {};
 </script>
 
 <div style="display: grid; grid-template-columns: auto 1fr .11fr .3fr">
 	<div class="py-2">
-		<button
-			class="btn btn-light bg-transparent px-2 border-0"
-			style="border-top-right-radius: 0; border-bottom-right-radius: 0;"
-		>
-			<i class="fa-regular fa-square-plus" />
-		</button>
+		{#if !isCanRemove}
+			<button
+				class="btn btn-light bg-transparent px-2 border-0"
+				style="border-top-right-radius: 0; border-bottom-right-radius: 0;"
+				on:click={() => onAdd()}
+			>
+				<i class="fa-regular fa-square-plus" />
+			</button>
+		{:else}
+			<button
+				class="btn btn-light bg-transparent px-2 border-0"
+				style="border-top-right-radius: 0; border-bottom-right-radius: 0;"
+				on:click={() => onRemove()}
+			>
+				<i class="fa-regular fa-square-minus" />
+			</button>
+		{/if}
 	</div>
 	<div class="form-group ps-1 py-2">
 		<input class="form-control border-0 rounded-0" bind:value={fildTime.event} />
