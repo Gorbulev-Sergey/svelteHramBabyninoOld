@@ -13,7 +13,7 @@
 		: ''}"
 	style="display: grid; grid-template-columns: .14fr 1fr"
 >
-	<div class="text-center px-3 py-2" style="min-width: 8em;">
+	<div class="text-center px-2 py-1" style="min-width: 8em;">
 		{@html new Date(fildDate.date).getDate()}
 		{@html new Month(
 			new Date(fildDate.date).getMonth(),
