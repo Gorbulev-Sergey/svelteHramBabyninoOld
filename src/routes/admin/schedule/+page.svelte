@@ -21,6 +21,10 @@
 		<button
 			class="btn btn-light"
 			on:click={async () => {
+				// Удаляем пустые fildTime
+				month.fildsDayNotEmpty.forEach((fDay) => {
+					fDay.fildsTime = [...fDay.fildsTime.filter((fTime) => fTime.event != '')];
+				});
 				// ВАЖНЫЙ ФИЛЬТР
 				month.fildsDayNotEmpty = month.fildsDayAll.filter((fDate) =>
 					fDate.fildsTime.some((fTime) => fTime.event != '')
