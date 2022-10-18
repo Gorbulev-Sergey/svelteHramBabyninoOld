@@ -7,7 +7,7 @@ export default class Month {
 		}
 	};
 	updateFildsDayAll = () => {
-		this.fildsDayNotEmpty.forEach((fDay) => {
+		this.fildsDayNotEmpty?.forEach((fDay) => {
 			this.fildsDayAll[
 				this.fildsDayAll.indexOf(this.fildsDayAll.filter((f) => f.date == fDay.date)[0])
 			] = fDay;
@@ -19,30 +19,30 @@ export default class Month {
 
 		this.daysInMonth = new Date(year, month - 1, 0).getDate();
 		this.monthName = () => {
-			switch (month) {
-				case 0:
-					return 'января';
+			switch (this.month - 1) {
 				case 1:
-					return 'февраля';
+					return 'января';
 				case 2:
-					return 'марта';
+					return 'февраля';
 				case 3:
-					return 'апреля';
+					return 'марта';
 				case 4:
-					return 'мая';
+					return 'апреля';
 				case 5:
-					return 'июня';
+					return 'мая';
 				case 6:
-					return 'июля';
+					return 'июня';
 				case 7:
-					return 'августа';
+					return 'июля';
 				case 8:
-					return 'сентября';
+					return 'августа';
 				case 9:
-					return 'октября';
+					return 'сентября';
 				case 10:
-					return 'ноября';
+					return 'октября';
 				case 11:
+					return 'ноября';
+				case 12:
 					return 'декабря';
 			}
 		};

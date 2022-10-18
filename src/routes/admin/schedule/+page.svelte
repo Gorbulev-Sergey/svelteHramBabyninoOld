@@ -1,6 +1,5 @@
 <script>
 	// @ts-nocheck
-
 	import ComponentPageTitle from '$lib/components/ComponentPageTitle.svelte';
 	import { db } from '$lib/scripts/firebase';
 	import { onValue, push, ref, set, update } from 'firebase/database';
@@ -27,7 +26,7 @@
 					fDate.fildsTime.some((fTime) => fTime.event != '')
 				);
 				console.log(month.fildsDayNotEmpty);
-				update(
+				set(
 					ref(db, `schedule/${month.year}/${month.monthName()}`),
 					Object.assign({}, month.fildsDayNotEmpty)
 				);
