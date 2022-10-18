@@ -1,4 +1,6 @@
 <script>
+	import { LOGONSERVER } from '$env/static/private';
+
 	// @ts-nocheck
 	import ComponentPageTitle from '$lib/components/ComponentPageTitle.svelte';
 	import { db } from '$lib/scripts/firebase';
@@ -21,14 +23,15 @@
 		<button
 			class="btn btn-light"
 			on:click={async () => {
-				// Удаляем пустые fildTime
-				month.fildsDayNotEmpty.forEach((fDay) => {
-					fDay.fildsTime = [...fDay.fildsTime.filter((fTime) => fTime.event != '')];
-				});
 				// ВАЖНЫЙ ФИЛЬТР
 				month.fildsDayNotEmpty = month.fildsDayAll.filter((fDate) =>
 					fDate.fildsTime.some((fTime) => fTime.event != '')
 				);
+				// // Удаляем пустые fildTime
+				// month.fildsDayNotEmpty.filter((fDay) => {
+				// 	fDay.fildsTime.some((fTime) => fTime.event != '' && fTime.time != '00:00');
+				// });
+
 				console.log(month.fildsDayNotEmpty);
 				set(
 					ref(db, `schedule/${month.year}/${month.monthName()}`),
