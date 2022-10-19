@@ -9,7 +9,11 @@
 	import Month from '../../schedule/Month';
 	import ComponentMonthEdit from './ComponentMonthEdit.svelte';
 
-	let month = new Month(10, 2022);
+	let m =
+		new Date(Date.now()).getFullYear() + '-' + (new Date(Date.now()).getMonth() + 1).toString();
+
+	$: month = new Month(Number(m.slice(5, m.length)) + 1, Number(m.slice(0, 4)));
+
 	onMount(async () => {
 		onValue(ref(db, `schedule/${month.year}/${month.monthName()}`), (result) => {
 			month.fildsDayNotEmpty = result.val();
@@ -43,5 +47,7 @@
 		>
 	</div>
 </ComponentPageTitle>
+
+<input class="form-control mb-3" type="month" bind:value={m} />
 
 <ComponentMonthEdit bind:month />

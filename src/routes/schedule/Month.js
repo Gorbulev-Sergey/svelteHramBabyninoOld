@@ -19,7 +19,7 @@ export default class Month {
 
 		this.daysInMonth = new Date(year, month - 1, 0).getDate();
 		this.monthNameS = () => {
-			switch (this.month - 1) {
+			switch (this.month) {
 				case 1:
 					return 'января';
 				case 2:
@@ -47,7 +47,7 @@ export default class Month {
 			}
 		};
 		this.monthName = () => {
-			switch (this.month - 1) {
+			switch (this.month) {
 				case 1:
 					return 'январь';
 				case 2:
