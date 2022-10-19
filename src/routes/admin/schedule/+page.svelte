@@ -9,7 +9,7 @@
 	import Month from '../../schedule/Month';
 	import ComponentMonthEdit from './ComponentMonthEdit.svelte';
 
-	let m = `${new Date(Date.now()).getFullYear()}-${new Date(Date.now()).getMonth()}`;
+	let m = `${new Date(Date.now()).getFullYear()}-${new Date(Date.now()).getMonth() + 1}`;
 
 	$: month = new Month(Number(m.slice(5, m.length)), Number(m.slice(0, 4)));
 
@@ -48,10 +48,5 @@
 </ComponentPageTitle>
 
 <input class="form-control mb-3" type="month" bind:value={m} />
-<button
-	on:click={() => {
-		console.log(`${Number(m.slice(5, m.length))} - ${Number(m.slice(0, 4))}`);
-	}}>sfg</button
->
 
 <ComponentMonthEdit bind:month />
