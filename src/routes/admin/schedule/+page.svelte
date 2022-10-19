@@ -27,10 +27,12 @@
 				month.fildsDayNotEmpty = month.fildsDayAll.filter((fDate) =>
 					fDate.fildsTime.some((fTime) => fTime.event != '')
 				);
-				// // Удаляем пустые fildTime
-				// month.fildsDayNotEmpty.filter((fDay) => {
-				// 	fDay.fildsTime.some((fTime) => fTime.event != '' && fTime.time != '00:00');
-				// });
+				// Удаляем пустые fildTime
+				month.fildsDayNotEmpty.forEach((fDay) => {
+					fDay.fildsTime = fDay.fildsTime.filter(
+						(fTime) => fTime.event != '' || fTime.time != '00:00'
+					);
+				});
 
 				console.log(month.fildsDayNotEmpty);
 				set(
