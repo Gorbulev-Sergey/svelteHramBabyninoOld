@@ -17,7 +17,7 @@
 	<div class="text-center px-2 py-1" style="min-width: 8em;">
 		{@html new Date(fildDate.date).getDate()}
 		{@html new Month(
-			new Date(fildDate.date).getMonth(),
+			new Date(fildDate.date).getMonth() + 1,
 			new Date(fildDate.date).getFullYear()
 		).monthNameS()}
 		{@html new Date(fildDate.date).getFullYear()}

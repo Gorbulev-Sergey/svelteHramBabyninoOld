@@ -17,7 +17,7 @@ export default class Month {
 		this.month = month;
 		this.year = year;
 
-		this.daysInMonth = new Date(year, month - 1, 0).getDate();
+		this.daysInMonth = new Date(year, month, 0).getDate();
 		this.monthNameS = () => {
 			switch (this.month) {
 				case 1:
