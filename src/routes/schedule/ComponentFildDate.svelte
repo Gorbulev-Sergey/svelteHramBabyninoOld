@@ -23,7 +23,7 @@
 		<br />
 		<i>{@html new FildDate()._dayOfWeek(new Date(fildDate.date).getDay())}</i>
 	</div>
-	<div>
+	<div class="py-1">
 		{#each fildDate.fildsTime as item}
 			<ComponentFildTime fildTime={item} />
 		{/each}
