@@ -30,9 +30,17 @@
 			</div>
 		</div>
 		<div>
-			<a class="btn btn-light bg-white border-0 me-1" href="/admin/schedule"
-				>Редактировать расписание</a
-			>
+			<button class="btn btn-light bg-white border-0 me-1" data-bs-toggle="dropdown">
+				Панель управления
+			</button>
+			<div class="dropdown-menu bg-light  border-secondary border-opacity-10">
+				<a class="btn btn-light rounded-0 border-0 text-start w-100" href="/admin/schedule"
+					>Редактировать расписание</a
+				><br />
+				<a class="btn btn-light rounded-0 border-0 text-start w-100" href="/admin/schedule"
+					>Создать публикацию</a
+				>
+			</div>
 		</div>
 	</div>
 </div>

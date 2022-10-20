@@ -22,6 +22,13 @@
 
 <div class="row">
 	{#each posts as item}
-		<div class="col-3"><ComponentPost bind:post={item} /></div>
+		<div class="col col-md-3">
+			<ComponentPost bind:post={item} />
+		</div>
+		<div class="col col-md-9">
+			<ComponentPost bind:post={item} />
+			<ComponentPost bind:post={item} />
+			<ComponentPost bind:post={item} />
+		</div>
 	{/each}
 </div>

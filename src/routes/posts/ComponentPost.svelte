@@ -5,8 +5,8 @@
 </script>
 
 <div class="col mb-4">
-	<div class="card bg-light text-dark h-100 border">
-		<div class="card-header bg-light text-dark border-0">
+	<div class="card bg-white border-0 text-dark h-100 border">
+		<div class="card-header bg-white text-dark border-0">
 			<h5 class="card-title">{@html post.title}</h5>
 			<div class="d-flex justify-content-between align-items-center">
 				<div class="small text-danger">{new Date(post.created).toLocaleDateString()}</div>
@@ -40,7 +40,7 @@
 			<p class="card-text">{@html post.description}</p>
 		</div>
 		{#if post.content}
-			<div class="card-footer bg-light text-dark border-0">
+			<div class="card-footer bg-white text-dark border-0">
 				<div class="d-flex align-items-center justify-content-between">
 					<button class="btn btn-sm btn-light text-dark" on:click={() => {}}>
 						Подробнее
