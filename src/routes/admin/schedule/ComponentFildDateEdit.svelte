@@ -10,7 +10,7 @@
 <div
 	class="border-bottom {new FildDate()._dayOfWeek(new Date(fildDate.date).getDay()) ===
 	'воскресенье'
-		? 'bg-primary text-light border-primary'
+		? 'bg-dark text-danger bg-opacity-10'
 		: ''}"
 	style="display: grid; grid-template-columns: .14fr 1fr"
 >

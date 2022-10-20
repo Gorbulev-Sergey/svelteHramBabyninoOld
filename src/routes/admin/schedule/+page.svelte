@@ -23,7 +23,16 @@
 </script>
 
 <ComponentPageTitle title="Редактировать расписание">
-	<div slot="navigation">
+	<div slot="navigation" class="d-flex flex-nowrap align-items-center">
+		<div class="input-group me-4">
+			<span class="input-group-text border-0">Выбирите месяц и год:</span>
+			<input
+				class="form-control border-0"
+				type="month"
+				bind:value={m}
+				on:change={async () => loadData()}
+			/>
+		</div>
 		<button
 			class="btn btn-light"
 			on:click={async () => {
@@ -37,8 +46,6 @@
 						(fTime) => fTime.event != '' || fTime.time != '00:00'
 					);
 				});
-
-				console.log(month.fildsDayNotEmpty);
 				set(
 					ref(db, `schedule/${month.year}/${month.monthName()}`),
 					Object.assign({}, month.fildsDayNotEmpty)
@@ -47,7 +54,5 @@
 		>
 	</div>
 </ComponentPageTitle>
-
-<input class="form-control mb-3" type="month" bind:value={m} on:change={async () => loadData()} />
 
 <ComponentMonthEdit bind:month />
