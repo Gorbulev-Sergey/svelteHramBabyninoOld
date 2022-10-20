@@ -10,9 +10,9 @@
 	class={new FildDate()._dayOfWeek(new Date(fildDate.date).getDay()) === 'воскресенье'
 		? 'bg-dark text-danger border-dark bg-opacity-10'
 		: ''}
-	style="display: grid; grid-template-columns: .12fr 1fr"
+	style="display: grid; grid-template-columns: .11fr 1fr"
 >
-	<div class="text-center px-3 py-2" style="min-width: 8em;">
+	<div class="text-center px-3 py-2" style="min-width: 7em;">
 		<b>{@html new Date(fildDate.date).getDate()}</b>
 		<b
 			>{@html new Month(

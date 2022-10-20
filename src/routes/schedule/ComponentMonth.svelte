@@ -1,6 +1,5 @@
 <script>
 	import ComponentFildDate from './ComponentFildDate.svelte';
-	import FildDate from './FildDate';
 	import Month from './Month';
 
 	export let month = new Month();
@@ -8,16 +7,16 @@
 
 {#if month.fildsDayNotEmpty != null}
 	<div class="rounded bg-white">
-		<div class="ms-4 py-2">
+		<div class="py-2 ps-4">
 			<b>Расписание на {month.monthName().toUpperCase()} {month.year} года</b>
 		</div>
-		<div class="pt-1" style="display: grid; grid-template-columns: .12fr 1fr; min-height: 2.3em">
-			<div class="text-center">
+		<div style="display: grid; grid-template-columns: .11fr 1fr; min-height: 2.3em">
+			<div class="text-center px-3">
 				<span class="badge bg-dark text-dark bg-opacity-10">Дата</span>
 			</div>
 			<div style="display: grid; grid-template-columns: 1fr .3fr .1fr">
-				<div class="ps-4"><span class="badge bg-dark text-dark bg-opacity-10">Праздник</span></div>
-				<div class="text-end pe-4">
+				<div class="ps-3"><span class="badge bg-dark text-dark bg-opacity-10">Праздник</span></div>
+				<div class="text-end pe-3">
 					<span class="badge bg-dark text-dark bg-opacity-10">Богослужение</span>
 				</div>
 				<div class="text-center">
