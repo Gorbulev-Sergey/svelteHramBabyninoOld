@@ -1,6 +1,4 @@
 <script>
-	import { LOGONSERVER } from '$env/static/private';
-
 	// @ts-nocheck
 	import ComponentPageTitle from '$lib/components/ComponentPageTitle.svelte';
 	import { db } from '$lib/scripts/firebase';
@@ -10,14 +8,17 @@
 	import ComponentMonthEdit from './ComponentMonthEdit.svelte';
 
 	let m = `${new Date(Date.now()).getFullYear()}-${new Date(Date.now()).getMonth() + 1}`;
-
 	$: month = new Month(Number(m.slice(5, m.length)), Number(m.slice(0, 4)));
 
-	onMount(async () => {
+	function loadData() {
 		onValue(ref(db, `schedule/${month.year}/${month.monthName()}`), (result) => {
 			month.fildsDayNotEmpty = result.val();
 			month.updateFildsDayAll();
 		});
+	}
+
+	onMount(async () => {
+		loadData();
 	});
 </script>
 
@@ -47,6 +48,6 @@
 	</div>
 </ComponentPageTitle>
 
-<input class="form-control mb-3" type="month" bind:value={m} />
+<input class="form-control mb-3" type="month" bind:value={m} on:change={async () => loadData()} />
 
 <ComponentMonthEdit bind:month />
