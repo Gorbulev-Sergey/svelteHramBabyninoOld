@@ -19,18 +19,20 @@
 				</div>
 			</div>
 		</div>
-		{#if post.cover.video}
-			<div class="embed-responsive embed-responsive-16by9">
+		{#if post.cover && post.cover.video}
+			<div class="ratio ratio-16x9 mt-3">
+				<!-- svelte-ignore a11y-missing-attribute -->
 				<iframe
-					title=""
 					class="embed-responsive-item"
-					src="{post.cover.video.replace('youtu.be', 'youtube.com/embed')}?rel=0"
+					src="{String(post.cover.video).replace(
+						'https://youtu.be',
+						'https://youtube.com/embed/'
+					)}?rel=0"
 					frameborder="0"
-					allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
 					allowfullscreen
 				/>
 			</div>
-		{:else if post.cover.image}
+		{:else if post.cover && post.cover.image}
 			<div
 				class="img-fluid"
 				style="background:url({post.cover.image}); background-size:cover; height:220px"

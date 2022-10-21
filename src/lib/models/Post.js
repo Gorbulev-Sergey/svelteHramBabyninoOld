@@ -1,14 +1,14 @@
 export class Post {
 	constructor(
-		title,
+		title = null,
 		cover = new Cover(),
-		description,
-		content,
-		created = new Date().toLocaleDateString(),
+		description = null,
+		content = null,
+		created = new Date(Date.now()).toDateString(),
 		published = false,
 		tags = [],
 		comments = [],
-		userUID
+		userUID = null
 	) {
 		this.title = title;
 		this.cover = cover;

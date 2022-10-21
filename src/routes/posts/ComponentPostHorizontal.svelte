@@ -9,14 +9,16 @@
 		<div class="col-md-8">
 			<div class="card-body">
 				<h5 class="card-title">{post.title}</h5>
-				<p class="card-text">{@html post.content}</p>
+				<p class="card-text">{@html post.content ? post.content : ''}</p>
 				<p class="card-text">
 					<small class="text-muted">{post.description}</small>
 				</p>
 			</div>
 		</div>
 		<div class="col-md-4">
-			<img src={post.cover.image} class="img-fluid rounded-end" alt="..." />
+			{#if post.cover && post.cover.image}
+				<img src={post.cover.image} class="img-fluid rounded-end" alt="..." />
+			{/if}
 		</div>
 	</div>
 </div>
