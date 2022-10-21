@@ -1,24 +1,79 @@
 <script>
+	// @ts-nocheck
 	import { Post } from '$lib/models/Post';
 
 	export let post = new Post();
+	export let reverse = false;
+	Date.prototype.monthName = function () {
+		switch (this.getMonth() + 1) {
+			case 1:
+				return 'января';
+			case 2:
+				return 'февраля';
+			case 3:
+				return 'марта';
+			case 4:
+				return 'апреля';
+			case 5:
+				return 'мая';
+			case 6:
+				return 'июня';
+			case 7:
+				return 'июля';
+			case 8:
+				return 'августа';
+			case 9:
+				return 'сентября';
+			case 10:
+				return 'октября';
+			case 11:
+				return 'ноября';
+			case 12:
+				return 'декабря';
+		}
+	};
 </script>
 
 <div class="card mb-3 bg-white border-0">
 	<div class="row g-0">
-		<div class="col-md-8">
-			<div class="card-body">
-				<h5 class="card-title">{post.title}</h5>
-				<p class="card-text">{@html post.content ? post.content : ''}</p>
-				<p class="card-text">
-					<small class="text-muted">{post.description}</small>
-				</p>
+		{#if !reverse}
+			<div class="col-md-8">
+				<div class="card-body">
+					<h5 class="card-title mb-1">{post.title}</h5>
+					<div class="text-danger small mb-2">
+						{new Date(post.created).getDate()}
+						{new Date(post.created).monthName()}
+						{new Date(post.created).getFullYear()}
+					</div>
+					<div class="card-text">{@html post.description ? post.description : ''}</div>
+				</div>
 			</div>
-		</div>
-		<div class="col-md-4">
-			{#if post.cover && post.cover.image}
-				<img src={post.cover.image} class="img-fluid rounded-end" alt="..." />
-			{/if}
-		</div>
+			<div class="col-md-4">
+				{#if post.cover && post.cover.image}
+					<div
+						class="img-fluid rounded-end h-100"
+						style="background-image: url({post.cover.image});
+					 background-size: no-repeat; background-position: center; background-size: cover; min-height:12em;"
+					/>
+				{/if}
+			</div>
+		{:else}
+			<div class="col-md-4">
+				{#if post.cover && post.cover.image}
+					<div
+						class="img-fluid rounded-start h-100"
+						style="background-image: url({post.cover.image});
+					 background-size: no-repeat; background-position: center; background-size: cover; min-height:12em;"
+					/>
+				{/if}
+			</div>
+			<div class="col-md-8">
+				<div class="card-body">
+					<h5 class="card-title mb-1">{post.title}</h5>
+					<div class="text-danger small mb-2">{new Date(post.created).toLocaleDateString()}</div>
+					<div class="card-text">{@html post.description ? post.description : ''}</div>
+				</div>
+			</div>
+		{/if}
 	</div>
 </div>

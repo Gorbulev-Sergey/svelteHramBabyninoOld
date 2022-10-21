@@ -1,5 +1,6 @@
 <script>
 	// @ts-nocheck
+	import ComponentPageTitle from '$lib/components/ComponentPageTitle.svelte';
 	import { db } from '$lib/scripts/firebase';
 	import { onValue, push, query, ref } from 'firebase/database';
 	import { onMount } from 'svelte';
@@ -8,25 +9,28 @@
 
 	let posts = [];
 
-	onMount(() => {
-		// push(
-		// 	ref(db, 'posts'),
-		// 	new Post('Заголовок', '', 'Описание', '', '2022-10-04', false, null, null, 1)
-		// );
+	onMount(async () => {
 		onValue(ref(db, '/posts'), (s) => {
 			posts = Object.values(s.val());
-			console.log(posts);
 		});
 	});
 </script>
 
+<ComponentPageTitle title="Публикации" />
+
 <div class="row">
-	{#each posts as item}
-		<div class="col col-md-3">
-			<ComponentPost bind:post={item} />
-		</div>
-		<div class="col col-md-9">
-			<ComponentPostHorizontal bind:post={item} />
-		</div>
-	{/each}
+	<div class="col-md-3">
+		{#each posts as item}
+			{#if !item.published}
+				<ComponentPost bind:post={item} />
+			{/if}
+		{/each}
+	</div>
+	<div class="col-md-9">
+		{#each posts as item, i}
+			{#if item.published}
+				<ComponentPostHorizontal bind:post={item} />
+			{/if}
+		{/each}
+	</div>
 </div>
