@@ -3,8 +3,8 @@
 	import { db } from '$lib/scripts/firebase';
 	import { onValue, push, query, ref } from 'firebase/database';
 	import { onMount } from 'svelte';
-	import { Post } from '$lib/models/Post';
 	import ComponentPost from './ComponentPost.svelte';
+	import ComponentPostHorizontal from './ComponentPostHorizontal.svelte';
 
 	let posts = [];
 
@@ -26,9 +26,7 @@
 			<ComponentPost bind:post={item} />
 		</div>
 		<div class="col col-md-9">
-			<ComponentPost bind:post={item} />
-			<ComponentPost bind:post={item} />
-			<ComponentPost bind:post={item} />
+			<ComponentPostHorizontal bind:post={item} />
 		</div>
 	{/each}
 </div>

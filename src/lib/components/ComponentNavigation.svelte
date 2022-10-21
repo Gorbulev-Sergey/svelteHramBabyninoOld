@@ -37,7 +37,7 @@
 				<a class="btn btn-light rounded-0 border-0 text-start w-100" href="/admin/schedule"
 					>Редактировать расписание</a
 				><br />
-				<a class="btn btn-light rounded-0 border-0 text-start w-100" href="/admin/schedule"
+				<a class="btn btn-light rounded-0 border-0 text-start w-100" href="/admin/post"
 					>Создать публикацию</a
 				>
 			</div>
