@@ -4,9 +4,18 @@
 	import { Post } from '$lib/models/Post';
 	import { Tag } from '$lib/models/Tag';
 	import { db } from '$lib/scripts/firebase';
-	import { push, ref } from 'firebase/database';
+	import { onValue, push, ref } from 'firebase/database';
+	import { onMount } from 'svelte';
 
 	let post = new Post();
+	let tags = new Array();
+	let selectedTag = new Tag();
+
+	onMount(async () => {
+		onValue(ref(db, 'tags/'), (s) => {
+			if (s.exists()) tags = Object.values(s.val());
+		});
+	});
 </script>
 
 <ComponentPageTitle title="Создать публикацию">
@@ -46,7 +55,7 @@
 						style="min-height: 10em;"
 						bind:value={post.description}
 					/>
-					<div class="d-flex justify-content-between">
+					<div class="d-flex justify-content-between mb-3">
 						<div>
 							<input id="published" type="checkbox" bind:checked={post.published} />
 							<label for="published">опубликовать</label>
@@ -58,6 +67,39 @@
 						<div>
 							<input id="pinned" type="checkbox" bind:checked={post.pinned} />
 							<label for="pinned">закрепить наверху</label>
+						</div>
+					</div>
+					<div class="d-flex">
+						<div class="btn-group mb-2 me-3">
+							<select class="form-select rounded-0 rounded-start" bind:value={selectedTag}>
+								{#each tags as item}
+									<option value={item}>{item.name}</option>
+								{/each}
+							</select>
+							<button
+								class="btn btn-light border"
+								on:click={() => {
+									if (selectedTag.name != '') {
+										post.tags = [...post.tags, selectedTag];
+										selectedTag = new Tag();
+									}
+								}}><i class="fa-solid fa-circle-plus" /></button
+							>
+						</div>
+						<div>
+							{#each post.tags as item}
+								<div class="btn-group btn-group-sm me-2 mb-2">
+									<div class="bg-light text-dark py-1 px-2 rounded-start">{item.name}</div>
+									<div
+										class="btn btn-dark"
+										on:click={() => {
+											post.tags = post.tags.filter((t) => t.name != item.name);
+										}}
+									>
+										<i class="fa-solid fa-trash text-danger" />
+									</div>
+								</div>
+							{/each}
 						</div>
 					</div>
 				</div>

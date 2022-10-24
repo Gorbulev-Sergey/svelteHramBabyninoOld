@@ -20,11 +20,11 @@
 
 <ComponentPageTitle title="Теги" />
 
-<div class="row bg-white rounded p-3 mb-3">
-	<div class="col">
+<div class="row bg-white rounded p-3">
+	<div class="col-md-6">
 		<h5>Доступные теги</h5>
 		{#each Object.entries(tags) as [uid, item]}
-			<div class="btn-group btn-group-sm me-2">
+			<div class="btn-group btn-group-sm me-2 mb-2">
 				<div class="bg-light text-dark py-1 px-2 rounded-start">{item.name}</div>
 				<div
 					class="btn btn-dark"
@@ -38,7 +38,7 @@
 			</div>
 		{/each}
 	</div>
-	<div class="col">
+	<div class="col-md-6">
 		<h5>Добавить новый тег</h5>
 		<div class="input-group">
 			<input class="form-control" placeholder="название" bind:value={tag.tag.name} />
