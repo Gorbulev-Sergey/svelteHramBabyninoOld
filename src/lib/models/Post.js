@@ -7,6 +7,7 @@ export class Post {
 		created = new Date(Date.now()).toDateString(),
 		published = false,
 		pinned = false,
+		inverted = null,
 		tags = new Array(),
 		comments = new Array(),
 		userUID = null
@@ -17,6 +18,8 @@ export class Post {
 		this.content = content;
 		this.created = created;
 		this.published = published;
+		this.pinned = pinned;
+		this.inverted = inverted;
 		this.tags = tags;
 		this.comments = comments;
 		this.userUID = userUID;

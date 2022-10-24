@@ -1,15 +1,60 @@
 <script>
+	// @ts-nocheck
+
 	import { Post } from '$lib/models/Post';
 
 	export let post = new Post();
+	Date.prototype.monthName = function () {
+		switch (this.getMonth() + 1) {
+			case 1:
+				return 'января';
+			case 2:
+				return 'февраля';
+			case 3:
+				return 'марта';
+			case 4:
+				return 'апреля';
+			case 5:
+				return 'мая';
+			case 6:
+				return 'июня';
+			case 7:
+				return 'июля';
+			case 8:
+				return 'августа';
+			case 9:
+				return 'сентября';
+			case 10:
+				return 'октября';
+			case 11:
+				return 'ноября';
+			case 12:
+				return 'декабря';
+		}
+	};
 </script>
 
 <div class="col mb-4">
-	<div class="card bg-white border-0 text-dark h-100 border">
-		<div class="card-header bg-white text-dark border-0">
-			<h5 class="card-title">{@html post.title}</h5>
+	<div
+		class="card {!post.inverted
+			? 'bg-white text-dark'
+			: 'bg-dark text-light'} border-0  h-100 border"
+	>
+		<div
+			class="card-header {!post.inverted ? 'bg-white text-dark' : 'bg-dark text-light'} border-0"
+		>
+			<div class="d-flex justify-content-between">
+				<h5 class="card-title mb-1">{post.title}</h5>
+				{#if post.pinned}
+					<i class="fa-solid fa-thumbtack" />
+				{/if}
+			</div>
 			<div class="d-flex justify-content-between align-items-center">
-				<div class="small text-danger">{new Date(post.created).toLocaleDateString()}</div>
+				<div class="small text-danger">
+					{new Date(post.created).getDate()}
+					{new Date(post.created).monthName()}
+					{new Date(post.created).getFullYear()}
+				</div>
 				<div>
 					{#if post.tags}
 						{#each post.tags as tag}
@@ -43,15 +88,22 @@
 			<p class="card-text">{@html post.description}</p>
 		</div>
 		{#if post.content}
-			<div class="card-footer bg-white text-dark border-0">
+			<div
+				class="card-footer {!post.inverted ? 'bg-white text-dark' : 'bg-dark text-light'} border-0"
+			>
 				<div class="d-flex align-items-center justify-content-between">
-					<button class="btn btn-sm btn-light text-dark" on:click={() => {}}>
+					<button
+						class="btn btn-sm {!post.inverted ? 'btn-light text-dark' : 'btn-dark text-light'}"
+						on:click={() => {}}
+					>
 						Подробнее
 						<i class="fas fa-chevron-right mr-2" />
 					</button>
 					<div>
 						<button
-							class="btn btn-light bg-white border-0 text-dark"
+							class="btn {!post.inverted
+								? 'btn-light text-dark'
+								: 'btn-dark text-light'} border-0 text-dark"
 							data-toggle="collapse"
 							data-target="#comments"
 							title="Комментарии"

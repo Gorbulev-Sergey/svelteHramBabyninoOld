@@ -34,12 +34,17 @@
 	};
 </script>
 
-<div class="card mb-3 bg-white border-0">
+<div class="card mb-3 {!post.inverted ? 'bg-white text-dark' : 'bg-dark text-light'} border-0">
 	<div class="row g-0">
 		{#if !reverse}
 			<div class="col-md-8">
 				<div class="card-body">
-					<h5 class="card-title mb-1">{post.title}</h5>
+					<div class="d-flex justify-content-between">
+						<h5 class="card-title mb-1">{post.title}</h5>
+						{#if post.pinned}
+							<i class="fa-solid fa-thumbtack" />
+						{/if}
+					</div>
 					<div class="text-danger small mb-2">
 						{new Date(post.created).getDate()}
 						{new Date(post.created).monthName()}
@@ -69,7 +74,12 @@
 			</div>
 			<div class="col-md-8">
 				<div class="card-body">
-					<h5 class="card-title mb-1">{post.title}</h5>
+					<div class="d-flex justify-content-between">
+						<h5 class="card-title mb-1">{post.title}</h5>
+						{#if post.pinned}
+							<i class="fa-solid fa-thumbtack" />
+						{/if}
+					</div>
 					<div class="text-danger small mb-2">{new Date(post.created).toLocaleDateString()}</div>
 					<div class="card-text">{@html post.description ? post.description : ''}</div>
 				</div>

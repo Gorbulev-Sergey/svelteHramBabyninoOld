@@ -38,14 +38,34 @@
 					style="min-height: 10em;"
 					bind:value={post.description}
 				/>
-				<div>
-					<input
-						id="published"
-						type="checkbox"
-						class="bg-dark text-light"
-						bind:checked={post.published}
-					/>
-					<label for="published">опубликовать</label>
+				<div class="d-flex justify-content-between">
+					<div>
+						<input
+							id="published"
+							type="checkbox"
+							class="bg-dark text-light"
+							bind:checked={post.published}
+						/>
+						<label for="published">опубликовать</label>
+					</div>
+					<div>
+						<input
+							id="inverted"
+							type="checkbox"
+							class="bg-dark text-light"
+							bind:checked={post.inverted}
+						/>
+						<label for="inverted">инвертировать цвета</label>
+					</div>
+					<div>
+						<input
+							id="pinned"
+							type="checkbox"
+							class="bg-dark text-light"
+							bind:checked={post.pinned}
+						/>
+						<label for="pinned">закрепить наверху</label>
+					</div>
 				</div>
 			</div>
 			<div class="col-md-4">

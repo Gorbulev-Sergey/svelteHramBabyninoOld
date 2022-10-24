@@ -18,17 +18,35 @@
 
 <ComponentPageTitle title="Публикации" />
 
+<!--Для закреплённых-->
+<div class="row">
+	<div class="col-md-8">
+		{#each posts as item, i}
+			{#if item.pinned && i % 2 != 0}
+				<ComponentPostHorizontal bind:post={item} />
+			{/if}
+		{/each}
+	</div>
+	<div class="col-md-4">
+		{#each posts as item, i}
+			{#if item.pinned && i % 2 == 0}
+				<ComponentPost bind:post={item} />
+			{/if}
+		{/each}
+	</div>
+</div>
+
 <div class="row">
 	<div class="col-md-4">
 		{#each posts as item, i}
-			{#if i % 2 != 0}
+			{#if !item.pinned && i % 2 != 0}
 				<ComponentPost bind:post={item} />
 			{/if}
 		{/each}
 	</div>
 	<div class="col-md-8">
 		{#each posts as item, i}
-			{#if i % 2 == 0}
+			{#if !item.pinned && i % 2 == 0}
 				<ComponentPostHorizontal bind:post={item} />
 			{/if}
 		{/each}
