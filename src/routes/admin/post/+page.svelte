@@ -2,6 +2,7 @@
 	import { goto } from '$app/navigation';
 	import ComponentPageTitle from '$lib/components/ComponentPageTitle.svelte';
 	import { Post } from '$lib/models/Post';
+	import { Tag } from '$lib/models/Tag';
 	import { db } from '$lib/scripts/firebase';
 	import { push, ref } from 'firebase/database';
 

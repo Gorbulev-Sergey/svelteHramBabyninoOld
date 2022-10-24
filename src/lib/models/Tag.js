@@ -1,6 +1,6 @@
 export class Tag {
-	constructor(title = '', description = null, postUID = null) {
-		this.title = title;
+	constructor(name = '', description = '', postUID = null) {
+		this.name = name;
 		this.description = description;
 		this.postUID = postUID;
 	}
