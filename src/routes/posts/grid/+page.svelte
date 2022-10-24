@@ -34,17 +34,3 @@
 		{/each}
 	</div>
 </div>
-
-<div class="row hide">
-	{#each posts as item, i}
-		{#if i % 2 == 0}
-			<div class="col-md-4">
-				<ComponentPostHorizontal bind:post={item} />
-			</div>
-		{:else}
-			<div class="col-md-8">
-				<ComponentPostHorizontal bind:post={item} />
-			</div>
-		{/if}
-	{/each}
-</div>
