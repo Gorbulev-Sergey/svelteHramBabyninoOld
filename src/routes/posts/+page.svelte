@@ -7,7 +7,7 @@
 	import ComponentPost from './ComponentPost.svelte';
 	import ComponentPostHorizontal from './ComponentPostHorizontal.svelte';
 
-	let posts = [];
+	let posts = new Array();
 
 	onMount(async () => {
 		onValue(ref(db, '/posts'), (s) => {
@@ -18,17 +18,36 @@
 
 <ComponentPageTitle title="Публикации" />
 
+<!--Для закреплённых-->
 <div class="row">
-	<div class="col-md-3">
-		{#each posts as item}
-			{#if !item.published}
+	<div class="col-md-8">
+		{#each posts as item, i}
+			{#if item.pinned && item.published && i % 2 != 0}
+				<ComponentPostHorizontal bind:post={item} />
+			{/if}
+		{/each}
+	</div>
+	<div class="col-md-4">
+		{#each posts as item, i}
+			{#if item.pinned && item.published && i % 2 == 0}
 				<ComponentPost bind:post={item} />
 			{/if}
 		{/each}
 	</div>
-	<div class="col-md-9">
+</div>
+
+<!--Для не закреплённых-->
+<div class="row">
+	<div class="col-md-4">
 		{#each posts as item, i}
-			{#if item.published}
+			{#if !item.pinned && item.published && i % 2 != 0}
+				<ComponentPost bind:post={item} />
+			{/if}
+		{/each}
+	</div>
+	<div class="col-md-8">
+		{#each posts as item, i}
+			{#if !item.pinned && item.published && i % 2 == 0}
 				<ComponentPostHorizontal bind:post={item} />
 			{/if}
 		{/each}

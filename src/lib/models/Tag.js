@@ -1,7 +1,7 @@
 export class Tag {
-	constructor(title, description, created = new Date().toLocaleDateString()) {
+	constructor(title = '', description = null, postUID = null) {
 		this.title = title;
 		this.description = description;
-		this.created = created;
+		this.postUID = postUID;
 	}
 }

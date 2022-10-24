@@ -7,16 +7,27 @@
 			title: 'Публикации'
 		},
 		{
-			url: '/posts/grid',
-			title: 'Публикации в сетке'
-		},
-		{
 			url: '/schedule',
 			title: 'Расписание'
 		},
 		{
 			url: '/check',
 			title: 'Проверка'
+		}
+	];
+	let routesAdmin = [
+		{
+			url: '/admin/post',
+			title: 'Создать публикацию'
+		},
+		{
+			url: '/admin/schedule',
+			title: 'Редактировать расписание'
+		},
+
+		{
+			url: '/admin/tag',
+			title: 'Теги'
 		}
 	];
 </script>
@@ -38,12 +49,11 @@
 				Панель управления
 			</button>
 			<div class="dropdown-menu bg-light  border-secondary border-opacity-10">
-				<a class="btn btn-light rounded-0 border-0 text-start w-100" href="/admin/schedule"
-					>Редактировать расписание</a
-				><br />
-				<a class="btn btn-light rounded-0 border-0 text-start w-100" href="/admin/post"
-					>Создать публикацию</a
-				>
+				{#each routesAdmin as item}
+					<a class="btn btn-light rounded-0 border-0 text-start w-100" href={item.url}
+						>{item.title}</a
+					><br />
+				{/each}
 			</div>
 		</div>
 	</div>
