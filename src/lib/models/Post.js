@@ -6,8 +6,9 @@ export class Post {
 		content = null,
 		created = new Date(Date.now()).toDateString(),
 		published = false,
-		tags = [],
-		comments = [],
+		pinned = false,
+		tags = new Array(),
+		comments = new Array(),
 		userUID = null
 	) {
 		this.title = title;
