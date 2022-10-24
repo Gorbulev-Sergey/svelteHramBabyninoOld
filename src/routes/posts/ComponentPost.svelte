@@ -58,7 +58,10 @@
 				<div>
 					{#if post.tags}
 						{#each post.tags as tag}
-							<a class="badge bg-info text-dark p-1 ml-1" href="/posts/{tag.title}">{tag.title}</a>
+							<a
+								class="badge bg-secondary bg-opacity-10 text-dark text-decoration-none p-1 me-1"
+								href="/posts/{tag.name}">{tag.name}</a
+							>
 						{/each}
 					{/if}
 				</div>

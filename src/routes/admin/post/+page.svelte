@@ -8,7 +8,7 @@
 	import { onMount } from 'svelte';
 
 	let post = new Post();
-	let tags = new Array();
+	$: tags = new Array();
 	let selectedTag = new Tag();
 
 	onMount(async () => {
@@ -55,7 +55,7 @@
 						style="min-height: 10em;"
 						bind:value={post.description}
 					/>
-					<div class="d-flex justify-content-between mb-3">
+					<div class="d-flex justify-content-between">
 						<div>
 							<input id="published" type="checkbox" bind:checked={post.published} />
 							<label for="published">опубликовать</label>
@@ -69,24 +69,26 @@
 							<label for="pinned">закрепить наверху</label>
 						</div>
 					</div>
-					<div class="d-flex">
-						<div class="btn-group mb-2 me-3">
-							<select class="form-select rounded-0 rounded-start" bind:value={selectedTag}>
-								{#each tags as item}
-									<option value={item}>{item.name}</option>
-								{/each}
-							</select>
-							<button
-								class="btn btn-light border"
-								on:click={() => {
-									if (selectedTag.name != '') {
-										post.tags = [...post.tags, selectedTag];
-										selectedTag = new Tag();
-									}
-								}}><i class="fa-solid fa-circle-plus" /></button
-							>
+					<div class="row">
+						<div class="col-md-3">
+							<div class="btn-group mb-2 me-3">
+								<select class="form-select rounded-0 rounded-start" bind:value={selectedTag}>
+									{#each tags as item}
+										<option value={item}>{item.name}</option>
+									{/each}
+								</select>
+								<button
+									class="btn btn-light border"
+									on:click={() => {
+										if (selectedTag.name != '') {
+											post.tags = [...post.tags, selectedTag];
+											selectedTag = new Tag();
+										}
+									}}><i class="fa-solid fa-circle-plus" /></button
+								>
+							</div>
 						</div>
-						<div>
+						<div class="col-md-9">
 							{#each post.tags as item}
 								<div class="btn-group btn-group-sm me-2 mb-2">
 									<div class="bg-light text-dark py-1 px-2 rounded-start">{item.name}</div>
