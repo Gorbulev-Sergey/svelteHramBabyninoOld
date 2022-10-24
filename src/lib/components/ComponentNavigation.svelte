@@ -7,6 +7,10 @@
 			title: 'Публикации'
 		},
 		{
+			url: '/posts/grid',
+			title: 'Публикации в сетке'
+		},
+		{
 			url: '/schedule',
 			title: 'Расписание'
 		},

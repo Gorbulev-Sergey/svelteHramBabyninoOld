@@ -35,7 +35,8 @@
 		{:else if post.cover && post.cover.image}
 			<div
 				class="img-fluid"
-				style="background:url({post.cover.image}); background-size:cover; height:220px"
+				style="background-image: url({post.cover.image});
+					 background-size: no-repeat; background-position: center; background-size: cover; min-height:12em;"
 			/>
 		{/if}
 		<div class="card-body" style="font-size:1em">
@@ -50,7 +51,7 @@
 					</button>
 					<div>
 						<button
-							class="btn btn-light text-dark"
+							class="btn btn-light bg-white border-0 text-dark"
 							data-toggle="collapse"
 							data-target="#comments"
 							title="Комментарии"

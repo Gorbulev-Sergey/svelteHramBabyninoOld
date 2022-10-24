@@ -53,7 +53,7 @@
 					<div
 						class="img-fluid rounded-end h-100"
 						style="background-image: url({post.cover.image});
-					 background-size: no-repeat; background-position: center; background-size: cover; min-height:12em;"
+					 background-size: no-repeat; background-position: center; background-size: cover; min-height:11em;"
 					/>
 				{/if}
 			</div>
@@ -63,7 +63,7 @@
 					<div
 						class="img-fluid rounded-start h-100"
 						style="background-image: url({post.cover.image});
-					 background-size: no-repeat; background-position: center; background-size: cover; min-height:12em;"
+					 background-size: no-repeat; background-position: center; background-size: cover; min-height:11em;"
 					/>
 				{/if}
 			</div>
