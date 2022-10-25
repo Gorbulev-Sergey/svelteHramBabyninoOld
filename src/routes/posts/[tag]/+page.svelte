@@ -32,7 +32,7 @@
 	<div slot="navigation" class="btn-group btn-group-sm">
 		{#each tags as item}
 			<button
-				class="btn btn-light"
+				class="btn btn-light {item.name == $page.params.tag ? 'active' : ''}"
 				on:click={async () => {
 					goto(`/posts/${item.name}`).then(() => getData());
 				}}>{item.name}</button
