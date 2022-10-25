@@ -1,8 +1,7 @@
 <script>
+	// @ts-nocheck
 	import { goto } from '$app/navigation';
 	import { page } from '$app/stores';
-
-	// @ts-nocheck
 	import ComponentPageTitle from '$lib/components/ComponentPageTitle.svelte';
 	import { db } from '$lib/scripts/firebase';
 	import { onValue, push, query, ref } from 'firebase/database';
@@ -34,7 +33,7 @@
 		{#each tags as item}
 			<button
 				class="btn btn-light"
-				on:click={() => {
+				on:click={async () => {
 					goto(`/posts/${item.name}`).then(() => getData());
 				}}>{item.name}</button
 			>
@@ -47,14 +46,14 @@
 	<div class="col-md-8">
 		{#each posts as item, i}
 			{#if item.pinned && item.published && i % 2 != 0}
-				<ComponentPostHorizontal bind:post={item} />
+				<ComponentPostHorizontal bind:post={item} onClickTag={async () => getData()} />
 			{/if}
 		{/each}
 	</div>
 	<div class="col-md-4">
 		{#each posts as item, i}
 			{#if item.pinned && item.published && i % 2 == 0}
-				<ComponentPost bind:post={item} />
+				<ComponentPost bind:post={item} onClickTag={async () => getData()} />
 			{/if}
 		{/each}
 	</div>
@@ -65,14 +64,14 @@
 	<div class="col-md-4">
 		{#each posts as item, i}
 			{#if !item.pinned && item.published && i % 2 != 0}
-				<ComponentPost bind:post={item} />
+				<ComponentPost bind:post={item} onClickTag={async () => getData()} />
 			{/if}
 		{/each}
 	</div>
 	<div class="col-md-8">
 		{#each posts as item, i}
 			{#if !item.pinned && item.published && i % 2 == 0}
-				<ComponentPostHorizontal bind:post={item} />
+				<ComponentPostHorizontal bind:post={item} onClickTag={async () => getData()} />
 			{/if}
 		{/each}
 	</div>

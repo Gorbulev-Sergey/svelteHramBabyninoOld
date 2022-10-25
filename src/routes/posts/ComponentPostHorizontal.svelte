@@ -1,8 +1,10 @@
 <script>
 	// @ts-nocheck
+	import { goto } from '$app/navigation';
 	import { Post } from '$lib/models/Post';
 
 	export let post = new Post();
+	export let onClickTag = () => {};
 	Date.prototype.monthName = function () {
 		switch (this.getMonth() + 1) {
 			case 1:
@@ -52,9 +54,11 @@
 					<div>
 						{#if post.tags}
 							{#each post.tags as tag}
-								<a
-									class="badge bg-secondary bg-opacity-10 text-dark text-decoration-none p-1 me-1"
-									href="/posts/{tag.name}">{tag.name}</a
+								<button
+									class="badge bg-secondary bg-opacity-10 text-dark text-decoration-none p-1 me-1 border-0"
+									on:click={() => {
+										goto(`/posts/${tag.name}`).then(() => onClickTag());
+									}}>{tag.name}</button
 								>
 							{/each}
 						{/if}
