@@ -13,7 +13,7 @@
 	let tags = new Array();
 	let posts = new Array();
 
-	onMount(async () => {
+	function getData() {
 		onValue(ref(db, 'tags/'), (s) => {
 			tags = Object.values(s.val());
 			console.log(tags);
@@ -24,13 +24,19 @@
 				i.tags?.some((t) => t.name === $page.params.tag)
 			);
 		});
-	});
+	}
+
+	onMount(async () => getData());
 </script>
 
 <ComponentPageTitle title={$page.params.tag[0].toUpperCase() + $page.params.tag.slice(1)}>
 	<div slot="navigation" class="btn-group btn-group-sm">
 		{#each tags as item}
-			<button class="btn btn-light" on:click={() => goto(`/posts/${item.name}`)}>{item.name}</button
+			<button
+				class="btn btn-light"
+				on:click={() => {
+					goto(`/posts/${item.name}`).then(() => getData());
+				}}>{item.name}</button
 			>
 		{/each}
 	</div>
