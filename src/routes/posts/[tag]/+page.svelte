@@ -1,4 +1,5 @@
 <script>
+	import { goto } from '$app/navigation';
 	import { page } from '$app/stores';
 
 	// @ts-nocheck
@@ -8,10 +9,16 @@
 	import { onMount } from 'svelte';
 	import ComponentPost from '../ComponentPost.svelte';
 	import ComponentPostHorizontal from '../ComponentPostHorizontal.svelte';
+
+	let tags = new Array();
 	let posts = new Array();
 
 	onMount(async () => {
-		onValue(ref(db, '/posts'), (s) => {
+		onValue(ref(db, 'tags/'), (s) => {
+			tags = Object.values(s.val());
+			console.log(tags);
+		});
+		onValue(ref(db, 'posts/'), (s) => {
 			// ВАЖНЫЙ ФИЛЬТР: фильтруем публикации по динамическому параметру url
 			posts = Object.values(s.val()).filter((i) =>
 				i.tags?.some((t) => t.name === $page.params.tag)
@@ -20,7 +27,14 @@
 	});
 </script>
 
-<ComponentPageTitle title="Публикации" />
+<ComponentPageTitle title={$page.params.tag[0].toUpperCase() + $page.params.tag.slice(1)}>
+	<div slot="navigation" class="btn-group btn-group-sm">
+		{#each tags as item}
+			<button class="btn btn-light" on:click={() => goto(`/posts/${item.name}`)}>{item.name}</button
+			>
+		{/each}
+	</div>
+</ComponentPageTitle>
 
 <!--Для закреплённых-->
 <div class="row">

@@ -1,4 +1,6 @@
 <script>
+	import { goto } from '$app/navigation';
+
 	// @ts-nocheck
 	import ComponentPageTitle from '$lib/components/ComponentPageTitle.svelte';
 	import { db } from '$lib/scripts/firebase';
@@ -10,9 +12,10 @@
 	let posts = new Array();
 
 	onMount(async () => {
-		onValue(ref(db, '/posts'), (s) => {
-			posts = Object.values(s.val());
-		});
+		goto('/posts/объявления');
+		// onValue(ref(db, '/posts'), (s) => {
+		// 	posts = Object.values(s.val());
+		// });
 	});
 </script>
 
