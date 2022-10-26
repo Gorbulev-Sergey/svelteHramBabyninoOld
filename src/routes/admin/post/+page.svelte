@@ -24,7 +24,7 @@
 			class="btn btn-dark bg-opacity-10"
 			on:click={async () => {
 				if (post.title != '') {
-					push(ref(db, 'posts/'), post);
+					push(ref(db, '/posts'), post);
 					goto('/posts');
 				}
 			}}>Сохранить</button
@@ -69,16 +69,29 @@
 							<label for="pinned">закрепить наверху</label>
 						</div>
 					</div>
-					<div class="row">
-						<div class="col-md-3">
-							<div class="btn-group mb-2 me-3">
-								<select class="form-select rounded-0 rounded-start" bind:value={selectedTag}>
+					<div class="row mt-4">
+						<div class="col-md-4">
+							<div class="btn-group btn-group-sm mb-2 me-3">
+								<div class="btn {!post.inverted ? 'bg-dark text-light' : 'bg-light text-dark'}">
+									Теги:
+								</div>
+								<select
+									class="form-select form-select-sm
+									 {!post.inverted ? 'bg-light text-dark bg-opacity-75' : 'bg-secondary text-light bg-opacity-10'}
+										 rounded-0 rounded-start border-0"
+									bind:value={selectedTag}
+								>
 									{#each tags as item}
-										<option value={item}>{item.name}</option>
+										<option
+											class={!post.inverted
+												? 'bg-light text-dark bg-opacity-75'
+												: 'bg-dark text-light'}
+											value={item}>{item.name}</option
+										>
 									{/each}
 								</select>
 								<button
-									class="btn btn-light border"
+									class="btn {!post.inverted ? 'bg-dark text-light' : 'bg-light text-dark'}"
 									on:click={() => {
 										if (selectedTag.name != '') {
 											post.tags = [...post.tags, selectedTag];
@@ -88,7 +101,7 @@
 								>
 							</div>
 						</div>
-						<div class="col-md-9">
+						<div class="col-md-8">
 							{#each post.tags as item}
 								<div class="btn-group btn-group-sm me-2 mb-2">
 									<div class="bg-light text-dark py-1 px-2 rounded-start">{item.name}</div>
