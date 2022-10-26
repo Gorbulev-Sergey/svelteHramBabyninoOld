@@ -10,6 +10,8 @@
 	style="cursor:pointer;"
 	on:click={() => (checked = !checked)}
 >
-	<i class="{classFontAwesome} {!checked ? 'text-secondary' : 'text-primary'} me-1" />
-	<div>{text}</div>
+	<i
+		class="{classFontAwesome} {!checked ? 'text-secondary text-opacity-25' : 'text-primary'} me-1"
+	/>
+	<small class="pb-1">{text}</small>
 </div>

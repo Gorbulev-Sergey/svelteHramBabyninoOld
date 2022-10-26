@@ -43,13 +43,13 @@
 			<Pin
 				classFontAwesome="fa-regular fa-eye"
 				text="опубликовать"
-				_class="me-3"
+				_class="me-4"
 				bind:checked={post.published}
 			/>
 			<Pin
 				classFontAwesome="fa-solid fa-thumbtack"
 				text="закрепить наверху"
-				_class="me-3"
+				_class="me-4"
 				bind:checked={post.pinned}
 			/>
 			<Pin
