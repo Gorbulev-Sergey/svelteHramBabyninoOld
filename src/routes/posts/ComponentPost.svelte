@@ -35,7 +35,7 @@
 	};
 </script>
 
-<div class="col mb-4">
+<div class="col mb-3">
 	<div
 		class="card {!post.inverted
 			? 'bg-white text-dark'
@@ -124,5 +124,6 @@
 				</div>
 			</div>
 		{/if}
+		<slot name="admin" />
 	</div>
 </div>

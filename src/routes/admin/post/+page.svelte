@@ -1,6 +1,7 @@
 <script>
 	import { goto } from '$app/navigation';
 	import ComponentPageTitle from '$lib/components/ComponentPageTitle.svelte';
+	import Pin from '$lib/components/Pin.svelte';
 	import { Post } from '$lib/models/Post';
 	import { Tag } from '$lib/models/Tag';
 	import { db } from '$lib/scripts/firebase';
@@ -33,10 +34,31 @@
 </ComponentPageTitle>
 
 <div class="rounded p-3 {!post.inverted ? 'bg-white text-dark' : 'bg-dark text-light'}">
-	<ul class="nav nav-pills mb-3">
-		<a class="btn btn-light border-0 me-1 active" data-bs-toggle="pill" href="#cover">Обложка</a>
-		<a class="btn btn-light border-0" data-bs-toggle="pill" href="#content">Содержимое</a>
-	</ul>
+	<div class="d-flex justify-content-between align-items-center mb-3">
+		<div class="nav nav-pills">
+			<a class="btn btn-light border-0 me-1 active" data-bs-toggle="pill" href="#cover">Обложка</a>
+			<a class="btn btn-light border-0" data-bs-toggle="pill" href="#content">Содержимое</a>
+		</div>
+		<div class="d-flex">
+			<Pin
+				classFontAwesome="fa-regular fa-eye"
+				text="опубликовать"
+				_class="me-3"
+				bind:checked={post.published}
+			/>
+			<Pin
+				classFontAwesome="fa-solid fa-thumbtack"
+				text="закрепить наверху"
+				_class="me-3"
+				bind:checked={post.pinned}
+			/>
+			<Pin
+				classFontAwesome="fa-solid fa-brush"
+				text="инвертировать цвета"
+				bind:checked={post.inverted}
+			/>
+		</div>
+	</div>
 
 	<div class="tab-content">
 		<div class="tab-pane show" id="cover">
@@ -55,26 +77,10 @@
 						style="min-height: 10em;"
 						bind:value={post.description}
 					/>
-					<div class="d-flex justify-content-between">
-						<div>
-							<input id="published" type="checkbox" bind:checked={post.published} />
-							<label for="published">опубликовать</label>
-						</div>
-						<div>
-							<input id="inverted" type="checkbox" bind:checked={post.inverted} />
-							<label for="inverted">инвертировать цвета</label>
-						</div>
-						<div>
-							<input id="pinned" type="checkbox" bind:checked={post.pinned} />
-							<label for="pinned">закрепить наверху</label>
-						</div>
-					</div>
-					<div class="row mt-4">
+					<div class="row mt-3">
 						<div class="col-md-4">
 							<div class="btn-group btn-group-sm mb-2 me-3">
-								<div class="btn {!post.inverted ? 'bg-dark text-light' : 'bg-light text-dark'}">
-									Теги:
-								</div>
+								<div class="btn btn-light text-dark active">Теги:</div>
 								<select
 									class="form-select form-select-sm
 									 {!post.inverted ? 'bg-light text-dark bg-opacity-75' : 'bg-secondary text-light bg-opacity-10'}
@@ -91,7 +97,7 @@
 									{/each}
 								</select>
 								<button
-									class="btn {!post.inverted ? 'bg-dark text-light' : 'bg-light text-dark'}"
+									class="btn btn-light text-dark active"
 									on:click={() => {
 										if (selectedTag.name != '') {
 											post.tags = [...post.tags, selectedTag];

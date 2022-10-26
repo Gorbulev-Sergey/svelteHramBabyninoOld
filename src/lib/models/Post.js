@@ -5,7 +5,7 @@ export class Post {
 		description = null,
 		content = null,
 		created = new Date(Date.now()).toDateString(),
-		published = null,
+		published = true,
 		pinned = null,
 		inverted = null,
 		tags = new Array(),

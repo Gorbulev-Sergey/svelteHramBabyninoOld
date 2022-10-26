@@ -40,7 +40,7 @@
 </ComponentPageTitle>
 
 <!--Для закреплённых-->
-<div class="row">
+<div class="row mb-2 gx-4">
 	<div class="col-md-8">
 		{#each filterPosts() as item, i}
 			{#if item.pinned && item.published && i % 2 != 0}
@@ -58,7 +58,7 @@
 </div>
 
 <!--Для не закреплённых-->
-<div class="row">
+<div class="row gx-4">
 	<div class="col-md-4">
 		{#each filterPosts() as item, i}
 			{#if !item.pinned && item.published && i % 2 != 0}
