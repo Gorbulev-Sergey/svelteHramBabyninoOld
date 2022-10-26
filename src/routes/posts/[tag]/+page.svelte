@@ -11,21 +11,19 @@
 
 	let tags = new Array();
 	let posts = new Array();
+	$: filterPosts = () => {
+		// ВАЖНЫЙ ФИЛЬТР: фильтруем публикации по динамическому параметру url
+		return posts.filter((i) => i.tags?.some((t) => t.name === $page.params.tag));
+	};
 
-	function getData() {
+	onMount(async () => {
 		onValue(ref(db, 'tags/'), (s) => {
 			tags = Object.values(s.val());
-			console.log(tags);
 		});
 		onValue(ref(db, 'posts/'), (s) => {
-			// ВАЖНЫЙ ФИЛЬТР: фильтруем публикации по динамическому параметру url
-			posts = Object.values(s.val()).filter((i) =>
-				i.tags?.some((t) => t.name === $page.params.tag)
-			);
+			posts = Object.values(s.val());
 		});
-	}
-
-	onMount(async () => getData());
+	});
 </script>
 
 <ComponentPageTitle title={$page.params.tag[0].toUpperCase() + $page.params.tag.slice(1)}>
@@ -34,7 +32,7 @@
 			<button
 				class="btn btn-light {item.name == $page.params.tag ? 'active' : ''}"
 				on:click={async () => {
-					goto(`/posts/${item.name}`).then(() => getData());
+					goto(`/posts/${item.name}`);
 				}}>{item.name}</button
 			>
 		{/each}
@@ -44,16 +42,16 @@
 <!--Для закреплённых-->
 <div class="row">
 	<div class="col-md-8">
-		{#each posts as item, i}
+		{#each filterPosts() as item, i}
 			{#if item.pinned && item.published && i % 2 != 0}
-				<ComponentPostHorizontal bind:post={item} onClickTag={async () => getData()} />
+				<ComponentPostHorizontal bind:post={item} />
 			{/if}
 		{/each}
 	</div>
 	<div class="col-md-4">
-		{#each posts as item, i}
+		{#each filterPosts() as item, i}
 			{#if item.pinned && item.published && i % 2 == 0}
-				<ComponentPost bind:post={item} onClickTag={async () => getData()} />
+				<ComponentPost bind:post={item} />
 			{/if}
 		{/each}
 	</div>
@@ -62,16 +60,16 @@
 <!--Для не закреплённых-->
 <div class="row">
 	<div class="col-md-4">
-		{#each posts as item, i}
+		{#each filterPosts() as item, i}
 			{#if !item.pinned && item.published && i % 2 != 0}
-				<ComponentPost bind:post={item} onClickTag={async () => getData()} />
+				<ComponentPost bind:post={item} />
 			{/if}
 		{/each}
 	</div>
 	<div class="col-md-8">
-		{#each posts as item, i}
+		{#each filterPosts() as item, i}
 			{#if !item.pinned && item.published && i % 2 == 0}
-				<ComponentPostHorizontal bind:post={item} onClickTag={async () => getData()} />
+				<ComponentPostHorizontal bind:post={item} />
 			{/if}
 		{/each}
 	</div>
