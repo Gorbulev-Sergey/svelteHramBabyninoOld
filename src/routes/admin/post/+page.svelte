@@ -80,12 +80,20 @@
 					<div class="row mt-3">
 						<div class="col-md-4">
 							<div class="btn-group btn-group-sm mb-2 me-3">
-								<div class="btn btn-light text-dark active">Теги:</div>
+								<div class="btn btn-light text-dark border text-nowrap">
+									<span>добавить тег:</span>
+								</div>
 								<select
 									class="form-select form-select-sm
 									 {!post.inverted ? 'bg-light text-dark bg-opacity-75' : 'bg-secondary text-light bg-opacity-10'}
-										 rounded-0 rounded-start border-0"
+										 rounded-0 rounded-end border-0"
 									bind:value={selectedTag}
+									on:change={() => {
+										if (selectedTag.name != '') {
+											post.tags = [...post.tags, selectedTag];
+											selectedTag = new Tag();
+										}
+									}}
 								>
 									{#each tags as item}
 										<option
@@ -97,7 +105,7 @@
 									{/each}
 								</select>
 								<button
-									class="btn btn-light text-dark active"
+									class="btn btn-light text-dark active hide"
 									on:click={() => {
 										if (selectedTag.name != '') {
 											post.tags = [...post.tags, selectedTag];
