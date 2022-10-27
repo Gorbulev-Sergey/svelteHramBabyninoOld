@@ -3,6 +3,7 @@
 
 	import { goto } from '$app/navigation';
 	import { Post } from '$lib/models/Post';
+	import { append } from 'svelte/internal';
 
 	export let post = new Post();
 	Date.prototype.monthName = function () {
@@ -33,6 +34,7 @@
 				return 'декабря';
 		}
 	};
+	let showContent = false;
 </script>
 
 <div class="col mb-3">
@@ -90,41 +92,43 @@
 					 background-size: no-repeat; background-position: center; background-size: cover; min-height:12em;"
 			/>
 		{/if}
-		<div class="card-body" style="font-size:1em">
-			<p class="card-text">{@html post.description ? post.description : ''}</p>
-		</div>
-		<div class="card-body">{@html post.content}</div>
-		{#if post.content}
-			<div
-				class="card-footer {!post.inverted ? 'bg-white text-dark' : 'bg-dark text-light'} border-0"
-			>
-				<div class="d-flex align-items-center justify-content-between">
+		<div class="d-flex align-items-center justify-content-between">
+			{#if post.comments}
+				<div>
 					<button
-						class="btn btn-sm {!post.inverted ? 'btn-light text-dark' : 'btn-dark text-light'}"
+						class="btn btn-sm btn-light bg-white"
+						data-toggle="collapse"
+						data-target="#comments"
+						title="Комментарии"
 						on:click={() => {}}
 					>
-						Подробнее
-						<i class="fas fa-chevron-right mr-2" />
+						<i class="far fa-comment-alt" />
+						{#if post.comments?.length > 0}
+							<span class="ml-2">{post.comments.length}</span>
+						{/if}
 					</button>
-					<div>
-						<button
-							class="btn {!post.inverted
-								? 'btn-light text-dark'
-								: 'btn-dark text-light'} border-0 text-dark"
-							data-toggle="collapse"
-							data-target="#comments"
-							title="Комментарии"
-							on:click={() => {}}
-						>
-							<i class="far fa-comment-alt" />
-							{#if post.comments?.length > 0}
-								<span class="ml-2">{post.comments.length}</span>
-							{/if}
-						</button>
-					</div>
 				</div>
-			</div>
-		{/if}
+			{/if}
+		</div>
+		<div class="card-body" style="font-size:1em">
+			{#if !showContent || (showContent && !post.content)}
+				{@html post.description ? post.description : ''}
+			{:else}
+				{@html post.content ? post.content : ''}
+			{/if}
+			{#if post.content}
+				<span
+					class="badge bg-light text-dark"
+					style="cursor: pointer;"
+					on:click={() => (showContent = !showContent)}
+				>
+					{!showContent ? '...' : 'свернуть'}
+					<i
+						class="fa-solid {!showContent ? 'fa-circle-chevron-right' : 'fa-circle-chevron-up'} "
+					/>
+				</span>
+			{/if}
+		</div>
 		<slot name="admin" />
 	</div>
 </div>
