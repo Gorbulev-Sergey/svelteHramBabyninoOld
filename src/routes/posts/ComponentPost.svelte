@@ -91,8 +91,9 @@
 			/>
 		{/if}
 		<div class="card-body" style="font-size:1em">
-			<p class="card-text">{@html post.description}</p>
+			<p class="card-text">{@html post.description ? post.description : ''}</p>
 		</div>
+		<div class="card-body">{@html post.content}</div>
 		{#if post.content}
 			<div
 				class="card-footer {!post.inverted ? 'bg-white text-dark' : 'bg-dark text-light'} border-0"
