@@ -119,13 +119,11 @@
 			{#if post.content}
 				<span
 					class="badge bg-light text-dark"
-					style="cursor: pointer;"
+					style="cursor: pointer; font-size:.8em;"
 					on:click={() => (showContent = !showContent)}
 				>
-					{!showContent ? '...' : 'свернуть'}
-					<i
-						class="fa-solid {!showContent ? 'fa-circle-chevron-right' : 'fa-circle-chevron-up'} "
-					/>
+					<i class="fa-solid {!showContent ? 'fa-circle-arrow-right' : 'fa-circle-arrow-up'} " />
+					...
 				</span>
 			{/if}
 		</div>

@@ -1,6 +1,6 @@
 <script>
 	// @ts-nocheck
-	import ComponentPageTitle from '$lib/components/ComponentPageTitle.svelte';
+	import PageTitle from '$lib/components/PageTitle.svelte';
 	import { Tag } from '$lib/models/Tag';
 	import { db } from '$lib/scripts/firebase';
 	import { onValue, push, query, ref, set, update } from 'firebase/database';
@@ -18,7 +18,7 @@
 	});
 </script>
 
-<ComponentPageTitle title="Теги" />
+<PageTitle title="Теги" />
 
 <div class="row bg-white rounded p-3">
 	<div class="col-md-6">

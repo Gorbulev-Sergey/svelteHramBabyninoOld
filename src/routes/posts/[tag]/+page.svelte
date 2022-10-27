@@ -2,7 +2,7 @@
 	// @ts-nocheck
 	import { goto } from '$app/navigation';
 	import { page } from '$app/stores';
-	import ComponentPageTitle from '$lib/components/ComponentPageTitle.svelte';
+	import PageTitle from '$lib/components/PageTitle.svelte';
 	import { db } from '$lib/scripts/firebase';
 	import { onValue, push, query, ref } from 'firebase/database';
 	import { onMount } from 'svelte';
@@ -26,7 +26,7 @@
 	});
 </script>
 
-<ComponentPageTitle title={$page.params.tag[0].toUpperCase() + $page.params.tag.slice(1)}>
+<PageTitle title={$page.params.tag[0].toUpperCase() + $page.params.tag.slice(1)}>
 	<div slot="navigation" class="btn-group btn-group-sm">
 		{#each tags as item}
 			<button
@@ -37,7 +37,7 @@
 			>
 		{/each}
 	</div>
-</ComponentPageTitle>
+</PageTitle>
 
 <!--Для закреплённых-->
 <div class="row mb-2 gx-4">

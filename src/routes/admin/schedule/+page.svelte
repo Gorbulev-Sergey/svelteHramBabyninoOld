@@ -1,6 +1,6 @@
 <script>
 	// @ts-nocheck
-	import ComponentPageTitle from '$lib/components/ComponentPageTitle.svelte';
+	import PageTitle from '$lib/components/PageTitle.svelte';
 	import { db } from '$lib/scripts/firebase';
 	import { onValue, push, ref, set, update } from 'firebase/database';
 	import { onMount } from 'svelte';
@@ -22,7 +22,7 @@
 	});
 </script>
 
-<ComponentPageTitle title="Редактировать расписание">
+<PageTitle title="Редактировать расписание">
 	<div slot="navigation" class="d-flex flex-nowrap align-items-center">
 		<div class="input-group me-4">
 			<span class="input-group-text border-0">Выбирите месяц и год:</span>
@@ -53,6 +53,6 @@
 			}}>Сохранить</button
 		>
 	</div>
-</ComponentPageTitle>
+</PageTitle>
 
 <ComponentMonthEdit bind:month />

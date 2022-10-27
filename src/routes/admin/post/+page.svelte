@@ -1,6 +1,6 @@
 <script>
 	import { goto } from '$app/navigation';
-	import ComponentPageTitle from '$lib/components/ComponentPageTitle.svelte';
+	import PageTitle from '$lib/components/PageTitle.svelte';
 	import Pin from '$lib/components/Pin.svelte';
 	import { Post } from '$lib/models/Post';
 	import { Tag } from '$lib/models/Tag';
@@ -19,7 +19,7 @@
 	});
 </script>
 
-<ComponentPageTitle title="Создать публикацию">
+<PageTitle title="Создать публикацию">
 	<div slot="navigation">
 		<button
 			class="btn btn-dark bg-opacity-10"
@@ -31,7 +31,7 @@
 			}}>Сохранить</button
 		>
 	</div>
-</ComponentPageTitle>
+</PageTitle>
 
 <div class="rounded p-3 {!post.inverted ? 'bg-white text-dark' : 'bg-dark text-light'}">
 	<div class="d-flex justify-content-between align-items-center mb-3">

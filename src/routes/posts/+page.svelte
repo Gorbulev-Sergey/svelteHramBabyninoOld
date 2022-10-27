@@ -2,7 +2,7 @@
 	import { goto } from '$app/navigation';
 
 	// @ts-nocheck
-	import ComponentPageTitle from '$lib/components/ComponentPageTitle.svelte';
+	import PageTitle from '$lib/components/PageTitle.svelte';
 	import { db } from '$lib/scripts/firebase';
 	import { onValue, push, query, ref } from 'firebase/database';
 	import { onMount } from 'svelte';
@@ -19,7 +19,7 @@
 	});
 </script>
 
-<ComponentPageTitle title="Публикации" />
+<PageTitle title="Публикации" />
 
 <!--Для закреплённых-->
 <div class="row">
