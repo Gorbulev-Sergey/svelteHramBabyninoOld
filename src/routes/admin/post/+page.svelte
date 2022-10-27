@@ -95,15 +95,15 @@
 						</div>
 						<div>
 							{#each post.tags as item}
-								<div class="btn-group btn-group-sm me-1 mb-2">
-									<div class="bg-light text-dark py-1 px-2 rounded-start">{item.name}</div>
+								<div class="badge mb-1 d-inline-flex p-0 me-1">
+									<div class="bg-light text-dark px-2 py-1 rounded-start">{item.name}</div>
 									<div
-										class="btn btn-dark"
+										class="btn btn-sm btn-light px-1 py-0 rounded-0 rounded-end"
 										on:click={() => {
 											post.tags = post.tags.filter((t) => t.name != item.name);
 										}}
 									>
-										<i class="fa-solid fa-trash text-danger" />
+										<i class="fa-solid fa-delete-left" />
 									</div>
 								</div>
 							{/each}
