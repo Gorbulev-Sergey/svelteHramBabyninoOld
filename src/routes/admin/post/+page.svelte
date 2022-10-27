@@ -1,7 +1,9 @@
 <script>
 	import { goto } from '$app/navigation';
+	import { LOGONSERVER } from '$env/static/private';
 	import PageTitle from '$lib/components/PageTitle.svelte';
 	import Pin from '$lib/components/Pin.svelte';
+	import SelectTag from '$lib/components/SelectTag.svelte';
 	import { Post } from '$lib/models/Post';
 	import { Tag } from '$lib/models/Tag';
 	import { db } from '$lib/scripts/firebase';
@@ -77,47 +79,23 @@
 						style="min-height: 10em;"
 						bind:value={post.description}
 					/>
-					<div class="row mt-3">
-						<div class="col-md-4">
-							<div class="btn-group btn-group-sm mb-2 me-3">
-								<div class="btn btn-light text-dark border text-nowrap">
-									<span>добавить тег:</span>
-								</div>
-								<select
-									class="form-select form-select-sm
-									 {!post.inverted ? 'bg-light text-dark bg-opacity-75' : 'bg-secondary text-light bg-opacity-10'}
-										 rounded-0 rounded-end border-0"
-									bind:value={selectedTag}
-									on:change={() => {
-										if (selectedTag.name != '') {
-											post.tags = [...post.tags, selectedTag];
-											selectedTag = new Tag();
-										}
-									}}
-								>
-									{#each tags as item}
-										<option
-											class={!post.inverted
-												? 'bg-light text-dark bg-opacity-75'
-												: 'bg-dark text-light'}
-											value={item}>{item.name}</option
-										>
-									{/each}
-								</select>
-								<button
-									class="btn btn-light text-dark active hide"
-									on:click={() => {
-										if (selectedTag.name != '') {
-											post.tags = [...post.tags, selectedTag];
-											selectedTag = new Tag();
-										}
-									}}><i class="fa-solid fa-circle-plus" /></button
-								>
-							</div>
+					<div class="mt-3" style="display: grid; grid-template-columns: auto 1fr;">
+						<div>
+							<SelectTag
+								{tags}
+								bind:selected={selectedTag}
+								onSelect={() => {
+									if (selectedTag.name != '') {
+										post.tags = [...post.tags, selectedTag];
+										selectedTag = new Tag();
+									}
+								}}
+								_class="mb-2 me-2"
+							/>
 						</div>
-						<div class="col-md-8">
+						<div>
 							{#each post.tags as item}
-								<div class="btn-group btn-group-sm me-2 mb-2">
+								<div class="btn-group btn-group-sm me-1 mb-2">
 									<div class="bg-light text-dark py-1 px-2 rounded-start">{item.name}</div>
 									<div
 										class="btn btn-dark"
