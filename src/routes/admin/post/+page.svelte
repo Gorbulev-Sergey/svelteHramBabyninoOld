@@ -1,10 +1,8 @@
 <script>
 	import { goto } from '$app/navigation';
-	import { LOGONSERVER } from '$env/static/private';
 	import PageTitle from '$lib/components/PageTitle.svelte';
 	import Pin from '$lib/components/Pin.svelte';
 	import TagManager from '$lib/components/TagManager.svelte';
-	import TagSelector from '$lib/components/TagSelector.svelte';
 	import { Post } from '$lib/models/Post';
 	import { tag } from '$lib/models/tag';
 	import { db } from '$lib/scripts/firebase';
@@ -80,7 +78,7 @@
 						style="min-height: 10em;"
 						bind:value={post.description}
 					/>
-					<TagManager {tags} leftTags={tags} bind:selectedTags={post.tags} />
+					<TagManager {tags} bind:selectedTags={post.tags} />
 				</div>
 				<div class="col-md-4">
 					<div class="form-group mb-3">
