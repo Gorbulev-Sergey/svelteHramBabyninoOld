@@ -1,13 +1,13 @@
 <script>
 	// @ts-nocheck
 	import PageTitle from '$lib/components/PageTitle.svelte';
-	import { Tag } from '$lib/models/Tag';
+	import { tag } from '$lib/models/tag';
 	import { db } from '$lib/scripts/firebase';
 	import { onValue, push, query, ref, set, update } from 'firebase/database';
 	import { onMount } from 'svelte';
 
 	let tags = new Object();
-	let tag = { uid: '', tag: new Tag() };
+	let tag = { uid: '', tag: new tag() };
 
 	onMount(async () => {
 		onValue(ref(db, 'tags/'), (s) => {
@@ -55,7 +55,7 @@
 								tag.tag?.description[0].toLocaleUpperCase() + tag.tag?.description.slice(1);
 						if (!tag.uid) push(ref(db, 'tags/'), tag.tag);
 						else update(ref(db, `tags/${tag.uid}`), tag.tag);
-						tag = { uid: '', tag: new Tag() };
+						tag = { uid: '', tag: new tag() };
 					}
 				}}>Сохранить</button
 			>

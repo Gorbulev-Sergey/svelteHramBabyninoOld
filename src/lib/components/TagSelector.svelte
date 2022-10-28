@@ -1,8 +1,8 @@
 <script>
-	import { Tag } from '$lib/models/Tag';
+	import { tag } from '$lib/models/tag';
 
 	export let tags = new Array();
-	export let selected = new Tag();
+	export let selected = new tag();
 	export let _class = '';
 	export let onSelect = () => {};
 </script>

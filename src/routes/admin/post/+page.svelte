@@ -3,16 +3,17 @@
 	import { LOGONSERVER } from '$env/static/private';
 	import PageTitle from '$lib/components/PageTitle.svelte';
 	import Pin from '$lib/components/Pin.svelte';
-	import SelectTag from '$lib/components/SelectTag.svelte';
+	import TagManager from '$lib/components/TagManager.svelte';
+	import TagSelector from '$lib/components/TagSelector.svelte';
 	import { Post } from '$lib/models/Post';
-	import { Tag } from '$lib/models/Tag';
+	import { tag } from '$lib/models/tag';
 	import { db } from '$lib/scripts/firebase';
 	import { onValue, push, ref } from 'firebase/database';
 	import { onMount } from 'svelte';
 
 	let post = new Post();
 	$: tags = new Array();
-	let selectedTag = new Tag();
+	let selectedTag = new tag();
 
 	onMount(async () => {
 		onValue(ref(db, 'tags/'), (s) => {
@@ -79,36 +80,7 @@
 						style="min-height: 10em;"
 						bind:value={post.description}
 					/>
-					<div class="mt-3" style="display: grid; grid-template-columns: auto 1fr;">
-						<div>
-							<SelectTag
-								{tags}
-								bind:selected={selectedTag}
-								onSelect={() => {
-									if (selectedTag.name != '') {
-										post.tags = [...post.tags, selectedTag];
-										selectedTag = new Tag();
-									}
-								}}
-								_class="mb-2 me-2"
-							/>
-						</div>
-						<div>
-							{#each post.tags as item}
-								<div class="badge mb-1 d-inline-flex p-0 me-1">
-									<div class="bg-light text-dark px-2 py-1 rounded-start">{item.name}</div>
-									<div
-										class="btn btn-sm btn-light px-1 py-0 rounded-0 rounded-end"
-										on:click={() => {
-											post.tags = post.tags.filter((t) => t.name != item.name);
-										}}
-									>
-										<i class="fa-solid fa-delete-left" />
-									</div>
-								</div>
-							{/each}
-						</div>
-					</div>
+					<TagManager {tags} leftTags={tags} bind:selectedTags={post.tags} />
 				</div>
 				<div class="col-md-4">
 					<div class="form-group mb-3">
