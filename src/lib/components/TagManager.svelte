@@ -9,7 +9,7 @@
 </script>
 
 <div class="mt-3" style="display: grid; grid-template-columns: auto 1fr;">
-	<div>
+	<div class={tags.length == 0 ? 'hide' : ''}>
 		<TagSelector
 			{tags}
 			bind:selected={selectedTag}
