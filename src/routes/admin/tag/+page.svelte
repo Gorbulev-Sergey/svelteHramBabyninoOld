@@ -3,11 +3,11 @@
 	import PageTitle from '$lib/components/PageTitle.svelte';
 	import { tag } from '$lib/models/tag';
 	import { db } from '$lib/scripts/firebase';
-	import { onValue, push, query, ref, set, update } from 'firebase/database';
+	import { onValue, push, query, ref, remove, set, update } from 'firebase/database';
 	import { onMount } from 'svelte';
 
 	let tags = new Object();
-	let tag = { uid: '', tag: new tag() };
+	let _tag = { uid: '', tag: new tag() };
 
 	onMount(async () => {
 		onValue(ref(db, 'tags/'), (s) => {
@@ -29,33 +29,41 @@
 				<div
 					class="btn btn-dark"
 					on:click={() => {
-						tag = { uid: uid, tag: item };
+						_tag = { uid: uid, tag: item };
 					}}
 				>
 					<i class="fa-solid fa-pencil" />
 				</div>
-				<div class="btn btn-dark"><i class="fa-solid fa-trash text-danger" /></div>
+				<div
+					class="btn btn-dark"
+					on:click={async () => {
+						remove(ref(db, `tags/${uid}`));
+					}}
+				>
+					<i class="fa-solid fa-trash text-danger" />
+				</div>
 			</div>
 		{/each}
 	</div>
 	<div class="col-md-6">
 		<h5>Добавить новый тег</h5>
 		<div class="input-group">
-			<input class="form-control" placeholder="название" bind:value={tag.tag.name} />
-			<input class="form-control" placeholder="описание" bind:value={tag.tag.description} />
+			<input class="form-control" placeholder="название" bind:value={_tag.tag.name} />
+			<input class="form-control" placeholder="описание" bind:value={_tag.tag.description} />
 			<button
 				class="btn btn-dark"
 				on:click={async () => {
-					if (tag.tag.name != '') {
-						tag.tag.name = tag.tag.name.toLocaleLowerCase();
-						if (!tag.tag.description)
-							tag.tag.description = tag.tag?.name[0].toLocaleUpperCase() + tag.tag?.name.slice(1);
+					if (_tag.tag.name != '') {
+						_tag.tag.name = _tag.tag.name.toLocaleLowerCase();
+						if (!_tag.tag.description)
+							_tag.tag.description =
+								_tag.tag?.name[0].toLocaleUpperCase() + _tag.tag?.name.slice(1);
 						else
-							tag.tag.description =
-								tag.tag?.description[0].toLocaleUpperCase() + tag.tag?.description.slice(1);
-						if (!tag.uid) push(ref(db, 'tags/'), tag.tag);
-						else update(ref(db, `tags/${tag.uid}`), tag.tag);
-						tag = { uid: '', tag: new tag() };
+							_tag.tag.description =
+								_tag.tag?.description[0].toLocaleUpperCase() + _tag.tag?.description.slice(1);
+						if (!_tag.uid) push(ref(db, 'tags/'), _tag.tag);
+						else update(ref(db, `tags/${_tag.uid}`), _tag.tag);
+						_tag = { uid: '', tag: new tag() };
 					}
 				}}>Сохранить</button
 			>
