@@ -4,7 +4,7 @@
 	import { db } from '$lib/scripts/firebase';
 	import { onValue, push, ref, set, update } from 'firebase/database';
 	import { onMount } from 'svelte';
-	import Month from '../../schedule/Month';
+	import { Month } from '../../schedule/Month';
 	import ComponentMonthEdit from './ComponentMonthEdit.svelte';
 
 	let m = `${new Date(Date.now()).getFullYear()}-${new Date(Date.now()).getMonth() + 1}`;

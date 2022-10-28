@@ -1,6 +1,6 @@
 <script>
-	import ComponentFildDate from './ComponentFildDate.svelte';
-	import Month from './Month';
+	import FildDate from './FildDate.svelte';
+	import { Month } from './Month';
 
 	export let month = new Month();
 </script>
@@ -25,7 +25,7 @@
 			</div>
 		</div>
 		{#each month.fildsDayNotEmpty as item}
-			<ComponentFildDate fildDate={item} />
+			<FildDate fildDate={item} />
 		{/each}
 	</div>
 {/if}

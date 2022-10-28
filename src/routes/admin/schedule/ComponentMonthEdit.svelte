@@ -1,5 +1,5 @@
 <script>
-	import Month from '../../schedule/Month';
+	import { Month } from '../../schedule/Month';
 	import ComponentFildDateEdit from './ComponentFildDateEdit.svelte';
 
 	export let month = new Month();

@@ -1,6 +1,6 @@
 <script>
-	import { tag } from '$lib/models/tag';
-	export let item = new tag();
+	import { Tag } from '$lib/models/Tag';
+	export let item = new Tag();
 	export let onDelete = () => {};
 </script>
 

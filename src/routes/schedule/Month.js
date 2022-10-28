@@ -1,6 +1,6 @@
 import FildDate from './FildDate';
 
-export default class Month {
+export class Month {
 	setFildsDayAll = () => {
 		for (let i = 1; i <= this.daysInMonth; i++) {
 			this.fildsDayAll.push(new FildDate(new Date(this.year, this.month - 1, i)));

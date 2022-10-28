@@ -1,7 +1,7 @@
 <script>
 	import FildTime from '../../schedule/FildTime';
 	import FildDate from '../../schedule/FildDate';
-	import Month from '../../schedule/Month';
+	import { Month } from '../../schedule/Month';
 	import ComponentFildTimeEdit from './ComponentFildTimeEdit.svelte';
 
 	export let fildDate = new FildDate();

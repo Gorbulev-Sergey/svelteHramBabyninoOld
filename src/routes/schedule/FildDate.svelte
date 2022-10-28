@@ -1,7 +1,7 @@
 <script>
-	import ComponentFildTime from './ComponentFildTime.svelte';
+	import FildTime from './FildTime.svelte';
 	import FildDate from './FildDate';
-	import Month from './Month';
+	import { Month } from './Month';
 
 	export let fildDate = new FildDate();
 </script>
@@ -26,7 +26,7 @@
 	</div>
 	<div class="py-1">
 		{#each fildDate.fildsTime as item}
-			<ComponentFildTime fildTime={item} />
+			<FildTime fildTime={item} />
 		{/each}
 	</div>
 </div>

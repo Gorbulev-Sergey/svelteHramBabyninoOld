@@ -4,14 +4,14 @@
 	import Pin from '$lib/components/Pin.svelte';
 	import TagManager from '$lib/components/TagManager.svelte';
 	import { Post } from '$lib/models/Post';
-	import { tag } from '$lib/models/tag';
+	import { Tag } from '$lib/models/Tag';
 	import { db } from '$lib/scripts/firebase';
 	import { onValue, push, ref } from 'firebase/database';
 	import { onMount } from 'svelte';
 
 	let post = new Post();
 	$: tags = new Array();
-	let selectedTag = new tag();
+	let selectedTag = new Tag();
 
 	onMount(async () => {
 		onValue(ref(db, 'tags/'), (s) => {

@@ -1,11 +1,11 @@
 <script>
-	import { tag } from '$lib/models/tag';
 	import Tag from './Tag.svelte';
+	import { Tag as _Tag } from '$lib/models/Tag';
 	import TagSelector from './TagSelector.svelte';
 
 	export let tags = new Array();
 	export let selectedTags = new Array();
-	let selectedTag = new tag();
+	let selectedTag = new _Tag();
 </script>
 
 <div class="mt-3" style="display: grid; grid-template-columns: auto 1fr;">
@@ -17,7 +17,7 @@
 				if (selectedTag.name != '') {
 					selectedTags = [...selectedTags, selectedTag];
 					tags = tags.filter((t) => t.name != selectedTag.name);
-					selectedTag = new tag();
+					selectedTag = new _Tag();
 				}
 			}}
 			_class="mb-2 me-2"
