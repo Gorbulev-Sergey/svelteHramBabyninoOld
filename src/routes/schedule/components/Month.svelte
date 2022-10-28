@@ -8,7 +8,7 @@
 {#if month.fildsDayNotEmpty != null}
 	<div class="rounded bg-white">
 		<div class="py-2 ps-4">
-			<b>Расписание на {month.monthName().toUpperCase()} {month.year} года</b>
+			<b>Расписание на {month.monthName()?.toUpperCase()} {month.year} года</b>
 		</div>
 		<div style="display: grid; grid-template-columns: .11fr 1fr; min-height: 2.3em">
 			<div class="text-center px-3">
