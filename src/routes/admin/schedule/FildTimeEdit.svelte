@@ -1,5 +1,5 @@
 <script>
-	import FildTime from '../../schedule/FildTime';
+	import FildTime from '../../schedule/models/FildTime';
 
 	export let fildTime = new FildTime();
 	export let isCanRemove = false;

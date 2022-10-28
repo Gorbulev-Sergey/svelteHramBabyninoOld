@@ -6,8 +6,8 @@
 	import { db } from '$lib/scripts/firebase';
 	import { onValue, push, query, ref } from 'firebase/database';
 	import { onMount } from 'svelte';
-	import ComponentPost from '../ComponentPost.svelte';
-	import ComponentPostHorizontal from '../ComponentPostHorizontal.svelte';
+	import Post from '../Post.svelte';
+	import PostHorizontal from '../PostHorizontal.svelte';
 
 	let tags = new Array();
 	let posts = new Array();
@@ -44,14 +44,14 @@
 	<div class="col-md-8">
 		{#each filterPosts() as item, i}
 			{#if item.pinned && item.published && i % 2 != 0}
-				<ComponentPostHorizontal bind:post={item} />
+				<PostHorizontal bind:post={item} />
 			{/if}
 		{/each}
 	</div>
 	<div class="col-md-4">
 		{#each filterPosts() as item, i}
 			{#if item.pinned && item.published && i % 2 == 0}
-				<ComponentPost bind:post={item} />
+				<Post bind:post={item} />
 			{/if}
 		{/each}
 	</div>
@@ -62,14 +62,14 @@
 	<div class="col-md-4">
 		{#each filterPosts() as item, i}
 			{#if !item.pinned && item.published && i % 2 != 0}
-				<ComponentPost bind:post={item} />
+				<Post bind:post={item} />
 			{/if}
 		{/each}
 	</div>
 	<div class="col-md-8">
 		{#each filterPosts() as item, i}
 			{#if !item.pinned && item.published && i % 2 == 0}
-				<ComponentPostHorizontal bind:post={item} />
+				<PostHorizontal bind:post={item} />
 			{/if}
 		{/each}
 	</div>

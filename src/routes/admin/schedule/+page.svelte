@@ -4,8 +4,8 @@
 	import { db } from '$lib/scripts/firebase';
 	import { onValue, push, ref, set, update } from 'firebase/database';
 	import { onMount } from 'svelte';
-	import { Month } from '../../schedule/Month';
-	import ComponentMonthEdit from './ComponentMonthEdit.svelte';
+	import { Month } from '../../schedule/models/Month';
+	import MonthEdit from './MonthEdit.svelte';
 
 	let m = `${new Date(Date.now()).getFullYear()}-${new Date(Date.now()).getMonth() + 1}`;
 	$: month = new Month(Number(m.slice(5, m.length)), Number(m.slice(0, 4)));
@@ -55,4 +55,4 @@
 	</div>
 </PageTitle>
 
-<ComponentMonthEdit bind:month />
+<MonthEdit bind:month />

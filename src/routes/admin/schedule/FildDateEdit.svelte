@@ -1,8 +1,8 @@
 <script>
-	import FildTime from '../../schedule/FildTime';
-	import FildDate from '../../schedule/FildDate';
-	import { Month } from '../../schedule/Month';
-	import ComponentFildTimeEdit from './ComponentFildTimeEdit.svelte';
+	import FildTime from '../../schedule/models/FildTime';
+	import FildDate from '../../schedule/models/FildDate';
+	import { Month } from '../../schedule/models/Month';
+	import FildTimeEdit from './FildTimeEdit.svelte';
 
 	export let fildDate = new FildDate();
 </script>
@@ -27,12 +27,12 @@
 	<div>
 		{#each fildDate.fildsTime as item, i}
 			{#if i == 0}
-				<ComponentFildTimeEdit
+				<FildTimeEdit
 					fildTime={item}
 					onAdd={() => (fildDate.fildsTime = [...fildDate.fildsTime, new FildTime()])}
 				/>
 			{:else}
-				<ComponentFildTimeEdit
+				<FildTimeEdit
 					fildTime={item}
 					isCanRemove={true}
 					onRemove={() =>

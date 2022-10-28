@@ -1,9 +1,7 @@
 <script>
 	// @ts-nocheck
-
 	import { goto } from '$app/navigation';
 	import { Post } from '$lib/models/Post';
-	import { append } from 'svelte/internal';
 
 	export let post = new Post();
 	Date.prototype.monthName = function () {

@@ -1,5 +1,5 @@
 <script>
-	import FildTime from './FildTime';
+	import FildTime from '../models/FildTime';
 
 	export let fildTime = new FildTime();
 </script>

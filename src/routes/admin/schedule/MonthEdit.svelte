@@ -1,0 +1,12 @@
+<script>
+	import { Month } from '../../schedule/models/Month';
+	import FildDateEdit from './FildDateEdit.svelte';
+
+	export let month = new Month();
+</script>
+
+<div class="rounded bg-white">
+	{#each month.fildsDayAll as item}
+		<FildDateEdit fildDate={item} />
+	{/each}
+</div>
