@@ -16,6 +16,8 @@
 		return posts.filter((i) => i.tags?.some((t) => t.name === $page.params.tag));
 	};
 
+	let checkIndex = (i, array = new Array()) => array.includes(Number(String(i).substring(-1)));
+
 	onMount(async () => {
 		onValue(ref(db, 'tags/'), (s) => {
 			tags = Object.values(s.val());
@@ -43,14 +45,14 @@
 <div class="row mb-2 gx-4">
 	<div class="col-md-8">
 		{#each filterPosts() as item, i}
-			{#if item.pinned && item.published && i % 2 != 0}
+			{#if item.pinned && item.published && checkIndex(i, [1, 2, 4, 6, 7, 9])}
 				<PostHorizontal bind:post={item} />
 			{/if}
 		{/each}
 	</div>
 	<div class="col-md-4">
 		{#each filterPosts() as item, i}
-			{#if item.pinned && item.published && i % 2 == 0}
+			{#if item.pinned && item.published && checkIndex(i, [0, 3, 5, 8])}
 				<Post bind:post={item} />
 			{/if}
 		{/each}
@@ -61,14 +63,14 @@
 <div class="row gx-4">
 	<div class="col-md-4">
 		{#each filterPosts() as item, i}
-			{#if !item.pinned && item.published && i % 2 != 0}
+			{#if !item.pinned && item.published && checkIndex(i, [0, 3, 5, 8])}
 				<Post bind:post={item} />
 			{/if}
 		{/each}
 	</div>
 	<div class="col-md-8">
 		{#each filterPosts() as item, i}
-			{#if !item.pinned && item.published && i % 2 == 0}
+			{#if !item.pinned && item.published && checkIndex(i, [1, 2, 4, 6, 7, 9])}
 				<PostHorizontal bind:post={item} />
 			{/if}
 		{/each}
