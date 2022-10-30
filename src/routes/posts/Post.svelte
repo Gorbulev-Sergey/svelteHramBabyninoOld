@@ -108,7 +108,7 @@
 				</div>
 			{/if}
 		</div>
-		<div class="card-body" style="font-size:1em">
+		<div class="card-body" style="font-size:1em;">
 			{#if !showContent || (showContent && !post.content)}
 				{@html post.description ? post.description : ''}
 			{:else}

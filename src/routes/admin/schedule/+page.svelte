@@ -1,4 +1,6 @@
 <script>
+	import { goto } from '$app/navigation';
+
 	// @ts-nocheck
 	import PageTitle from '$lib/components/PageTitle.svelte';
 	import { db } from '$lib/scripts/firebase';
@@ -50,6 +52,7 @@
 					ref(db, `schedule/${month.year}/${month.monthName()}`),
 					Object.assign({}, month.fildsDayNotEmpty)
 				);
+				goto('/schedule');
 			}}>Сохранить</button
 		>
 	</div>

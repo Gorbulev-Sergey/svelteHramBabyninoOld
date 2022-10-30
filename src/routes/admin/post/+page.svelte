@@ -8,6 +8,7 @@
 	import { db } from '$lib/scripts/firebase';
 	import { onValue, push, ref } from 'firebase/database';
 	import { onMount } from 'svelte';
+	import Editor from './Editor.svelte';
 
 	let post = new Post();
 	$: tags = new Array();
@@ -118,32 +119,7 @@
 			</div>
 		</div>
 		<div class="tab-pane" id="content">
-			<div class="mb-1">
-				<div class="btn-group btn-group-sm">
-					<button class="btn btn-light" on:click={() => (showCode = !showCode)}
-						><i class="fa-solid fa-code" /></button
-					>
-				</div>
-			</div>
-			{#if !showCode}
-				<div
-					class="form-control border-0 mb-3
-					{!post.inverted ? 'bg-light text-dark bg-opacity-75' : 'bg-secondary text-light bg-opacity-10'}"
-					style="min-height: 20em;"
-					placeholder="содержимое"
-					contenteditable="true"
-					bind:innerHTML={post.content}
-				/>
-			{:else}
-				<div
-					class="form-control border-0 mb-3 {!post.inverted
-						? 'bg-light text-dark bg-opacity-75'
-						: 'bg-secondary text-light bg-opacity-10'}"
-					style="min-height: 20em;"
-					contenteditable="true"
-					bind:textContent={post.content}
-				/>
-			{/if}
+			<Editor {post} />
 		</div>
 	</div>
 </div>
