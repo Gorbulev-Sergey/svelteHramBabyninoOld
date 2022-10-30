@@ -118,7 +118,7 @@
 		</div>
 		<div class="tab-pane" id="content">
 			<div
-				class="form-control border-0
+				class="form-control border-0 mb-3
 				{!post.inverted ? 'bg-light text-dark bg-opacity-75' : 'bg-secondary text-light bg-opacity-10'}"
 				style="min-height: 20em;"
 				placeholder="содержимое"

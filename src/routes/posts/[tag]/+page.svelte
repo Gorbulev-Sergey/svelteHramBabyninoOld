@@ -23,7 +23,7 @@
 			tags = Object.values(s.val());
 		});
 		onValue(ref(db, 'posts/'), (s) => {
-			posts = Object.values(s.val());
+			posts = Object.values(s.val()).filter((i) => i.published);
 		});
 	});
 </script>
@@ -44,15 +44,15 @@
 <!--Для закреплённых-->
 <div class="row mb-2 gx-4">
 	<div class="col-md-8">
-		{#each filterPosts() as item, i}
-			{#if item.pinned && item.published && checkIndex(i, [1, 2, 4, 6, 7, 9])}
+		{#each filterPosts().filter((p) => p.pinned) as item, i}
+			{#if item.pinned && checkIndex(i, [1, 2, 4, 6, 7, 9])}
 				<PostHorizontal bind:post={item} />
 			{/if}
 		{/each}
 	</div>
 	<div class="col-md-4">
-		{#each filterPosts() as item, i}
-			{#if item.pinned && item.published && checkIndex(i, [0, 3, 5, 8])}
+		{#each filterPosts().filter((p) => p.pinned) as item, i}
+			{#if item.pinned && checkIndex(i, [0, 3, 5, 8])}
 				<Post bind:post={item} />
 			{/if}
 		{/each}
@@ -62,15 +62,15 @@
 <!--Для не закреплённых-->
 <div class="row gx-4">
 	<div class="col-md-4">
-		{#each filterPosts() as item, i}
-			{#if !item.pinned && item.published && checkIndex(i, [0, 3, 5, 8])}
+		{#each filterPosts().filter((p) => !p.pinned) as item, i}
+			{#if !item.pinned && checkIndex(i, [0, 3, 5, 8])}
 				<Post bind:post={item} />
 			{/if}
 		{/each}
 	</div>
 	<div class="col-md-8">
-		{#each filterPosts() as item, i}
-			{#if !item.pinned && item.published && checkIndex(i, [1, 2, 4, 6, 7, 9])}
+		{#each filterPosts().filter((p) => !p.pinned) as item, i}
+			{#if !item.pinned && checkIndex(i, [1, 2, 4, 6, 7, 9])}
 				<PostHorizontal bind:post={item} />
 			{/if}
 		{/each}

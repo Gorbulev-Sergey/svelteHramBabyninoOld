@@ -120,7 +120,7 @@
 					style="cursor: pointer; font-size:.8em;"
 					on:click={() => (showContent = !showContent)}
 				>
-					<i class="fa-solid {!showContent ? 'fa-circle-arrow-right' : 'fa-circle-arrow-up'} " />
+					<i class="fa-solid {!showContent ? 'fa-circle-arrow-right' : 'fa-circle-arrow-left'} " />
 					...
 				</span>
 			{/if}
