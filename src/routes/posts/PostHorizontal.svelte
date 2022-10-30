@@ -32,6 +32,7 @@
 				return 'декабря';
 		}
 	};
+	let showContent = false;
 </script>
 
 <div class="card mb-3 {!post.inverted ? 'bg-white text-dark' : 'bg-dark text-light'} border-0">
@@ -63,7 +64,25 @@
 						{/if}
 					</div>
 				</div>
-				<div class="card-text">{@html post.description ? post.description : ''}</div>
+				<div class="card-text" style="font-size:1em;">
+					{#if !showContent || (showContent && !post.content)}
+						{@html post.description ? post.description : ''}
+					{:else}
+						{@html post.content ? post.content : ''}
+					{/if}
+					{#if post.content}
+						<span
+							class="badge bg-light text-dark"
+							style="cursor: pointer; font-size:.8em;"
+							on:click={() => (showContent = !showContent)}
+						>
+							<i
+								class="fa-solid {!showContent ? 'fa-circle-arrow-right' : 'fa-circle-arrow-left'} "
+							/>
+							...
+						</span>
+					{/if}
+				</div>
 			</div>
 		</div>
 		<div class="col-md-4 rounded-end overflow-hidden">
