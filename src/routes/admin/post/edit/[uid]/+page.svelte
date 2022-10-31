@@ -9,6 +9,7 @@
 	import { db } from '$lib/scripts/firebase';
 	import { onValue, push, ref, update } from 'firebase/database';
 	import { onMount } from 'svelte';
+	import Editor from '../../Editor.svelte';
 
 	let post = new Post();
 	$: tags = new Array();
@@ -24,8 +25,11 @@
 	});
 </script>
 
-<PageTitle title="Создать публикацию">
+<PageTitle title="Редактировать публикацию">
 	<div slot="navigation">
+		<button class="btn btn-light" on:click={() => goto(`/admin/post#${$page.params.uid}`)}
+			>Отмена</button
+		>
 		<button
 			class="btn btn-dark bg-opacity-10"
 			on:click={async () => {
@@ -121,14 +125,7 @@
 			</div>
 		</div>
 		<div class="tab-pane" id="content">
-			<div
-				class="form-control border-0
-				{!post.inverted ? 'bg-light text-dark bg-opacity-75' : 'bg-secondary text-light bg-opacity-10'}"
-				style="min-height: 20em;"
-				placeholder="содержимое"
-				contenteditable="true"
-				bind:innerHTML={post.content}
-			/>
+			<Editor {post} />
 		</div>
 	</div>
 </div>

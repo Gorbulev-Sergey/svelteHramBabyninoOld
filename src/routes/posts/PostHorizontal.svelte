@@ -3,6 +3,7 @@
 	import { goto } from '$app/navigation';
 	import { Post } from '$lib/models/Post';
 
+	export let uid = '';
 	export let post = new Post();
 	Date.prototype.monthName = function () {
 		switch (this.getMonth() + 1) {
@@ -35,7 +36,10 @@
 	let showContent = false;
 </script>
 
-<div class="card mb-3 {!post.inverted ? 'bg-white text-dark' : 'bg-dark text-light'} border-0">
+<div
+	id={uid ? uid : ''}
+	class="card mb-3 {!post.inverted ? 'bg-white text-dark' : 'bg-dark text-light'} border-0"
+>
 	<div class="row g-0">
 		<div class="col-md-8">
 			<div class="card-body">
@@ -83,6 +87,9 @@
 						</span>
 					{/if}
 				</div>
+			</div>
+			<div class="card-body">
+				<slot name="adminControls" />
 			</div>
 		</div>
 		<div class="col-md-4 rounded-end overflow-hidden">
