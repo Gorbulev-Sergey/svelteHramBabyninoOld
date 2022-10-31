@@ -38,11 +38,11 @@
 
 <div
 	id={uid ? uid : ''}
-	class="card mb-3 {!post.inverted ? 'bg-white text-dark' : 'bg-dark text-light'} border-0"
+	class="card mb-3 p-0 {!post.inverted ? 'bg-white text-dark' : 'bg-dark text-light'} border-0"
 >
 	<div class="row g-0">
-		<div class="col-md-8">
-			<div class="card-body">
+		<div class="col-md-8 d-flex flex-column">
+			<div class="card-body flex-grow-1">
 				<div class="d-flex justify-content-between">
 					<h5 class="card-title mb-1">{post.title}</h5>
 					{#if post.pinned}

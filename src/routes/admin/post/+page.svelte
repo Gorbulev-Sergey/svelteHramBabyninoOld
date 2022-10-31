@@ -21,7 +21,7 @@
 <div class="row">
 	{#each Object.entries(posts) as [uid, item]}
 		<PostHorizontal {uid} post={item}>
-			<div slot="adminControls" class="d-flex">
+			<div slot="adminControls" class="d-flex justify-content-end">
 				<button class="btn btn-sm btn-light me-1" on:click={() => goto(`/admin/post/edit/${uid}`)}
 					><i class="fa-solid fa-pencil" /></button
 				>
