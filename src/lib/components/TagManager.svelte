@@ -13,7 +13,7 @@
 	let selectedTag = new _Tag();
 
 	onMount(async () => {
-		tags = tags.filter((t) => !selectedTags.includes(t));
+		setTimeout(() => onSelect(), 10000);
 	});
 </script>
 

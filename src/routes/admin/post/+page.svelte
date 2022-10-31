@@ -14,7 +14,6 @@
 	onMount(async () => {
 		onValue(ref(db, '/posts'), (s) => {
 			if (s.exists()) posts = s.val();
-			console.log(posts);
 		});
 		onValue(ref(db, 'tags/'), (s) => {
 			if (s.exists()) tags = Object.values(s.val());
