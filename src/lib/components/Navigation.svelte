@@ -13,7 +13,7 @@
 	];
 	let routesAdmin = [
 		{
-			url: '/admin/post',
+			url: '/admin/post/create',
 			title: 'Создать публикацию'
 		},
 		{
