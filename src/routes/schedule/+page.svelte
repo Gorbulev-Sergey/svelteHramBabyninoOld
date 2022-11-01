@@ -5,7 +5,7 @@
 	import Month from './components/Month.svelte';
 	import { Month as _Month } from './models/Month';
 
-	let month = new _Month(10, 2022);
+	let month = new _Month(new Date(Date.now()).getMonth() + 1, 2022);
 	onMount(() => {
 		onValue(ref(db, `schedule/${month.year}/${month.monthName()}`), (result) => {
 			month.fildsDayNotEmpty = result.val();
