@@ -24,6 +24,7 @@
 
 <PageTitle title="Создать публикацию">
 	<div slot="navigation">
+		<button class="btn btn-light" on:click={() => goto(`/admin/post`)}>Отмена</button>
 		<button
 			class="btn btn-dark bg-opacity-10"
 			on:click={async () => {

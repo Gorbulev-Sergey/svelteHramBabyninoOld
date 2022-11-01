@@ -7,6 +7,9 @@
 	import { goto } from '$app/navigation';
 	import Pin from '$lib/components/Pin.svelte';
 	import TagManager from '$lib/components/TagManager.svelte';
+	import FilterPublished from './FilterPublished.svelte';
+	import { adminPostsFilters } from '$lib/scripts/writableData';
+	import Filter from './Filter.svelte';
 
 	let posts = new Object();
 	$: tags = new Array();
@@ -21,10 +24,23 @@
 	});
 </script>
 
-<PageTitle title="Публикации" />
+<PageTitle title="Публикации">
+	<div slot="navigation">
+		<button class="btn btn-dark" on:click={() => goto('/admin/post/create')}>Создать</button>
+	</div>
+</PageTitle>
+
+<div class="d-flex align-items-center mb-3">
+	<Filter
+		title="опубликованныe:"
+		_class="me-1"
+		onSelect={(v) => ($adminPostsFilters.published = v)}
+	/>
+	<Filter title="закрепленные:" onSelect={(v) => ($adminPostsFilters.pinned = v)} value={false} />
+</div>
 
 <div class="row">
-	{#each Object.entries(posts) as [uid, item]}
+	{#each Object.entries(posts).filter(([k, v]) => v.published == $adminPostsFilters.published && v.pinned == $adminPostsFilters.pinned) as [uid, item]}
 		<PostHorizontal {uid} post={item}>
 			<div slot="adminControls" class="d-flex justify-content-between align-items-center">
 				<div class="d-flex me-3">
