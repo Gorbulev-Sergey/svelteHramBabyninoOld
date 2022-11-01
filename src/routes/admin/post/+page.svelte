@@ -40,7 +40,7 @@
 		selected={$adminPostsFilters.published}
 	/>
 	<FilterTags
-		title="тип"
+		title="тип публикации:"
 		{tags}
 		onSelect={(v) => ($adminPostsFilters.tag = v)}
 		selected={$adminPostsFilters.tag}
