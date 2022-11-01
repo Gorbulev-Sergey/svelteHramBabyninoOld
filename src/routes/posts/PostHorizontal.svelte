@@ -42,7 +42,7 @@
 >
 	<div class="row g-0">
 		<div class="{post.cover ? 'col-md-8' : ''} d-flex flex-column">
-			<div class="card-body flex-grow-1">
+			<div class="card-body flex-grow-1 mb-1">
 				<div class="d-flex justify-content-between">
 					<h5 class="card-title mb-1">{post.title}</h5>
 					{#if post.pinned}
@@ -88,9 +88,7 @@
 					{/if}
 				</div>
 			</div>
-			<div class="card-body">
-				<slot name="adminControls" />
-			</div>
+			<slot name="adminControls" />
 		</div>
 		<div class="{post.cover ? 'col-md-4' : ''} rounded-end overflow-hidden">
 			{#if post.cover && post.cover.video}

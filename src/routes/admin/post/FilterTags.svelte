@@ -1,6 +1,5 @@
 <script>
 	import { Tag } from '$lib/models/Tag';
-	import { onMount } from 'svelte';
 
 	export let title = 'тег:';
 	export let tags = new Array();
