@@ -1,14 +1,15 @@
 <script>
 	import { Tag } from '$lib/models/Tag';
 
+	export let title = 'Добавить тег:';
 	export let tags = new Array();
 	export let selected = new Tag();
 	export let _class = '';
 	export let onSelect = () => {};
 </script>
 
-<div class="btn-group btn-group-sm {_class}">
-	<div class="bg-light px-2 py-1 rounded-start" style="cursor:default;">Добавить тег:</div>
+<div class="btn-group btn-group-sm small {_class}">
+	<div class="bg-light px-2 py-1 rounded-start" style="cursor:default;">{title}</div>
 	<button class="btn btn-sm btn-dlight bg-dark bg-opacity-25 rounded-end" data-bs-toggle="dropdown">
 		<i class="fa-solid fa-circle-plus" /></button
 	>

@@ -4,6 +4,7 @@
 	import TagSelector from './TagSelector.svelte';
 	import { onMount } from 'svelte';
 
+	export let title = 'Добавить тег:';
 	export let tags = new Array();
 	export let selectedTags = new Array();
 	export let onSelect = () => {
@@ -20,6 +21,7 @@
 <div class={_class} style="display: grid; grid-template-columns: auto 1fr;">
 	<div class={tags.length == 0 ? 'hide' : ''}>
 		<TagSelector
+			{title}
 			{tags}
 			bind:selected={selectedTag}
 			onSelect={() => {

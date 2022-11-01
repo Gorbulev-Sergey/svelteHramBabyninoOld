@@ -41,7 +41,7 @@
 	class="card mb-3 p-0 {!post.inverted ? 'bg-white text-dark' : 'bg-dark text-light'} border-0"
 >
 	<div class="row g-0">
-		<div class="col-md-8 d-flex flex-column">
+		<div class="{post.cover ? 'col-md-8' : ''} d-flex flex-column">
 			<div class="card-body flex-grow-1">
 				<div class="d-flex justify-content-between">
 					<h5 class="card-title mb-1">{post.title}</h5>
@@ -92,7 +92,7 @@
 				<slot name="adminControls" />
 			</div>
 		</div>
-		<div class="col-md-4 rounded-end overflow-hidden">
+		<div class="{post.cover ? 'col-md-4' : ''} rounded-end overflow-hidden">
 			{#if post.cover && post.cover.video}
 				<div class="ratio ratio-16x9 h-100">
 					<!-- svelte-ignore a11y-missing-attribute -->

@@ -29,6 +29,7 @@
 			<div slot="adminControls" class="d-flex justify-content-between align-items-center">
 				<div class="d-flex me-3">
 					<TagManager
+						title="Теги:"
 						tags={tags.filter((t) => !item.tags?.find((i) => i.name == t.name))}
 						bind:selectedTags={item.tags}
 						onSelect={() => update(ref(db, `/posts/${uid}`), item)}
