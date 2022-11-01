@@ -7,9 +7,11 @@
 	import { goto } from '$app/navigation';
 	import Pin from '$lib/components/Pin.svelte';
 	import TagManager from '$lib/components/TagManager.svelte';
-	import FilterPublished from './FilterPublished.svelte';
 	import { adminPostsFilters } from '$lib/scripts/writableData';
 	import Filter from './Filter.svelte';
+	import FilterTags from './FilterTags.svelte';
+	import TagSelector from '$lib/components/TagSelector.svelte';
+	import { fix_and_destroy_block } from 'svelte/internal';
 
 	let posts = new Object();
 	$: tags = new Array();
@@ -35,12 +37,18 @@
 		title="опубликованныe:"
 		_class="me-1"
 		onSelect={(v) => ($adminPostsFilters.published = v)}
+		selected={$adminPostsFilters.published}
 	/>
-	<Filter title="закрепленные:" onSelect={(v) => ($adminPostsFilters.pinned = v)} value={false} />
+	<FilterTags
+		title="тип"
+		{tags}
+		onSelect={(v) => ($adminPostsFilters.tag = v)}
+		selected={$adminPostsFilters.tag}
+	/>
 </div>
 
 <div class="row">
-	{#each Object.entries(posts).filter(([k, v]) => v.published == $adminPostsFilters.published && v.pinned == $adminPostsFilters.pinned) as [uid, item]}
+	{#each Object.entries(posts).filter(([k, v]) => v.published == $adminPostsFilters.published && v.tags.find((t) => t.name == $adminPostsFilters.tag.name)) as [uid, item]}
 		<PostHorizontal {uid} post={item}>
 			<div slot="adminControls" class="d-flex justify-content-between align-items-center">
 				<div class="d-flex me-3">

@@ -1,6 +1,6 @@
 <script>
 	export let title = 'Заголовок';
-	export let value = true;
+	export let selected = true;
 	export let onSelect = (v) => {
 		return v;
 	};
@@ -14,15 +14,15 @@
 			class="btn btn-sm btn-secondary dropdown-toggle rounded-0 rounded-end"
 			data-bs-toggle="dropdown"
 		>
-			{value ? 'да' : 'нет'}
+			{selected ? 'да' : 'нет'}
 		</button>
 		<ul class="dropdown-menu">
 			<li>
 				<button
 					class="dropdown-item"
 					on:click={() => {
-						value = true;
-						onSelect(value);
+						selected = true;
+						onSelect(selected);
 					}}>да</button
 				>
 			</li>
@@ -30,8 +30,8 @@
 				<button
 					class="dropdown-item"
 					on:click={() => {
-						value = false;
-						onSelect(value);
+						selected = false;
+						onSelect(selected);
 					}}>нет</button
 				>
 			</li>
