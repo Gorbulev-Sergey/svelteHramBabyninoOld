@@ -50,7 +50,7 @@
 					<i class="fa-solid fa-thumbtack" />
 				{/if}
 			</div>
-			<div class="d-flex justify-content-between align-items-center">
+			<div class="d-flex justify-content-between align-items-center mb-1">
 				<div class="small text-danger">
 					{new Date(post.created).getDate()}
 					{new Date(post.created).monthName()}
@@ -60,7 +60,9 @@
 					{#if post.tags}
 						{#each post.tags as tag}
 							<button
-								class="badge bg-secondary bg-opacity-10 text-dark text-decoration-none p-1 me-1 border-0"
+								class="badge {!post.inverted
+									? 'bg-secondary text-dark bg-opacity-10'
+									: 'bg-secondary text-white bg-opacity-50'} text-decoration-none p-1 me-1 border-0"
 								on:click={() => {
 									goto(`/posts/${tag.name}`);
 								}}>{tag.name}</button
