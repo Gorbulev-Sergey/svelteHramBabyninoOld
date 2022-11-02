@@ -10,8 +10,6 @@
 	import { adminPostsFilters } from '$lib/scripts/writableData';
 	import Filter from './Filter.svelte';
 	import FilterTags from './FilterTags.svelte';
-	import TagSelector from '$lib/components/TagSelector.svelte';
-	import { fix_and_destroy_block } from 'svelte/internal';
 
 	let posts = new Object();
 	$: tags = new Array();

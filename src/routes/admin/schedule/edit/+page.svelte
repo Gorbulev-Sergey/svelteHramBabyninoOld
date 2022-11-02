@@ -8,18 +8,19 @@
 	import { onMount } from 'svelte';
 	import { Month } from '../../../schedule/models/Month';
 	import MonthEdit from '../MonthEdit.svelte';
+	import { scheduleMonth as month } from '$lib/scripts/writableData';
 
-	let m = `${new Date(Date.now()).getFullYear()}-${new Date(Date.now()).getMonth() + 1}`;
-	$: month = new Month(Number(m.slice(5, m.length)), Number(m.slice(0, 4)));
+	let m = '';
 
 	function loadData() {
-		onValue(ref(db, `schedule/${month.year}/${month.monthName()}`), (result) => {
-			month.fildsDayNotEmpty = result.val();
-			month.updateFildsDayAll();
+		onValue(ref(db, `schedule/${$month.year}/${$month.monthName()}`), (result) => {
+			$month.fildsDayNotEmpty = result.val();
+			$month.updateFildsDayAll();
 		});
 	}
 
 	onMount(async () => {
+		m = `${$month.year}-${$month.month}`;
 		loadData();
 	});
 </script>
@@ -32,7 +33,10 @@
 				class="form-control border-0"
 				type="month"
 				bind:value={m}
-				on:change={async () => loadData()}
+				on:change={async () => {
+					$month = new Month(Number(m.slice(5, m.length)), Number(m.slice(0, 4)));
+					loadData();
+				}}
 			/>
 		</div>
 		<button class="btn btn-sm btn-light  me-1" on:click={() => goto('/admin/schedule')}
@@ -42,18 +46,18 @@
 			class="btn btn-sm btn-dark"
 			on:click={async () => {
 				// ВАЖНЫЙ ФИЛЬТР
-				month.fildsDayNotEmpty = month.fildsDayAll.filter((fDate) =>
+				$month.fildsDayNotEmpty = $month.fildsDayAll.filter((fDate) =>
 					fDate.fildsTime.some((fTime) => fTime.event != '')
 				);
 				// Удаляем пустые fildTime
-				month.fildsDayNotEmpty.forEach((fDay) => {
+				$month.fildsDayNotEmpty.forEach((fDay) => {
 					fDay.fildsTime = fDay.fildsTime.filter(
 						(fTime) => fTime.event != '' || fTime.time != '00:00'
 					);
 				});
 				set(
-					ref(db, `schedule/${month.year}/${month.monthName()}`),
-					Object.assign({}, month.fildsDayNotEmpty)
+					ref(db, `schedule/${$month.year}/${$month.monthName()}`),
+					Object.assign({}, $month.fildsDayNotEmpty)
 				);
 				goto('/schedule');
 			}}>Сохранить</button
@@ -61,4 +65,4 @@
 	</div>
 </PageTitle>
 
-<MonthEdit bind:month />
+<MonthEdit bind:month={$month} />
