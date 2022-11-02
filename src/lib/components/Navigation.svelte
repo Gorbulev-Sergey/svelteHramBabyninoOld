@@ -22,12 +22,8 @@
 			title: 'Публикации'
 		},
 		{
-			url: '/admin/post/create',
-			title: 'Создать публикацию'
-		},
-		{
 			url: '/admin/schedule',
-			title: 'Редактировать расписание'
+			title: 'Расписание'
 		},
 
 		{

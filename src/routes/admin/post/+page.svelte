@@ -28,7 +28,7 @@
 
 <PageTitle title="Публикации">
 	<div slot="navigation">
-		<button class="btn btn-dark" on:click={() => goto('/admin/post/create')}>Создать</button>
+		<button class="btn btn-sm btn-dark" on:click={() => goto('/admin/post/create')}>Создать</button>
 	</div>
 </PageTitle>
 

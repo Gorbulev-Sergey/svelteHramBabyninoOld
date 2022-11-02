@@ -1,4 +1,5 @@
 <script>
+	import PageTitle from '$lib/components/PageTitle.svelte';
 	import { db } from '$lib/scripts/firebase';
 	import { onValue, ref } from 'firebase/database';
 	import { onMount } from 'svelte';
@@ -13,5 +14,6 @@
 	});
 </script>
 
-<h4 class="mb-3">Расписание</h4>
+<PageTitle title="Расписание" />
+
 <Month {month} />
