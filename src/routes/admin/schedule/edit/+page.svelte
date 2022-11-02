@@ -20,7 +20,7 @@
 	}
 
 	onMount(async () => {
-		m = `${$month.year}-${$month.month}`;
+		m = `${$month.year}-${$month.month < 10 ? '0' + $month.month : $month.month}`;
 		loadData();
 	});
 </script>
@@ -28,13 +28,13 @@
 <PageTitle title="Редактировать расписание">
 	<div slot="navigation" class="d-flex flex-nowrap align-items-center">
 		<div class="input-group me-4">
-			<span class="input-group-text border-0">Выбирите месяц и год:</span>
+			<span class="input-group-text border-0">Дата:</span>
 			<input
 				class="form-control border-0"
 				type="month"
 				bind:value={m}
 				on:change={async () => {
-					$month = new Month(Number(m.slice(5, m.length)), Number(m.slice(0, 4)));
+					$month = new Month(Number(m.split('-')[1]), Number(m.split('-')[0]));
 					loadData();
 				}}
 			/>
