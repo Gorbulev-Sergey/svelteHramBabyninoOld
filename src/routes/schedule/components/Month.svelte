@@ -11,7 +11,7 @@
 			<b>Расписание на {month.monthName()?.toUpperCase()} {month.year} года</b>
 		</div>
 		<div style="display: grid; grid-template-columns: .11fr 1fr; min-height: 2.3em">
-			<div class="text-center px-3">
+			<div class="text-center px-3" style="min-width: 7em;">
 				<span class="badge bg-dark text-dark bg-opacity-10">Дата</span>
 			</div>
 			<div style="display: grid; grid-template-columns: 1fr .3fr .1fr">
@@ -19,7 +19,7 @@
 				<div class="text-end pe-3">
 					<span class="badge bg-dark text-dark bg-opacity-10">Богослужение</span>
 				</div>
-				<div class="text-center">
+				<div class="text-center" style="min-width: 4.5em;">
 					<span class="badge bg-dark text-dark bg-opacity-10">Время</span>
 				</div>
 			</div>
