@@ -1,5 +1,6 @@
 <script>
 	import { goto } from '$app/navigation';
+	import { page } from '$app/stores';
 
 	let routes = [
 		{
@@ -40,7 +41,13 @@
 			>
 			<div>
 				{#each routes as item}
-					<a class="btn btn-light bg-white border-0 me-1" href={item.url}>{item.title}</a>
+					<a
+						class="btn btn-light bg-white border-0 me-1 {item.url.replace('/', '') ==
+						$page.url.pathname.split('/')[1]
+							? 'fw-bold'
+							: ''}"
+						href={item.url}>{item.title}</a
+					>
 				{/each}
 			</div>
 		</div>
