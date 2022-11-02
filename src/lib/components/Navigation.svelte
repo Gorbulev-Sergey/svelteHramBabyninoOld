@@ -1,8 +1,12 @@
 <script>
 	import { goto } from '$app/navigation';
 	import { page } from '$app/stores';
+	import { onMount } from 'svelte';
 
-	let routes = [
+	export let isAdmin = true;
+	let isCPanel = false;
+	let routes = new Array();
+	let routesSite = [
 		{
 			url: '/posts',
 			title: 'Публикации'
@@ -12,7 +16,7 @@
 			title: 'Расписание'
 		}
 	];
-	let routesAdmin = [
+	let routesCPanel = [
 		{
 			url: '/admin/post',
 			title: 'Публикации'
@@ -31,13 +35,21 @@
 			title: 'Теги'
 		}
 	];
+	let setRoutes = () => {
+		if (!isCPanel) routes = routesSite;
+		else routes = routesCPanel;
+	};
+
+	onMount(async () => setRoutes());
 </script>
 
 <div class="fixed-top bg-white py-2">
 	<div class="container-fluid d-flex justify-content-between align-items-center">
 		<div class="flex-grow-1 d-flex justify-content-start align-items-center">
-			<button class="btn btn-light bg-white border-0 text-uppercase me-2" on:click={() => goto('/')}
-				><b>ХРАМ</b></button
+			<button
+				class="btn btn-light bg-white border-0 text-uppercase me-2"
+				on:click={() => (!isCPanel ? goto('/') : goto('/admin/post'))}
+				><b>{@html !isCPanel ? 'ХРАМ' : 'ПАНЕЛЬ УПРАВЛЕНИЯ'}</b></button
 			>
 			<div>
 				{#each routes as item}
@@ -51,17 +63,19 @@
 				{/each}
 			</div>
 		</div>
-		<div>
-			<button class="btn btn-light bg-white border-0 me-1" data-bs-toggle="dropdown">
-				Панель управления
-			</button>
-			<div class="dropdown-menu bg-light  border-secondary border-opacity-10">
-				{#each routesAdmin as item}
-					<a class="btn btn-light rounded-0 border-0 text-start w-100" href={item.url}
-						>{item.title}</a
-					><br />
-				{/each}
+		{#if isAdmin}
+			<div>
+				<button
+					class="btn btn-light bg-white border-0 me-1"
+					on:click={async () => {
+						isCPanel = !isCPanel;
+						setRoutes();
+						goto(routes[0].url);
+					}}
+				>
+					{!isCPanel ? 'Панель управления' : 'Сайт'}
+				</button>
 			</div>
-		</div>
+		{/if}
 	</div>
 </div>
