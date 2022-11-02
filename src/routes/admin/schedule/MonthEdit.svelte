@@ -1,4 +1,5 @@
 <script>
+	import { onMount } from 'svelte';
 	import { Month } from '../../schedule/models/Month';
 	import FildDateEdit from './FildDateEdit.svelte';
 

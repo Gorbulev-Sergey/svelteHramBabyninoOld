@@ -44,4 +44,8 @@
 	</div>
 </PageTitle>
 
-<Month month={$month} />
+{#if $month.fildsDayNotEmpty}
+	<Month month={$month} />
+{:else}
+	<div>Расписание на {$month.monthName()} {$month.year} отсутствует!</div>
+{/if}
