@@ -10,7 +10,7 @@
 
 <div class="btn-group btn-group-sm small {_class}">
 	<div class="bg-light px-2 py-1 rounded-start" style="cursor:default;">{title}</div>
-	<button class="btn btn-sm btn-dlight bg-dark bg-opacity-25 rounded-end" data-bs-toggle="dropdown">
+	<button class="btn btn-sm btn-light bg-dark bg-opacity-25 rounded-end" data-bs-toggle="dropdown">
 		<i class="fa-solid fa-circle-plus" /></button
 	>
 	<ul class="dropdown-menu">

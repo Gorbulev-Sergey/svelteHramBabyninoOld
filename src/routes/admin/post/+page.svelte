@@ -58,6 +58,7 @@
 							tags={tags.filter((t) => !item.tags?.find((i) => i.name == t.name))}
 							bind:selectedTags={item.tags}
 							onSelect={() => update(ref(db, `/posts/${uid}`), item)}
+							_class={item.inverted ? 'text-dark' : ''}
 						/>
 					</div>
 					<div class="d-flex mb-2">
