@@ -36,6 +36,8 @@
 		else routes = routesCPanel;
 	};
 	let innerWidth = 0;
+	let breakpoint = 922;
+	let show = true;
 
 	onMount(async () => setRoutes());
 </script>
@@ -43,52 +45,77 @@
 <svelte:window bind:innerWidth />
 
 <div class="fixed-top bg-white py-2">
-	<div
-		class="container-fluid d-flex {innerWidth > 992
-			? 'justify-content-betweens align-items-center'
-			: 'flex-column'}"
-	>
-		<div
-			class="d-flex justify-content-betweens align-items-center {innerWidth > 992 ? '' : 'w-100'}"
-		>
+	{#if innerWidth > breakpoint}
+		<div class="container-fluid d-flex justify-content-between align-items-center">
+			<div class="flex-grow-1 d-flex justify-content-start align-items-center">
+				<button
+					class="btn btn-light bg-white border-0 text-uppercase me-2"
+					on:click={() => (!isCPanel ? goto('/') : goto('/admin/post'))}
+					><b>{@html !isCPanel ? 'ХРАМ' : 'ПАНЕЛЬ УПРАВЛЕНИЯ'}</b></button
+				>
+				<div>
+					{#each routes as item}
+						<a
+							class="btn btn-light bg-white border-0 me-1 {item.url.replace('/', '') ==
+							$page.url.pathname.split('/')[1]
+								? 'fw-bold'
+								: ''}"
+							href={item.url}>{item.title}</a
+						>
+					{/each}
+				</div>
+			</div>
+			{#if isAdmin}
+				<div>
+					<button
+						class="btn btn-light bg-white border-0 me-1"
+						on:click={async () => {
+							isCPanel = !isCPanel;
+							setRoutes();
+							goto(routes[0].url);
+						}}
+					>
+						{!isCPanel ? 'Панель управления' : 'Сайт'}
+					</button>
+				</div>
+			{/if}
+		</div>
+	{:else}
+		<div class="container-fluid d-flex justify-content-between align-items-center dropdown">
 			<button
 				class="btn btn-light bg-white border-0 text-uppercase me-2"
 				on:click={() => (!isCPanel ? goto('/') : goto('/admin/post'))}
 				><b>{@html !isCPanel ? 'ХРАМ' : 'ПАНЕЛЬ УПРАВЛЕНИЯ'}</b></button
 			>
-			<button class="btn btn-light {innerWidth > 992 ? 'hide' : ''}"
+			<button class="btn btn-light bg-white border-0 text-uppercase me-2" data-bs-toggle="dropdown"
 				><i class="fa-solid fa-bars" /></button
 			>
-		</div>
-		<div
-			class="flex-grow-1 d-flex {innerWidth > 992
-				? 'justify-content-start align-items-center'
-				: 'flex-column'}"
-		>
-			<div class={innerWidth > 992 ? '' : 'w-100 text-start'}>
+			<ul class="dropdown-menu border-0 rounded-0 w-100 mt-1">
 				{#each routes as item}
-					<a
-						class="btn btn-light bg-white border-0 me-1 
-						{innerWidth > 992 ? '' : 'w-100 text-start'}
-						 {item.url.replace('/', '') == $page.url.pathname.split('/')[1] ? 'fw-bold' : ''}"
-						href={item.url}>{item.title}</a
-					>
+					<li>
+						<a
+							class="dropdown-item {item.url.replace('/', '') == $page.url.pathname.split('/')[1]
+								? 'fw-bold'
+								: ''}"
+							href={item.url}>{item.title}</a
+						>
+					</li>
 				{/each}
-			</div>
+				{#if isAdmin}
+					<li>
+						<button
+							class="dropdown-item"
+							on:click={async () => {
+								isCPanel = !isCPanel;
+								setRoutes();
+								goto(routes[0].url);
+							}}
+						>
+							{!isCPanel ? 'Панель управления' : 'Сайт'}
+						</button>
+					</li>
+				{/if}
+			</ul>
 		</div>
-		{#if isAdmin}
-			<div>
-				<button
-					class="btn btn-light bg-white border-0 me-1"
-					on:click={async () => {
-						isCPanel = !isCPanel;
-						setRoutes();
-						goto(routes[0].url);
-					}}
-				>
-					{!isCPanel ? 'Панель управления' : 'Сайт'}
-				</button>
-			</div>
-		{/if}
-	</div>
+	{/if}
 </div>
