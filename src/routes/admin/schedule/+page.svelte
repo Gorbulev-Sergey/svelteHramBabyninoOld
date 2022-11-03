@@ -25,7 +25,7 @@
 
 <PageTitle title="Расписание">
 	<div slot="navigation" class="d-flex flex-nowrap align-items-center">
-		<div class="input-group me-4">
+		<div class="input-group me-3">
 			<span class="input-group-text border-0">Дата:</span>
 			<input
 				class="form-control border-0"

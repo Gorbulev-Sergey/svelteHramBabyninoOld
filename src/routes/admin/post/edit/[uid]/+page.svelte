@@ -43,12 +43,12 @@
 </PageTitle>
 
 <div class="rounded p-3 {!post.inverted ? 'bg-white text-dark' : 'bg-dark text-light'}">
-	<div class="d-flex justify-content-between align-items-center mb-3">
+	<div class="d-flex flex-wrap justify-content-between align-items-center mb-3">
 		<div class="nav nav-pills">
 			<a class="btn btn-light border-0 me-1 active" data-bs-toggle="pill" href="#cover">Обложка</a>
 			<a class="btn btn-light border-0" data-bs-toggle="pill" href="#content">Содержимое</a>
 		</div>
-		<div class="d-flex">
+		<div class="d-flex flex-wrap">
 			<Pin
 				classFontAwesome="fa-regular fa-eye"
 				text="опубликовать"

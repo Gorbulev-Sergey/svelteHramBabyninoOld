@@ -28,16 +28,25 @@
 		{/if}
 	</div>
 	<div class="form-group ps-1 py-2">
-		<input class="form-control bg-transparent border-0 rounded-0" bind:value={fildTime.event} />
+		<input
+			class="form-control bg-transparent border-0 rounded-0"
+			bind:value={fildTime.event}
+			style="min-width: 10em;"
+		/>
 	</div>
 	<div class="text-end ps-1 py-2">
 		<input
 			type="time"
 			class="form-control bg-transparent border-0 rounded-0"
+			style="min-width: 5em;"
 			bind:value={fildTime.time}
 		/>
 	</div>
 	<div class="ps-1 pe-2 py-2">
-		<input class="form-control bg-transparent border-0 rounded-0" bind:value={fildTime.prayer} />
+		<input
+			class="form-control bg-transparent border-0 rounded-0"
+			bind:value={fildTime.prayer}
+			style="min-width: 7em;"
+		/>
 	</div>
 </div>

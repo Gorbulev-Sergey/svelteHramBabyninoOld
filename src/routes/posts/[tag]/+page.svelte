@@ -29,7 +29,7 @@
 </script>
 
 <PageTitle title={$page.params.tag[0].toUpperCase() + $page.params.tag.slice(1)}>
-	<div slot="navigation" class="btn-group btn-group-sm">
+	<div slot="navigation" class="btn-group btn-group-sm overflow-auto">
 		{#each tags as item}
 			<button
 				class="btn btn-light {item.name == $page.params.tag ? 'active' : ''}"

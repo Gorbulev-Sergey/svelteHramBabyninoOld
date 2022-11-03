@@ -30,7 +30,7 @@
 	</div>
 </PageTitle>
 
-<div class="d-flex align-items-center mb-3">
+<div class="d-flex align-items-center flex-wrap mb-3">
 	<Filter
 		title="опубликованныe:"
 		_class="me-1"
@@ -49,7 +49,7 @@
 	{#each Object.entries(posts).filter(([k, v]) => v.published == $adminPostsFilters.published && v.tags.find((t) => t.name == $adminPostsFilters.tag.name)) as [uid, item]}
 		<PostHorizontal {uid} post={item}>
 			<div slot="adminControls" class="card-body">
-				<div class="d-flex justify-content-between align-items-center">
+				<div class="d-flex justify-content-between align-items-center flex-wrap">
 					<div class="d-flex me-3">
 						<TagManager
 							title="Теги:"
@@ -59,7 +59,7 @@
 							_class={item.inverted ? 'text-dark' : ''}
 						/>
 					</div>
-					<div class="d-flex mb-2">
+					<div class="d-flex mb-2 flex-wrap">
 						<div class="d-flex me-3">
 							<Pin
 								classFontAwesome="fa-regular fa-eye"

@@ -12,7 +12,7 @@
 	'воскресенье'
 		? 'bg-secondary text-danger bg-opacity-10'
 		: ''}"
-	style="display: grid; grid-template-columns: .14fr 1fr"
+	style="display: grid; grid-template-columns: .14fr 1fr;min-width: 40em;"
 >
 	<div class="text-center px-2 py-1" style="min-width: 8em;">
 		{@html new Date(fildDate.date).getDate()}
