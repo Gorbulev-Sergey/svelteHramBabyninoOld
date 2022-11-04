@@ -5,14 +5,23 @@
 	import PostHorizontal from '../../posts/PostHorizontal.svelte';
 	import { onMount } from 'svelte';
 	import { goto } from '$app/navigation';
-	import Pin from '$lib/components/Pin.svelte';
 	import TagManager from '$lib/components/TagManager.svelte';
 	import { adminPostsFilters } from '$lib/scripts/writableData';
-	import Filter from './Filter.svelte';
 	import FilterTags from './FilterTags.svelte';
+	import PinButton from '$lib/components/PinButton.svelte';
+	import Pin from '$lib/components/Pin.svelte';
 
 	let posts = new Object();
 	$: tags = new Array();
+	$: arrayOfFilteredPosts = () => {
+		return Object.entries(posts)
+			.filter(
+				([k, v]) =>
+					v.published == $adminPostsFilters.published &&
+					v.tags.find((t) => t.name == $adminPostsFilters.tag.name)
+			)
+			.reverse();
+	};
 
 	onMount(async () => {
 		onValue(ref(db, '/posts'), (s) => {
@@ -25,30 +34,29 @@
 </script>
 
 <PageTitle title="Публикации">
+	<div slot="center">
+		<div class="d-flex justify-content-between align-items-center">
+			<PinButton
+				bind:pressed={$adminPostsFilters.published}
+				_class="btn-sm me-1"
+				titleNoPressed="не опубликованные"
+				titlePressed="опубликованные"
+			/>
+			<FilterTags
+				title="тип публикации:"
+				{tags}
+				onSelect={(v) => ($adminPostsFilters.tag = v)}
+				selected={$adminPostsFilters.tag}
+			/>
+		</div>
+	</div>
 	<div slot="navigation">
-		<button class="btn btn-sm btn-dark" on:click={() => goto('/admin/post/create')}>Создать</button>
+		<button class="btn btn-dark" on:click={() => goto('/admin/post/create')}>Создать</button>
 	</div>
 </PageTitle>
 
-<div class="d-flex align-items-center flex-wrap mb-3">
-	<Filter
-		title="опубликованныe:"
-		_class="me-1"
-		onSelect={(v) => ($adminPostsFilters.published = v)}
-		selected={$adminPostsFilters.published}
-	/>
-	<FilterTags
-		title="тип публикации:"
-		{tags}
-		onSelect={(v) => ($adminPostsFilters.tag = v)}
-		selected={$adminPostsFilters.tag}
-	/>
-</div>
-
-<div class="row">
-	{#each Object.entries(posts)
-		.filter(([k, v]) => v.published == $adminPostsFilters.published && v.tags.find((t) => t.name == $adminPostsFilters.tag.name))
-		.reverse() as [uid, item]}
+<div>
+	{#each arrayOfFilteredPosts() as [uid, item]}
 		<PostHorizontal {uid} post={item}>
 			<div slot="adminControls" class="card-body">
 				<div class="d-flex justify-content-between align-items-center flex-wrap">
