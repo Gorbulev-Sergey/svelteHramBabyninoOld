@@ -26,24 +26,22 @@
 </script>
 
 <PageTitle title="Редактировать расписание">
+	<div slot="center" class="input-group me-4">
+		<span class="input-group-text border-0">Дата:</span>
+		<input
+			class="form-control border-0"
+			type="month"
+			bind:value={m}
+			on:change={async () => {
+				$month = new Month(Number(m.split('-')[1]), Number(m.split('-')[0]));
+				loadData();
+			}}
+		/>
+	</div>
 	<div slot="navigation" class="d-flex flex-nowrap align-items-center">
-		<div class="input-group me-4">
-			<span class="input-group-text border-0">Дата:</span>
-			<input
-				class="form-control border-0"
-				type="month"
-				bind:value={m}
-				on:change={async () => {
-					$month = new Month(Number(m.split('-')[1]), Number(m.split('-')[0]));
-					loadData();
-				}}
-			/>
-		</div>
-		<button class="btn btn-sm btn-light  me-1" on:click={() => goto('/admin/schedule')}
-			>Отмена</button
-		>
+		<button class="btn btn-light  me-1" on:click={() => goto('/admin/schedule')}>Отмена</button>
 		<button
-			class="btn btn-sm btn-dark"
+			class="btn btn-dark"
 			on:click={async () => {
 				// ВАЖНЫЙ ФИЛЬТР
 				$month.fildsDayNotEmpty = $month.fildsDayAll.filter((fDate) =>

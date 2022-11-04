@@ -27,11 +27,11 @@
 
 <PageTitle title="Редактировать публикацию">
 	<div slot="navigation">
-		<button class="btn btn-sm btn-light" on:click={() => goto(`/admin/post#${$page.params.uid}`)}
+		<button class="btn btn-light" on:click={() => goto(`/admin/post#${$page.params.uid}`)}
 			>Отмена</button
 		>
 		<button
-			class="btn btn-sm btn-dark bg-opacity-10"
+			class="btn btn-dark bg-opacity-10"
 			on:click={async () => {
 				if (post.title != '') {
 					update(ref(db, `/posts/${$page.params.uid}`), post);
