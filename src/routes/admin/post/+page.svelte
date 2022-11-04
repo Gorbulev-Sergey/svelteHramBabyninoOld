@@ -46,7 +46,9 @@
 </div>
 
 <div class="row">
-	{#each Object.entries(posts).filter(([k, v]) => v.published == $adminPostsFilters.published && v.tags.find((t) => t.name == $adminPostsFilters.tag.name)) as [uid, item]}
+	{#each Object.entries(posts)
+		.filter(([k, v]) => v.published == $adminPostsFilters.published && v.tags.find((t) => t.name == $adminPostsFilters.tag.name))
+		.reverse() as [uid, item]}
 		<PostHorizontal {uid} post={item}>
 			<div slot="adminControls" class="card-body">
 				<div class="d-flex justify-content-between align-items-center flex-wrap">

@@ -23,7 +23,9 @@
 			tags = Object.values(s.val());
 		});
 		onValue(ref(db, 'posts/'), (s) => {
-			posts = Object.values(s.val()).filter((i) => i.published);
+			posts = Object.values(s.val())
+				.filter((i) => i.published)
+				.reverse();
 		});
 	});
 </script>
