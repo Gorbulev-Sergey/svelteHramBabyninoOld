@@ -14,13 +14,17 @@
 	let posts = new Object();
 	$: tags = new Array();
 	$: arrayOfFilteredPosts = () => {
-		return Object.entries(posts)
-			.filter(
-				([k, v]) =>
-					v.published == $adminPostsFilters.published &&
-					v.tags.find((t) => t.name == $adminPostsFilters.tag.name)
-			)
-			.reverse();
+		let p = Object.entries(posts).filter(
+			([k, v]) =>
+				v.published == $adminPostsFilters.published &&
+				v.tags.find((t) => t.name == $adminPostsFilters.tag.name)
+		);
+		switch ($adminPostsFilters.newFirst) {
+			case true:
+				return p.reverse();
+			case false:
+				return p;
+		}
 	};
 
 	onMount(async () => {
@@ -36,17 +40,24 @@
 <PageTitle title="Публикации">
 	<div slot="center">
 		<div class="d-flex justify-content-between align-items-center">
+			<FilterTags
+				title="тип:"
+				{tags}
+				onSelect={(v) => ($adminPostsFilters.tag = v)}
+				selected={$adminPostsFilters.tag}
+				_class="me-1"
+			/>
+			<PinButton
+				bind:pressed={$adminPostsFilters.newFirst}
+				_class="btn-sm me-1"
+				titleNoPressed="сначала старые"
+				titlePressed="сначала новые"
+			/>
 			<PinButton
 				bind:pressed={$adminPostsFilters.published}
 				_class="btn-sm me-1"
 				titleNoPressed="не опубликованные"
 				titlePressed="опубликованные"
-			/>
-			<FilterTags
-				title="тип публикации:"
-				{tags}
-				onSelect={(v) => ($adminPostsFilters.tag = v)}
-				selected={$adminPostsFilters.tag}
 			/>
 		</div>
 	</div>

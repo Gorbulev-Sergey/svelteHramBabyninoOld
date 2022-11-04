@@ -12,7 +12,7 @@
 	<div class="btn btn-sm btn-dark">{title}</div>
 	<div class="dropdown">
 		<button
-			class="btn btn-sm btn-secondary dropdown-toggle rounded-0 rounded-end"
+			class="btn btn-sm btn-outline-dark dropdown-toggle rounded-0 rounded-end"
 			data-bs-toggle="dropdown"
 		>
 			{selected.name}
