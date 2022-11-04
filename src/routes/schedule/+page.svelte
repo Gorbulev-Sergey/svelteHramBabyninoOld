@@ -1,19 +1,48 @@
 <script>
-	import PageTitle from '$lib/components/PageTitle.svelte';
 	import { db } from '$lib/scripts/firebase';
 	import { onValue, ref } from 'firebase/database';
+	import Month from '../schedule/components/Month.svelte';
 	import { onMount } from 'svelte';
-	import Month from './components/Month.svelte';
-	import { Month as _Month } from './models/Month';
+	import { Month as _Month } from '../schedule/models/Month';
+	import PageTitle from '$lib/components/PageTitle.svelte';
+	import { goto } from '$app/navigation';
+	import { scheduleMonth as month } from '$lib/scripts/writableData';
 
-	let month = new _Month(new Date(Date.now()).getMonth() + 1, 2022);
-	onMount(() => {
-		onValue(ref(db, `schedule/${month.year}/${month.monthName()}`), (result) => {
-			month.fildsDayNotEmpty = result.val();
+	let m = '';
+
+	function loadData() {
+		onValue(ref(db, `schedule/${$month.year}/${$month.monthName()}`), (result) => {
+			$month.fildsDayNotEmpty = result.val();
+			$month.updateFildsDayAll();
 		});
+	}
+
+	onMount(async () => {
+		m = `${$month.year}-${$month.month < 10 ? '0' + $month.month : $month.month}`;
+		loadData();
 	});
 </script>
 
-<PageTitle title="Расписание" />
+<PageTitle title="Расписание">
+	<div slot="navigation">
+		<div class="input-group me-3">
+			<span class="input-group-text border-0">Дата:</span>
+			<input
+				class="form-control border-0"
+				type="month"
+				bind:value={m}
+				on:change={async () => {
+					$month = new _Month(Number(m.split('-')[1]), Number(m.split('-')[0]));
+					console.log($month);
+					loadData();
+				}}
+			/>
+		</div>
+	</div>
+</PageTitle>
 
-<Month {month} />
+{#if $month.fildsDayNotEmpty}
+	<Month month={$month} />
+{:else}
+	<div>Расписание на {$month.monthName()} {$month.year} отсутствует!</div>
+{/if}

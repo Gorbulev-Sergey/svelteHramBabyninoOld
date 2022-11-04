@@ -6,7 +6,7 @@
 	export let month = new Month();
 </script>
 
-<div class="rounded w-100 overflow-auto">
+<div class="rounded w-100 overflow-auto bg-white">
 	{#each month.fildsDayAll as item}
 		<FildDateEdit fildDate={item} />
 	{/each}
