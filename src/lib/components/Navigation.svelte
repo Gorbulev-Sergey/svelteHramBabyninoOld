@@ -89,7 +89,7 @@
 			<button class="btn btn-light bg-white border-0 text-uppercase me-2" data-bs-toggle="dropdown"
 				><i class="fa-solid fa-bars" /></button
 			>
-			<ul class="dropdown-menu border-0 rounded-0 w-100 mt-1 pb-2">
+			<ul class="dropdown-menu border-0 rounded-0 w-100 mt-1 pb-3">
 				{#each routes as item}
 					<li>
 						<a

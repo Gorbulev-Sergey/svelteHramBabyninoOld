@@ -4,7 +4,7 @@
 	import PageTitle from '$lib/components/PageTitle.svelte';
 	import Pin from '$lib/components/Pin.svelte';
 	import TagManager from '$lib/components/TagManager.svelte';
-	import { Post } from '$lib/models/Post';
+	import { Cover, Post } from '$lib/models/Post';
 	import { Tag } from '$lib/models/Tag';
 	import { db } from '$lib/scripts/firebase';
 	import { onValue, push, ref, update } from 'firebase/database';
@@ -18,6 +18,7 @@
 	onMount(async () => {
 		onValue(ref(db, `posts/${$page.params.uid}`), (s) => {
 			if (s.exists()) post = s.val();
+			if (!post.cover) post.cover = new Cover();
 		});
 		onValue(ref(db, 'tags/'), (s) => {
 			if (s.exists()) tags = Object.values(s.val());

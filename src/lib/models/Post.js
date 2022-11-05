@@ -26,7 +26,7 @@ export class Post {
 	}
 }
 
-class Cover {
+export class Cover {
 	constructor(image = null, video = null) {
 		this.image = image;
 		this.video = video;
