@@ -15,7 +15,7 @@
 				<span class="badge bg-dark text-dark bg-opacity-10">Дата</span>
 			</div>
 			<div style="display: grid; grid-template-columns: 1fr .3fr .1fr">
-				<div class="ps-3" style="min-width: 12em;">
+				<div class="ps-3" style="min-width: 13em;">
 					<span class="badge bg-dark text-dark bg-opacity-10">Праздник</span>
 				</div>
 				<div class="text-end pe-3" style="min-width: 8em;">
