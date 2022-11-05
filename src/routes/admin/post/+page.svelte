@@ -39,7 +39,7 @@
 
 <PageTitle title="Публикации">
 	<div slot="center">
-		<div class="d-flex justify-content-between align-items-center">
+		<div class="d-flex justify-content-between align-items-center flex-wrap">
 			<FilterTags
 				title="тип:"
 				{tags}
