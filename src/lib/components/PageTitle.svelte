@@ -3,10 +3,9 @@
 </script>
 
 <div class="d-flex justify-content-between align-items-center flex-wrap mb-3">
-	<div class="d-flex align-items-center flex-wrap">
+	<div class="d-flex align-items-center">
 		<h4 class="mb-1 me-3 text-nowrap">{title}</h4>
 		<slot name="center" />
 	</div>
-
 	<slot name="navigation" />
 </div>
