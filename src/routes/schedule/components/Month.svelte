@@ -11,14 +11,14 @@
 			<b>Расписание на {month.monthName()?.toUpperCase()} {month.year} года</b>
 		</div>
 		<div style="display: grid; grid-template-columns: .11fr 1fr; min-height: 2.3em">
-			<div class="text-center px-3" style="min-width: 7em;">
+			<div class="text-center px-3" style="min-width: 8em;">
 				<span class="badge bg-dark text-dark bg-opacity-10">Дата</span>
 			</div>
 			<div style="display: grid; grid-template-columns: 1fr .3fr .1fr">
-				<div class="ps-3" style="min-width: 10em;">
+				<div class="ps-3" style="min-width: 14em;">
 					<span class="badge bg-dark text-dark bg-opacity-10">Праздник</span>
 				</div>
-				<div class="text-end pe-3" style="min-width: 7em;">
+				<div class="text-end pe-3" style="min-width: 8em;">
 					<span class="badge bg-dark text-dark bg-opacity-10">Богослужение</span>
 				</div>
 				<div class="text-center" style="min-width: 5em;">
