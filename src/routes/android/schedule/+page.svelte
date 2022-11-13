@@ -23,9 +23,9 @@
 </script>
 
 <div class="no-print">
-	<PageTitle title="Расписание богослужений">
+	<PageTitle title="Расписание богослужений" _class="mx-0 mx-md-1">
 		<div slot="navigation">
-			<div class="input-group me-3 no-print">
+			<div class="input-group me-3 no-print mt-md-0 mt-1">
 				<span class="input-group-text border-0">Дата:</span>
 				<input
 					class="form-control border-0"
