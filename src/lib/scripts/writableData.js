@@ -1,5 +1,5 @@
 import { Tag } from '$lib/models/Tag';
-import { Month } from '../../routes/schedule/models/Month';
+import { Month } from '$lib/models/schedule/Month';
 import { writable } from 'svelte/store';
 Month;
 export let adminPostsFilters = writable({

@@ -2,12 +2,12 @@
 	import PageTitle from '$lib/components/PageTitle.svelte';
 	import { db } from '$lib/scripts/firebase';
 	import { onValue, ref, remove, update } from 'firebase/database';
-	import PostHorizontal from '../../posts/PostHorizontal.svelte';
+	import PostHorizontal from '$lib/components/posts/PostHorizontal.svelte';
 	import { onMount } from 'svelte';
 	import { goto } from '$app/navigation';
-	import TagManager from '$lib/components/TagManager.svelte';
+	import TagManager from '$lib/components/tags/TagManager.svelte';
 	import { adminPostsFilters } from '$lib/scripts/writableData';
-	import FilterTags from './FilterTags.svelte';
+	import FilterTags from '$lib/components/posts/FilterTags.svelte';
 	import PinButton from '$lib/components/PinButton.svelte';
 	import Pin from '$lib/components/Pin.svelte';
 
@@ -62,7 +62,7 @@
 		</div>
 	</div>
 	<div slot="navigation">
-		<button class="btn btn-dark" on:click={() => goto('/admin/post/create')}>Создать</button>
+		<button class="btn btn-dark" on:click={() => goto('/admin/posts/create')}>Создать</button>
 	</div>
 </PageTitle>
 
@@ -112,7 +112,7 @@
 						<div class="d-flex">
 							<button
 								class="btn btn-sm btn-light me-1"
-								on:click={() => goto(`/admin/post/edit/${uid}`)}
+								on:click={() => goto(`/admin/posts/edit/${uid}`)}
 								><i class="fa-solid fa-pencil" /></button
 							>
 							<div class="dropdown dropend">

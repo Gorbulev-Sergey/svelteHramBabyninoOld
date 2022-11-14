@@ -1,6 +1,6 @@
 <script>
 	import FildDate from './FildDate.svelte';
-	import { Month } from '../models/Month';
+	import { Month } from '$lib/models/schedule/Month';
 
 	export let month = new Month();
 </script>

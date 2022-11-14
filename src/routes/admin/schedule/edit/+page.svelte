@@ -6,8 +6,8 @@
 	import { db } from '$lib/scripts/firebase';
 	import { onValue, push, ref, set, update } from 'firebase/database';
 	import { onMount } from 'svelte';
-	import { Month } from '../../../schedule/models/Month';
-	import MonthEdit from '../MonthEdit.svelte';
+	import { Month } from '../../../../lib/models/schedule/Month';
+	import MonthEdit from '$lib/components/schedule/MonthEdit.svelte';
 	import { scheduleMonth as month } from '$lib/scripts/writableData';
 
 	let m = '';

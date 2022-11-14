@@ -1,6 +1,6 @@
 <script>
 	import { onMount } from 'svelte';
-	import { Month } from '../../schedule/models/Month';
+	import { Month } from '$lib/models/schedule/Month';
 	import FildDateEdit from './FildDateEdit.svelte';
 
 	export let month = new Month();

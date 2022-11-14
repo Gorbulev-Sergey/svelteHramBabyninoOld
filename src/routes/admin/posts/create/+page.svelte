@@ -1,41 +1,35 @@
 <script>
 	import { goto } from '$app/navigation';
-	import { page } from '$app/stores';
 	import PageTitle from '$lib/components/PageTitle.svelte';
 	import Pin from '$lib/components/Pin.svelte';
-	import TagManager from '$lib/components/TagManager.svelte';
-	import { Cover, Post } from '$lib/models/Post';
+	import TagManager from '$lib/components/tags/TagManager.svelte';
+	import { Post } from '$lib/models/Post';
 	import { Tag } from '$lib/models/Tag';
 	import { db } from '$lib/scripts/firebase';
-	import { onValue, push, ref, update } from 'firebase/database';
+	import { onValue, push, ref } from 'firebase/database';
 	import { onMount } from 'svelte';
-	import Editor from '../../Editor.svelte';
+	import Editor from '$lib/components/posts/Editor.svelte';
 
 	let post = new Post();
 	$: tags = new Array();
 	let selectedTag = new Tag();
+	let showCode = false;
 
 	onMount(async () => {
-		onValue(ref(db, `posts/${$page.params.uid}`), (s) => {
-			if (s.exists()) post = s.val();
-			if (!post.cover) post.cover = new Cover();
-		});
 		onValue(ref(db, 'tags/'), (s) => {
 			if (s.exists()) tags = Object.values(s.val());
 		});
 	});
 </script>
 
-<PageTitle title="Редактировать публикацию">
+<PageTitle title="Создать публикацию">
 	<div slot="navigation">
-		<button class="btn btn-light" on:click={() => goto(`/admin/post#${$page.params.uid}`)}
-			>Отмена</button
-		>
+		<button class="btn btn-light" on:click={() => goto(`/admin/posts`)}>Отмена</button>
 		<button
 			class="btn btn-dark bg-opacity-10"
 			on:click={async () => {
 				if (post.title != '') {
-					update(ref(db, `/posts/${$page.params.uid}`), post);
+					push(ref(db, '/posts'), post);
 					goto('/posts');
 				}
 			}}>Сохранить</button

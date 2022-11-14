@@ -3,8 +3,8 @@
 	import { db } from '$lib/scripts/firebase';
 	import { onValue, ref } from 'firebase/database';
 	import { onMount } from 'svelte';
-	import Month from './components/Month.svelte';
-	import { Month as _Month } from './models/Month';
+	import Month from '$lib/components/schedule/Month.svelte';
+	import { Month as _Month } from '$lib/models/schedule/Month';
 
 	let month = new _Month(new Date(Date.now()).getMonth() + 1, 2022);
 	onMount(() => {

@@ -1,9 +1,9 @@
 <script>
 	import { db } from '$lib/scripts/firebase';
 	import { onValue, ref } from 'firebase/database';
-	import Month from '../../schedule/components/Month.svelte';
+	import Month from '$lib/components/schedule/Month.svelte';
 	import { onMount } from 'svelte';
-	import { Month as _Month } from '../../schedule/models/Month';
+	import { Month as _Month } from '../../../lib/models/schedule/Month';
 	import PageTitle from '$lib/components/PageTitle.svelte';
 	import { goto } from '$app/navigation';
 	import { scheduleMonth as month } from '$lib/scripts/writableData';

@@ -18,7 +18,7 @@
 	];
 	let routesCPanel = [
 		{
-			url: '/admin/post',
+			url: '/admin/posts',
 			title: 'Публикации'
 		},
 		{
@@ -27,7 +27,7 @@
 		},
 
 		{
-			url: '/admin/tag',
+			url: '/admin/tags',
 			title: 'Теги'
 		}
 	];

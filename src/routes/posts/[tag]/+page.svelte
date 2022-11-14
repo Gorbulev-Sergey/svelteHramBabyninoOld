@@ -6,8 +6,8 @@
 	import { db } from '$lib/scripts/firebase';
 	import { onValue, push, query, ref } from 'firebase/database';
 	import { onMount } from 'svelte';
-	import Post from '../Post.svelte';
-	import PostHorizontal from '../PostHorizontal.svelte';
+	import Post from '$lib/components/posts/Post.svelte';
+	import PostHorizontal from '$lib/components/posts/PostHorizontal.svelte';
 
 	let tags = new Array();
 	let posts = new Array();
