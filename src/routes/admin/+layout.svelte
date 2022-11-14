@@ -9,7 +9,10 @@
 			url: '/admin/schedule',
 			title: 'Расписание'
 		},
-
+		{
+			url: '/admin/photos',
+			title: 'Фотографии'
+		},
 		{
 			url: '/admin/tags',
 			title: 'Теги'

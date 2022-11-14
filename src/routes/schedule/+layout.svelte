@@ -8,6 +8,10 @@
 		{
 			url: '/schedule',
 			title: 'Расписание'
+		},
+		{
+			url: '/photos',
+			title: 'Фотографии'
 		}
 	];
 	let routesRight = [
