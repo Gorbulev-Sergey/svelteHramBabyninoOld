@@ -49,7 +49,7 @@
 			<div class="flex-grow-1 d-flex justify-content-start align-items-center">
 				<button
 					class="btn btn-light bg-white border-0 text-uppercase me-2"
-					on:click={() => (!isCPanel ? goto('/') : goto('/admin/post'))}
+					on:click={() => (!isCPanel ? goto('/') : goto('/admin/posts'))}
 					><b>{@html !isCPanel ? 'ХРАМ' : 'ПАНЕЛЬ УПРАВЛЕНИЯ'}</b></button
 				>
 				<div>
@@ -83,7 +83,7 @@
 		<div class="container-fluid d-flex justify-content-between align-items-center dropdown">
 			<button
 				class="btn btn-light bg-white border-0 text-uppercase me-2"
-				on:click={() => (!isCPanel ? goto('/') : goto('/admin/post'))}
+				on:click={() => (!isCPanel ? goto('/') : goto('/admin/posts'))}
 				><b>{@html !isCPanel ? 'ХРАМ' : 'ПАНЕЛЬ УПРАВЛЕНИЯ'}</b></button
 			>
 			<button class="btn btn-light bg-white border-0 text-uppercase me-2" data-bs-toggle="dropdown"
