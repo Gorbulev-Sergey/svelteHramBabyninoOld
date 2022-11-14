@@ -1,44 +1,13 @@
 <script>
 	import { goto } from '$app/navigation';
 	import { page } from '$app/stores';
-	import { onMount } from 'svelte';
 
+	export let title = 'Название';
+	export let routesLeft = new Array();
+	export let routesRight = new Array();
 	export let isAdmin = true;
-	let isCPanel = false;
-	let routes = new Array();
-	let routesSite = [
-		{
-			url: '/posts',
-			title: 'Публикации'
-		},
-		{
-			url: '/schedule',
-			title: 'Расписание'
-		}
-	];
-	let routesCPanel = [
-		{
-			url: '/admin/posts',
-			title: 'Публикации'
-		},
-		{
-			url: '/admin/schedule',
-			title: 'Расписание'
-		},
-
-		{
-			url: '/admin/tags',
-			title: 'Теги'
-		}
-	];
-	let setRoutes = () => {
-		if (!isCPanel) routes = routesSite;
-		else routes = routesCPanel;
-	};
 	let innerWidth = 0;
 	let breakpoint = 922;
-
-	onMount(async () => setRoutes());
 </script>
 
 <svelte:window bind:innerWidth />
@@ -49,11 +18,10 @@
 			<div class="flex-grow-1 d-flex justify-content-start align-items-center">
 				<button
 					class="btn btn-light bg-white border-0 text-uppercase me-2"
-					on:click={() => (!isCPanel ? goto('/') : goto('/admin/posts'))}
-					><b>{@html !isCPanel ? 'ХРАМ' : 'ПАНЕЛЬ УПРАВЛЕНИЯ'}</b></button
+					on:click={() => goto(routesLeft[0].url)}><b>{@html title}</b></button
 				>
 				<div>
-					{#each routes as item}
+					{#each routesLeft as item}
 						<a
 							class="btn btn-light bg-white border-0 me-1 {item.url.replace('/', '') ==
 							$page.url.pathname.split('/')[1]
@@ -66,16 +34,15 @@
 			</div>
 			{#if isAdmin}
 				<div>
-					<button
-						class="btn btn-light bg-white border-0 me-1"
-						on:click={async () => {
-							isCPanel = !isCPanel;
-							setRoutes();
-							goto(routes[0].url);
-						}}
-					>
-						{!isCPanel ? 'Панель управления' : 'Сайт'}
-					</button>
+					{#each routesRight as item}
+						<a
+							class="btn btn-light bg-white border-0 me-1 {item.url.replace('/', '') ==
+							$page.url.pathname.split('/')[1]
+								? 'fw-bold'
+								: ''}"
+							href={item.url}>{item.title}</a
+						>
+					{/each}
 				</div>
 			{/if}
 		</div>
@@ -83,14 +50,13 @@
 		<div class="container-fluid d-flex justify-content-between align-items-center dropdown">
 			<button
 				class="btn btn-light bg-white border-0 text-uppercase me-2"
-				on:click={() => (!isCPanel ? goto('/') : goto('/admin/posts'))}
-				><b>{@html !isCPanel ? 'ХРАМ' : 'ПАНЕЛЬ УПРАВЛЕНИЯ'}</b></button
+				on:click={() => goto(routesLeft[0].url)}><b>{@html title}</b></button
 			>
 			<button class="btn btn-light bg-white border-0 text-uppercase me-2" data-bs-toggle="dropdown"
 				><i class="fa-solid fa-bars" /></button
 			>
 			<ul class="dropdown-menu border-0 rounded-0 w-100 pb-3">
-				{#each routes as item}
+				{#each routesLeft as item}
 					<li>
 						<a
 							class="dropdown-item py-2 {item.url.replace('/', '') ==
@@ -102,20 +68,20 @@
 					</li>
 				{/each}
 				{#if isAdmin}
-					<li>
-						<button
-							class="dropdown-item"
-							on:click={async () => {
-								isCPanel = !isCPanel;
-								setRoutes();
-								goto(routes[0].url);
-							}}
-						>
-							<b class="text-uppercase text-danger">
-								{!isCPanel ? 'Панель управления' : 'Сайт'}
-							</b>
-						</button>
-					</li>
+					{#each routesRight as item}
+						<li>
+							<button
+								class="dropdown-item"
+								on:click={async () => {
+									goto(item.url);
+								}}
+							>
+								<b class="text-uppercase text-danger">
+									{item.title}
+								</b>
+							</button>
+						</li>
+					{/each}
 				{/if}
 			</ul>
 		</div>
