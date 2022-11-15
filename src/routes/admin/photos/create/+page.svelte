@@ -81,7 +81,7 @@
 								album.photos.splice(i + 1, 0, album.photos.splice(i, 1)[0]);
 								album.photos = [...album.photos];
 							}}
-							onDelete={() => (album.photos = album.photos.filter((p) => p.url != photo.url))}
+							onDelete={() => (album.photos = album.photos.filter((p) => p != photo))}
 						/>
 					</div>
 				{/each}
