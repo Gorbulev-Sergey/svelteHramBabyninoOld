@@ -67,9 +67,21 @@
 				on:click={() => (album.photos = [...album.photos, new _Photo()])}
 				><i class="fa-solid fa-plus" /> фото
 			</button>
-			{#each album.photos as photo}
-				<Photo {photo} />
-			{/each}
+			<div class="row row-cols-1 row-cols-md-3 g-3">
+				{#each album.photos as photo, i}
+					<div class="col">
+						<Photo
+							{photo}
+							_class="mb-1"
+							onUp={() => {
+								album.photos.splice(i - 1, 0, album.photos.splice(i, 1)[0]);
+								album.photos = [...album.photos];
+							}}
+							onDelete={() => (album.photos = album.photos.filter((p) => p.url != photo.url))}
+						/>
+					</div>
+				{/each}
+			</div>
 		</div>
 	</div>
 </div>

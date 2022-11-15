@@ -3,6 +3,9 @@
 
 	export let photo = new Photo();
 	export let _class = '';
+	export let onUp = () => {};
+	export let onDown = () => {};
+	export let onDelete = () => {};
 </script>
 
 <div
@@ -27,12 +30,16 @@
 		</div>
 		<div class="d-flex justify-content-between ms-4">
 			<div class="d-flex flex-column me-2">
-				<button class="btn btn-sm btn-dark mb-1"
+				<button class="btn btn-sm btn-dark mb-1" on:click={() => onUp()}
 					><i class="fa-solid fa-arrow-up text-light" /></button
 				>
-				<button class="btn btn-sm btn-dark"><i class="fa-solid fa-arrow-down text-light" /></button>
+				<button class="btn btn-sm btn-dark" on:click={() => onDown()}
+					><i class="fa-solid fa-arrow-down text-light" /></button
+				>
 			</div>
-			<button class="btn btn-sm btn-dark"><i class="fa-solid fa-trash text-danger" /></button>
+			<button class="btn btn-sm btn-dark" on:click={() => onDelete()}
+				><i class="fa-solid fa-trash text-danger" /></button
+			>
 		</div>
 	</div>
 	<slot name="navigation" />
