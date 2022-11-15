@@ -9,7 +9,7 @@
 	style="background-image: url({album.cover});
 					 background-size: no-repeat; background-position: center; background-size: cover; min-height:16em;"
 >
-	<div class="bg-light text-dark bg-opacity-25 p-3">
+	<div class="bg-light text-dark fixed-bottom bg-opacity-25 p-3">
 		<h5>
 			{album.title} <span class="badge badge-dark">{album.photos ? album.photos.length : ''}</span>
 		</h5>
