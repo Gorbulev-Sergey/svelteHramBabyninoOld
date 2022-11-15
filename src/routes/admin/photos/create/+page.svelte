@@ -72,7 +72,6 @@
 					<div class="col">
 						<Photo
 							{photo}
-							_class="mb-1"
 							onUp={() => {
 								album.photos.splice(i - 1, 0, album.photos.splice(i, 1)[0]);
 								album.photos = [...album.photos];
