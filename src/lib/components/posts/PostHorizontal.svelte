@@ -1,6 +1,7 @@
 <script>
 	// @ts-nocheck
 	import { goto } from '$app/navigation';
+	import { page } from '$app/stores';
 	import { Post } from '$lib/models/Post';
 
 	export let uid = '';
@@ -63,7 +64,7 @@
 										? 'bg-secondary text-dark bg-opacity-10'
 										: 'bg-secondary text-white bg-opacity-50'} text-decoration-none p-1 me-1 border-0"
 									on:click={() => {
-										goto(`/posts/${tag.name}`);
+										goto(`/${$page.url.pathname.split('/')[1]}/posts/${tag.name}`);
 									}}>{tag.name}</button
 								>
 							{/each}
