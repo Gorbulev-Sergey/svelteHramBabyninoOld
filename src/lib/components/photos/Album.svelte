@@ -5,15 +5,31 @@
 </script>
 
 <div
-	class="img-fluid rounded d-flex align-items-bottom"
+	class="img-fluid rounded d-flex flex-column-reverse"
 	style="background-image: url({album.cover});
 					 background-size: no-repeat; background-position: center; background-size: cover; min-height:16em;"
 >
-	<div class="bg-light text-dark bg-opacity-25 p-3">
-		<h5>
-			{album.title} <span class="badge badge-dark">{album.photos ? album.photos.length : ''}</span>
-		</h5>
-		<small class="text-secondary">{album.description}</small>
+	<div class="d-flex justify-content-between bg-dark text-light bg-opacity-25 p-3 rounded-bottom">
+		<div>
+			<h5 class="mb-0">
+				{album.title}
+			</h5>
+			<small class="text-light text-opacity-50">{album.description}</small>
+		</div>
+		<div class="d-flex flex-column align-items-end justify-content-between small mt-1">
+			{#if album.photos}
+				<div class="badge badge-light bg-light text-dark">
+					{album.photos.length} фото
+				</div>
+			{/if}
+			{#if album.date}
+				<div class="text-danger">
+					{new Date(album.date).getDate()}
+					{new Date(album.date).monthName()}
+					{new Date(album.date).getFullYear()}
+				</div>
+			{/if}
+		</div>
 	</div>
 	<slot name="navigation" />
 </div>

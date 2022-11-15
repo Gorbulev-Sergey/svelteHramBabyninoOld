@@ -62,9 +62,11 @@
 			</div>
 		</div>
 		<div class="tab-pane" id="content">
-			<button class="btn btn-dark" on:click={() => (album.photos = [...album.photos, new _Photo()])}
-				>Добавить</button
-			>
+			<button
+				class="btn btn-sm btn-dark mb-3"
+				on:click={() => (album.photos = [...album.photos, new _Photo()])}
+				><i class="fa-solid fa-plus" /> фото
+			</button>
 			{#each album.photos as photo}
 				<Photo {photo} />
 			{/each}
