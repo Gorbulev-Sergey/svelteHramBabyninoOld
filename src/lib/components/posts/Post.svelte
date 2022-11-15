@@ -36,7 +36,7 @@
 	let showContent = false;
 </script>
 
-<div class="col mb-3">
+<div id={new Date(post.created).toISOString()} class="col mb-3">
 	<div
 		class="card {!post.inverted
 			? 'bg-white text-dark'
@@ -121,7 +121,10 @@
 				<span
 					class="badge bg-light text-dark"
 					style="cursor: pointer; font-size:.8em;"
-					on:click={() => (showContent = !showContent)}
+					on:click={() => {
+						showContent = !showContent;
+						goto(`#${new Date(post.created).toISOString()}`);
+					}}
 				>
 					<i class="fa-solid {!showContent ? 'fa-circle-arrow-right' : 'fa-circle-arrow-left'} " />
 					...

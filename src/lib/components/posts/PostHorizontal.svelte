@@ -41,7 +41,7 @@
 	id={uid ? uid : ''}
 	class="card mb-3 p-0 {!post.inverted ? 'bg-white text-dark' : 'bg-dark text-light'} border-0"
 >
-	<div class="row g-0">
+	<div id={new Date(post.created).toISOString()} class="row g-0">
 		<div class="{post.cover ? 'col-md-8' : ''} d-flex flex-column">
 			<div class="card-body flex-grow-1 mb-1">
 				<div class="d-flex justify-content-between">
@@ -81,7 +81,10 @@
 						<span
 							class="badge bg-light text-dark"
 							style="cursor: pointer; font-size:.8em;"
-							on:click={() => (showContent = !showContent)}
+							on:click={() => {
+								showContent = !showContent;
+								goto(`#${new Date(post.created).toISOString()}`);
+							}}
 						>
 							<i
 								class="fa-solid {!showContent ? 'fa-circle-arrow-right' : 'fa-circle-arrow-left'} "
