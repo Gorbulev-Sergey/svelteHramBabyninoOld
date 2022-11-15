@@ -5,7 +5,7 @@
 </script>
 
 <div
-	class="img-fluid rounded"
+	class="img-fluid rounded d-flex align-items-bottom"
 	style="background-image: url({album.cover});
 					 background-size: no-repeat; background-position: center; background-size: cover; min-height:16em;"
 >
