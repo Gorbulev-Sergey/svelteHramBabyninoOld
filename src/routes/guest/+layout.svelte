@@ -2,15 +2,15 @@
 	import Navigation from '$lib/components/Navigation.svelte';
 	let routesLeft = [
 		{
-			url: '/posts',
+			url: '/guest/posts',
 			title: 'Публикации'
 		},
 		{
-			url: '/schedule',
+			url: '/guest/schedule',
 			title: 'Расписание'
 		},
 		{
-			url: '/photos',
+			url: '/guest/photos',
 			title: 'Фотографии'
 		}
 	];

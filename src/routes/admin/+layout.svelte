@@ -20,7 +20,7 @@
 	];
 	let routesRight = [
 		{
-			url: '/posts',
+			url: '/guest/posts',
 			title: 'Сайт'
 		}
 	];

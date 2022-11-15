@@ -36,7 +36,7 @@
 			<button
 				class="btn btn-light {item.name == $page.params.tag ? 'active' : ''}"
 				on:click={async () => {
-					goto(`/posts/${item.name}`);
+					goto(`/guest/posts/${item.name}`);
 				}}>{item.name}</button
 			>
 		{/each}
