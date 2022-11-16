@@ -1,13 +1,22 @@
 <script>
+	import { goto } from '$app/navigation';
+	import { page } from '$app/stores';
 	import { Album } from '$lib/models/photos/Album';
 
+	export let uid = '';
 	export let album = new Album();
 </script>
 
 <div
 	class="img-fluid rounded d-flex flex-column-reverse"
 	style="background-image: url({album.cover});
-					 background-size: no-repeat; background-position: center; background-size: cover; min-height:16em;"
+					 background-size: no-repeat; background-position: center; background-size: cover; min-height:16em; cursor:pointer;"
+	on:click={() => {
+		if (uid != '' && album.photos.length > 0) {
+			document.documentElement.requestFullscreen();
+			goto(`/fullscreen/photos/${uid}?returnTo=${$page.url}`);
+		}
+	}}
 >
 	<div class="d-flex justify-content-between bg-dark text-light bg-opacity-25 p-3 rounded-bottom">
 		<div>
