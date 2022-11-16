@@ -1,7 +1,6 @@
 <script>
 	import { goto } from '$app/navigation';
 	import { page } from '$app/stores';
-	import { onMount } from 'svelte';
 
 	export let title = 'Название';
 	export let routesLeft = new Array();
@@ -9,8 +8,6 @@
 	export let isAdmin = true;
 	let innerWidth = 0;
 	let breakpoint = 922;
-
-	onMount(() => console.log($page.url.pathname.split('/')[2]));
 </script>
 
 <svelte:window bind:innerWidth />
