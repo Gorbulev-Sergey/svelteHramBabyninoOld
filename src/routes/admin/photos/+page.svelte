@@ -3,7 +3,7 @@
 	import PageTitle from '$lib/components/PageTitle.svelte';
 	import Album from '$lib/components/photos/Album.svelte';
 	import { db } from '$lib/scripts/firebase';
-	import { onValue, ref } from 'firebase/database';
+	import { onValue, ref, remove } from 'firebase/database';
 	import { onMount } from 'svelte';
 
 	let albums = new Object();
@@ -25,7 +25,21 @@
 <div class="row row-cols-1 row-cols-md-3 g-3">
 	{#each Object.entries(albums).reverse() as [uid, album]}
 		<div class="col">
-			<Album {album} />
+			<Album {album}>
+				<div slot="navigation" class="flex-grow-1 d-flex justify-content-end align-items-start m-2">
+					<button
+						class="btn btn-sm btn-dark me-1"
+						on:click={() => {
+							goto(`/admin/photos/edit/${uid}`);
+						}}><i class="fa-solid fa-pencil" /></button
+					>
+					<button
+						class="btn btn-sm btn-dark"
+						on:click={async () => remove(ref(db, `/photos/${uid}`))}
+						><i class="fa-solid fa-trash text-danger" /></button
+					>
+				</div>
+			</Album>
 		</div>
 	{/each}
 </div>
