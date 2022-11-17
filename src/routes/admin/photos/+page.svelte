@@ -25,7 +25,7 @@
 <div class="row row-cols-1 row-cols-md-3 g-3">
 	{#each Object.entries(albums).reverse() as [uid, album]}
 		<div class="col">
-			<Album {album} {uid}>
+			<Album {uid} {album}>
 				<div slot="navigation" class="flex-grow-1 d-flex justify-content-end align-items-start m-2">
 					<button
 						class="btn btn-sm btn-dark me-1"

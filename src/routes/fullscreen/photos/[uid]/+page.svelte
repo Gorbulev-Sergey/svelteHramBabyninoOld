@@ -6,7 +6,6 @@
 	import { db } from '$lib/scripts/firebase';
 	import { get, onValue, ref } from 'firebase/database';
 	import { onMount } from 'svelte';
-	import { element } from 'svelte/internal';
 
 	let album = new Album();
 
@@ -30,7 +29,7 @@
 		class="btn btn-close btn-close-white position-fixed m-3"
 		style="z-index: 1000; right:0;"
 		on:click={() => {
-			if (!document.exitFullscreen) document.exitFullscreen();
+			if (document.fullscreenElement) document.exitFullscreen();
 			$page.url.searchParams.get('returnTo')
 				? goto($page.url.searchParams.get('returnTo'))
 				: goto('/guest/photos');
