@@ -36,15 +36,17 @@
 		}}
 	/>
 	<div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
-		<div class="carousel-indicators">
-			{#each album.photos as photo, i}
-				<button
-					data-bs-target="#carouselExampleIndicators"
-					class={i == 0 ? 'active' : ''}
-					data-bs-slide-to={i.toString()}
-				/>
-			{/each}
-		</div>
+		{#if album.photos.length > 1}
+			<div class="carousel-indicators">
+				{#each album.photos as photo, i}
+					<button
+						data-bs-target="#carouselExampleIndicators"
+						class={i == 0 ? 'active' : ''}
+						data-bs-slide-to={i.toString()}
+					/>
+				{/each}
+			</div>
+		{/if}
 		<div class="carousel-inner">
 			{#each album.photos as photo, i}
 				<div class="carousel-item {i == 0 ? 'active' : ''}">
@@ -53,6 +55,11 @@
 						style="background-image: url({photo.url});
 							background-repeat: no-repeat; background-position: center; background-size: contain; min-height:100vh;"
 					/>
+					{#if photo.title}
+						<div class="carousel-caption d-none d-md-block mb-2">
+							{photo.title}
+						</div>
+					{/if}
 				</div>
 			{/each}
 		</div>
