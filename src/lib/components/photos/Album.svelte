@@ -5,6 +5,7 @@
 
 	export let uid = '';
 	export let album = new Album();
+	let hoverEffect = 'bg-opacity-25';
 </script>
 
 <div
@@ -16,8 +17,10 @@
 			goto(`/fullscreen/photos/${uid}?returnTo=${$page.url}`);
 		}
 	}}
+	on:mousemove={() => (hoverEffect = 'bg-opacity-75')}
+	on:mouseleave={() => (hoverEffect = 'bg-opacity-25')}
 >
-	<div class="d-flex justify-content-between bg-dark text-light bg-opacity-25 p-3 rounded-bottom">
+	<div class="d-flex justify-content-between bg-dark text-light {hoverEffect} p-3 rounded-bottom">
 		<div>
 			<h5 class="mb-0">
 				{album.title}
