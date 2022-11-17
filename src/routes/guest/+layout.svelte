@@ -12,6 +12,10 @@
 		{
 			url: '/guest/photos',
 			title: 'Фотографии'
+		},
+		{
+			url: '/guest/contacts',
+			title: 'Контакты'
 		}
 	];
 	let routesRight = [

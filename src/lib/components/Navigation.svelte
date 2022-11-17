@@ -35,13 +35,7 @@
 			{#if isAdmin}
 				<div>
 					{#each routesRight as item}
-						<a
-							class="btn btn-light bg-white border-0 me-1 {item.url.split('/')[2] ==
-							$page.url.pathname.split('/')[2]
-								? 'fw-bold'
-								: ''}"
-							href={item.url}>{item.title}</a
-						>
+						<a class="btn btn-light bg-white border-0 me-1" href={item.url}>{item.title}</a>
 					{/each}
 				</div>
 			{/if}

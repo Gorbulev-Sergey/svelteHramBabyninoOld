@@ -1,0 +1,105 @@
+<script>
+	// @ts-nocheck
+
+	import PageTitle from '$lib/components/PageTitle.svelte';
+	import { Contacts } from '$lib/models/Contacts';
+	import { db } from '$lib/scripts/firebase';
+	import { onValue, ref, set } from 'firebase/database';
+	import { onMount } from 'svelte';
+
+	let contacts = new Contacts(
+		new Array(
+			...[
+				{ day: 'понедельник', time: 'выходной' },
+				{ day: 'вторник-пятница', time: 'с 9:00 до 13:00' },
+				{ day: 'суббота', time: 'с 8:00 до 13:00 - с 16:30 до 18:30' },
+				{ day: 'воскресенье', time: 'с 8:00 до 13:00' }
+			]
+		),
+		new Array(
+			...[
+				{ title: 'дежурный', phone: '8-902-934-63-62' },
+				{ title: 'иерей Алексий Гарасим (настоятель храма)', phone: '8-920-876-89-28' },
+				{ title: 'иерей Сергий Горбулёв', phone: '8-910-516-36-86' }
+			]
+		),
+		new Array(
+			...[
+				{
+					title: 'Вконтакте',
+					icon: '<i class="fa-brands fa-vk"></i>',
+					url: 'https://vk.com/hrambabynino'
+				}
+			]
+		),
+		{
+			title: '249210, Калужская обл., пос. Бабынино, Базарная пл., 1',
+			yandexMapsUrl: 'https://yandex.ru/maps/-/CCUbrJq43C'
+		}
+	);
+	onMount(() => {
+		onValue(ref(db, '/contacts'), (s) => {
+			if (!s.exists()) {
+				set(ref(db, '/contacts'), contacts);
+			}
+		});
+	});
+</script>
+
+<PageTitle title="Контакты" />
+
+<div class="row row-cols-1 row-cols-md-4 g-3">
+	<div class="col-md-5">
+		<div class="bg-white rounded p-3 w-100 h-100">
+			<h5>Расписание работы храма:</h5>
+			{#each contacts.scheduleOfWork as item}
+				<div class="d-flex justify-content-between align-items-center mb-1">
+					{item.day}
+					<div class="badge bg-dark">{item.time}</div>
+				</div>
+			{/each}
+		</div>
+	</div>
+	<div class="col-md-5">
+		<div class="bg-white rounded p-4 w-100 h-100">
+			<h5>Контактные телефоны:</h5>
+			{#each contacts.phones as item}
+				<div class="d-flex justify-content-between align-items-center mb-1">
+					{item.title}
+					<div class="badge bg-dark">{item.phone}</div>
+				</div>
+			{/each}
+		</div>
+	</div>
+	<div class="col-md-2">
+		<div class="bg-white rounded p-4 w-100 h-100">
+			<h5>Соцсети:</h5>
+			{#each contacts.socialNetworks as item}
+				<a class="btn btn-dark rounded-circle" href={item.url} target="_blanck" alt=""
+					>{@html item.icon}</a
+				>
+			{/each}
+		</div>
+	</div>
+</div>
+<div class="row mt-3">
+	<div class="col">
+		<div class="bg-white rounded p-4">
+			<h5>Адрес храма:</h5>
+			<p>{contacts.address.title}</p>
+			<div class="rounded w-100" style="overflow:hidden; height:400px">
+				<iframe
+					title="fghjfghj"
+					src={contacts.address.yandexMapsUrl.replace(
+						'https://yandex.ru/maps/',
+						'https://yandex.ru/map-widget/v1/'
+					)}
+					width="100%"
+					height="100%"
+					frameborder="1"
+					allowfullscreen="true"
+				/>
+			</div>
+		</div>
+	</div>
+</div>
