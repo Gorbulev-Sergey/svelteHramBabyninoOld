@@ -13,7 +13,6 @@
 					 background-size: no-repeat; background-position: center; background-size: cover; min-height:16em; cursor:pointer;"
 	on:click={() => {
 		if (uid != '' && album.photos.length > 0) {
-			document.documentElement.requestFullscreen();
 			goto(`/fullscreen/photos/${uid}?returnTo=${$page.url}`);
 		}
 	}}

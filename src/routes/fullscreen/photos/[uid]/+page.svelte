@@ -6,10 +6,19 @@
 	import { db } from '$lib/scripts/firebase';
 	import { get, onValue, ref } from 'firebase/database';
 	import { onMount } from 'svelte';
+	import { element } from 'svelte/internal';
 
 	let album = new Album();
 
 	onMount(async () => {
+		document.documentElement.requestFullscreen();
+		document.onfullscreenchange = (e) => {
+			if (!document.fullscreenElement) {
+				$page.url.searchParams.get('returnTo')
+					? goto($page.url.searchParams.get('returnTo'))
+					: goto('/guest/photos');
+			}
+		};
 		onValue(ref(db, `/photos/${$page.params.uid}`), (s) => {
 			if (s.exists()) album = s.val();
 		});
@@ -21,7 +30,7 @@
 		class="btn btn-close btn-close-white position-fixed m-3"
 		style="z-index: 1000; right:0;"
 		on:click={() => {
-			document.exitFullscreen();
+			if (!document.exitFullscreen) document.exitFullscreen();
 			$page.url.searchParams.get('returnTo')
 				? goto($page.url.searchParams.get('returnTo'))
 				: goto('/guest/photos');
