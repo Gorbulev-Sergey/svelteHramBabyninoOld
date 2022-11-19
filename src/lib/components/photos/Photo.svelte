@@ -11,7 +11,7 @@
 <div
 	class="img-fluid rounded d-flex flex-column {_class}"
 	style="background-image: url({photo.url});
-					 background-size: no-repeat; background-position: center; background-size: cover; min-height:16em;"
+		background-repeat: no-repeat; background-position: center; background-size: cover; min-height:16em;"
 >
 	<div class="flex-grow-1 d-flex justify-content-end align-items-start m-3">
 		<button class="btn btn-sm btn-dark" on:click={() => onDelete()}

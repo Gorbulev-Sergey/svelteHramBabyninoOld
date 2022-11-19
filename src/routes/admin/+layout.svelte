@@ -16,6 +16,10 @@
 		{
 			url: '/admin/tags',
 			title: 'Теги'
+		},
+		{
+			url: '/admin/storage',
+			title: 'Хранилище'
 		}
 	];
 	let routesRight = [
