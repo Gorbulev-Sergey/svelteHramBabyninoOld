@@ -26,8 +26,8 @@
 
 {#if album.photos.length > 0}
 	<button
-		class="btn btn-close btn-close-white position-fixed m-3"
-		style="z-index: 1000; right:0;"
+		class="btn btn-close btn-close-white position-absolute m-3"
+		style="z-index: 1000; right:0; top:0"
 		on:click={() => {
 			if (document.fullscreenElement) document.exitFullscreen();
 			$page.url.searchParams.get('returnTo')
@@ -69,7 +69,7 @@
 				data-bs-target="#carouselExampleIndicators"
 				data-bs-slide="prev"
 			>
-				<span class="carousel-control-prev-icon" aria-hidden="true" />
+				<span class="carousel-control-prev-icon" />
 				<span class="visually-hidden">Предыдущий</span>
 			</button>
 			<button
@@ -77,7 +77,7 @@
 				data-bs-target="#carouselExampleIndicators"
 				data-bs-slide="next"
 			>
-				<span class="carousel-control-next-icon" aria-hidden="true" />
+				<span class="carousel-control-next-icon" />
 				<span class="visually-hidden">Следующий</span>
 			</button>
 		{/if}
