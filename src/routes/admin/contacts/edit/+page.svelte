@@ -112,7 +112,7 @@
 			</div>
 			<!-- Социальные сети -->
 			<div class="col bg-white rounded p-3 mb-3">
-				<div class="d-flex justify-content-between align-items-start">
+				<div class="d-flex justify-content-between align-items-start mb-1">
 					<h5>Социальные сети:</h5>
 					<button
 						class="btn btn-sm btn-dark"
@@ -124,43 +124,43 @@
 						}}>Добавить <i class="fa-solid fa-circle-plus" /></button
 					>
 				</div>
-				<div class="input-group input-group-sm">
-					<div class="form-control border-0">
-						<span class="badge bg-dark text-light">название</span>
-					</div>
-					<div class="form-control border-0">
-						<span class="badge bg-dark text-light">url ссылка на страницу</span>
-					</div>
-					<div class="form-control border-0">
-						<span class="badge bg-dark text-light">иконка соц.сети (html теги)</span>
-					</div>
-					<button class="btn btn-sm invisible"><i class="fa-solid fa-delete-left" /></button>
-				</div>
 				{#each contacts.socialNetworks as item}
-					<div class="input-group input-group-sm mb-1">
-						<input
-							class="form-control form-control-sm"
-							bind:value={item.title}
-							placeholder="название"
-						/>
-						<input class="form-control form-control-sm" bind:value={item.url} placeholder="url" />
-						<div class="form-control form-control-sm">
-							<div class="input-group input-group-sm align-items-center p-0">
-								{#if item.icon}
-									<div class="me-2" style="font-size: 1.5em;">
-										{@html item.icon}
-									</div>
-								{/if}
-								<input class="form-control border-0" bind:value={item.icon} placeholder="иконка" />
+					<div class="row g-2 mb-1">
+						<div class="col">
+							<div class="input-group input-group-sm">
+								<span class="input-group-text">название:</span>
+								<input class="form-control" bind:value={item.title} placeholder="название" />
 							</div>
 						</div>
-
-						<button
-							class="btn btn-sm btn-dark"
-							on:click={async () => {
-								contacts.socialNetworks = contacts.socialNetworks.filter((i) => i != item);
-							}}><i class="fa-solid fa-trash" /></button
-						>
+						<div class="col">
+							<div class="input-group input-group-sm me-2">
+								<span class="input-group-text">url:</span>
+								<input class="form-control" bind:value={item.url} placeholder="url ссылки" />
+							</div>
+						</div>
+						<div class="col">
+							<div class="d-flex align-items-center">
+								<div class="input-group input-group-sm me-2">
+									<span class="input-group-text">иконка:</span>
+									<input
+										class="form-control"
+										bind:value={item.icon}
+										placeholder="иконка (html тег)"
+									/>
+									{#if item.icon}
+										<span class="input-group-text" style="font-size: 1.3em;">
+											{@html item.icon}
+										</span>
+									{/if}
+								</div>
+								<button
+									class="btn btn-sm btn-dark"
+									on:click={async () => {
+										contacts.socialNetworks = contacts.socialNetworks.filter((i) => i != item);
+									}}><i class="fa-solid fa-trash" /></button
+								>
+							</div>
+						</div>
 					</div>
 				{/each}
 			</div>
