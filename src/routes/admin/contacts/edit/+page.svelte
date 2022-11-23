@@ -42,6 +42,15 @@
 				}}><i class="fa-solid fa-circle-plus" /></button
 			>
 		</div>
+		<div class="input-group">
+			<div class="form-control border-0">
+				<span class="badge bg-dark text-light">день недели</span>
+			</div>
+			<div class="form-control border-0">
+				<span class="badge bg-dark text-light">время</span>
+			</div>
+			<button class="btn btn-sm invisible"><i class="fa-solid fa-delete-left" /></button>
+		</div>
 		{#each contacts.scheduleOfWork as item}
 			<div class="input-group mb-1">
 				<input class="form-control" bind:value={item.day} />
