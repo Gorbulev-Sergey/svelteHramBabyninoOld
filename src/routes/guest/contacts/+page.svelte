@@ -46,7 +46,7 @@
 			<div class="bg-white rounded p-3 w-100 h-100">
 				<h5>Соцсети:</h5>
 				{#each contacts.socialNetworks as item}
-					<a class="btn btn-dark rounded-circle" href={item.url} target="_blanck" alt=""
+					<a class="btn btn-dark rounded-circle me-1" href={item.url} target="_blanck" alt=""
 						>{@html item.icon}</a
 					>
 				{/each}
