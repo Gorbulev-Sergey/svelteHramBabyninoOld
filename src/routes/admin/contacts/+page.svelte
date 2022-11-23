@@ -1,20 +1,28 @@
 <script>
 	// @ts-nocheck
+	import { goto } from '$app/navigation';
 	import PageTitle from '$lib/components/PageTitle.svelte';
 	import { Contacts } from '$lib/models/Contacts';
 	import { db } from '$lib/scripts/firebase';
-	import { onValue, push, ref, set } from 'firebase/database';
+	import { onValue, ref } from 'firebase/database';
 	import { onMount } from 'svelte';
 
 	let contacts;
 	onMount(() => {
 		onValue(ref(db, '/contacts'), (s) => {
-			if (s.exists()) contacts = s.val();
+			if (s.exists()) {
+				contacts = s.val();
+			}
 		});
 	});
 </script>
 
-<PageTitle title="Контакты" />
+<PageTitle title="Контакты">
+	<div slot="navigation">
+		<button class="btn btn-dark" on:click={() => goto('/admin/contacts/edit')}>Редактировать</button
+		>
+	</div>
+</PageTitle>
 
 {#if contacts}
 	<div class="row row-cols-1 row-cols-md-4 g-3">

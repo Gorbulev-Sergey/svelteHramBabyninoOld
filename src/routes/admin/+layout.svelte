@@ -18,6 +18,10 @@
 			title: 'Теги'
 		},
 		{
+			url: '/admin/contacts',
+			title: 'Контакты'
+		},
+		{
 			url: '/admin/storage',
 			title: 'Хранилище'
 		}
