@@ -14,25 +14,29 @@
 	onMount(() => {
 		onValue(ref(db, '/settings'), (s) => (theme = s.val().theme));
 	});
+	function changeTheme() {
+		theme = theme == 'light' ? 'dark' : 'light';
+		set(ref(db, '/settings/theme'), theme);
+	}
 </script>
 
 <svelte:head>
 	<link href="/bootstrap.{theme}.min.css" rel="stylesheet" />
 </svelte:head>
 
-<div class="fixed-top bg-white py-2">
+<div class="fixed-top bg-light text-dark py-2">
 	<CheckBreakepoint>
 		<div slot="big">
 			<div class="container-fluid d-flex justify-content-between align-items-center">
 				<div class="flex-grow-1 d-flex justify-content-start align-items-center">
 					<button
-						class="btn btn-light bg-white border-0 text-uppercase me-2"
+						class="btn btn-light bg-transparent text-dark border-0 text-uppercase me-2"
 						on:click={() => goto(routesLeft[0].url)}><b>{@html title}</b></button
 					>
 					<div>
 						{#each routesLeft as item}
 							<a
-								class="btn btn-light bg-white border-0 me-1 {item.url.split('/')[2] ==
+								class="btn btn-light text-dark border-0 me-1 {item.url.split('/')[2] ==
 								$page.url.pathname.split('/')[2]
 									? 'fw-bold'
 									: ''}"
@@ -41,17 +45,13 @@
 						{/each}
 					</div>
 				</div>
-				<button
-					class="btn btn-light bg-white border-0 me-1"
-					on:click={async () => {
-						theme = theme == 'light' ? 'dark' : 'light';
-						set(ref(db, '/settings/theme'), theme);
-					}}><i class="fa-regular fa-sun" /></button
+				<button class="btn btn-light text-dark border-0 me-1" on:click={async () => changeTheme()}
+					><i class="fa-regular fa-sun" /></button
 				>
 				{#if isAdmin}
 					<div>
 						{#each routesRight as item}
-							<a class="btn btn-light bg-white border-0 me-1" href={item.url}>{item.title}</a>
+							<a class="btn btn-light text-dark border-0 me-1" href={item.url}>{item.title}</a>
 						{/each}
 					</div>
 				{/if}
@@ -61,38 +61,35 @@
 			<div class="container-fluid d-flex justify-content-between align-items-center dropdown">
 				<div class="flex-grow-1 d-flex justify-content-between align-items-center">
 					<button
-						class="btn btn-light bg-white border-0 text-uppercase me-2"
+						class="btn btn-light text-dark border-0 text-uppercase"
 						on:click={() => goto(routesLeft[0].url)}><b>{@html title}</b></button
 					><button
-						class="btn btn-light bg-white border-0 me-1"
-						on:click={async () => {
-							theme = theme == 'light' ? 'dark' : 'light';
-							set(ref(db, '/settings/theme'), theme);
-						}}><i class="fa-regular fa-sun" /></button
+						class="btn btn-light text-dark border-0 me-1"
+						on:click={async () => changeTheme()}><i class="fa-regular fa-sun" /></button
 					>
 				</div>
-				<button
-					class="btn btn-light bg-white border-0 text-uppercase me-2"
-					data-bs-toggle="dropdown"><i class="fa-solid fa-bars" /></button
+				<button class="btn btn-light text-dark border-0 text-uppercase" data-bs-toggle="dropdown"
+					><i class="fa-solid fa-bars" /></button
 				>
 
-				<ul class="dropdown-menu border-0 rounded-0 w-100 py-2 mt-1">
+				<div class="dropdown-menu border-0 rounded-0 w-100 bg-light text-dark shadow-sm">
 					{#each routesLeft as item}
-						<li>
+						<div class="bg-light text-dark">
 							<a
-								class="dropdown-item ps-4 py-2 {item.url.split('/')[2] ==
-								$page.url.pathname.split('/')[2]
+								class="btn btn-light text-dark w-100 text-start rounded-0 ps-4 {item.url.split(
+									'/'
+								)[2] == $page.url.pathname.split('/')[2]
 									? 'fw-bold'
 									: ''}"
 								href={item.url}>{item.title}</a
 							>
-						</li>
+						</div>
 					{/each}
 					{#if isAdmin}
 						{#each routesRight as item}
-							<li>
+							<div class="bg-light text-dark">
 								<button
-									class="dropdown-item ps-4 py-2"
+									class="btn btn-light text-dark w-100 text-start rounded-0 ps-4"
 									on:click={async () => {
 										goto(item.url);
 									}}
@@ -101,10 +98,10 @@
 										{item.title}
 									</b>
 								</button>
-							</li>
+							</div>
 						{/each}
 					{/if}
-				</ul>
+				</div>
 			</div>
 		</div>
 	</CheckBreakepoint>
