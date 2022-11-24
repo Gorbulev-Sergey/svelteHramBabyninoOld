@@ -6,7 +6,7 @@
 </script>
 
 {#if month.fildsDayNotEmpty != null}
-	<div class="rounded bg-white w-100 overflow-auto">
+	<div class="rounded bg-light text-dark w-100 overflow-auto">
 		<div class="print-title">
 			<div class="py-2 ps-4">
 				<b>Расписание на {month.monthName()?.toUpperCase()} {month.year} года</b>

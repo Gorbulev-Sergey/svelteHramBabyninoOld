@@ -6,40 +6,12 @@
 
 	export let uid = '';
 	export let post = new Post();
-	Date.prototype.monthName = function () {
-		switch (this.getMonth() + 1) {
-			case 1:
-				return 'января';
-			case 2:
-				return 'февраля';
-			case 3:
-				return 'марта';
-			case 4:
-				return 'апреля';
-			case 5:
-				return 'мая';
-			case 6:
-				return 'июня';
-			case 7:
-				return 'июля';
-			case 8:
-				return 'августа';
-			case 9:
-				return 'сентября';
-			case 10:
-				return 'октября';
-			case 11:
-				return 'ноября';
-			case 12:
-				return 'декабря';
-		}
-	};
 	let showContent = false;
 </script>
 
 <div
 	id={uid ? uid : ''}
-	class="card mb-3 p-0 {!post.inverted ? 'bg-white text-dark' : 'bg-dark text-light'} border-0"
+	class="card mb-3 p-0 {!post.inverted ? 'bg-light text-dark' : 'bg-dark text-light'} border-0"
 >
 	<div id={new Date(post.created).toISOString()} class="row g-0">
 		<div class="{post.cover ? 'col-md-8' : ''} d-flex flex-column">
@@ -61,8 +33,8 @@
 							{#each post.tags as tag}
 								<button
 									class="badge {!post.inverted
-										? 'bg-secondary text-dark bg-opacity-10'
-										: 'bg-secondary text-white bg-opacity-50'} text-decoration-none p-1 me-1 border-0"
+										? 'bg-secondary text-dark'
+										: 'bg-secondary text-white'} text-decoration-none p-1 me-1 border-0"
 									on:click={() => {
 										goto(`/${$page.url.pathname.split('/')[1]}/posts/${tag.name}`);
 									}}>{tag.name}</button
@@ -114,7 +86,7 @@
 				<div
 					class="img-fluid  rounded-end h-100"
 					style="background-image: url({post.cover.image});
-					 background-size: no-repeat; background-position: center; background-size: cover; min-height:12em;"
+					 background-repeat: no-repeat; background-position: center; background-size: cover; min-height:12em;"
 				/>
 			{/if}
 		</div>

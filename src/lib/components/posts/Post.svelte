@@ -39,11 +39,11 @@
 <div id={new Date(post.created).toISOString()} class="col mb-3">
 	<div
 		class="card {!post.inverted
-			? 'bg-white text-dark'
-			: 'bg-dark text-light'} border-0  h-100 border"
+			? 'bg-light text-dark'
+			: 'bg-dark text-light'} border-0 h-100 border"
 	>
 		<div
-			class="card-header {!post.inverted ? 'bg-white text-dark' : 'bg-dark text-light'} border-0"
+			class="card-header {!post.inverted ? 'bg-light text-dark' : 'bg-dark text-light'} border-0"
 		>
 			<div class="d-flex justify-content-between">
 				<h5 class="card-title mb-1">{post.title}</h5>
@@ -62,8 +62,8 @@
 						{#each post.tags as tag}
 							<button
 								class="badge {!post.inverted
-									? 'bg-secondary text-dark bg-opacity-10'
-									: 'bg-secondary text-white bg-opacity-50'} text-decoration-none p-1 me-1 border-0"
+									? 'bg-secondary text-dark'
+									: 'bg-secondary text-white'} text-decoration-none p-1 me-1 border-0"
 								on:click={() => {
 									goto(`/${$page.url.pathname.split('/')[1]}/posts/${tag.name}`);
 								}}>{tag.name}</button
@@ -90,7 +90,7 @@
 			<div
 				class="img-fluid"
 				style="background-image: url({post.cover.image});
-					 background-size: no-repeat; background-position: center; background-size: cover; min-height:12em;"
+					 background-repeat: no-repeat; background-position: center; background-size: cover; min-height:12em;"
 			/>
 		{/if}
 		<div class="d-flex align-items-center justify-content-between">
