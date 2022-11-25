@@ -8,7 +8,7 @@
 
 <div
 	class={new FildDate()._dayOfWeek(new Date(fildDate.date).getDay()) === 'воскресенье'
-		? 'bg-secondary text-danger border-dark bg-opacity-50'
+		? 'bg-primary text-danger'
 		: ''}
 	style="display: grid; grid-template-columns: .11fr 1fr; min-width: 34em;"
 >

@@ -24,7 +24,7 @@
 				{#each contacts.scheduleOfWork as item}
 					<div class="d-flex justify-content-between align-items-center mb-1">
 						{item.day}
-						<div class="badge bg-secondary text-dark">{item.time}</div>
+						<div class="badge bg-primary text-dark">{item.time}</div>
 					</div>
 				{/each}
 			</div>
@@ -36,7 +36,7 @@
 					<div class="d-flex justify-content-between align-items-center mb-1">
 						{item.title}
 						<a
-							class="badge bg-secondary text-dark"
+							class="badge bg-primary text-dark"
 							style="text-decoration: none;"
 							href="tel:{item.phone}">{item.phone}</a
 						>
@@ -48,7 +48,7 @@
 			<div class="bg-light text-dark rounded p-3 w-100 h-100">
 				<h5>Соцсети:</h5>
 				{#each contacts.socialNetworks as item}
-					<a class="btn btn-secondary rounded-circle me-1" href={item.url} target="_blanck" alt=""
+					<a class="btn btn-primary rounded-circle me-1" href={item.url} target="_blanck" alt=""
 						>{@html item.icon}</a
 					>
 				{/each}

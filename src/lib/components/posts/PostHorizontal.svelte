@@ -33,8 +33,8 @@
 							{#each post.tags as tag}
 								<button
 									class="badge {!post.inverted
-										? 'bg-secondary text-dark'
-										: 'bg-secondary text-white'} text-decoration-none p-1 me-1 border-0"
+										? 'bg-primary text-dark'
+										: 'bg-secondary text-light'} text-decoration-none p-1 me-1 border-0"
 									on:click={() => {
 										goto(`/${$page.url.pathname.split('/')[1]}/posts/${tag.name}`);
 									}}>{tag.name}</button

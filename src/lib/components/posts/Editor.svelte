@@ -10,7 +10,7 @@
 {#if !showCode}
 	<div
 		class="form-control border-0 mb-3
-					{!post.inverted ? 'bg-light text-dark bg-opacity-75' : 'bg-secondary text-light bg-opacity-10'}"
+					{!post.inverted ? 'bg-light text-dark' : 'bg-secondary text-light'}"
 		style="min-height: 20em;"
 		placeholder="содержимое"
 		contenteditable="true"
@@ -19,8 +19,8 @@
 {:else}
 	<div
 		class="form-control border-0 mb-3 {!post.inverted
-			? 'bg-light text-dark bg-opacity-75'
-			: 'bg-secondary text-light bg-opacity-10'}"
+			? 'bg-light text-dark'
+			: 'bg-secondary text-light'}"
 		style="min-height: 20em;"
 		contenteditable="true"
 		bind:textContent={post.content}
