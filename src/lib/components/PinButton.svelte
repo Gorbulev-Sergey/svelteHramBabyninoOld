@@ -3,8 +3,8 @@
 	export let titlePressed = 'кнопка';
 	export let pressed = false;
 	export let onPressed = () => {};
-	export let classNoPressed = 'btn-dark';
-	export let classPressed = 'btn-dark';
+	export let classNoPressed = 'btn-primary';
+	export let classPressed = 'btn-primary';
 	export let _class = '';
 </script>
 

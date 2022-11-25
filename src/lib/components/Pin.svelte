@@ -14,8 +14,6 @@
 		onChange();
 	}}
 >
-	<i
-		class="{classFontAwesome} {!checked ? 'text-secondary text-opacity-25' : 'text-primary'} me-1"
-	/>
+	<i class="{classFontAwesome} {!checked ? 'text-secondary text-opacity-25' : 'text-info'} me-1" />
 	<small class="pb-1">{text}</small>
 </div>

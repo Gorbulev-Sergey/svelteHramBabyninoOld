@@ -9,10 +9,10 @@
 </script>
 
 <div class="btn-group {_class}">
-	<div class="btn btn-sm btn-primary text-dark">{title}</div>
+	<div class="btn btn-sm bg-primary text-dark">{title}</div>
 	<div class="dropdown">
 		<button
-			class="btn btn-sm btn-secondary text-light dropdown-toggle rounded-0 rounded-end"
+			class="btn btn-sm btn-light text-dark dropdown-toggle rounded-0 rounded-end"
 			data-bs-toggle="dropdown"
 		>
 			{selected.name}

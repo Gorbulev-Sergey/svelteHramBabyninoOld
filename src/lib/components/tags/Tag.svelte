@@ -5,8 +5,11 @@
 </script>
 
 <div class="badge mb-1 d-inline-flex p-0 me-1">
-	<div class="bg-light text-dark px-2 py-1 rounded-start">{item.name}</div>
-	<div class="btn btn-sm btn-light px-1 py-0 rounded-0 rounded-end" on:click={() => onDelete()}>
+	<div class="bg-primary text-dark px-2 py-1 rounded-start">{item.name}</div>
+	<div
+		class="btn btn-sm btn-primary text-dark px-1 py-0 rounded-0 rounded-end"
+		on:click={() => onDelete()}
+	>
 		<i class="fa-solid fa-delete-left" />
 	</div>
 </div>
