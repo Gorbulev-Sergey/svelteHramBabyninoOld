@@ -25,9 +25,9 @@
 
 <PageTitle title="Расписание">
 	<div slot="center" class="input-group me-3">
-		<span class="input-group-text border-0">Дата:</span>
+		<span class="input-group-text bg-primary text-dark border-0">Дата:</span>
 		<input
-			class="form-control border-0"
+			class="form-control bg-light text-dark border-0"
 			type="month"
 			bind:value={m}
 			on:change={async () => {

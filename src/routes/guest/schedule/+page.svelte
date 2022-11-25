@@ -33,7 +33,6 @@
 				bind:value={m}
 				on:change={async () => {
 					$month = new _Month(Number(m.split('-')[1]), Number(m.split('-')[0]));
-					console.log($month);
 					loadData();
 				}}
 			/>
