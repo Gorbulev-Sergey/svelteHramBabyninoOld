@@ -9,8 +9,8 @@
 <EditorControls _class="mb-1" codeOnClick={() => (showCode = !showCode)} />
 {#if !showCode}
 	<div
-		class="form-control border-0 mb-3
-					{!post.inverted ? 'bg-light text-dark' : 'bg-secondary text-light'}"
+		class="form-control border-primary mb-3
+					{!post.inverted ? 'bg-light text-dark' : 'bg-dark text-light'}"
 		style="min-height: 20em;"
 		placeholder="содержимое"
 		contenteditable="true"
@@ -18,9 +18,9 @@
 	/>
 {:else}
 	<div
-		class="form-control border-0 mb-3 {!post.inverted
+		class="form-control border-primary mb-3 {!post.inverted
 			? 'bg-light text-dark'
-			: 'bg-secondary text-light'}"
+			: 'bg-dark text-light'}"
 		style="min-height: 20em;"
 		contenteditable="true"
 		bind:textContent={post.content}

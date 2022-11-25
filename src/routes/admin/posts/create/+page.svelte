@@ -37,11 +37,15 @@
 	</div>
 </PageTitle>
 
-<div class="rounded p-3 {!post.inverted ? 'bg-white text-dark' : 'bg-dark text-light'}">
+<div class="rounded p-3 {!post.inverted ? 'bg-light text-dark' : 'bg-dark text-light'}">
 	<div class="d-flex flex-wrap justify-content-between align-items-center mb-3">
 		<div class="nav nav-pills">
-			<a class="btn btn-light border-0 me-1 active" data-bs-toggle="pill" href="#cover">Обложка</a>
-			<a class="btn btn-light border-0" data-bs-toggle="pill" href="#content">Содержимое</a>
+			<a class="btn btn-light text-dark border-0 me-1 active" data-bs-toggle="pill" href="#cover"
+				>Обложка</a
+			>
+			<a class="btn btn-light text-dark border-0" data-bs-toggle="pill" href="#content"
+				>Содержимое</a
+			>
 		</div>
 		<div class="d-flex flex-wrap">
 			<Pin
@@ -69,14 +73,14 @@
 			<div class="row">
 				<div class="col-md-8">
 					<input
-						class="form-control border-0 mb-3
-						{!post.inverted ? 'bg-light text-dark bg-opacity-75' : 'bg-secondary text-light bg-opacity-10'}"
+						class="form-control border-primary mb-3
+						{!post.inverted ? 'bg-light text-dark' : 'bg-dark text-light'}"
 						placeholder="заголовок"
 						bind:value={post.title}
 					/>
 					<textarea
-						class="form-control border-0 mb-3
-						{!post.inverted ? 'bg-light text-dark bg-opacity-75' : 'bg-secondary text-light bg-opacity-10'}"
+						class="form-control border-primary mb-3
+						{!post.inverted ? 'bg-light text-dark' : 'bg-dark text-light'}"
 						placeholder="краткое описание"
 						style="min-height: 10em;"
 						bind:value={post.description}
@@ -86,8 +90,8 @@
 				<div class="col-md-4">
 					<div class="form-group mb-3">
 						<input
-							class="form-control border-0 mb-3
-							{!post.inverted ? 'bg-light text-dark bg-opacity-75' : 'bg-secondary text-light bg-opacity-10'}"
+							class="form-control border-primary mb-3
+							{!post.inverted ? 'bg-light text-dark' : 'bg-dark text-light'}"
 							placeholder="обложка (url фото)"
 							bind:value={post.cover.image}
 						/>
@@ -97,8 +101,8 @@
 					</div>
 					<div class="form-group mb-3">
 						<input
-							class="form-control border-0 mb-3
-							{!post.inverted ? 'bg-light text-dark bg-opacity-75' : 'bg-secondary text-light bg-opacity-10'}"
+							class="form-control border-primary mb-3
+							{!post.inverted ? 'bg-light text-dark' : 'bg-dark text-light'}"
 							placeholder="обложка (url видео)"
 							bind:value={post.cover.video}
 						/>

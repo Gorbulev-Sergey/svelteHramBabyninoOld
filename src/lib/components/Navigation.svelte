@@ -2,27 +2,19 @@
 	import { goto } from '$app/navigation';
 	import { page } from '$app/stores';
 	import { db } from '$lib/scripts/firebase';
+	import { theme } from '$lib/scripts/writableData';
 	import { onValue, ref, set } from 'firebase/database';
-	import { onMount } from 'svelte';
 	import CheckBreakepoint from './CheckBreakepoint.svelte';
 
 	export let title = 'Название';
 	export let routesLeft = new Array();
 	export let routesRight = new Array();
 	export let isAdmin = true;
-	$: theme = 'light';
-	onMount(() => {
-		onValue(ref(db, '/settings'), (s) => (theme = s.val().theme));
-	});
 	function changeTheme() {
-		theme = theme == 'light' ? 'dark' : 'light';
-		set(ref(db, '/settings/theme'), theme);
+		$theme = $theme == 'light' ? 'dark' : 'light';
+		localStorage.setItem('theme', $theme);
 	}
 </script>
-
-<svelte:head>
-	<link href="/bootstrap.{theme}.min.css" rel="stylesheet" />
-</svelte:head>
 
 <div class="fixed-top bg-light text-dark py-2">
 	<CheckBreakepoint>

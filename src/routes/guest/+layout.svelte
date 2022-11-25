@@ -1,6 +1,5 @@
 <script>
 	import Navigation from '$lib/components/Navigation.svelte';
-	import { onMount } from 'svelte';
 	let routesLeft = [
 		{
 			url: '/guest/posts',
