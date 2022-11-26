@@ -11,8 +11,8 @@
 	export let routesRight = new Array();
 	export let isAdmin = true;
 	function changeTheme() {
-		$theme = $theme == 'light' ? 'dark' : 'light';
 		localStorage.setItem('theme', $theme);
+		$theme = $theme == 'light' ? 'dark' : 'light';
 	}
 </script>
 
