@@ -2,9 +2,13 @@
 	import { theme } from '$lib/scripts/writableData';
 	import { onMount } from 'svelte';
 
-	onMount(async () => {
-		if (localStorage.getItem('theme')) $theme = localStorage.getItem('theme');
-		else localStorage.setItem('theme', 'light');
+	onMount(() => {
+		if (localStorage.getItem('theme')) {
+			$theme = localStorage.getItem('theme');
+		} else {
+			$theme = 'light';
+			localStorage.setItem('theme', 'light');
+		}
 	});
 </script>
 
