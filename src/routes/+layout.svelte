@@ -3,8 +3,9 @@
 	import { onMount } from 'svelte';
 
 	onMount(async () => {
+$theme = 'light';
 		if (!localStorage.getItem('theme')) {
-			$theme = 'light';
+			
 			localStorage.setItem('theme', 'light');
 		} else {
 			$theme = localStorage.getItem('theme') || 'light';
