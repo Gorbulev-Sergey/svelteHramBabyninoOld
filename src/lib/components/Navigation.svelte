@@ -1,7 +1,7 @@
 <script>
 	import { goto } from '$app/navigation';
 	import { page } from '$app/stores';
-	import { db } from '$lib/scripts/firebase';
+	import { auth, db } from '$lib/scripts/firebase';
 	import { theme } from '$lib/scripts/writableData';
 	import { onValue, ref, set } from 'firebase/database';
 	import CheckBreakepoint from './CheckBreakepoint.svelte';
@@ -9,7 +9,6 @@
 	export let title = 'Название';
 	export let routesLeft = new Array();
 	export let routesRight = new Array();
-	export let isAdmin = true;
 	function changeTheme() {
 		$theme = $theme == 'light' ? 'dark' : 'light';
 		localStorage.setItem('theme', $theme);
@@ -40,7 +39,7 @@
 				<button class="btn btn-light text-dark border-0" on:click={async () => changeTheme()}
 					><i class="fa-regular fa-sun" /></button
 				>
-				{#if isAdmin}
+				{#if auth.currentUser}
 					<div>
 						{#each routesRight as item}
 							<a class="btn btn-light text-dark border-0 me-1" href={item.url}>{item.title}</a>
@@ -76,7 +75,7 @@
 							>
 						</div>
 					{/each}
-					{#if isAdmin}
+					{#if auth.currentUser}
 						{#each routesRight as item}
 							<div class="bg-light text-dark">
 								<button

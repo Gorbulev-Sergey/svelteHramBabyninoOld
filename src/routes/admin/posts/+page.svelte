@@ -31,7 +31,7 @@
 		onValue(ref(db, '/posts'), (s) => {
 			if (s.exists()) posts = s.val();
 		});
-		onValue(ref(db, 'tags/'), (s) => {
+		onValue(ref(db, '/tags'), (s) => {
 			if (s.exists()) tags = Object.values(s.val());
 		});
 	});

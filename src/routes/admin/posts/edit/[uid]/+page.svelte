@@ -35,8 +35,8 @@
 			class="btn btn-dark bg-opacity-10"
 			on:click={async () => {
 				if (post.title != '') {
-					update(ref(db, `/admin/posts/${$page.params.uid}`), post);
-					goto('/posts');
+					update(ref(db, `/posts/${$page.params.uid}`), post);
+					goto('/admin/posts');
 				}
 			}}>Сохранить</button
 		>

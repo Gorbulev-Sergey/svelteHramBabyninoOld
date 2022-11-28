@@ -29,8 +29,8 @@
 			class="btn btn-dark bg-opacity-10"
 			on:click={async () => {
 				if (post.title != '') {
-					push(ref(db, '/admin/posts'), post);
-					goto('/posts');
+					push(ref(db, '/posts'), post);
+					goto('/admin/posts');
 				}
 			}}>Сохранить</button
 		>
