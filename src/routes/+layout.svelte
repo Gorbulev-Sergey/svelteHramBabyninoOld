@@ -2,14 +2,16 @@
 	import { theme } from '$lib/scripts/writableData';
 	import { onMount } from 'svelte';
 
-	onMount(async () => {
-$theme = 'light';
-		if (!localStorage.getItem('theme')) {
-			
-			localStorage.setItem('theme', 'light');
-		} else {
-			$theme = localStorage.getItem('theme') || 'light';
-		}
+	onMount(() => {
+		new Promise((res, rej) => {
+			let t = 'light';
+			if (!localStorage.getItem('theme')) {
+				localStorage.setItem('theme', 'light');
+			} else {
+				t = localStorage.getItem('theme') || 'light';
+			}
+			res(t);
+		}).then((res) => ($theme = res));
 	});
 </script>
 
