@@ -16,7 +16,7 @@
 </script>
 
 <svelte:head>
-	<link href="/bootstrap.{$theme}.min.css" rel="stylesheet" />
+	<link href="/bootstrap.{$theme == '' ? 'light' : $theme}.min.css" rel="stylesheet" />
 </svelte:head>
 
 {#if $theme != ''}
