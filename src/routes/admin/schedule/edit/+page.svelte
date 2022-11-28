@@ -57,7 +57,7 @@
 					ref(db, `schedule/${$month.year}/${$month.monthName()}`),
 					Object.assign({}, $month.fildsDayNotEmpty)
 				);
-				goto('/schedule');
+				goto('/admin/schedule');
 			}}>Сохранить</button
 		>
 	</div>

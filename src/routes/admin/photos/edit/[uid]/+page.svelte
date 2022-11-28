@@ -28,7 +28,7 @@
 			class="btn btn-dark bg-opacity-10"
 			on:click={async () => {
 				if (!album.cover && album.photos.length > 0) album.cover = album.photos[0].url;
-				update(ref(db, `/photos/${$page.params.uid}`), album);
+				update(ref(db, `/admin/photos/${$page.params.uid}`), album);
 				goto('/admin/photos');
 			}}>Сохранить</button
 		>
