@@ -8,6 +8,8 @@
 	import { onMount } from 'svelte';
 	import Post from '$lib/components/posts/Post.svelte';
 	import PostHorizontal from '$lib/components/posts/PostHorizontal.svelte';
+	import AfterBreakpoint from '$lib/components/Breakpoint/AfterBreakpoint.svelte';
+	import BeforeBreakpoint from '$lib/components/Breakpoint/BeforeBreakpoint.svelte';
 
 	let tags = new Array();
 	let posts = new Array();
@@ -51,7 +53,12 @@
 	<div class="col-md-8">
 		{#each filterPosts().filter((p) => p.pinned) as item, i}
 			{#if item.pinned && checkIndex(i, [1, 2, 4, 6, 7, 9])}
-				<PostHorizontal bind:post={item} />
+				<AfterBreakpoint>
+					<PostHorizontal bind:post={item} />
+				</AfterBreakpoint>
+				<BeforeBreakpoint>
+					<Post bind:post={item} />
+				</BeforeBreakpoint>
 			{/if}
 		{/each}
 	</div>
@@ -76,7 +83,12 @@
 	<div class="col-md-8">
 		{#each filterPosts().filter((p) => !p.pinned) as item, i}
 			{#if !item.pinned && checkIndex(i, [1, 2, 4, 6, 7, 9])}
-				<PostHorizontal bind:post={item} />
+				<AfterBreakpoint>
+					<PostHorizontal bind:post={item} />
+				</AfterBreakpoint>
+				<BeforeBreakpoint>
+					<Post bind:post={item} />
+				</BeforeBreakpoint>
 			{/if}
 		{/each}
 	</div>
