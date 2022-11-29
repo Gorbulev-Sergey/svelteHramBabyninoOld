@@ -31,7 +31,10 @@
 </script>
 
 <PageTitle title={$page.params.tag[0].toUpperCase() + $page.params.tag.slice(1)}>
-	<div slot="navigation" class="btn-group btn-group-sm overflow-auto">
+	<div
+		slot="navigation"
+		class="btn-group btn-group-sm flex-nowrap mt-md-0 mt-1 overflow-auto scroll"
+	>
 		{#each tags as item}
 			<button
 				class="btn btn-light {item.name == $page.params.tag ? 'active' : ''}"
@@ -78,3 +81,9 @@
 		{/each}
 	</div>
 </div>
+
+<style>
+	.scroll::-webkit-scrollbar {
+		height: 0;
+	}
+</style>
