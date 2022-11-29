@@ -3,7 +3,7 @@
 	import { page } from '$app/stores';
 	import { auth, db } from '$lib/scripts/firebase';
 	import { theme } from '$lib/scripts/writableData';
-	import { onValue, ref, set } from 'firebase/database';
+	import { onMount } from 'svelte';
 	import CheckBreakepoint from './CheckBreakepoint.svelte';
 
 	export let title = 'Название';
@@ -13,6 +13,11 @@
 		$theme = $theme == 'light' ? 'dark' : 'light';
 		localStorage.setItem('theme', $theme);
 	}
+	/**
+	 * @type {import("@firebase/auth").User | null}
+	 */
+	let currentUser;
+	onMount(async () => (currentUser = auth.currentUser));
 </script>
 
 <div class="fixed-top bg-light text-dark py-2">
@@ -39,7 +44,7 @@
 				<button class="btn btn-light text-dark border-0" on:click={async () => changeTheme()}
 					><i class="fa-regular fa-sun" /></button
 				>
-				{#if auth.currentUser}
+				{#if currentUser}
 					<div>
 						{#each routesRight as item}
 							<a class="btn btn-light text-dark border-0 me-1" href={item.url}>{item.title}</a>
@@ -75,7 +80,7 @@
 							>
 						</div>
 					{/each}
-					{#if auth.currentUser}
+					{#if currentUser}
 						{#each routesRight as item}
 							<div class="bg-light text-dark">
 								<button

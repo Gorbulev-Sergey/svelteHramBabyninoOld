@@ -2,6 +2,7 @@
 	import { goto } from '$app/navigation';
 	import Navigation from '$lib/components/Navigation.svelte';
 	import { auth } from '$lib/scripts/firebase';
+	import { onMount } from 'svelte';
 
 	let routesLeft = [
 		{
@@ -27,6 +28,11 @@
 			title: 'Панель управления'
 		}
 	];
+	/**
+	 * @type {import("@firebase/auth").User | null}
+	 */
+	let currentUser;
+	onMount(async () => (currentUser = auth.currentUser));
 </script>
 
 <Navigation
@@ -37,7 +43,7 @@
 <div class="container" style="margin-top:4.5em; margin-bottom:3em; min-height:90vh;">
 	<slot />
 </div>
-<div class="bg-light text-dark no-print">
+<footer class="bg-light text-dark no-print">
 	<div class="p-3">
 		<div class="d-flex justify-content-between align-items-start">
 			<div class="pt-2">
@@ -45,7 +51,7 @@
 				<span>Храм "Вознесения Господня", посёлок Бабынино, Калужская область</span>
 			</div>
 
-			{#if auth.currentUser}
+			{#if currentUser}
 				<button
 					class="btn btn-light text-dark"
 					title="Выйти"
@@ -64,4 +70,4 @@
 			{/if}
 		</div>
 	</div>
-</div>
+</footer>
