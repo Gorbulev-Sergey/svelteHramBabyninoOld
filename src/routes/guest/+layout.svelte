@@ -47,27 +47,31 @@
 	<div class="p-3">
 		<div class="d-flex justify-content-between align-items-start">
 			<div class="pt-2">
-				<i class="fa-solid fa-copyright me-2" />
-				<span>Храм "Вознесения Господня", посёлок Бабынино, Калужская область</span>
-			</div>
-
-			{#if currentUser}
-				<button
-					class="btn btn-light text-dark"
-					title="Выйти"
-					on:click={() => {
-						auth.signOut();
-						goto('/');
-					}}><i class="fa-solid fa-unlock" /></button
-				>{:else}
-				<button
-					class="btn btn-light text-dark"
-					title="Для администраторов"
-					on:click={() => {
-						goto('/auth/login');
-					}}><i class="fa-solid fa-lock" /></button
+				{#if currentUser}
+					<i
+						class="fa-solid fa-copyright me-1"
+						style="cursor: pointer;"
+						title="Выйти из аккаунта"
+						on:click={() => {
+							auth.signOut();
+							goto('/');
+						}}
+					/>{:else}
+					<i
+						class="fa-solid fa-copyright me-1"
+						style="cursor: pointer;"
+						title="Вход для администраторов"
+						on:click={() => {
+							goto('/auth/login');
+						}}
+					/>
+				{/if}
+				<span
+					>Храм "Вознесения Господня", посёлок Бабынино, Калужская область, {new Date(
+						Date.now()
+					).getFullYear()} год</span
 				>
-			{/if}
+			</div>
 		</div>
 	</div>
 </footer>
