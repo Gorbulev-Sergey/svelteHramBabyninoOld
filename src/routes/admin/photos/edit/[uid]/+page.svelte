@@ -35,7 +35,7 @@
 	</div>
 </PageTitle>
 
-<div class="rounded p-3 bg-white text-dark">
+<div class="rounded p-3 bg-light text-dark">
 	<div class="d-flex flex-wrap justify-content-between align-items-center mb-3">
 		<div class="nav nav-pills">
 			<a class="btn btn-light border-0 me-1 active" data-bs-toggle="pill" href="#cover">Обложка</a>
@@ -48,12 +48,12 @@
 			<div class="row">
 				<div class="col-md-8">
 					<input
-						class="form-control border-0 mb-3 bg-light text-dark bg-opacity-75"
+						class="form-control border-primary mb-3 bg-light text-dark"
 						placeholder="заголовок"
 						bind:value={album.title}
 					/>
 					<input
-						class="form-control border-0 mb-3 bg-light text-dark bg-opacity-75"
+						class="form-control border-primary mb-3 bg-light text-dark"
 						placeholder="описание"
 						bind:value={album.description}
 					/>
@@ -61,7 +61,7 @@
 				<div class="col-md-4">
 					<div class="form-group mb-3">
 						<input
-							class="form-control border-0 mb-3 bg-light text-dark bg-opacity-75"
+							class="form-control border-primary mb-3 bg-light text-dark"
 							placeholder="обложка (url фото)"
 							bind:value={album.cover}
 						/>

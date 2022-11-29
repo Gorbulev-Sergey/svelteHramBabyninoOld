@@ -8,9 +8,10 @@
 </script>
 
 <div
-	class="border-bottom {new FildDate()._dayOfWeek(new Date(fildDate.date).getDay()) ===
-	'воскресенье'
-		? 'bg-secondary text-danger bg-opacity-10'
+	class="border-bottom border-primary {new FildDate()._dayOfWeek(
+		new Date(fildDate.date).getDay()
+	) === 'воскресенье'
+		? 'bg-primary text-danger'
 		: ''}"
 	style="display: grid; grid-template-columns: .14fr 1fr;min-width: 40em;"
 >

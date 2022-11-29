@@ -1,5 +1,5 @@
 <script>
-	import IfAuth from '$lib/components/IfAuth.svelte';
+	import IsAuth from '$lib/components/IsAuth.svelte';
 	import Navigation from '$lib/components/Navigation.svelte';
 
 	let routesLeft = [
@@ -36,9 +36,9 @@
 	];
 </script>
 
-<IfAuth>
+<IsAuth>
 	<Navigation title="Панель управления" {routesLeft} {routesRight} />
 	<div class="container" style="margin-top:4.5em; margin-bottom:3em; min-height:60vh;">
 		<slot />
 	</div>
-</IfAuth>
+</IsAuth>
