@@ -45,8 +45,8 @@
 </div>
 <footer class="bg-light text-dark no-print">
 	<div class="p-3">
-		<div class="d-flex justify-content-between align-items-start">
-			<div class="pt-2">
+		<div class="d-flex justify-content-center align-items-start">
+			<div class="py-2 text-center">
 				{#if currentUser}
 					<i
 						class="fa-solid fa-copyright me-1"
