@@ -10,7 +10,7 @@
 	let tag = { uid: '', tag: new Tag() };
 
 	onMount(async () => {
-		onValue(ref(db, 'tags/'), (s) => {
+		onValue(ref(db, '/tags'), (s) => {
 			if (s.exists()) {
 				tags = s.val();
 			}
@@ -18,42 +18,23 @@
 	});
 </script>
 
-<PageTitle title="Теги" />
-
-<div class="row bg-white rounded p-3">
-	<div class="col-md-6">
-		<h5>Доступные теги</h5>
-		{#each Object.entries(tags) as [uid, item]}
-			<div class="btn-group btn-group-sm me-2 mb-2">
-				<div class="bg-light text-dark py-1 px-2 rounded-start">{item.name}</div>
-				<div
-					class="btn btn-dark"
-					on:click={() => {
-						tag = { uid: uid, tag: item };
-					}}
-				>
-					<i class="fa-solid fa-pencil" />
-				</div>
-				<div
-					class="btn btn-dark"
-					on:click={async () => {
-						remove(ref(db, `tags/${uid}`));
-					}}
-				>
-					<i class="fa-solid fa-trash text-danger" />
-				</div>
-			</div>
-		{/each}
-	</div>
-	<div class="col-md-6">
-		<h5>Добавить новый тег</h5>
+<PageTitle title="Теги">
+	<div slot="navigation" class="d-flex align-items-center">
 		<div class="input-group">
-			<input class="form-control" placeholder="название" bind:value={tag.tag.name} />
-			<input class="form-control" placeholder="описание" bind:value={tag.tag.description} />
+			<span class="input-group-text border-0"><i class="fa-solid fa-circle-plus" /></span>
+			<input class="form-control border-0" placeholder="название" bind:value={tag.tag.name} />
+			<input
+				class="form-control border-0"
+				placeholder="описание"
+				bind:value={tag.tag.description}
+			/>
+			<button class="btn btn-primary text-dark" on:click={() => (tag = { uid: '', tag: new Tag() })}
+				>Отмена</button
+			>
 			<button
-				class="btn btn-dark"
+				class="btn btn-primary text-dark"
 				on:click={async () => {
-					if (tag.tag.name != '') {
+					if (tag.tag.name.trim() != '') {
 						tag.tag.name = tag.tag.name.toLocaleLowerCase();
 						if (!tag.tag.description)
 							tag.tag.description = tag.tag?.name[0].toLocaleUpperCase() + tag.tag?.name.slice(1);
@@ -68,4 +49,29 @@
 			>
 		</div>
 	</div>
+</PageTitle>
+
+<div class="bg-light text-dark rounded p-3">
+	<h5 class="mb-3">Доступные теги</h5>
+	{#each Object.entries(tags) as [uid, item]}
+		<div class="btn-group btn-group-sm me-2 mb-2">
+			<div class="bg-primary text-dark py-1 px-2 rounded-start">{item.name}</div>
+			<div
+				class="btn btn-dark text-light"
+				on:click={() => {
+					tag = { uid: uid, tag: item };
+				}}
+			>
+				<i class="fa-solid fa-pencil" />
+			</div>
+			<div
+				class="btn btn-dark"
+				on:click={async () => {
+					remove(ref(db, `tags/${uid}`));
+				}}
+			>
+				<i class="fa-solid fa-trash text-danger" />
+			</div>
+		</div>
+	{/each}
 </div>

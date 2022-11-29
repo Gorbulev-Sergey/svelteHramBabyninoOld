@@ -1,9 +1,7 @@
 <script>
 	// @ts-nocheck
-
 	import { goto } from '$app/navigation';
 	import PageTitle from '$lib/components/PageTitle.svelte';
-	import Album from '$lib/components/photos/Album.svelte';
 	import { db } from '$lib/scripts/firebase';
 	import { onValue, ref, set } from 'firebase/database';
 	import { onMount } from 'svelte';
@@ -35,11 +33,11 @@
 	<div class="row row-cols-1 row-cols-md-3 g-3">
 		<div class="col-md-8">
 			<!-- Расписание работы храма -->
-			<div class="col bg-white rounded p-3 mb-3">
-				<div class="d-flex justify-content-between align-items-center mb-1">
+			<div class="col bg-light text-dark rounded p-3 mb-3">
+				<div class="d-flex justify-content-between align-items-center mb-2">
 					<h5>Расписание работы храма:</h5>
 					<button
-						class="btn btn-sm btn-dark ms-1"
+						class="btn btn-dark ms-1"
 						on:click={async () => {
 							contacts.scheduleOfWork = [...contacts.scheduleOfWork, { day: '', time: '' }];
 						}}>Добавить <i class="fa-solid fa-circle-plus" /></button
@@ -48,19 +46,19 @@
 				{#each contacts.scheduleOfWork as item}
 					<div class="row g-2 mb-1">
 						<div class="col">
-							<div class="input-group input-group-sm">
+							<div class="input-group">
 								<span class="input-group-text">день недели:</span>
 								<input class="form-control" bind:value={item.day} placeholder="день недели" />
 							</div>
 						</div>
 						<div class="col">
 							<div class="d-flex align-items-center">
-								<div class="input-group input-group-sm me-2">
+								<div class="input-group me-2">
 									<span class="input-group-text">время:</span>
 									<input class="form-control" bind:value={item.time} placeholder="время" />
 								</div>
 								<button
-									class="btn btn-sm btn-dark"
+									class="btn btn-dark"
 									on:click={async () => {
 										contacts.scheduleOfWork = contacts.scheduleOfWork.filter((i) => i != item);
 									}}><i class="fa-solid fa-trash" /></button
@@ -71,11 +69,11 @@
 				{/each}
 			</div>
 			<!-- Контактные телефоны -->
-			<div class="col bg-white rounded p-3 mb-3">
-				<div class="d-flex justify-content-between align-items-center mb-1">
+			<div class="col bg-light text-dark rounded p-3 mb-3">
+				<div class="d-flex justify-content-between align-items-center mb-2">
 					<h5>Контактные телефоны:</h5>
 					<button
-						class="btn btn-sm btn-dark ms-2"
+						class="btn btn-dark ms-2"
 						on:click={async () => {
 							contacts.phones = [...contacts.phones, { title: '', phone: '' }];
 						}}>Добавить <i class="fa-solid fa-circle-plus" /></button
@@ -84,14 +82,14 @@
 				{#each contacts.phones as item}
 					<div class="row g-2 mb-1">
 						<div class="col">
-							<div class="input-group input-group-sm">
+							<div class="input-group">
 								<span class="input-group-text">контакт:</span>
 								<input class="form-control" bind:value={item.title} placeholder="контакт" />
 							</div>
 						</div>
 						<div class="col">
 							<div class="d-flex align-items-center">
-								<div class="input-group input-group-sm me-2">
+								<div class="input-group me-2">
 									<span class="input-group-text">телефон:</span>
 									<input
 										class="form-control"
@@ -100,7 +98,7 @@
 									/>
 								</div>
 								<button
-									class="btn btn-sm btn-dark"
+									class="btn btn-dark"
 									on:click={async () => {
 										contacts.phones = contacts.phones.filter((i) => i != item);
 									}}><i class="fa-solid fa-trash" /></button
@@ -111,11 +109,11 @@
 				{/each}
 			</div>
 			<!-- Социальные сети -->
-			<div class="col bg-white rounded p-3 mb-3">
-				<div class="d-flex justify-content-between align-items-start mb-1">
+			<div class="col bg-light text-dark rounded p-3 mb-3">
+				<div class="d-flex justify-content-between align-items-start mb-2">
 					<h5>Социальные сети:</h5>
 					<button
-						class="btn btn-sm btn-dark"
+						class="btn btn-dark"
 						on:click={async () => {
 							contacts.socialNetworks = [
 								...contacts.socialNetworks,
@@ -127,20 +125,20 @@
 				{#each contacts.socialNetworks as item}
 					<div class="row g-2 mb-1">
 						<div class="col">
-							<div class="input-group input-group-sm">
+							<div class="input-group">
 								<span class="input-group-text">название:</span>
 								<input class="form-control" bind:value={item.title} placeholder="название" />
 							</div>
 						</div>
 						<div class="col">
-							<div class="input-group input-group-sm me-2">
+							<div class="input-group me-2">
 								<span class="input-group-text">url:</span>
 								<input class="form-control" bind:value={item.url} placeholder="url ссылки" />
 							</div>
 						</div>
 						<div class="col">
 							<div class="d-flex align-items-center">
-								<div class="input-group input-group-sm me-2">
+								<div class="input-group me-2">
 									<span class="input-group-text">иконка:</span>
 									<input
 										class="form-control"
@@ -154,7 +152,7 @@
 									{/if}
 								</div>
 								<button
-									class="btn btn-sm btn-dark"
+									class="btn btn-dark"
 									on:click={async () => {
 										contacts.socialNetworks = contacts.socialNetworks.filter((i) => i != item);
 									}}><i class="fa-solid fa-trash" /></button
@@ -167,15 +165,15 @@
 		</div>
 		<div class="col-md-4">
 			<!-- Адрес -->
-			<div class="col bg-white rounded p-3 mb-3">
+			<div class="col bg-light text-dark rounded p-3 mb-3">
 				<div class="d-flex justify-content-between align-items-start">
 					<h5>Адрес:</h5>
 				</div>
-				<div class="input-group input-group-sm mb-1">
+				<div class="input-group mb-2">
 					<span class="input-group-text">адрес:</span>
 					<input class="form-control" bind:value={contacts.address.title} placeholder="адрес" />
 				</div>
-				<div class="input-group input-group-sm">
+				<div class="input-group">
 					<span class="input-group-text">url яндекс карт:</span>
 					<input
 						class="form-control"
@@ -186,7 +184,7 @@
 				{#if contacts.address.yandexMapsUrl}
 					<div class="row mt-3">
 						<div class="col">
-							<div class="bg-white rounded">
+							<div class="bg-light rounded">
 								<div class="rounded w-100" style="overflow:hidden; height:400px">
 									<iframe
 										title="fghjfghj"
