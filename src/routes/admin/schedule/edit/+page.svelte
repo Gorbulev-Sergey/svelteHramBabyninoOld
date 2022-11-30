@@ -2,13 +2,13 @@
 	import { goto } from '$app/navigation';
 
 	// @ts-nocheck
-	import PageTitle from '$lib/components/PageTitle.svelte';
 	import { db } from '$lib/scripts/firebase';
 	import { onValue, push, ref, set, update } from 'firebase/database';
 	import { onMount } from 'svelte';
 	import { Month } from '../../../../lib/models/schedule/Month';
 	import MonthEdit from '$lib/components/schedule/MonthEdit.svelte';
 	import { scheduleMonth as month } from '$lib/scripts/writableData';
+	import PageTitleWrap from '$lib/components/PageTitleWrap.svelte';
 
 	let m = '';
 
@@ -25,7 +25,7 @@
 	});
 </script>
 
-<PageTitle title="Редактировать расписание">
+<PageTitleWrap title="Редактировать расписание">
 	<div slot="center" class="input-group me-4">
 		<span class="input-group-text bg-primary text-dark border-0">Дата:</span>
 		<input
@@ -61,6 +61,6 @@
 			}}>Сохранить</button
 		>
 	</div>
-</PageTitle>
+</PageTitleWrap>
 
 <MonthEdit bind:month={$month} />

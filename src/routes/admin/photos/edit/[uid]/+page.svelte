@@ -1,6 +1,5 @@
 <script>
 	import { goto } from '$app/navigation';
-	import PageTitle from '$lib/components/PageTitle.svelte';
 	import Photo from '$lib/components/photos/Photo.svelte';
 	import { Photo as _Photo } from '$lib/models/photos/Photo';
 	import { Album } from '$lib/models/photos/Album';
@@ -8,6 +7,7 @@
 	import { onValue, push, ref, update } from 'firebase/database';
 	import { onMount } from 'svelte';
 	import { page } from '$app/stores';
+	import PageTitleWrap from '$lib/components/PageTitleWrap.svelte';
 
 	let album = new Album();
 	onMount(async () => {
@@ -21,7 +21,7 @@
 	});
 </script>
 
-<PageTitle title="Создать фотоальбом">
+<PageTitleWrap title="Создать фотоальбом">
 	<div slot="navigation">
 		<button class="btn btn-light" on:click={() => goto(`/admin/photos`)}>Отмена</button>
 		<button
@@ -33,7 +33,7 @@
 			}}>Сохранить</button
 		>
 	</div>
-</PageTitle>
+</PageTitleWrap>
 
 <div class="rounded p-3 bg-light text-dark">
 	<div class="d-flex flex-wrap justify-content-between align-items-center mb-3">

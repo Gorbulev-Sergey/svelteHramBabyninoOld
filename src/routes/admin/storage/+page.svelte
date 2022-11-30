@@ -1,7 +1,6 @@
 <script>
 	// @ts-nocheck
-
-	import PageTitle from '$lib/components/PageTitle.svelte';
+	import PageTitleWrap from '$lib/components/PageTitleWrap.svelte';
 	import { storage } from '$lib/scripts/firebase';
 	import { child } from 'firebase/database';
 	import { uploadBytes, ref, getDownloadURL, listAll } from 'firebase/storage';
@@ -27,7 +26,7 @@
 	});
 </script>
 
-<PageTitle title="Хранилище фотографий">
+<PageTitleWrap title="Хранилище фотографий">
 	<div slot="navigation">
 		<div class=" input-group">
 			<input type="file" class="form-control" bind:files={images} />
@@ -43,7 +42,7 @@
 			>
 		</div>
 	</div>
-</PageTitle>
+</PageTitleWrap>
 
 <div class="row row-cols-1 row-cols-md-3 g-3">
 	{#each imagesFromStorage as item}

@@ -10,6 +10,7 @@
 	import FilterTags from '$lib/components/posts/FilterTags.svelte';
 	import PinButton from '$lib/components/PinButton.svelte';
 	import Pin from '$lib/components/Pin.svelte';
+	import PageTitleWrap from '$lib/components/PageTitleWrap.svelte';
 
 	let posts = new Object();
 	$: tags = new Array();
@@ -37,9 +38,9 @@
 	});
 </script>
 
-<PageTitle title="Публикации">
+<PageTitleWrap title="Публикации">
 	<div slot="center">
-		<div class="d-flex justify-content-between align-items-center flex-wrap">
+		<div class="d-flex justify-content-between align-items-center">
 			<FilterTags
 				title="тип:"
 				{tags}
@@ -64,7 +65,7 @@
 	<div slot="navigation">
 		<button class="btn btn-dark" on:click={() => goto('/admin/posts/create')}>Создать</button>
 	</div>
-</PageTitle>
+</PageTitleWrap>
 
 <div>
 	<!-- pinned -->

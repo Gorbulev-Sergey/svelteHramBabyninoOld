@@ -1,6 +1,6 @@
 <script>
 	// @ts-nocheck
-	import PageTitle from '$lib/components/PageTitle.svelte';
+	import PageTitleWrap from '$lib/components/PageTitleWrap.svelte';
 	import { Tag } from '$lib/models/Tag';
 	import { db } from '$lib/scripts/firebase';
 	import { onValue, push, query, ref, remove, set, update } from 'firebase/database';
@@ -18,7 +18,7 @@
 	});
 </script>
 
-<PageTitle title="Теги">
+<PageTitleWrap title="Теги">
 	<div slot="navigation" class="d-flex align-items-center">
 		<div class="input-group">
 			<span class="input-group-text border-0"><i class="fa-solid fa-circle-plus" /></span>
@@ -49,7 +49,7 @@
 			>
 		</div>
 	</div>
-</PageTitle>
+</PageTitleWrap>
 
 <div class="bg-light text-dark rounded p-3">
 	<h5 class="mb-3">Доступные теги</h5>

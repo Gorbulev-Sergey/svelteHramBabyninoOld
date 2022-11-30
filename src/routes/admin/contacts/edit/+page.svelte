@@ -1,7 +1,7 @@
 <script>
 	// @ts-nocheck
 	import { goto } from '$app/navigation';
-	import PageTitle from '$lib/components/PageTitle.svelte';
+	import PageTitleWrap from '$lib/components/PageTitleWrap.svelte';
 	import { db } from '$lib/scripts/firebase';
 	import { onValue, ref, set } from 'firebase/database';
 	import { onMount } from 'svelte';
@@ -16,7 +16,7 @@
 	});
 </script>
 
-<PageTitle title="Редактировать контакты">
+<PageTitleWrap title="Редактировать контакты">
 	<div slot="navigation">
 		<button class="btn btn-light" on:click={() => goto('/admin/contacts')}>Отмена</button>
 		<button
@@ -27,7 +27,7 @@
 			}}>Сохранить</button
 		>
 	</div>
-</PageTitle>
+</PageTitleWrap>
 
 {#if contacts}
 	<div class="row row-cols-1 row-cols-md-3 g-3">

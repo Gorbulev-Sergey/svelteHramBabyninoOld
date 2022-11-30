@@ -1,6 +1,5 @@
 <script>
 	import { goto } from '$app/navigation';
-	import PageTitle from '$lib/components/PageTitle.svelte';
 	import Pin from '$lib/components/Pin.svelte';
 	import TagManager from '$lib/components/tags/TagManager.svelte';
 	import { Post } from '$lib/models/Post';
@@ -9,6 +8,7 @@
 	import { onValue, push, ref } from 'firebase/database';
 	import { onMount } from 'svelte';
 	import Editor from '$lib/components/posts/Editor.svelte';
+	import PageTitleWrap from '$lib/components/PageTitleWrap.svelte';
 
 	let post = new Post();
 	$: tags = new Array();
@@ -22,7 +22,7 @@
 	});
 </script>
 
-<PageTitle title="Создать публикацию">
+<PageTitleWrap title="Создать публикацию">
 	<div slot="navigation">
 		<button class="btn btn-light" on:click={() => goto(`/admin/posts`)}>Отмена</button>
 		<button
@@ -35,7 +35,7 @@
 			}}>Сохранить</button
 		>
 	</div>
-</PageTitle>
+</PageTitleWrap>
 
 <div class="rounded p-3 {!post.inverted ? 'bg-light text-dark' : 'bg-dark text-light'}">
 	<div class="d-flex flex-wrap justify-content-between align-items-center mb-3">
