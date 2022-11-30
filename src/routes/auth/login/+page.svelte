@@ -15,7 +15,7 @@
 			credential.password.length > 3
 		) {
 			signInWithEmailAndPassword(auth, credential.email, credential.password).then((r) =>
-				goto('/')
+				goto('/admin/posts')
 			);
 		}
 	}

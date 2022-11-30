@@ -8,8 +8,8 @@
 	import { onMount } from 'svelte';
 	import Post from '$lib/components/posts/Post.svelte';
 	import PostHorizontal from '$lib/components/posts/PostHorizontal.svelte';
-	import AfterBreakpoint from '$lib/components/Breakpoint/AfterBreakpoint.svelte';
-	import BeforeBreakpoint from '$lib/components/Breakpoint/BeforeBreakpoint.svelte';
+	import AfterBreakpoint from '$lib/components/breakpoint/AfterBreakpoint.svelte';
+	import BeforeBreakpoint from '$lib/components/breakpoint/BeforeBreakpoint.svelte';
 	import Spinner from '$lib/components/Spinner.svelte';
 
 	let tags = new Array();
@@ -36,7 +36,7 @@
 <PageTitle title={$page.params.tag[0].toUpperCase() + $page.params.tag.slice(1)}>
 	<div
 		slot="navigation"
-		class="btn-group btn-group-sm flex-nowrap mt-md-0 mt-1 overflow-auto scroll"
+		class="btn-group btn-group-sm flex-nowrap overflow-auto scroll mt-md-0 mt-1"
 	>
 		{#each tags as item}
 			<button

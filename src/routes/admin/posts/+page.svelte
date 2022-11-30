@@ -1,5 +1,4 @@
 <script>
-	import PageTitle from '$lib/components/PageTitle.svelte';
 	import { db } from '$lib/scripts/firebase';
 	import { onValue, ref, remove, update } from 'firebase/database';
 	import PostHorizontal from '$lib/components/posts/PostHorizontal.svelte';

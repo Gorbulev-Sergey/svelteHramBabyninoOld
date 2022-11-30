@@ -3,25 +3,27 @@
 	import PageTitleWrap from '$lib/components/PageTitleWrap.svelte';
 	import { storage } from '$lib/scripts/firebase';
 	import { child } from 'firebase/database';
-	import { uploadBytes, ref, getDownloadURL, listAll } from 'firebase/storage';
+	import { uploadBytes, ref, getDownloadURL, listAll, getMetadata } from 'firebase/storage';
 	import { onMount } from 'svelte';
 
 	let images = null;
 	$: imagesFromStorage = new Array();
 
 	onMount(async () => {
-		listAll(ref(storage, 'Природа')).then((s) => {
-			s.items.forEach(
-				(i) =>
-					(imagesFromStorage = [
-						...imagesFromStorage,
-						`https://${i.storage.host}/v0/b/sveltehrambabynino.appspot.com/o/${i.fullPath.replace(
-							'/',
-							'%2F'
-						)}?alt=media`
-					])
-			);
-			console.log(imagesFromStorage);
+		listAll(ref(storage, '/Природа')).then((s) => {
+			console.log(s);
+			s.items
+				.sort()
+				.forEach(
+					(i) =>
+						(imagesFromStorage = [
+							...imagesFromStorage,
+							`https://${i.storage.host}/v0/b/sveltehrambabynino.appspot.com/o/${i.fullPath.replace(
+								'/',
+								'%2F'
+							)}?alt=media`
+						])
+				);
 		});
 	});
 </script>
@@ -33,10 +35,16 @@
 			<button
 				class="btn btn-dark"
 				on:click={() => {
-					console.log(images[0], typeof images);
 					uploadBytes(ref(storage, `Природа/${images[0].name}`), images[0]).then((s) => {
-						console.log(s);
-						images = null;
+						imagesFromStorage = [
+							`https://${
+								s.metadata.ref.storage.host
+							}/v0/b/sveltehrambabynino.appspot.com/o/${s.metadata.fullPath.replace(
+								'/',
+								'%2F'
+							)}?alt=media`,
+							...imagesFromStorage
+						];
 					});
 				}}>Загрузить</button
 			>

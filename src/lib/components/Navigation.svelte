@@ -4,8 +4,8 @@
 	import { auth, db } from '$lib/scripts/firebase';
 	import { theme } from '$lib/scripts/writableData';
 	import { onMount } from 'svelte';
-	import AfterBreakpoint from './Breakpoint/AfterBreakpoint.svelte';
-	import BeforeBreakpoint from './Breakpoint/BeforeBreakpoint.svelte';
+	import AfterBreakpoint from './breakpoint/AfterBreakpoint.svelte';
+	import BeforeBreakpoint from './breakpoint/BeforeBreakpoint.svelte';
 
 	export let title = 'Название';
 	export let routesLeft = new Array();
