@@ -49,6 +49,4 @@
 	{:else}
 		<Spinner />
 	{/if}
-{:else}
-	<div class="text-dark">Расписание на {$month.monthName()} {$month.year} отсутствует!</div>
 {/if}
