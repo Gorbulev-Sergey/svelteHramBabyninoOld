@@ -22,28 +22,30 @@
 	});
 </script>
 
-<div class="no-print">
-	<PageTitleWrap title="Расписание богослужений" _class="mx-0 mx-md-1">
-		<div slot="navigation">
-			<div class="input-group me-3 no-print mt-md-0 mt-2">
-				<span class="input-group-text bg-primary text-dark border-0">выберите дату:</span>
-				<input
-					class="form-control bg-light text-dark border-0"
-					type="month"
-					bind:value={m}
-					on:change={async () => {
-						$month = new _Month(Number(m.split('-')[1]), Number(m.split('-')[0]));
-						console.log($month);
-						loadData();
-					}}
-				/>
+{#if $month.fildsDayNotEmpty.length > 0}
+	<div class="no-print">
+		<PageTitleWrap title="Расписание богослужений" _class="mx-0 mx-md-1">
+			<div slot="navigation">
+				<div class="input-group me-3 no-print mt-md-0 mt-2">
+					<span class="input-group-text bg-primary text-dark border-0">выберите дату:</span>
+					<input
+						class="form-control bg-light text-dark border-0"
+						type="month"
+						bind:value={m}
+						on:change={async () => {
+							$month = new _Month(Number(m.split('-')[1]), Number(m.split('-')[0]));
+							console.log($month);
+							loadData();
+						}}
+					/>
+				</div>
 			</div>
-		</div>
-	</PageTitleWrap>
-</div>
+		</PageTitleWrap>
+	</div>
 
-{#if $month.fildsDayNotEmpty}
-	<Month month={$month} />
-{:else}
-	<div>Расписание на {$month.monthName()} {$month.year} отсутствует!</div>
+	{#if $month.fildsDayNotEmpty}
+		<Month month={$month} />
+	{:else}
+		<div>Расписание на {$month.monthName()} {$month.year} отсутствует!</div>
+	{/if}
 {/if}
