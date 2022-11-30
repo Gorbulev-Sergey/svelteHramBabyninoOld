@@ -10,6 +10,7 @@
 	import PostHorizontal from '$lib/components/posts/PostHorizontal.svelte';
 	import AfterBreakpoint from '$lib/components/Breakpoint/AfterBreakpoint.svelte';
 	import BeforeBreakpoint from '$lib/components/Breakpoint/BeforeBreakpoint.svelte';
+	import Spinner from '$lib/components/Spinner.svelte';
 
 	let tags = new Array();
 	let posts = new Array();
@@ -48,51 +49,55 @@
 	</div>
 </PageTitle>
 
-<!--Для закреплённых-->
-<div class="row mb-2 gx-4">
-	<div class="col-md-8">
-		{#each filterPosts().filter((p) => p.pinned) as item, i}
-			{#if item.pinned && checkIndex(i, [1, 2, 4, 6, 7, 9])}
-				<AfterBreakpoint>
-					<PostHorizontal bind:post={item} />
-				</AfterBreakpoint>
-				<BeforeBreakpoint>
+{#if posts.length > 0}
+	<!--Для закреплённых-->
+	<div class="row mb-2 gx-4">
+		<div class="col-md-8">
+			{#each filterPosts().filter((p) => p.pinned) as item, i}
+				{#if item.pinned && checkIndex(i, [1, 2, 4, 6, 7, 9])}
+					<AfterBreakpoint>
+						<PostHorizontal bind:post={item} />
+					</AfterBreakpoint>
+					<BeforeBreakpoint>
+						<Post bind:post={item} />
+					</BeforeBreakpoint>
+				{/if}
+			{/each}
+		</div>
+		<div class="col-md-4">
+			{#each filterPosts().filter((p) => p.pinned) as item, i}
+				{#if item.pinned && checkIndex(i, [0, 3, 5, 8])}
 					<Post bind:post={item} />
-				</BeforeBreakpoint>
-			{/if}
-		{/each}
+				{/if}
+			{/each}
+		</div>
 	</div>
-	<div class="col-md-4">
-		{#each filterPosts().filter((p) => p.pinned) as item, i}
-			{#if item.pinned && checkIndex(i, [0, 3, 5, 8])}
-				<Post bind:post={item} />
-			{/if}
-		{/each}
-	</div>
-</div>
 
-<!--Для не закреплённых-->
-<div class="row gx-4">
-	<div class="col-md-4">
-		{#each filterPosts().filter((p) => !p.pinned) as item, i}
-			{#if !item.pinned && checkIndex(i, [0, 3, 5, 8])}
-				<Post bind:post={item} />
-			{/if}
-		{/each}
-	</div>
-	<div class="col-md-8">
-		{#each filterPosts().filter((p) => !p.pinned) as item, i}
-			{#if !item.pinned && checkIndex(i, [1, 2, 4, 6, 7, 9])}
-				<AfterBreakpoint>
-					<PostHorizontal bind:post={item} />
-				</AfterBreakpoint>
-				<BeforeBreakpoint>
+	<!--Для не закреплённых-->
+	<div class="row gx-4">
+		<div class="col-md-4">
+			{#each filterPosts().filter((p) => !p.pinned) as item, i}
+				{#if !item.pinned && checkIndex(i, [0, 3, 5, 8])}
 					<Post bind:post={item} />
-				</BeforeBreakpoint>
-			{/if}
-		{/each}
+				{/if}
+			{/each}
+		</div>
+		<div class="col-md-8">
+			{#each filterPosts().filter((p) => !p.pinned) as item, i}
+				{#if !item.pinned && checkIndex(i, [1, 2, 4, 6, 7, 9])}
+					<AfterBreakpoint>
+						<PostHorizontal bind:post={item} />
+					</AfterBreakpoint>
+					<BeforeBreakpoint>
+						<Post bind:post={item} />
+					</BeforeBreakpoint>
+				{/if}
+			{/each}
+		</div>
 	</div>
-</div>
+{:else}
+	<Spinner />
+{/if}
 
 <style>
 	.scroll::-webkit-scrollbar {

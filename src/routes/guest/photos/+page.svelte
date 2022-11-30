@@ -1,6 +1,9 @@
 <script>
+	// @ts-nocheck
+
 	import PageTitle from '$lib/components/PageTitle.svelte';
 	import Album from '$lib/components/photos/Album.svelte';
+	import Spinner from '$lib/components/Spinner.svelte';
 	import { db } from '$lib/scripts/firebase';
 	import { onValue, ref } from 'firebase/database';
 	import { onMount } from 'svelte';
@@ -15,10 +18,14 @@
 
 <PageTitle title="Фотографии" />
 
-<div class="row row-cols-1 row-cols-md-3 g-3">
-	{#each Object.entries(albums).reverse() as [uid, album]}
-		<div class="col">
-			<Album {uid} {album} />
-		</div>
-	{/each}
-</div>
+{#if Object.entries(albums).length > 0}
+	<div class="row row-cols-1 row-cols-md-3 g-3">
+		{#each Object.entries(albums).reverse() as [uid, album]}
+			<div class="col">
+				<Album {uid} {album} />
+			</div>
+		{/each}
+	</div>
+{:else}
+	<Spinner />
+{/if}

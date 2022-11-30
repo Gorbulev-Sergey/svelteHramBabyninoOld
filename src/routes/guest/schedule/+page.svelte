@@ -7,6 +7,7 @@
 	import PageTitle from '$lib/components/PageTitle.svelte';
 	import { goto } from '$app/navigation';
 	import { scheduleMonth as month } from '$lib/scripts/writableData';
+	import Spinner from '$lib/components/Spinner.svelte';
 
 	let m = '';
 
@@ -41,7 +42,11 @@
 </PageTitle>
 
 {#if $month.fildsDayNotEmpty}
-	<Month month={$month} />
+	{#if $month.fildsDayNotEmpty.length > 0}
+		<Month month={$month} />
+	{:else}
+		<Spinner />
+	{/if}
 {:else}
-	<div>Расписание на {$month.monthName()} {$month.year} отсутствует!</div>
+	<div class="text-dark">Расписание на {$month.monthName()} {$month.year} отсутствует!</div>
 {/if}
