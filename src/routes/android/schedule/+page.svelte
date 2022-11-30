@@ -22,7 +22,6 @@
 	});
 </script>
 
-{#if $month.fildsDayNotEmpty.length > 0}
 	<div class="no-print">
 		<PageTitleWrap title="Расписание богослужений" _class="mx-0 mx-md-1">
 			<div slot="navigation">
@@ -48,4 +47,4 @@
 	{:else}
 		<div>Расписание на {$month.monthName()} {$month.year} отсутствует!</div>
 	{/if}
-{/if}
+
