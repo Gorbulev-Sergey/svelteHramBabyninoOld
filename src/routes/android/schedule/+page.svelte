@@ -4,8 +4,8 @@
 	import Month from '$lib/components/schedule/Month.svelte';
 	import { onMount } from 'svelte';
 	import { Month as _Month } from '$lib/models/schedule/Month';
-	import PageTitle from '$lib/components/PageTitle.svelte';
 	import { scheduleMonth as month } from '$lib/scripts/writableData';
+	import PageTitleWrap from '$lib/components/PageTitleWrap.svelte';
 
 	let m = '';
 
@@ -23,7 +23,7 @@
 </script>
 
 <div class="no-print">
-	<PageTitle title="Расписание богослужений" _class="mx-0 mx-md-1">
+	<PageTitleWrap title="Расписание богослужений" _class="mx-0 mx-md-1">
 		<div slot="navigation">
 			<div class="input-group me-3 no-print mt-md-0 mt-2">
 				<span class="input-group-text bg-primary text-dark border-0">выберите дату:</span>
