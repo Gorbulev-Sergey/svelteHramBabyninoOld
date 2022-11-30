@@ -39,7 +39,7 @@
 				/>
 			</div>
 		</div>
-	</PageTitle>
+	</PageTitleWrap>
 </div>
 
 {#if $month.fildsDayNotEmpty}
