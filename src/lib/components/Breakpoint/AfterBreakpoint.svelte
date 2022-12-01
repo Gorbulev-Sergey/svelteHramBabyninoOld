@@ -5,6 +5,6 @@
 
 <svelte:window bind:innerWidth />
 
-{#if innerWidth > breakpoint}
+{#if innerWidth >= breakpoint}
 	<slot />
 {/if}
