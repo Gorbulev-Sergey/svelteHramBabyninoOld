@@ -35,9 +35,6 @@
 					{/each}
 				</div>
 			</div>
-			<button class="btn btn-light text-dark border-0" on:click={async () => changeTheme()}
-				><i class="fa-regular fa-sun" /></button
-			>
 			<IsAuth>
 				<div>
 					{#each routesRight as item}
@@ -45,13 +42,16 @@
 					{/each}
 				</div>
 			</IsAuth>
+			<button class="btn btn-light text-dark border-0" on:click={async () => changeTheme()}
+				><i class="fa-regular fa-sun" /></button
+			>
 		</div>
 	</AfterBreakpoint>
 	<BeforeBreakpoint>
 		<div class="container-fluid d-flex justify-content-between align-items-center dropdown">
 			<div class="flex-grow-1 d-flex justify-content-between align-items-center">
 				<button
-					class="btn btn-light text-dark bg-transparent border-0 text-uppercase ps-1"
+					class="btn btn-light text-dark bg-transparent border-0 text-uppercase ps-1 me-1"
 					on:click={() => goto(routesLeft[0].url)}><b>{@html title}</b></button
 				><button class="btn btn-light text-dark border-0" on:click={async () => changeTheme()}
 					><i class="fa-regular fa-sun" /></button
@@ -65,7 +65,7 @@
 				{#each routesLeft as item}
 					<div class="bg-light text-dark">
 						<a
-							class="btn btn-light text-dark w-100 text-start rounded-0 ps-4 {item.url.split(
+							class="btn btn-light text-dark w-100 text-start rounded-0 ps-3 {item.url.split(
 								'/'
 							)[2] == $page.url.pathname.split('/')[2]
 								? 'fw-bold'
@@ -78,7 +78,7 @@
 					{#each routesRight as item}
 						<div class="bg-light text-dark">
 							<button
-								class="btn btn-light text-dark w-100 text-start rounded-0 ps-4"
+								class="btn btn-light text-dark w-100 text-start rounded-0 ps-3"
 								on:click={async () => {
 									goto(item.url);
 								}}
