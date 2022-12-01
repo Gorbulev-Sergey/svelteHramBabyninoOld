@@ -3,7 +3,6 @@
 	import { page } from '$app/stores';
 	import { auth, db } from '$lib/scripts/firebase';
 	import { theme } from '$lib/scripts/writableData';
-	import { onMount } from 'svelte';
 	import AfterBreakpoint from './breakpoint/AfterBreakpoint.svelte';
 	import BeforeBreakpoint from './breakpoint/BeforeBreakpoint.svelte';
 	import IsAuth from './IsAuth.svelte';
