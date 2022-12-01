@@ -1,4 +1,6 @@
 <script>
+	// @ts-nocheck
+
 	import { goto } from '$app/navigation';
 	import PageTitle from '$lib/components/PageTitle.svelte';
 	import Album from '$lib/components/photos/Album.svelte';
@@ -23,7 +25,7 @@
 </PageTitle>
 
 <div class="row row-cols-1 row-cols-md-3 g-3">
-	{#each Object.entries(albums).reverse() as [uid, album]}
+	{#each Object.entries(albums).sort(([k1, v1], [k2, v2]) => new Date(v2.date) - new Date(v1.date)) as [uid, album]}
 		<div class="col">
 			<Album {uid} {album}>
 				<div slot="navigation" class="flex-grow-1 d-flex justify-content-end align-items-start m-2">
