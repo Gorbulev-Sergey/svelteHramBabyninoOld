@@ -11,7 +11,6 @@
 	onMount(async () => {
 		onAuthStateChanged(auth, (user) => {
 			if (user) currentUser = user;
-			else goto('/');
 		});
 	});
 </script>

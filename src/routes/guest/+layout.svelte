@@ -52,16 +52,16 @@
 							goto('/');
 						}}
 					/>
-					<div slot="notAuth">
-						<i
-							class="fa-solid fa-copyright me-1"
-							style="cursor: pointer;"
-							title="Вход для администраторов"
-							on:click={() => {
-								goto('/auth/login');
-							}}
-						/>
-					</div>
+
+					<i
+						slot="notAuth"
+						class="fa-solid fa-copyright me-1"
+						style="cursor: pointer;"
+						title="Вход для администраторов"
+						on:click={() => {
+							goto('/auth/login');
+						}}
+					/>
 				</IsAuth>
 
 				<span
