@@ -87,6 +87,15 @@
 						style="min-height: 10em;"
 						bind:value={post.description}
 					/>
+					<div class="input-group mb-3">
+						<span class="input-group-text bg-primary text-dark border-primary">Дата публикации</span
+						>
+						<input
+							type="date"
+							class="form-control border-primary bg-light text-dark"
+							bind:value={post.created}
+						/>
+					</div>
 					<TagManager {tags} bind:selectedTags={post.tags} />
 				</div>
 				<div class="col-md-4">

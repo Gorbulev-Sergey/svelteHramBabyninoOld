@@ -4,7 +4,7 @@ export class Post {
 		cover = new Cover(),
 		description = null,
 		content = null,
-		created = new Date(Date.now()).toDateString(),
+		created = new Date(Date.now()),
 		published = true,
 		pinned = null,
 		inverted = null,
@@ -16,7 +16,7 @@ export class Post {
 		this.cover = cover;
 		this.description = description;
 		this.content = content;
-		this.created = created;
+		this.created = `${created.getFullYear()}-${created.getMonth()}-0${created.getDate()}`;
 		this.published = published;
 		this.pinned = pinned;
 		this.inverted = inverted;

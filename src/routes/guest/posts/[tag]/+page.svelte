@@ -16,7 +16,9 @@
 	let posts = new Array();
 	$: filterPosts = () => {
 		// ВАЖНЫЙ ФИЛЬТР: фильтруем публикации по динамическому параметру url
-		return posts.filter((i) => i.tags?.some((t) => t.name === $page.params.tag));
+		return posts
+			.filter((i) => i.tags?.some((t) => t.name === $page.params.tag))
+			.sort((a, b) => new Date(b.created) - new Date(a.created));
 	};
 
 	let checkIndex = (i, array = new Array()) => array.includes(Number(String(i).substring(-1)));
