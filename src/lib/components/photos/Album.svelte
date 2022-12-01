@@ -20,12 +20,14 @@
 	on:mousemove={() => (hoverEffect = 'bg-opacity-75')}
 	on:mouseleave={() => (hoverEffect = 'bg-opacity-25')}
 >
-	<div class="d-flex justify-content-between bg-light text-white {hoverEffect} p-3 rounded-bottom">
+	<div
+		class="d-flex justify-content-between bg-backspace text-dark {hoverEffect} p-3 rounded-bottom"
+	>
 		<div>
 			<h5 class="mb-0">
 				{album.title}
 			</h5>
-			<small class="text-white text-opacity-50">{album.description}</small>
+			<small class="text-dark text-opacity-75">{album.description}</small>
 		</div>
 		<div class="d-flex flex-column align-items-end justify-content-between small mt-1">
 			{#if album.photos}
