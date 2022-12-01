@@ -1,8 +1,8 @@
 <script>
 	import { goto } from '$app/navigation';
+	import IsAuth from '$lib/components/IsAuth.svelte';
 	import Navigation from '$lib/components/Navigation.svelte';
 	import { auth } from '$lib/scripts/firebase';
-	import { onMount } from 'svelte';
 
 	let routesLeft = [
 		{
@@ -28,11 +28,6 @@
 			title: 'Панель управления'
 		}
 	];
-	/**
-	 * @type {import("@firebase/auth").User | null}
-	 */
-	let currentUser;
-	onMount(async () => (currentUser = auth.currentUser));
 </script>
 
 <Navigation
@@ -47,7 +42,7 @@
 	<div class="p-3">
 		<div class="d-flex justify-content-center align-items-start">
 			<div class="py-2 text-center">
-				{#if currentUser}
+				<IsAuth>
 					<i
 						class="fa-solid fa-copyright me-1"
 						style="cursor: pointer;"
@@ -56,16 +51,19 @@
 							auth.signOut();
 							goto('/');
 						}}
-					/>{:else}
-					<i
-						class="fa-solid fa-copyright me-1"
-						style="cursor: pointer;"
-						title="Вход для администраторов"
-						on:click={() => {
-							goto('/auth/login');
-						}}
 					/>
-				{/if}
+					<div slot="notAuth">
+						<i
+							class="fa-solid fa-copyright me-1"
+							style="cursor: pointer;"
+							title="Вход для администраторов"
+							on:click={() => {
+								goto('/auth/login');
+							}}
+						/>
+					</div>
+				</IsAuth>
+
 				<span
 					>Храм "Вознесения Господня", посёлок Бабынино, Калужская область, {new Date(
 						Date.now()

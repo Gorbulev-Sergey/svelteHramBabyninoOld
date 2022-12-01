@@ -2,8 +2,8 @@
 	import { goto } from '$app/navigation';
 	import { page } from '$app/stores';
 	import { theme } from '$lib/scripts/writableData';
-	import AfterBreakpoint from '$lib/components/breakpoint/AfterBreakpoint.svelte';
-	import BeforeBreakpoint from '$lib/components/breakpoint/BeforeBreakpoint.svelte';
+	import AfterBreakpoint from '$lib/components/Breakpoint/AfterBreakpoint.svelte';
+	import BeforeBreakpoint from '$lib/components/Breakpoint/BeforeBreakpoint.svelte';
 	import IsAuth from '$lib/components/IsAuth.svelte';
 
 	export let title = 'Название';

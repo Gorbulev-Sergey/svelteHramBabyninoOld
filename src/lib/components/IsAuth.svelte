@@ -18,4 +18,6 @@
 
 {#if currentUser}
 	<slot />
+{:else}
+	<slot name="notAuth" />
 {/if}

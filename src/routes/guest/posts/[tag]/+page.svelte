@@ -8,9 +8,9 @@
 	import { onMount } from 'svelte';
 	import Post from '$lib/components/posts/Post.svelte';
 	import PostHorizontal from '$lib/components/posts/PostHorizontal.svelte';
+	import Spinner from '$lib/components/Spinner.svelte';
 	import AfterBreakpoint from '$lib/components/breakpoint/AfterBreakpoint.svelte';
 	import BeforeBreakpoint from '$lib/components/breakpoint/BeforeBreakpoint.svelte';
-	import Spinner from '$lib/components/Spinner.svelte';
 
 	let tags = new Array();
 	let posts = new Array();
