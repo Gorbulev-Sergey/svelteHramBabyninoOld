@@ -18,7 +18,6 @@
 							goto('/');
 						}}
 					/>
-
 					<i
 						slot="notAuth"
 						class="fa-solid fa-copyright me-1"
