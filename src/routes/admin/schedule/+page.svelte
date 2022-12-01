@@ -4,7 +4,7 @@
 	import Month from '$lib/components/schedule/Month.svelte';
 	import { onMount } from 'svelte';
 	import { Month as _Month } from '../../../lib/models/schedule/Month';
-	import PageTitle from '$lib/components/PageTitle.svelte';
+	import PageTitleWrap from '$lib/components/PageTitleWrap.svelte';
 	import { goto } from '$app/navigation';
 	import { scheduleMonth as month } from '$lib/scripts/writableData';
 
@@ -23,7 +23,7 @@
 	});
 </script>
 
-<PageTitle title="Расписание">
+<PageTitleWrap title="Расписание">
 	<div slot="center" class="input-group me-3">
 		<span class="input-group-text bg-primary text-dark border-0">Дата:</span>
 		<input
@@ -41,7 +41,7 @@
 		<button class="btn btn-dark" on:click={() => goto('/admin/schedule/edit')}>Редактировать</button
 		>
 	</div>
-</PageTitle>
+</PageTitleWrap>
 
 {#if $month.fildsDayNotEmpty}
 	<Month month={$month} />
