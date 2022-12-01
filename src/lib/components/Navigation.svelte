@@ -1,11 +1,10 @@
 <script>
 	import { goto } from '$app/navigation';
 	import { page } from '$app/stores';
-	import { auth, db } from '$lib/scripts/firebase';
 	import { theme } from '$lib/scripts/writableData';
-	import AfterBreakpoint from './breakpoint/AfterBreakpoint.svelte';
-	import BeforeBreakpoint from './breakpoint/BeforeBreakpoint.svelte';
-	import IsAuth from './IsAuth.svelte';
+	import AfterBreakpoint from '$lib/components/breakpoint/AfterBreakpoint.svelte';
+	import BeforeBreakpoint from '$lib/components/breakpoint/BeforeBreakpoint.svelte';
+	import IsAuth from '$lib/components/IsAuth.svelte';
 
 	export let title = 'Название';
 	export let routesLeft = new Array();
