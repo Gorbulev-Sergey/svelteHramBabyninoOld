@@ -1,13 +1,21 @@
 <script>
 	import { goto } from '$app/navigation';
 	import { auth } from '$lib/scripts/firebase';
+	import { onAuthStateChanged } from 'firebase/auth';
 	import { onMount } from 'svelte';
 
+	/**
+	 * @type {import("@firebase/auth").User}
+	 */
+	let currentUser;
 	onMount(async () => {
-		if (!auth.currentUser) goto('/');
+		onAuthStateChanged(auth, (user) => {
+			if (user) currentUser = user;
+			else goto('/');
+		});
 	});
 </script>
 
-{#if auth.currentUser}
+{#if currentUser}
 	<slot />
 {/if}

@@ -6,6 +6,7 @@
 	import { onMount } from 'svelte';
 	import AfterBreakpoint from './breakpoint/AfterBreakpoint.svelte';
 	import BeforeBreakpoint from './breakpoint/BeforeBreakpoint.svelte';
+	import IsAuth from './IsAuth.svelte';
 
 	export let title = 'Название';
 	export let routesLeft = new Array();
@@ -14,11 +15,6 @@
 		$theme = $theme == 'light' ? 'dark' : 'light';
 		localStorage.setItem('theme', $theme);
 	}
-	/**
-	 * @type {import("@firebase/auth").User | null}
-	 */
-	let currentUser;
-	onMount(async () => (currentUser = auth.currentUser));
 </script>
 
 <div class="fixed-top bg-light text-dark py-2">
@@ -44,13 +40,13 @@
 			<button class="btn btn-light text-dark border-0" on:click={async () => changeTheme()}
 				><i class="fa-regular fa-sun" /></button
 			>
-			{#if currentUser}
+			<IsAuth>
 				<div>
 					{#each routesRight as item}
 						<a class="btn btn-light text-dark border-0 me-1" href={item.url}>{item.title}</a>
 					{/each}
 				</div>
-			{/if}
+			</IsAuth>
 		</div>
 	</AfterBreakpoint>
 	<BeforeBreakpoint>
@@ -80,7 +76,7 @@
 						>
 					</div>
 				{/each}
-				{#if currentUser}
+				<IsAuth>
 					{#each routesRight as item}
 						<div class="bg-light text-dark">
 							<button
@@ -95,7 +91,7 @@
 							</button>
 						</div>
 					{/each}
-				{/if}
+				</IsAuth>
 			</div>
 		</div>
 	</BeforeBreakpoint>
