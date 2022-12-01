@@ -46,6 +46,15 @@
 						placeholder="описание"
 						bind:value={album.description}
 					/>
+					<div class="input-group mb-3">
+						<span class="input-group-text bg-primary text-dark border-primary">Дата публикации</span
+						>
+						<input
+							type="date"
+							class="form-control border-primary bg-light text-dark"
+							bind:value={album.date}
+						/>
+					</div>
 				</div>
 				<div class="col-md-4">
 					<div class="form-group mb-3">

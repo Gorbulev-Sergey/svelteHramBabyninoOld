@@ -2,13 +2,13 @@ export class Album {
 	constructor(
 		title = '',
 		description = null,
-		date = new Date(Date.now()).toDateString(),
+		date = new Date(Date.now()),
 		photos = new Array(),
 		cover = null
 	) {
 		this.title = title;
 		this.description = description;
-		this.date = date;
+		this.date = `${date.getFullYear()}-${date.getMonth()}-0${date.getDate()}`;
 		this.photos = photos;
 		this.cover = cover;
 	}
