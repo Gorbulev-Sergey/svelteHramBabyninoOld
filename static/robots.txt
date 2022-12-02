@@ -1,0 +1,9 @@
+﻿User-agent: *
+Disallow: /admin/
+Disallow: /auth/
+Disallow: /android/
+Disallow: /fullscreen/
+Host: http://www.svelte-hram.netlify.app
+Sitemap: http://www.svelte-hram.netlify.app/sitemap.xml
+Host: https://www.svelte-hram.netlify.app
+Sitemap: https://www.svelte-hram.netlify.app/sitemap.xml
