@@ -4,10 +4,10 @@
 	import Month from '$lib/components/schedule/Month.svelte';
 	import { onMount } from 'svelte';
 	import { Month as _Month } from '$lib/models/schedule/Month';
-	import PageTitle from '$lib/components/PageTitle.svelte';
 	import { goto } from '$app/navigation';
 	import { scheduleMonth as month } from '$lib/scripts/writableData';
 	import Spinner from '$lib/components/Spinner.svelte';
+	import PageTitleWrap from '$lib/components/PageTitleWrap.svelte';
 
 	let m = '';
 
@@ -24,9 +24,12 @@
 	});
 </script>
 
-<PageTitle title="Расписание">
-	<div slot="navigation">
-		<div class="input-group me-3">
+<PageTitleWrap title="Расписание">
+	<div slot="navigation" class="d-flex">
+		<div class="btn btn-primary text-dark text-nowrap me-2" on:click={() => window.print()}>
+			<i class="fa-solid fa-print me-2" />Печать
+		</div>
+		<div class="input-group">
 			<span class="input-group-text bg-primary text-dark border-0">Дата:</span>
 			<input
 				class="form-control bg-light text-dark border-0"
@@ -39,7 +42,7 @@
 			/>
 		</div>
 	</div>
-</PageTitle>
+</PageTitleWrap>
 
 {#if $month.fildsDayNotEmpty}
 	{#if $month.fildsDayNotEmpty.length > 0}

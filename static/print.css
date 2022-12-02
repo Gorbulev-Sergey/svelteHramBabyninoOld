@@ -42,7 +42,7 @@
 		border-bottom: solid 1px #e9ecef !important;
 		-webkit-print-color-adjust: exact !important;
 		print-color-adjust: exact !important;
-		page-break-after: auto;
+		break-inside: avoid;
 	}
 	.print-y-border > div {
 		padding-top: 0.1em !important;
