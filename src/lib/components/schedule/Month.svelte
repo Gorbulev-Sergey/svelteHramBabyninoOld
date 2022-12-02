@@ -7,11 +7,14 @@
 
 {#if month.fildsDayNotEmpty != null}
 	<div class="rounded bg-light text-dark w-100 overflow-auto">
-		<div class="print-title">
-			<div class="py-2 ps-4">
+		<div>
+			<div class="py-2 ps-4 print-title">
 				<b>Расписание на {month.monthName()?.toUpperCase()} {month.year} года</b>
 			</div>
-			<div style="display: grid; grid-template-columns: .11fr 1fr; min-height: 2.3em">
+			<div
+				class="no-print"
+				style="display: grid; grid-template-columns: .11fr 1fr; min-height: 2.3em"
+			>
 				<div class="text-center px-3" style="min-width: 8em;">
 					<span class="badge bg-primary text-dark">Дата</span>
 				</div>
@@ -28,7 +31,7 @@
 				</div>
 			</div>
 		</div>
-		<div class="print">
+		<div>
 			{#each month.fildsDayNotEmpty as item}
 				<FildDate fildDate={item} />
 			{/each}

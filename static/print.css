@@ -1,26 +1,79 @@
-@media print {
-	.no-print {
-		display: none !important;
+﻿@media print {
+	@page {
+		size: A4 portrait;
+		margin: 0;
 	}
-	.print {
-		margin: 4em 0 0 0;
-		-webkit-print-color-adjust: exact !important;
-		print-color-adjust: exact !important;
-		font-size: 1.1em !important;
+
+	body {
+		/* margin-top: -3em; */
+		background-color: white !important;
 	}
-	.print > div > div {
-		border-bottom: 1px solid rgba(108, 117, 125, 0.11);
+
+	div {
+		line-height: 1.15 !important;
+		margin-top: 0 !important;
 		padding-top: 0 !important;
 		padding-bottom: 0 !important;
-		color: black;
-		page-break-after: always;
 	}
-	.print-title {
-		position: fixed;
-		top: 0;
+	*[class='bg-backspace'] {
+		background-color: white !important;
+	}
+	*[class='bg-light'] {
+		background-color: white !important;
+	}
+	*[class='bg-primary text-danger print-y-border'] {
+		background-color: #e9ecef !important;
+		color: black !important;
+	}
+	.container {
+		background-color: white !important;
+	}
+
+	.container * {
+		color: black !important;
+		font-size: 1.03em !important;
+		font-family: 'Times New Roman';
+		line-height: 1.15;
+	}
+	.container > div {
+		background-color: white !important;
+	}
+	.print-y-border {
+		border-bottom: solid 1px #e9ecef !important;
 		-webkit-print-color-adjust: exact !important;
 		print-color-adjust: exact !important;
-		font-size: 1.1em !important;
-		display: table-header-group;
+		page-break-after: auto;
+	}
+	.print-y-border > div {
+		padding-top: 0.1em !important;
+		padding-bottom: 0.1em !important;
+	}
+	.print-y-border > div > div > div {
+		padding-top: 0.05em !important;
+		padding-bottom: 0.05em !important;
+		/* border-top: solid 1px #e9ecef !important; */
+	}
+	.no-print {
+		display: none !important;
+		width: 0 !important;
+		height: 0 !important;
+	}
+
+	.print-title {
+		text-align: center;
+		font-size: 1.15em !important;
+		font-weight: bold;
+		text-transform: uppercase;
+		margin-bottom: 0.5em !important;
+	}
+	.badge {
+		background-color: #e9ecef !important;
+		font-size: 0.8em !important;
+		text-transform: lowercase !important;
+		color: black !important;
+		padding-top: 0.05em !important;
+		padding-bottom: 0.05em !important;
+		padding-left: 0.4em !important;
+		padding-right: 0.4em !important;
 	}
 }
