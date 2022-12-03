@@ -71,11 +71,32 @@
 			</div>
 		</div>
 		<div class="tab-pane" id="content">
-			<button
-				class="btn btn-sm btn-dark mb-3"
-				on:click={() => (album.photos = [...album.photos, new _Photo()])}
-				><i class="fa-solid fa-plus" /> фото
-			</button>
+			<div class="mb-3">
+				<button
+					class="btn btn-sm btn-dark me-1"
+					on:click={() => (album.photos = [...album.photos, new _Photo()])}
+					><i class="fa-solid fa-plus" /> 1 фото
+				</button>
+				<button
+					class="btn btn-sm btn-dark me-1"
+					on:click={() => {
+						for (let i = 0; i < 5; i++) {
+							album.photos = [...album.photos, new _Photo()];
+						}
+					}}
+					><i class="fa-solid fa-plus" /> 5 фото
+				</button>
+				<button
+					class="btn btn-sm btn-dark me-1"
+					on:click={() => {
+						for (let i = 0; i < 10; i++) {
+							album.photos = [...album.photos, new _Photo()];
+						}
+					}}
+					><i class="fa-solid fa-plus" /> 10 фото
+				</button>
+			</div>
+
 			<div class="row row-cols-1 row-cols-md-3 g-3">
 				{#each album.photos as photo, i}
 					<div class="col">
