@@ -26,6 +26,7 @@
 	onMount(async () => {
 		onValue(ref(db, '/tags'), (s) => {
 			tags = Object.values(s.val());
+			title = tags.find((i) => i.name == $page.params.tag).description;
 		});
 		onValue(ref(db, '/posts'), (s) => {
 			posts = Object.values(s.val())
@@ -35,7 +36,7 @@
 	});
 </script>
 
-<PageTitle title={$page.params.tag[0].toUpperCase() + $page.params.tag.slice(1)}>
+<PageTitle title={tags.length > 0 ? tags.find((i) => i.name == $page.params.tag).description : ''}>
 	<div
 		slot="navigation"
 		class="btn-group btn-group-sm flex-nowrap overflow-auto scroll mt-md-0 mt-1"
