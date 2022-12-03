@@ -21,20 +21,20 @@
 		posts
 			.filter((i) => i.tags?.some((t) => t.name === $page.params.tag))
 			.sort((a, b) => new Date(b.created) - new Date(a.created));
-	let showedPostsStep = 2;
-	$: showedPostsLength = 0;
-	$: showedPosts = () => filteredPosts().slice(0, showedPostsLength);
+	let showedPostsStep = 5;
+	$: mapShowedPostsLength = new Map();
+	$: showedPosts = () => filteredPosts().slice(0, mapShowedPostsLength.get($page.params.tag));
 
 	onMount(async () => {
 		onValue(ref(db, '/tags'), (s) => {
 			tags = Object.values(s.val());
+			tags.forEach((v) => mapShowedPostsLength.set(v.name, showedPostsStep));
 		});
 		onValue(ref(db, '/posts'), (s) => {
 			posts = Object.values(s.val())
 				.filter((i) => i.published)
 				.reverse();
 		});
-		showedPostsLength += showedPostsStep;
 	});
 </script>
 
@@ -101,10 +101,16 @@
 		</div>
 	</div>
 
-	{#if showedPostsLength <= filteredPosts().length}
+	{#if mapShowedPostsLength.get($page.params.tag) < filteredPosts().length}
 		<button
 			class="btn btn-light text-dark w-100"
-			on:click={() => (showedPostsLength += showedPostsStep)}>Загрузить ещё...</button
+			on:click={() => {
+				mapShowedPostsLength.set(
+					$page.params.tag,
+					mapShowedPostsLength.get($page.params.tag) + showedPostsStep
+				);
+				showedPosts = () => filteredPosts().slice(0, mapShowedPostsLength.get($page.params.tag));
+			}}>Загрузить ещё...</button
 		>
 	{/if}
 {:else}
