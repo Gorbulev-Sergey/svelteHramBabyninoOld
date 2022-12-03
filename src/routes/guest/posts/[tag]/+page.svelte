@@ -11,24 +11,21 @@
 	import Spinner from '$lib/components/Spinner.svelte';
 	import AfterBreakpoint from '$lib/components/Breakpoint/AfterBreakpoint.svelte';
 	import BeforeBreakpoint from '$lib/components/Breakpoint/BeforeBreakpoint.svelte';
+	import { mapShowedPostsLength, showedPostsStep } from '$lib/scripts/writableData';
 
 	let checkIndex = (i, array = new Array()) => array.includes(Number(String(i).substring(-1)));
 	let tags = new Array();
 	let posts = new Array();
 
 	// ВАЖНЫЙ ФИЛЬТР: фильтруем публикации по динамическому параметру url
-	$: filteredPosts = () =>
-		posts
-			.filter((i) => i.tags?.some((t) => t.name === $page.params.tag))
-			.sort((a, b) => new Date(b.created) - new Date(a.created));
-	let showedPostsStep = 5;
-	$: mapShowedPostsLength = new Map();
-	$: showedPosts = () => filteredPosts().slice(0, mapShowedPostsLength.get($page.params.tag));
+	$: filteredPosts = posts
+		.filter((i) => i.tags?.some((t) => t.name === $page.params.tag))
+		.sort((a, b) => new Date(b.created) - new Date(a.created));
+	$: showedPosts = filteredPosts.slice(0, $mapShowedPostsLength.get($page.params.tag));
 
 	onMount(async () => {
 		onValue(ref(db, '/tags'), (s) => {
 			tags = Object.values(s.val());
-			tags.forEach((v) => mapShowedPostsLength.set(v.name, showedPostsStep));
 		});
 		onValue(ref(db, '/posts'), (s) => {
 			posts = Object.values(s.val())
@@ -58,7 +55,7 @@
 	<!--Для закреплённых-->
 	<div class="row mb-2 gx-4">
 		<div class="col-md-8">
-			{#each showedPosts().filter((p) => p.pinned) as item, i}
+			{#each showedPosts.filter((p) => p.pinned) as item, i}
 				{#if item.pinned && checkIndex(i, [1, 2, 4, 6, 7, 9])}
 					<AfterBreakpoint>
 						<PostHorizontal bind:post={item} />
@@ -70,7 +67,7 @@
 			{/each}
 		</div>
 		<div class="col-md-4">
-			{#each showedPosts().filter((p) => p.pinned) as item, i}
+			{#each showedPosts.filter((p) => p.pinned) as item, i}
 				{#if item.pinned && checkIndex(i, [0, 3, 5, 8])}
 					<Post bind:post={item} />
 				{/if}
@@ -81,14 +78,14 @@
 	<!--Для не закреплённых-->
 	<div class="row gx-4">
 		<div class="col-md-4">
-			{#each showedPosts().filter((p) => !p.pinned) as item, i}
+			{#each showedPosts.filter((p) => !p.pinned) as item, i}
 				{#if !item.pinned && checkIndex(i, [0, 3, 5, 8])}
 					<Post bind:post={item} />
 				{/if}
 			{/each}
 		</div>
 		<div class="col-md-8">
-			{#each showedPosts().filter((p) => !p.pinned) as item, i}
+			{#each showedPosts.filter((p) => !p.pinned) as item, i}
 				{#if !item.pinned && checkIndex(i, [1, 2, 4, 6, 7, 9])}
 					<AfterBreakpoint>
 						<PostHorizontal bind:post={item} />
@@ -101,15 +98,15 @@
 		</div>
 	</div>
 
-	{#if mapShowedPostsLength.get($page.params.tag) < filteredPosts().length}
+	{#if $mapShowedPostsLength.get($page.params.tag) < filteredPosts.length}
 		<button
 			class="btn btn-light text-dark w-100"
 			on:click={() => {
-				mapShowedPostsLength.set(
+				$mapShowedPostsLength.set(
 					$page.params.tag,
-					mapShowedPostsLength.get($page.params.tag) + showedPostsStep
+					$mapShowedPostsLength.get($page.params.tag) + showedPostsStep
 				);
-				showedPosts = () => filteredPosts().slice(0, mapShowedPostsLength.get($page.params.tag));
+				showedPosts = filteredPosts.slice(0, $mapShowedPostsLength.get($page.params.tag));
 			}}>Загрузить ещё...</button
 		>
 	{/if}
