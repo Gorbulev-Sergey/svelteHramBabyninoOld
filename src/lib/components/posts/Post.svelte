@@ -10,15 +10,13 @@
 	let showContent = false;
 </script>
 
-<div class="col">
+<div id={uid ? uid : ''} class="col">
 	<div
-		id={uid ? uid : ''}
 		class="card {!post.inverted
 			? 'bg-light text-dark'
 			: 'bg-dark text-light'} border-0 h-100 border {_class}"
 	>
 		<div
-			id={new Date(post.created).toISOString()}
 			class="card-header {!post.inverted ? 'bg-light text-dark' : 'bg-dark text-light'} border-0"
 		>
 			<div class="d-flex justify-content-between">
@@ -81,7 +79,7 @@
 					style="cursor: pointer; font-size:.8em;"
 					on:click={() => {
 						showContent = !showContent;
-						goto(`#${new Date(post.created).toISOString()}`);
+						goto(`#${uid}`);
 					}}
 				>
 					<i class="fa-solid {!showContent ? 'fa-circle-arrow-right' : 'fa-circle-arrow-left'} " />
