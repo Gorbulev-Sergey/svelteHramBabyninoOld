@@ -92,7 +92,7 @@
 				<button
 					class="btn btn-sm btn-primary text-dark"
 					on:click={() => {
-						if (uid) goto(`/guest/posts/details/${uid}`);
+						if (uid) goto(`/guest/posts/details/${uid}?returnUrl=${$page.url.pathname}`);
 					}}><i class="fa-solid fa-circle-arrow-right me-1" />...</button
 				>
 			</div>
