@@ -22,7 +22,7 @@ export let scheduleMonth = writable(
 
 // Для работы публикаций, чтобы публикации показывались порционно
 // по showedPostsStep раз и для каждого тега отдельно
-export let showedPostsStep = 1;
+export let showedPostsStep = 3;
 export let mapShowedPostsLength = writable(new Map());
 onValue(ref(db, '/tags'), (s) => {
 	let tags = Object.values(s.val());
