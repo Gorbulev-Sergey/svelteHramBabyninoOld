@@ -13,7 +13,6 @@
 	let checkIndex = (i, array = new Array()) => array.includes(Number(String(i).substring(-1)));
 	let tags = new Array();
 	let posts = new Array();
-	let postsMap = new Map();
 
 	// ВАЖНЫЙ ФИЛЬТР: фильтруем публикации по динамическому параметру url
 	$: filteredPosts = posts
@@ -29,8 +28,6 @@
 			posts = Object.values(s.val())
 				.filter((i) => i.published)
 				.reverse();
-			postsMap = Object.entries(s.val()).filter(([k, v]) => v.published);
-			console.log(postsMap);
 		});
 	});
 </script>

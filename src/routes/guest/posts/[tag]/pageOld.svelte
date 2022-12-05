@@ -7,13 +7,15 @@
 	import { onValue, push, query, ref } from 'firebase/database';
 	import { onMount } from 'svelte';
 	import Post from '$lib/components/posts/Post.svelte';
+	import PostHorizontal from '$lib/components/posts/PostHorizontal.svelte';
 	import Spinner from '$lib/components/Spinner.svelte';
+	import AfterBreakpoint from '$lib/components/Breakpoint/AfterBreakpoint.svelte';
+	import BeforeBreakpoint from '$lib/components/Breakpoint/BeforeBreakpoint.svelte';
 	import { mapShowedPostsLength, showedPostsStep } from '$lib/scripts/writableData';
 
 	let checkIndex = (i, array = new Array()) => array.includes(Number(String(i).substring(-1)));
 	let tags = new Array();
 	let posts = new Array();
-	let postsMap = new Map();
 
 	// ВАЖНЫЙ ФИЛЬТР: фильтруем публикации по динамическому параметру url
 	$: filteredPosts = posts
@@ -24,13 +26,12 @@
 	onMount(async () => {
 		onValue(ref(db, '/tags'), (s) => {
 			tags = Object.values(s.val());
+			title = tags.find((i) => i.name == $page.params.tag).description;
 		});
 		onValue(ref(db, '/posts'), (s) => {
 			posts = Object.values(s.val())
 				.filter((i) => i.published)
 				.reverse();
-			postsMap = Object.entries(s.val()).filter(([k, v]) => v.published);
-			console.log(postsMap);
 		});
 	});
 </script>
@@ -52,18 +53,48 @@
 </PageTitle>
 
 {#if posts.length > 0}
-	<div class="pt-3">
-		<!--Для закреплённых-->
-		<div class="row row-cols-1 row-cols-md-3 g-3">
+	<!--Для закреплённых-->
+	<div class="row mb-2 gx-4">
+		<div class="col-md-8">
 			{#each showedPosts.filter((p) => p.pinned) as item, i}
-				<Post bind:post={item} />
+				{#if item.pinned && checkIndex(i, [1, 2, 4, 6, 7, 9])}
+					<AfterBreakpoint>
+						<PostHorizontal bind:post={item} />
+					</AfterBreakpoint>
+					<BeforeBreakpoint>
+						<Post bind:post={item} />
+					</BeforeBreakpoint>
+				{/if}
 			{/each}
 		</div>
+		<div class="col-md-4">
+			{#each showedPosts.filter((p) => p.pinned) as item, i}
+				{#if item.pinned && checkIndex(i, [0, 3, 5, 8])}
+					<Post bind:post={item} />
+				{/if}
+			{/each}
+		</div>
+	</div>
 
-		<!--Для не закреплённых-->
-		<div class="row row-cols-1 row-cols-md-3 g-3">
+	<!--Для не закреплённых-->
+	<div class="row gx-4">
+		<div class="col-md-4">
 			{#each showedPosts.filter((p) => !p.pinned) as item, i}
-				<Post bind:post={item} />
+				{#if !item.pinned && checkIndex(i, [0, 3, 5, 8])}
+					<Post bind:post={item} />
+				{/if}
+			{/each}
+		</div>
+		<div class="col-md-8">
+			{#each showedPosts.filter((p) => !p.pinned) as item, i}
+				{#if !item.pinned && checkIndex(i, [1, 2, 4, 6, 7, 9])}
+					<AfterBreakpoint>
+						<PostHorizontal bind:post={item} />
+					</AfterBreakpoint>
+					<BeforeBreakpoint>
+						<Post bind:post={item} />
+					</BeforeBreakpoint>
+				{/if}
 			{/each}
 		</div>
 	</div>

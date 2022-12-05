@@ -6,15 +6,16 @@
 
 	export let uid = '';
 	export let post = new Post();
+	export let _class = '';
 	let showContent = false;
 </script>
 
-<div class="col mb-3">
+<div class="col">
 	<div
 		id={uid ? uid : ''}
 		class="card {!post.inverted
 			? 'bg-light text-dark'
-			: 'bg-dark text-light'} border-0 h-100 border"
+			: 'bg-dark text-light'} border-0 h-100 border {_class}"
 	>
 		<div
 			id={new Date(post.created).toISOString()}
@@ -38,7 +39,7 @@
 							<button
 								class="badge {!post.inverted
 									? 'bg-primary text-dark'
-									: 'bg-secondary text-light'} text-decoration-none p-1 me-1 border-0"
+									: 'bg-secondary text-light'} text-decoration-none p-1 ms-1 border-0"
 								on:click={() => {
 									goto(`/${$page.url.pathname.split('/')[1]}/posts/${tag.name}`);
 								}}>{tag.name}</button
@@ -49,7 +50,7 @@
 			</div>
 		</div>
 		{#if post.cover && post.cover.video}
-			<div class="ratio ratio-16x9 mt-3">
+			<div class="ratio ratio-21x9">
 				<!-- svelte-ignore a11y-missing-attribute -->
 				<iframe
 					class="embed-responsive-item"
@@ -68,24 +69,6 @@
 					 background-repeat: no-repeat; background-position: center; background-size: cover; min-height:12em;"
 			/>
 		{/if}
-		<div class="d-flex align-items-center justify-content-between">
-			{#if post.comments}
-				<div>
-					<button
-						class="btn btn-sm btn-light text-dark"
-						data-toggle="collapse"
-						data-target="#comments"
-						title="Комментарии"
-						on:click={() => {}}
-					>
-						<i class="far fa-comment-alt" />
-						{#if post.comments?.length > 0}
-							<span class="ml-2">{post.comments.length}</span>
-						{/if}
-					</button>
-				</div>
-			{/if}
-		</div>
 		<div class="card-body" style="font-size:1em;">
 			{#if !showContent || (showContent && !post.content)}
 				{@html post.description ? post.description : ''}
@@ -104,6 +87,35 @@
 					<i class="fa-solid {!showContent ? 'fa-circle-arrow-right' : 'fa-circle-arrow-left'} " />
 					...
 				</span>
+			{/if}
+		</div>
+		{#if post.content}
+			<div class="d-flex align-items-center justify-content-end mx-3 mb-3">
+				<button
+					class="btn btn-sm btn-primary text-dark"
+					on:click={() => {
+						if (uid) goto(`/guest/posts/details/${uid}`);
+					}}><i class="fa-solid fa-circle-arrow-right me-1" />...</button
+				>
+			</div>
+		{/if}
+
+		<div class="d-flex align-items-center justify-content-between">
+			{#if post.comments}
+				<div>
+					<button
+						class="btn btn-sm btn-light text-dark"
+						data-toggle="collapse"
+						data-target="#comments"
+						title="Комментарии"
+						on:click={() => {}}
+					>
+						<i class="far fa-comment-alt" />
+						{#if post.comments?.length > 0}
+							<span class="ml-2">{post.comments.length}</span>
+						{/if}
+					</button>
+				</div>
 			{/if}
 		</div>
 		<slot name="admin" />
