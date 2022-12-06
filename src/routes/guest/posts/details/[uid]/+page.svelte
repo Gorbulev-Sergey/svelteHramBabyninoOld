@@ -23,7 +23,7 @@
 <div class="bg-light text-dark rounded my-2">
 	<div
 		class="d-flex flex-column justify-content-end rounded-top"
-		style="background-image: url({post.cover.image});
+		style="background-image: url({post.cover?.image ? post.cover.image : ''});
 					 background-repeat: no-repeat; background-position: center; background-size: cover; min-height:14em;"
 	>
 		<div
@@ -32,7 +32,7 @@
 			<div class="me-4">
 				<h4 class="mb-0 pb-0">{post.title}</h4>
 				{#if post.description}
-					<div class="mt-1 small">{post.description}</div>
+					<div class="mt-1 small">{@html post.description}</div>
 				{/if}
 			</div>
 			<div class="text-end">
