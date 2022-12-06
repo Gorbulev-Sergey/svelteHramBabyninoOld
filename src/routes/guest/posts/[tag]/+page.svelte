@@ -64,7 +64,7 @@
 
 	{#if $mapShowedPostsLength.get($page.params.tag) < mapFilteredPosts.length}
 		<button
-			class="btn btn-light text-dark w-100"
+			class="btn btn-light text-dark mt-3 w-100"
 			on:click={() => {
 				$mapShowedPostsLength.set(
 					$page.params.tag,
