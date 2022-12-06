@@ -33,7 +33,7 @@
 	{routesLeft}
 	{routesRight}
 />
-<div class="container mb-3" style="margin-top:4.5em; min-height:90vh;">
+<div class="container mb-4" style="margin-top:4.5em; min-height:90vh;">
 	<slot />
 </div>
 <Footer />

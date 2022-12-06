@@ -70,7 +70,7 @@
 		</div>
 		<div class="{post.cover ? 'col-4' : ''} rounded-end overflow-hidden">
 			{#if post.cover && post.cover.video}
-				<div class="ratio ratio-16x9 h-100">
+				<div class="ratio ratio-21x9 h-100">
 					<!-- svelte-ignore a11y-missing-attribute -->
 					<iframe
 						class="embed-responsive-item"

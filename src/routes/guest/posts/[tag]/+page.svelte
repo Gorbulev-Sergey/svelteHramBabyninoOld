@@ -14,7 +14,7 @@
 	let mapPosts = new Array();
 	$: mapFilteredPosts = mapPosts
 		.filter(([k, v]) => v.tags?.some((t) => t.name === $page.params.tag))
-		.sort(([k1, v1], [k2, v2]) => new Date(v1.created) - new Date(v2.created));
+		.sort(([k1, v1], [k2, v2]) => new Date(v2.created) - new Date(v1.created));
 	$: mapShowedPosts = mapFilteredPosts.slice(0, $mapShowedPostsLength.get($page.params.tag));
 
 	onMount(async () => {
