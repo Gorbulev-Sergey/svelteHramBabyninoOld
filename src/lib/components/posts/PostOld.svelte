@@ -67,11 +67,26 @@
 					 background-repeat: no-repeat; background-position: center; background-size: cover; min-height:12em;"
 			/>
 		{/if}
-		{#if post.description}
-			<div class="card-body" style="font-size:1em;">
-				{@html post.description}
-			</div>
-		{/if}
+		<div class="card-body" style="font-size:1em;">
+			{#if !showContent || (showContent && !post.content)}
+				{@html post.description ? post.description : ''}
+			{:else}
+				{@html post.content ? post.content : ''}
+			{/if}
+			{#if post.content}
+				<span
+					class="badge bg-primary text-dark"
+					style="cursor: pointer; font-size:.8em;"
+					on:click={() => {
+						showContent = !showContent;
+						goto(`#${uid}`);
+					}}
+				>
+					<i class="fa-solid {!showContent ? 'fa-circle-arrow-right' : 'fa-circle-arrow-left'} " />
+					...
+				</span>
+			{/if}
+		</div>
 		{#if post.content}
 			<div class="d-flex align-items-center justify-content-end mx-3 mb-3">
 				<button
@@ -82,6 +97,25 @@
 				>
 			</div>
 		{/if}
+
+		<div class="d-flex align-items-center justify-content-between">
+			{#if post.comments}
+				<div>
+					<button
+						class="btn btn-sm btn-light text-dark"
+						data-toggle="collapse"
+						data-target="#comments"
+						title="Комментарии"
+						on:click={() => {}}
+					>
+						<i class="far fa-comment-alt" />
+						{#if post.comments?.length > 0}
+							<span class="ml-2">{post.comments.length}</span>
+						{/if}
+					</button>
+				</div>
+			{/if}
+		</div>
 		<slot name="admin" />
 	</div>
 </div>

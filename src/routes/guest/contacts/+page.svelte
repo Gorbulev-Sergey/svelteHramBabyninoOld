@@ -60,7 +60,7 @@
 			<div class="bg-light text-dark rounded p-3">
 				<h5>Адрес храма:</h5>
 				<p>{contacts.address.title}</p>
-				<div class="rounded w-100" style="overflow:hidden; height:400px">
+				<div class="rounded mb-2 w-100" style="overflow:hidden; height:400px">
 					<iframe
 						title="fghjfghj"
 						src={contacts.address.yandexMapsUrl.replace(

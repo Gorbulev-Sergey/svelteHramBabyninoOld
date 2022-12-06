@@ -44,20 +44,22 @@
 </PageTitle>
 
 {#if mapPosts.length > 0}
-	<div class="py-3">
-		<!--Для закреплённых-->
-		<div class="row row-cols-1 row-cols-md-3 g-3">
-			{#each mapShowedPosts.filter(([k, v]) => v.pinned) as [uid, post], i}
-				<Post {uid} bind:post />
-			{/each}
+	{#if mapShowedPosts.filter(([k, v]) => v.pinned)}
+		<div class="mb-3">
+			<!--Для закреплённых-->
+			<div class="row row-cols-1 row-cols-md-3 g-3 flex-row-reverse">
+				{#each mapShowedPosts.filter(([k, v]) => v.pinned) as [uid, post], i}
+					<Post {uid} bind:post />
+				{/each}
+			</div>
 		</div>
+	{/if}
 
-		<!--Для не закреплённых-->
-		<div class="row row-cols-1 row-cols-md-3 g-3">
-			{#each mapShowedPosts.filter(([k, v]) => !v.pinned) as [uid, post], i}
-				<Post {uid} bind:post />
-			{/each}
-		</div>
+	<!--Для не закреплённых-->
+	<div class="row row-cols-1 row-cols-md-3 g-3">
+		{#each mapShowedPosts.filter(([k, v]) => !v.pinned) as [uid, post], i}
+			<Post {uid} bind:post />
+		{/each}
 	</div>
 
 	{#if $mapShowedPostsLength.get($page.params.tag) < mapFilteredPosts.length}
