@@ -27,7 +27,7 @@
 			<h5 class="mb-0">
 				{album.title}
 			</h5>
-			<small class="text-dark text-opacity-75">{album.description}</small>
+			<small class="text-dark text-opacity-75">{album.description ? album.description : ''}</small>
 		</div>
 		<div class="d-flex flex-column align-items-end justify-content-between small mt-1">
 			{#if album.photos}
