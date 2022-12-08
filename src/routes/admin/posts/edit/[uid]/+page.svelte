@@ -71,7 +71,7 @@
 	</div>
 
 	<div class="tab-content">
-		<div class="tab-pane show" id="cover">
+		<div class="tab-pane active show" id="cover">
 			<div class="row">
 				<div class="col-md-8">
 					<input

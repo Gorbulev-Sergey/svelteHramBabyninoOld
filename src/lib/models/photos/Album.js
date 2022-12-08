@@ -8,7 +8,7 @@ export class Album {
 	) {
 		this.title = title;
 		this.description = description;
-		this.date = `${date.getFullYear()}-${date.getMonth()}-0${date.getDate()}`;
+		this.date = `${date.getFullYear()}-${date.getMonth() + 1}-0${date.getDate()}`;
 		this.photos = photos;
 		this.cover = cover;
 	}

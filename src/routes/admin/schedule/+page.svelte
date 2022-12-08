@@ -3,7 +3,7 @@
 	import { onValue, ref } from 'firebase/database';
 	import Month from '$lib/components/schedule/Month.svelte';
 	import { onMount } from 'svelte';
-	import { Month as _Month } from '../../../lib/models/schedule/Month';
+	import { Month as _Month } from '$lib/models/schedule/Month';
 	import PageTitleWrap from '$lib/components/PageTitleWrap.svelte';
 	import { goto } from '$app/navigation';
 	import { scheduleMonth as month } from '$lib/scripts/writableData';
@@ -11,7 +11,7 @@
 	let m = '';
 
 	function loadData() {
-		onValue(ref(db, `schedule/${$month.year}/${$month.monthName()}`), (result) => {
+		onValue(ref(db, `/schedule/${$month.year}/${$month.monthName()}`), (result) => {
 			$month.fildsDayNotEmpty = result.val();
 			$month.updateFildsDayAll();
 		});

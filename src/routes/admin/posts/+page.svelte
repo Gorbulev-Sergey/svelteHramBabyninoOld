@@ -1,4 +1,6 @@
 <script>
+	// @ts-nocheck
+
 	import { db } from '$lib/scripts/firebase';
 	import { onValue, ref, remove, update } from 'firebase/database';
 	import PostHorizontal from '$lib/components/posts/PostHorizontal.svelte';
@@ -21,9 +23,9 @@
 		);
 		switch ($adminPostsFilters.newFirst) {
 			case true:
-				return p.reverse();
+				return p.sort(([k1, v1], [k2, v2]) => new Date(v2.created) - new Date(v1.created));
 			case false:
-				return p;
+				return p.sort(([k1, v1], [k2, v2]) => new Date(v1.created) - new Date(v2.created));
 		}
 	};
 
