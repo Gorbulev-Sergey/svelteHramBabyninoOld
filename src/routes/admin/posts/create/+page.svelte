@@ -118,20 +118,29 @@
 						{#if post.cover.video}
 							<div class="ratio ratio-16x9 rounded overflow-hidden mt-3">
 								<!-- svelte-ignore a11y-missing-attribute -->
-								<iframe
-									class="embed-responsive-item"
-									src={post.cover.video
-										.replace('https://youtu.be', 'https://youtube.com/embed/')
-										.replace(
-											'https://vk.com/video',
-											`https://vk.com/video_ext.php?oid=-${
-												post.cover.video?.split('-')[1]?.split('_')[0]
-											}&id=${post.cover.video?.split('-')[1]?.split('_')[1]}&hash=d46c7611ec96988b`
-										)
-										.replace(`-${post.cover.video?.split('-')[1]}`, '')}
-									frameborder="0"
-									allowfullscreen
-								/>
+								{#if post.cover.video.includes('https://youtu.be')}
+									<iframe
+										frameborder="0"
+										allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+										allowfullscreen
+										class="embed-responsive-item"
+										src={post.cover.video.replace('https://youtu.be', 'https://youtube.com/embed')}
+									/>
+								{:else if post.cover.video.includes('https://vk.com/video')}
+									<iframe
+										class="embed-responsive-item"
+										src={post.cover.video
+											.replace(
+												'https://vk.com/video',
+												`https://vk.com/video_ext.php?oid=-${
+													post.cover.video?.split('-')[1]?.split('_')[0]
+												}&id=${
+													post.cover.video?.split('-')[1]?.split('_')[1]
+												}&hash=d46c7611ec96988b`
+											)
+											.replace('-' + post.cover.video?.split('-')[1], '')}
+									/>
+								{/if}
 							</div>
 						{/if}
 					</div>
