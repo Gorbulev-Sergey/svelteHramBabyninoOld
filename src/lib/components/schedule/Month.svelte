@@ -15,7 +15,7 @@
 				class="no-print"
 				style="display: grid; grid-template-columns: .11fr 1fr; min-height: 2.3em"
 			>
-				<div class="text-center px-3" style="min-width: 8em;">
+				<div class="text-center px-3" style="min-width: 8.2em;">
 					<span class="badge bg-primary text-dark">Дата</span>
 				</div>
 				<div style="display: grid; grid-template-columns: 1fr .3fr .1fr">
