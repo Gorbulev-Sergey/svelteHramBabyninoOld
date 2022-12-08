@@ -79,10 +79,10 @@
 							.replace(
 								'https://vk.com/video',
 								`https://vk.com/video_ext.php?oid=-${
-									String(post.cover.video).split('-')[1].split('_')[0]
-								}&id=${String(post.cover.video).split('-')[1].split('_')[1]}&hash=d46c7611ec96988b`
+									post.cover.video?.split('-')[1]?.split('_')[0]
+								}&id=${post.cover.video?.split('-')[1]?.split('_')[1]}&hash=d46c7611ec96988b`
 							)
-							.replace(`-${String(post.cover.video).split('-')[1]}`, '')}?rel=0"
+							.replace(`-${post.cover.video?.split('-')[1]}`, '')}?rel=0"
 						frameborder="0"
 						allowfullscreen
 					/>
