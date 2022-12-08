@@ -74,7 +74,7 @@
 					<!-- svelte-ignore a11y-missing-attribute -->
 					<iframe
 						class="embed-responsive-item"
-						src="{post.cover.video
+						src={post.cover.video
 							.replace('https://youtu.be', 'https://youtube.com/embed/')
 							.replace(
 								'https://vk.com/video',
@@ -82,7 +82,7 @@
 									post.cover.video?.split('-')[1]?.split('_')[0]
 								}&id=${post.cover.video?.split('-')[1]?.split('_')[1]}&hash=d46c7611ec96988b`
 							)
-							.replace(`-${post.cover.video?.split('-')[1]}`, '')}?rel=0"
+							.replace(`-${post.cover.video?.split('-')[1]}`, '')}
 						frameborder="0"
 						allowfullscreen
 					/>
