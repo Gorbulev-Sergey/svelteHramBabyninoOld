@@ -10,7 +10,8 @@ export class Post {
 		inverted = null,
 		tags = new Array(),
 		comments = new Array(),
-		userUID = null
+		userUID = null,
+		isHorisontal = null
 	) {
 		this.title = title;
 		this.cover = cover;
@@ -23,6 +24,7 @@ export class Post {
 		this.tags = tags;
 		this.comments = comments;
 		this.userUID = userUID;
+		this.isHorisontal = isHorisontal;
 	}
 }
 

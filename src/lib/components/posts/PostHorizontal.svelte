@@ -13,7 +13,7 @@
 	id={uid ? uid : ''}
 	class="card mb-3 p-0 {!post.inverted ? 'bg-light text-dark' : 'bg-dark text-light'} border-0"
 >
-	<div id={new Date(post.created).toISOString()} class="row g-0">
+	<div class="row g-0">
 		<div class="{post.cover ? 'col-8' : ''} d-flex flex-column">
 			<div class="card-body flex-grow-1 mb-1">
 				<div class="d-flex justify-content-between">

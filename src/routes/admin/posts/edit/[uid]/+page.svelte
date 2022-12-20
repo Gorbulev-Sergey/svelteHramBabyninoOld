@@ -65,7 +65,13 @@
 			<Pin
 				classFontAwesome="fa-solid fa-brush"
 				text="инвертировать цвета"
+				_class="me-4"
 				bind:checked={post.inverted}
+			/>
+			<Pin
+				classFontAwesome="fa-solid fa-ruler-horizontal"
+				text="горизонтально"
+				bind:checked={post.isHorisontal}
 			/>
 		</div>
 	</div>

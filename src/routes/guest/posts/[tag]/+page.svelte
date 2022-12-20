@@ -9,6 +9,7 @@
 	import Post from '$lib/components/posts/Post.svelte';
 	import Spinner from '$lib/components/Spinner.svelte';
 	import { mapShowedPostsLength, showedPostsStep } from '$lib/scripts/writableData';
+	import PostHorizontal from '$lib/components/posts/PostHorizontal.svelte';
 
 	let tags = new Array();
 	let mapPosts = new Array();
@@ -47,8 +48,14 @@
 	{#if mapShowedPosts.filter(([k, v]) => v.pinned)}
 		<div class="mb-3">
 			<!--Для закреплённых-->
+			<div>
+				{#each mapShowedPosts.filter(([k, v]) => v.pinned && v.isHorisontal) as [uid, post], i}
+					<PostHorizontal {uid} bind:post />
+				{/each}
+			</div>
+			<!--Для закреплённых-->
 			<div class="row row-cols-1 row-cols-md-3 g-3 flex-row-reverse">
-				{#each mapShowedPosts.filter(([k, v]) => v.pinned) as [uid, post], i}
+				{#each mapShowedPosts.filter(([k, v]) => v.pinned && !v.isHorisontal) as [uid, post], i}
 					<Post {uid} bind:post />
 				{/each}
 			</div>
