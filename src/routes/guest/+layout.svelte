@@ -16,6 +16,10 @@
 			title: 'Фотографии'
 		},
 		{
+			url: '/guest/posts/видео',
+			title: 'Видео'
+		},
+		{
 			url: '/guest/contacts',
 			title: 'Контакты'
 		}
