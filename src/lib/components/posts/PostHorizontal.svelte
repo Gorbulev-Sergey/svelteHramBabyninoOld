@@ -44,25 +44,20 @@
 					</div>
 				</div>
 				<div class="card-text" style="font-size:1em;">
-					{#if !showContent || (showContent && !post.content)}
-						{@html post.description ? post.description : ''}
-					{:else}
-						{@html post.content ? post.content : ''}
+					{#if post.description}
+						<div class="card-body" style="font-size:1em;">
+							{@html post.description}
+						</div>
 					{/if}
 					{#if post.content}
-						<span
-							class="badge bg-light text-dark"
-							style="cursor: pointer; font-size:.8em;"
-							on:click={() => {
-								showContent = !showContent;
-								goto(`#${new Date(post.created).toISOString()}`);
-							}}
-						>
-							<i
-								class="fa-solid {!showContent ? 'fa-circle-arrow-right' : 'fa-circle-arrow-left'} "
-							/>
-							...
-						</span>
+						<div class="d-flex align-items-center justify-content-end">
+							<button
+								class="btn btn-sm btn-primary text-dark"
+								on:click={() => {
+									if (uid) goto(`/guest/posts/details/${uid}?returnUrl=${$page.url.pathname}`);
+								}}><i class="fa-solid fa-circle-arrow-right me-1" />...</button
+							>
+						</div>
 					{/if}
 				</div>
 			</div>
