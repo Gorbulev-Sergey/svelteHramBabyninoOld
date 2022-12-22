@@ -1,6 +1,8 @@
 <script>
 	export let title = '';
 	export let _class = '';
+
+	$: document.title = title;
 </script>
 
 <div class="d-flex justify-content-between flex-nowrap align-items-center mb-3 no-print {_class}">
