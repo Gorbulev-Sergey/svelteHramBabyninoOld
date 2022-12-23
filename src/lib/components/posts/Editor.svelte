@@ -6,7 +6,12 @@
 	let showCode = false;
 </script>
 
-<EditorControls _class="mb-1" codeOnClick={() => (showCode = !showCode)} />
+<EditorControls
+	_class="mb-2"
+	codeOnClick={() => {
+		showCode = !showCode;
+	}}
+/>
 {#if !showCode}
 	<div
 		class="form-control border-primary mb-3

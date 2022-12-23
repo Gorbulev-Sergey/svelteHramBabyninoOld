@@ -66,11 +66,13 @@
 				_class="me-4"
 				bind:checked={post.inverted}
 			/>
-			<Pin
-				classFontAwesome="fa-solid fa-ruler-horizontal"
-				text="горизонтально"
-				bind:checked={post.isHorisontal}
-			/>
+			{#if post.pinned}
+				<Pin
+					classFontAwesome="fa-solid fa-ruler-horizontal"
+					text="горизонтально"
+					bind:checked={post.isHorisontal}
+				/>
+			{/if}
 		</div>
 	</div>
 

@@ -17,7 +17,7 @@ export class Post {
 		this.cover = cover;
 		this.description = description;
 		this.content = content;
-		this.created = `${created.getFullYear()}-${created.getMonth() + 1}-0${created.getDate()}`;
+		this.created = `${created.getFullYear()}-${created.getMonth() + 1}-${created.getDate()}`;
 		this.published = published;
 		this.pinned = pinned;
 		this.inverted = inverted;
