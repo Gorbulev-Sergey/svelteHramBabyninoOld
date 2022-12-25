@@ -20,7 +20,7 @@
 			class="card-header {!post.inverted ? 'bg-light text-dark' : 'bg-dark text-light'} border-0"
 		>
 			<div class="d-flex justify-content-between">
-				<h5 class="card-title my-1">{post.title}</h5>
+				<h5 class="card-title my-1">{@html post.title}</h5>
 				{#if post.pinned}
 					<i class="fa-solid fa-thumbtack" />
 				{/if}

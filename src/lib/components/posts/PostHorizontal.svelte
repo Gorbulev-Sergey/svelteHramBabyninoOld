@@ -17,7 +17,7 @@
 		<div class="{post.cover ? 'col-8' : ''} d-flex flex-column">
 			<div class="card-body flex-grow-1 mb-1">
 				<div class="d-flex justify-content-between">
-					<h5 class="card-title mb-1">{post.title}</h5>
+					<h5 class="card-title mb-1">{@html post.title}</h5>
 					{#if post.pinned}
 						<i class="fa-solid fa-thumbtack" />
 					{/if}
