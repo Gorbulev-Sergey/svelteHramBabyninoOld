@@ -12,15 +12,31 @@
 	import PinButton from '$lib/components/PinButton.svelte';
 	import Pin from '$lib/components/Pin.svelte';
 	import PageTitleWrap from '$lib/components/PageTitleWrap.svelte';
+	import { Tag } from '$lib/models/Tag';
 
 	let posts = new Object();
 	$: tags = new Array();
 	$: arrayOfFilteredPosts = () => {
-		let p = Object.entries(posts).filter(
-			([k, v]) =>
-				v.published == $adminPostsFilters.published &&
-				v.tags.find((t) => t.name == $adminPostsFilters.tag.name)
-		);
+		let p;
+		switch ($adminPostsFilters.tag.name) {
+			case 'все вместе':
+				p = Object.entries(posts).filter(([k, v]) => v.published == $adminPostsFilters.published);
+				break;
+			case 'без тега':
+				p = Object.entries(posts).filter(
+					([k, v]) =>
+						v.published == $adminPostsFilters.published && (v.tags == null || v.tags.length == 0)
+				);
+				break;
+			default:
+				p = Object.entries(posts).filter(
+					([k, v]) =>
+						v.published == $adminPostsFilters.published &&
+						v.tags?.find((t) => t.name == $adminPostsFilters.tag.name)
+				);
+				break;
+		}
+
 		switch ($adminPostsFilters.newFirst) {
 			case true:
 				return p.sort(([k1, v1], [k2, v2]) => new Date(v2.created) - new Date(v1.created));
@@ -35,6 +51,8 @@
 		});
 		onValue(ref(db, '/tags'), (s) => {
 			if (s.exists()) tags = Object.values(s.val());
+			tags.push(new Tag('все вместе', 'Все вместе'));
+			tags.push(new Tag('без тега', 'Без тега'));
 		});
 	});
 </script>
