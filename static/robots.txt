@@ -3,5 +3,7 @@ Disallow: /admin/
 Disallow: /auth/
 Disallow: /android/
 Disallow: /fullscreen/
-Host: https://hram-babynino.ru
-Sitemap: https://hram-babynino.ru/sitemap.xml
+Host: http://www.hram-babynino.ru
+Sitemap: http://www.hram-babynino.ru/sitemap.xml
+Host: https://www.hram-babynino.ru
+Sitemap: https://www.hram-babynino.ru/sitemap.xml
