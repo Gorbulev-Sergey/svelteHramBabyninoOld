@@ -16,7 +16,10 @@
 	});
 </script>
 
-<PageTitle title="Фотографии" />
+<PageTitle
+	title="Фотографии"
+	description="Фотографии различных мероприятий, происходящих в нашем храме"
+/>
 
 {#if Object.entries(albums).length > 0}
 	<div class="row row-cols-1 row-cols-md-3 g-3">

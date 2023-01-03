@@ -24,7 +24,7 @@
 	});
 </script>
 
-<PageTitleWrap title="Расписание богослужений">
+<PageTitleWrap title="Расписание богослужений" description="Расписание богослужений в нашем храме">
 	<div slot="navigation" class="d-flex">
 		<div class="btn btn-primary text-dark text-nowrap me-2" on:click={() => window.print()}>
 			<i class="fa-solid fa-print me-2" />Печать
