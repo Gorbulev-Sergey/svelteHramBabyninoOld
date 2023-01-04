@@ -1,7 +1,6 @@
 <script>
 	// @ts-nocheck
 	import PageTitle from '$lib/components/PageTitle.svelte';
-	import { Contacts } from '$lib/models/Contacts';
 	import { db } from '$lib/scripts/firebase';
 	import { onValue, push, ref, set } from 'firebase/database';
 	import { onMount } from 'svelte';
