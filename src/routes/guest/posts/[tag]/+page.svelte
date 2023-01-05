@@ -14,35 +14,30 @@
 	let tags = new Array();
 	let mapPosts = new Array();
 	$: mapFilteredPosts = mapPosts
-		.filter(([k, v]) => v.tags?.some((t) => t.name === $page.params.tag))
+		.filter(([k, v]) => v.tags?.some(t => t.name === $page.params.tag))
 		.sort(([k1, v1], [k2, v2]) => new Date(v2.created) - new Date(v1.created));
 	$: mapShowedPosts = mapFilteredPosts.slice(0, $mapShowedPostsLength.get($page.params.tag));
 
 	onMount(async () => {
-		onValue(ref(db, '/tags'), (s) => {
+		onValue(ref(db, '/tags'), s => {
 			tags = Object.values(s.val());
 		});
-		onValue(ref(db, '/posts'), (s) => {
+		onValue(ref(db, '/posts'), s => {
 			mapPosts = Object.entries(s.val()).filter(([k, v]) => v.published);
 		});
 	});
 </script>
 
 <PageTitle
-	title={tags.length > 0 ? tags.find((i) => i.name == $page.params.tag).description : ''}
-	description="Объявления, новости, видео, статьи из жизни нашего храма"
->
-	<div
-		slot="navigation"
-		class="btn-group btn-group-sm flex-nowrap overflow-auto scroll mt-md-0 mt-1"
-	>
+	title={tags.length > 0 ? tags.find(i => i.name == $page.params.tag).description : ''}
+	description="Объявления, новости, видео, статьи из жизни нашего храма">
+	<div slot="navigation" class="btn-group btn-group-sm flex-nowrap overflow-auto scroll mt-md-0 mt-1">
 		{#each tags as item}
 			<button
 				class="btn btn-light text-nowrap {item.name == $page.params.tag ? 'active' : ''}"
 				on:click={async () => {
 					goto(`/guest/posts/${item.name}`);
-				}}>{item.name}</button
-			>
+				}}>{item.name}</button>
 		{/each}
 	</div>
 </PageTitle>
@@ -76,13 +71,9 @@
 		<button
 			class="btn btn-light text-dark mt-3 w-100"
 			on:click={() => {
-				$mapShowedPostsLength.set(
-					$page.params.tag,
-					$mapShowedPostsLength.get($page.params.tag) + showedPostsStep
-				);
+				$mapShowedPostsLength.set($page.params.tag, $mapShowedPostsLength.get($page.params.tag) + showedPostsStep);
 				mapShowedPosts = mapFilteredPosts.slice(0, $mapShowedPostsLength.get($page.params.tag));
-			}}>Загрузить ещё...</button
-		>
+			}}>Загрузить ещё...</button>
 	{/if}
 {:else}
 	<Spinner />

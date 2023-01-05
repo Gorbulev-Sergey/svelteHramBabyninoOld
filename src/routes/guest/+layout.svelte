@@ -28,11 +28,7 @@
 	];
 </script>
 
-<Navigation
-	title="<span class='text-danger'>Храм</span> ВОЗНЕСЕНИЯ ГОСПОДНЯ"
-	{routesLeft}
-	{routesRight}
-/>
+<Navigation title="<span class='text-danger'>Храм</span> ВОЗНЕСЕНИЯ ГОСПОДНЯ" {routesLeft} {routesRight} />
 <div class="container mb-4" style="margin-top:4.5em; min-height:90vh;">
 	<slot />
 </div>

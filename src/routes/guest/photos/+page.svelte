@@ -10,16 +10,13 @@
 
 	let albums = new Object();
 	onMount(async () => {
-		onValue(ref(db, '/photos'), (s) => {
+		onValue(ref(db, '/photos'), s => {
 			if (s.exists()) albums = s.val();
 		});
 	});
 </script>
 
-<PageTitle
-	title="Фотографии"
-	description="Фотографии различных мероприятий, происходящих в нашем храме"
-/>
+<PageTitle title="Фотографии" description="Фотографии различных мероприятий, происходящих в нашем храме" />
 
 {#if Object.entries(albums).length > 0}
 	<div class="row row-cols-1 row-cols-md-3 g-3">
