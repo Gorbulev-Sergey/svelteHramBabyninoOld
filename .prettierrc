@@ -4,7 +4,7 @@
 	"trailingComma": "none",
 	"bracketSameLine": true,
 	"arrowParens": "avoid",
-	"printWidth": 160,
+	"printWidth": 130,
 	"plugins": [
 		"prettier-plugin-svelte"
 	],

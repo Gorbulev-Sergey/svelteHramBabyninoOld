@@ -4,18 +4,14 @@
   xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/siteindex.xsd">
   <url>
     <loc>https://hram-babynino.ru/guest/posts</loc>
-    <changefreq>weekly</changefreq>
   </url>
   <url>
     <loc>https://hram-babynino.ru/guest/schedule</loc>
-    <changefreq>weekly</changefreq>
   </url>
   <url>
     <loc>https://hram-babynino.ru/guest/photos</loc>
-    <changefreq>weekly</changefreq>
   </url>
   <url>
     <loc>https://hram-babynino.ru/guest/contacts</loc>
-    <changefreq>weekly</changefreq>
   </url>
 </urlset>

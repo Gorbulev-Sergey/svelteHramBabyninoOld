@@ -12,7 +12,7 @@
 	let m = '';
 
 	function loadData() {
-		onValue(ref(db, `schedule/${$month.year}/${$month.monthName()}`), (result) => {
+		onValue(ref(db, `schedule/${$month.year}/${$month.monthName()}`), result => {
 			$month.fildsDayNotEmpty = result.val();
 			$month.updateFildsDayAll();
 		});
@@ -38,8 +38,7 @@
 				on:change={async () => {
 					$month = new _Month(Number(m.split('-')[1]), Number(m.split('-')[0]));
 					loadData();
-				}}
-			/>
+				}} />
 		</div>
 	</div>
 </PageTitleWrap>
