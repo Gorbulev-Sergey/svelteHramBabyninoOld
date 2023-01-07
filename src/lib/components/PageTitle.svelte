@@ -20,7 +20,13 @@
 
 <div class="d-flex justify-content-between flex-nowrap align-items-center mb-3 no-print {_class}">
 	<div class="d-flex justify-content-between align-items-center">
-		<h4 class="text-dark ms-1 mb-0 me-3 text-nowrap">{@html title}</h4>
+		<h4 class="text-dark ms-1 mb-0 me-3 text-nowrap">
+			<img
+				class="me-2 rounded-3"
+				style="width: 3em;"
+				src="https://mana.su/wp-content/uploads/2017/06/kartinka-s-rozhdestvom-3.jpg"
+				alt="" />{@html title}
+		</h4>
 		<slot name="center" />
 	</div>
 	<slot name="navigation" />
