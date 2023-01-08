@@ -21,11 +21,7 @@
 <div class="d-flex justify-content-between flex-wrap align-items-center mb-3 no-print {_class}">
 	<div class="d-flex justify-content-between align-items-center flex-wrap">
 		<h4 class="text-dark ms-1 my-0 me-3 text-nowrap">
-			<img
-				class="me-2 rounded-3"
-				style="width: 3em;"
-				src="https://mana.su/wp-content/uploads/2017/06/kartinka-s-rozhdestvom-3.jpg"
-				alt="" />{title}
+			{title}
 		</h4>
 		<div class="mt-2 my-md-0">
 			<slot name="center" />
