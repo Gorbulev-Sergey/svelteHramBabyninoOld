@@ -1,4 +1,5 @@
 <script>
+	export let titleSpecial = '';
 	export let title = '';
 	export let description = '';
 	export let author = 'Сергей Горбулёв';
@@ -10,7 +11,7 @@
 </script>
 
 <svelte:head>
-	<title>{title}</title>
+	<title>{titleSpecial == '' ? title : titleSpecial}</title>
 	<meta name="description" content={description} />
 	<meta name="author" content={author} />
 	<meta name="Copyright" content={copyright} />

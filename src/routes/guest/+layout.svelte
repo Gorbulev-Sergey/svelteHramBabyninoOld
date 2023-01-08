@@ -1,7 +1,7 @@
 <script>
 	import Footer from '$lib/components/Footer.svelte';
-	import LayoutDefault from '$lib/components/LayoutDefault.svelte';
 	import Navigation from '$lib/components/Navigation.svelte';
+	import Theme from '$lib/components/Theme.svelte';
 
 	let routesLeft = [
 		{
@@ -29,17 +29,16 @@
 	];
 </script>
 
-<LayoutDefault>
-	<Navigation title="<span class='text-danger'>Храм</span> ВОЗНЕСЕНИЯ ГОСПОДНЯ" {routesLeft} {routesRight} />
-	<div class="container mb-4" style="margin-top:4.5em; min-height:90vh;">
-		<div class="d-flex justify-content-center">
-			<img
-				class="mb-2 rounded-3"
-				style="width: 5em;"
-				src="https://mana.su/wp-content/uploads/2017/06/kartinka-s-rozhdestvom-3.jpg"
-				alt="" />
-		</div>
-		<slot />
+<Theme />
+<Navigation title="<span class='text-danger'>Храм</span> ВОЗНЕСЕНИЯ ГОСПОДНЯ" {routesLeft} {routesRight} />
+<div class="container mb-4" style="margin-top:4.5em; min-height:90vh;">
+	<div class="d-flex justify-content-center">
+		<img
+			class="mb-2 rounded-3"
+			style="width: 5em;"
+			src="https://mana.su/wp-content/uploads/2017/06/kartinka-s-rozhdestvom-3.jpg"
+			alt="" />
 	</div>
-	<Footer />
-</LayoutDefault>
+	<slot />
+</div>
+<Footer />

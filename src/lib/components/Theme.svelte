@@ -13,7 +13,3 @@
 <svelte:head>
 	<link href="/bootstrap.{$theme == '' ? 'light' : $theme}.min.css" rel="stylesheet" />
 </svelte:head>
-
-{#if $theme != ''}
-	<slot />
-{/if}

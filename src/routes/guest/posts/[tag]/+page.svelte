@@ -30,6 +30,7 @@
 
 <PageTitle
 	title={tags.length > 0 ? tags.find(i => i.name == $page.params.tag).description : ''}
+	titleSpecial="Публикации"
 	description="Объявления, новости, видео, статьи из жизни нашего храма">
 	<div slot="navigation" class="btn-group btn-group-sm flex-nowrap overflow-auto scroll mt-md-0 mt-1">
 		{#each tags as item}
