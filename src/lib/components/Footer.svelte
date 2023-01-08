@@ -7,7 +7,7 @@
 <footer class="bg-light text-dark no-print">
 	<div class="p-3">
 		<div class="d-flex flex-column justify-content-center align-items-center">
-			<div class="py-2 text-center">
+			<div class="pt-2 text-center">
 				<IsAuth>
 					<i
 						class="fa-solid fa-copyright me-1"
@@ -28,8 +28,24 @@
 				</IsAuth>
 				<span>Храм "Вознесения Господня", посёлок Бабынино, Калужская область, {new Date(Date.now()).getFullYear()} год</span>
 			</div>
+			<div class="pb-1 text-center">
+				Контакты:
+				<span>
+					храм: <a class="badge bg-primary text-dark" style="text-decoration: none;" href="tel:8-902-934-63-62">8-902-934-63-62</a
+					>,
+				</span>
+				<span>
+					иерей Алексий: <a class="badge bg-primary text-dark" style="text-decoration: none;" href="tel:8-902-934-63-62"
+						>8-920-876-89-28</a
+					>,
+				</span>
+				<span>
+					иерей Сергий: <a class="badge bg-primary text-dark" style="text-decoration: none;" href="tel:8-902-934-63-62"
+						>8-910-516-36-86</a>
+				</span>
+			</div>
 			<img
-				class="mt-1 rounded-3"
+				class="my-2 rounded-3"
 				style="width: 8em;"
 				src="https://mana.su/wp-content/uploads/2017/06/kartinka-s-rozhdestvom-3.jpg"
 				alt="" />
