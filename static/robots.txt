@@ -1,4 +1,5 @@
 ﻿User-agent: *
+Disallow: /guest/posts/details/
 Disallow: /admin/
 Disallow: /auth/
 Disallow: /android/
