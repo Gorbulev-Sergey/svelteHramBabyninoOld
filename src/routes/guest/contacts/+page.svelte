@@ -14,7 +14,6 @@
 </script>
 
 <PageTitle title="Контакты" description="Контактная информация: номера телефонов, расписание работы храма, адрес" />
-<h1>Всем привет</h1>
 
 {#if contacts}
 	<div class="row row-cols-1 row-cols-md-4 g-3">
