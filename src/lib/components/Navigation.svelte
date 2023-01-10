@@ -1,4 +1,6 @@
 <script>
+	// @ts-nocheck
+
 	import { goto } from '$app/navigation';
 	import { page } from '$app/stores';
 	import { theme } from '$lib/scripts/writableData';
@@ -21,14 +23,18 @@
 			<div class="flex-grow-1 d-flex justify-content-start align-items-center">
 				<button
 					class="btn btn-light bg-transparent text-dark border-0 text-uppercase me-2"
-					on:click={() => goto(routesLeft[0].url)}><b>{@html title}</b></button>
+					on:click={() => goto(routesLeft[0].url)}
+					sveltekit:prefetch><b>{@html title}</b></button>
 				<div>
 					{#each routesLeft as item}
 						<a
 							class="btn btn-light text-dark border-0 me-1 {item.url.split('/')[2] == $page.url.pathname.split('/')[2]
 								? 'fw-bold'
 								: ''}"
-							href={item.url}>{item.title}</a>
+							href={item.url}
+							sveltekit:prefetch
+							>{item.title}
+						</a>
 					{/each}
 				</div>
 			</div>
@@ -63,7 +69,8 @@
 							$page.url.pathname.split('/')[2]
 								? 'fw-bold'
 								: ''}"
-							href={item.url}>{item.title}</a>
+							href={item.url}
+							sveltekit:prefetch>{item.title}</a>
 					</div>
 				{/each}
 				<IsAuth>
