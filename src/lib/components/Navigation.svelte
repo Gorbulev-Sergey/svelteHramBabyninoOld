@@ -14,6 +14,7 @@
 	let changeTheme = () => {
 		$theme = $theme == 'light' ? 'dark' : 'light';
 		localStorage.setItem('theme', $theme);
+		document.querySelector('#theme').href = `/bootstrap.${$theme}.min.css`;
 	};
 </script>
 
