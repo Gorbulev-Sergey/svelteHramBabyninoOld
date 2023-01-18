@@ -45,6 +45,7 @@
 				</span>
 			</div>
 			<img
+				hidden
 				class="my-2 rounded-3"
 				style="width: 8em;"
 				src="https://mana.su/wp-content/uploads/2017/06/kartinka-s-rozhdestvom-3.jpg"
