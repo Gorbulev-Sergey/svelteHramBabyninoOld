@@ -8,7 +8,7 @@
 
 	let contacts;
 	onMount(() => {
-		onValue(ref(db, '/contacts'), (s) => {
+		onValue(ref(db, '/contacts'), s => {
 			if (s.exists()) {
 				contacts = s.val();
 			}
@@ -18,8 +18,7 @@
 
 <PageTitleWrap title="Контакты">
 	<div slot="navigation">
-		<button class="btn btn-dark" on:click={() => goto('/admin/contacts/edit')}>Редактировать</button
-		>
+		<button class="btn btn-dark" on:click={() => goto('/admin/contacts/edit')}>Редактировать</button>
 	</div>
 </PageTitleWrap>
 
@@ -42,11 +41,7 @@
 				{#each contacts.phones as item}
 					<div class="d-flex justify-content-between align-items-center mb-1">
 						{item.title}
-						<a
-							class="badge bg-primary text-dark"
-							style="text-decoration: none;"
-							href="tel:{item.phone}">{item.phone}</a
-						>
+						<a class="badge bg-primary text-dark" style="text-decoration: none;" href="tel:{item.phone}">{item.phone}</a>
 					</div>
 				{/each}
 			</div>
@@ -56,11 +51,12 @@
 				<h5>Соцсети:</h5>
 				{#each contacts.socialNetworks as item}
 					<a
-						class="btn btn-primary text-dark rounded-circle me-1"
+						class="btn btn-primary rounded-circle me-1 px-1"
+						style="width: 2.5em; height:2.5em"
 						href={item.url}
-						target="_blanck"
-						alt="">{@html item.icon}</a
-					>
+						target="_blank"
+						title={item.title}
+						alt={item.title}>{@html item.icon}</a>
 				{/each}
 			</div>
 		</div>
@@ -73,15 +69,11 @@
 				<div class="rounded w-100" style="overflow:hidden; height:400px">
 					<!-- svelte-ignore a11y-missing-attribute -->
 					<iframe
-						src={contacts.address.yandexMapsUrl.replace(
-							'https://yandex.ru/maps/',
-							'https://yandex.ru/map-widget/v1/'
-						)}
+						src={contacts.address.yandexMapsUrl.replace('https://yandex.ru/maps/', 'https://yandex.ru/map-widget/v1/')}
 						width="100%"
 						height="100%"
 						frameborder="1"
-						allowfullscreen="true"
-					/>
+						allowfullscreen="true" />
 				</div>
 			</div>
 		</div>
