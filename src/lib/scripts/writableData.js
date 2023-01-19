@@ -16,17 +16,15 @@ export let adminPostsFilters = writable({
 });
 
 // Для работы расписания богослужений
-export let scheduleMonth = writable(
-	new Month(new Date(Date.now()).getMonth() + 1, new Date(Date.now()).getFullYear())
-);
+export let scheduleMonth = writable(new Month(new Date(Date.now()).getMonth() + 1, new Date(Date.now()).getFullYear()));
 
 // Для работы публикаций, чтобы публикации показывались порционно
 // по showedPostsStep раз и для каждого тега отдельно
 export let showedPostsStep = 6;
 export let mapShowedPostsLength = writable(new Map());
-onValue(ref(db, '/tags'), (s) => {
+onValue(ref(db, '/tags'), s => {
 	let tags = Object.values(s.val());
 	let m = new Map();
-	tags.forEach((v) => m.set(v.name, showedPostsStep));
+	tags.forEach(v => m.set(v.name, showedPostsStep));
 	mapShowedPostsLength.set(m);
 });

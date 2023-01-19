@@ -6,6 +6,7 @@
 	import AfterBreakpoint from '$lib/components/Breakpoint/AfterBreakpoint.svelte';
 	import BeforeBreakpoint from '$lib/components/Breakpoint/BeforeBreakpoint.svelte';
 	import IsAuth from '$lib/components/IsAuth.svelte';
+	import { onMount } from 'svelte';
 
 	export let title = 'Название';
 	export let routesLeft = new Array();
