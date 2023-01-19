@@ -1,6 +1,5 @@
 <script>
 	// @ts-nocheck
-
 	import { goto } from '$app/navigation';
 	import { page } from '$app/stores';
 	import { theme } from '$lib/scripts/writableData';
@@ -11,10 +10,10 @@
 	export let title = 'Название';
 	export let routesLeft = new Array();
 	export let routesRight = new Array();
-	let changeTheme = () => {
+	$: changeTheme = () => {
 		$theme = $theme == 'light' ? 'dark' : 'light';
 		localStorage.setItem('theme', $theme);
-		document.querySelector('#theme').href = `/bootstrap.${$theme}.min.css`;
+		//document.querySelector('#theme').href = `/bootstrap.${$theme}.min.css`;
 	};
 </script>
 
