@@ -32,7 +32,7 @@
 	];
 	let routesRight = [
 		{
-			url: '/guest/posts',
+			url: '/posts',
 			title: 'Сайт'
 		}
 	];

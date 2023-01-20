@@ -11,14 +11,8 @@
 </script>
 
 <div id={uid ? uid : ''} class="col">
-	<div
-		class="card {!post.inverted
-			? 'bg-light text-dark'
-			: 'bg-dark text-light'} border-0 h-100 border {_class}"
-	>
-		<div
-			class="card-header {!post.inverted ? 'bg-light text-dark' : 'bg-dark text-light'} border-0"
-		>
+	<div class="card {!post.inverted ? 'bg-light text-dark' : 'bg-dark text-light'} border-0 h-100 border {_class}">
+		<div class="card-header {!post.inverted ? 'bg-light text-dark' : 'bg-dark text-light'} border-0">
 			<div class="d-flex justify-content-between">
 				<h5 class="card-title my-1">{post.title}</h5>
 				{#if post.pinned}
@@ -40,8 +34,7 @@
 									: 'bg-secondary text-light'} text-decoration-none p-1 ms-1 border-0"
 								on:click={() => {
 									goto(`/${$page.url.pathname.split('/')[1]}/posts/${tag.name}`);
-								}}>{tag.name}</button
-							>
+								}}>{tag.name}</button>
 						{/each}
 					{/if}
 				</div>
@@ -52,20 +45,15 @@
 				<!-- svelte-ignore a11y-missing-attribute -->
 				<iframe
 					class="embed-responsive-item"
-					src="{String(post.cover.video).replace(
-						'https://youtu.be',
-						'https://youtube.com/embed/'
-					)}?rel=0"
+					src="{String(post.cover.video).replace('https://youtu.be', 'https://youtube.com/embed/')}?rel=0"
 					frameborder="0"
-					allowfullscreen
-				/>
+					allowfullscreen />
 			</div>
 		{:else if post.cover && post.cover.image}
 			<div
 				class="img-fluid"
 				style="background-image: url({post.cover.image});
-					 background-repeat: no-repeat; background-position: center; background-size: cover; min-height:12em;"
-			/>
+					 background-repeat: no-repeat; background-position: center; background-size: cover; min-height:12em;" />
 		{/if}
 		<div class="card-body" style="font-size:1em;">
 			{#if !showContent || (showContent && !post.content)}
@@ -80,8 +68,7 @@
 					on:click={() => {
 						showContent = !showContent;
 						goto(`#${uid}`);
-					}}
-				>
+					}}>
 					<i class="fa-solid {!showContent ? 'fa-circle-arrow-right' : 'fa-circle-arrow-left'} " />
 					...
 				</span>
@@ -92,9 +79,8 @@
 				<button
 					class="btn btn-sm btn-primary text-dark"
 					on:click={() => {
-						if (uid) goto(`/guest/posts/details/${uid}?returnUrl=${$page.url.pathname}`);
-					}}><i class="fa-solid fa-circle-arrow-right me-1" />...</button
-				>
+						if (uid) goto(`/posts/details/${uid}?returnUrl=${$page.url.pathname}`);
+					}}><i class="fa-solid fa-circle-arrow-right me-1" />...</button>
 			</div>
 		{/if}
 
@@ -106,8 +92,7 @@
 						data-toggle="collapse"
 						data-target="#comments"
 						title="Комментарии"
-						on:click={() => {}}
-					>
+						on:click={() => {}}>
 						<i class="far fa-comment-alt" />
 						{#if post.comments?.length > 0}
 							<span class="ml-2">{post.comments.length}</span>
