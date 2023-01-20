@@ -9,20 +9,18 @@
 </script>
 
 <div
+	id={uid}
 	class="img-fluid rounded d-flex flex-column-reverse"
 	style="background-image: url({album.cover});
 				background-repeat: no-repeat; background-position: center; background-size: cover; min-height:16em; cursor:pointer;"
 	on:click={() => {
 		if (uid != '' && album.photos.length > 0) {
-			goto(`/fullscreen/photos/${uid}?returnTo=${$page.url}`);
+			goto(`/fullscreen/photos/${uid}?returnTo=${$page.url}#${uid}`);
 		}
 	}}
 	on:mousemove={() => (hoverEffect = 'bg-opacity-75')}
-	on:mouseleave={() => (hoverEffect = 'bg-opacity-25')}
->
-	<div
-		class="d-flex justify-content-between bg-backspace text-dark {hoverEffect} p-3 rounded-bottom"
-	>
+	on:mouseleave={() => (hoverEffect = 'bg-opacity-25')}>
+	<div class="d-flex justify-content-between bg-backspace text-dark {hoverEffect} p-3 rounded-bottom">
 		<div>
 			<h5 class="mb-0">
 				{album.title}

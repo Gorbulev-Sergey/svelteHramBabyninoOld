@@ -13,7 +13,6 @@
 	$: changeTheme = () => {
 		$theme = $theme == 'light' ? 'dark' : 'light';
 		localStorage.setItem('theme', $theme);
-		//document.querySelector('#theme').href = `/bootstrap.${$theme}.min.css`;
 	};
 </script>
 
@@ -31,7 +30,6 @@
 								? 'fw-bold'
 								: ''}"
 							href={item.url}
-							on:click={() => console.log(item.url.split('/')[1])}
 							>{item.title}
 						</a>
 					{/each}

@@ -9,13 +9,20 @@
 
 	let album = new Album();
 
+	document.documentElement.requestFullscreen();
+	document.onfullscreenchange = e => {
+		if (!document.fullscreenElement) {
+			goto(`/photos`);
+		}
+	};
+
+	let goBack = () => {
+		if (document.fullscreenElement) document.exitFullscreen();
+		goto(`/photos`);
+		//goto(`/photos#${$page.params.uid}`);
+	};
+
 	onMount(async () => {
-		document.documentElement.requestFullscreen();
-		document.onfullscreenchange = e => {
-			if (!document.fullscreenElement) {
-				$page.url.searchParams.get('returnTo') ? goto($page.url.searchParams.get('returnTo')) : goto('/photos');
-			}
-		};
 		onValue(ref(db, `/photos/${$page.params.uid}`), s => {
 			if (s.exists()) album = s.val();
 		});
@@ -23,13 +30,7 @@
 </script>
 
 {#if album.photos.length > 0}
-	<button
-		class="btn btn-close btn-close-white position-absolute m-3"
-		style="z-index: 1000; right:0; top:0"
-		on:click={() => {
-			if (document.fullscreenElement) document.exitFullscreen();
-			$page.url.searchParams.get('returnTo') ? goto($page.url.searchParams.get('returnTo')) : goto('/photos');
-		}} />
+	<button class="btn btn-close btn-close-white position-absolute m-3" style="z-index: 1000; right:0; top:0" on:click={goBack} />
 	<div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
 		{#if album.photos.length > 1}
 			<div class="carousel-indicators">
