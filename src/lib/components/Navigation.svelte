@@ -1,17 +1,20 @@
 <script>
+	// @ts-nocheck
 	import { goto } from '$app/navigation';
 	import { page } from '$app/stores';
 	import { theme } from '$lib/scripts/writableData';
 	import AfterBreakpoint from '$lib/components/Breakpoint/AfterBreakpoint.svelte';
 	import BeforeBreakpoint from '$lib/components/Breakpoint/BeforeBreakpoint.svelte';
 	import IsAuth from '$lib/components/IsAuth.svelte';
+	import { onMount } from 'svelte';
 
 	export let title = 'Название';
 	export let routesLeft = new Array();
 	export let routesRight = new Array();
-	let changeTheme = () => {
+	$: changeTheme = () => {
 		$theme = $theme == 'light' ? 'dark' : 'light';
 		localStorage.setItem('theme', $theme);
+		//document.querySelector('#theme').href = `/bootstrap.${$theme}.min.css`;
 	};
 </script>
 
@@ -21,7 +24,8 @@
 			<div class="flex-grow-1 d-flex justify-content-start align-items-center">
 				<button
 					class="btn btn-light bg-transparent text-dark border-0 text-uppercase me-2"
-					on:click={() => goto(routesLeft[0].url)}><b>{@html title}</b></button>
+					on:click={() => goto(routesLeft[0].url)}
+					sveltekit:prefetch><b>{@html title}</b></button>
 				<div>
 					{#each routesLeft as item}
 						<a
@@ -29,7 +33,10 @@
 							item.url + '/' == $page.url.pathname.replace($page.url.pathname.split('/')[2], '')
 								? 'fw-bold'
 								: ''}"
-							href={item.url}>{item.title}</a>
+							href={item.url}
+							sveltekit:prefetch
+							>{item.title}
+						</a>
 					{/each}
 				</div>
 			</div>
@@ -64,7 +71,8 @@
 							$page.url.pathname.split('/')[2]
 								? 'fw-bold'
 								: ''}"
-							href={item.url}>{item.title}</a>
+							href={item.url}
+							sveltekit:prefetch>{item.title}</a>
 					</div>
 				{/each}
 				<IsAuth>
