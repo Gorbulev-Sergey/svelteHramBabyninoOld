@@ -6,7 +6,6 @@
 	import AfterBreakpoint from '$lib/components/Breakpoint/AfterBreakpoint.svelte';
 	import BeforeBreakpoint from '$lib/components/Breakpoint/BeforeBreakpoint.svelte';
 	import IsAuth from '$lib/components/IsAuth.svelte';
-	import { onMount } from 'svelte';
 
 	export let title = 'Название';
 	export let routesLeft = new Array();
@@ -24,17 +23,15 @@
 			<div class="flex-grow-1 d-flex justify-content-start align-items-center">
 				<button
 					class="btn btn-light bg-transparent text-dark border-0 text-uppercase me-2"
-					on:click={() => goto(routesLeft[0].url)}
-					sveltekit:prefetch><b>{@html title}</b></button>
+					on:click={() => goto(routesLeft[0].url)}><b>{@html title}</b></button>
 				<div>
 					{#each routesLeft as item}
 						<a
-							class="btn btn-light text-dark border-0 me-1 {item.url == $page.url.pathname ||
-							item.url + '/' == $page.url.pathname.replace($page.url.pathname.split('/')[2], '')
+							class="btn btn-light text-dark border-0 me-1 {decodeURI($page.url.pathname).indexOf(item.url) >= 0
 								? 'fw-bold'
 								: ''}"
 							href={item.url}
-							sveltekit:prefetch
+							on:click={() => console.log(item.url.split('/')[1])}
 							>{item.title}
 						</a>
 					{/each}
@@ -71,8 +68,7 @@
 							$page.url.pathname.split('/')[2]
 								? 'fw-bold'
 								: ''}"
-							href={item.url}
-							sveltekit:prefetch>{item.title}</a>
+							href={item.url}>{item.title}</a>
 					</div>
 				{/each}
 				<IsAuth>

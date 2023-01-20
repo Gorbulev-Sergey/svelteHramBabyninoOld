@@ -36,7 +36,6 @@
 		{#each tags as item}
 			<button
 				class="btn btn-light text-nowrap {item.name == $page.params.tag ? 'active' : ''}"
-				sveltekit:prefetch
 				on:click={async () => {
 					goto(`/posts/${item.name}`);
 				}}>{item.name}</button>
