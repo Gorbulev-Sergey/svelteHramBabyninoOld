@@ -19,35 +19,31 @@
 
 	// ВАЖНЫЙ ФИЛЬТР: фильтруем публикации по динамическому параметру url
 	$: filteredPosts = posts
-		.filter((i) => i.tags?.some((t) => t.name === $page.params.tag))
+		.filter(i => i.tags?.some(t => t.name === $page.params.tag))
 		.sort((a, b) => new Date(b.created) - new Date(a.created));
 	$: showedPosts = filteredPosts.slice(0, $mapShowedPostsLength.get($page.params.tag));
 
 	onMount(async () => {
-		onValue(ref(db, '/tags'), (s) => {
+		onValue(ref(db, '/tags'), s => {
 			tags = Object.values(s.val());
-			title = tags.find((i) => i.name == $page.params.tag).description;
+			title = tags.find(i => i.name == $page.params.tag).description;
 		});
-		onValue(ref(db, '/posts'), (s) => {
+		onValue(ref(db, '/posts'), s => {
 			posts = Object.values(s.val())
-				.filter((i) => i.published)
+				.filter(i => i.published)
 				.reverse();
 		});
 	});
 </script>
 
-<PageTitle title={tags.length > 0 ? tags.find((i) => i.name == $page.params.tag).description : ''}>
-	<div
-		slot="navigation"
-		class="btn-group btn-group-sm flex-nowrap overflow-auto scroll mt-md-0 mt-1"
-	>
+<PageTitle title={tags.length > 0 ? tags.find(i => i.name == $page.params.tag).description : ''}>
+	<div slot="navigation" class="btn-group btn-group-sm flex-nowrap overflow-auto scroll mt-md-0 mt-1">
 		{#each tags as item}
 			<button
 				class="btn btn-light text-nowrap {item.name == $page.params.tag ? 'active' : ''}"
 				on:click={async () => {
-					goto(`/guest/posts/${item.name}`);
-				}}>{item.name}</button
-			>
+					goto(`/posts/${item.name}`);
+				}}>{item.name}</button>
 		{/each}
 	</div>
 </PageTitle>
@@ -56,7 +52,7 @@
 	<!--Для закреплённых-->
 	<div class="row mb-2 gx-4">
 		<div class="col-md-8">
-			{#each showedPosts.filter((p) => p.pinned) as item, i}
+			{#each showedPosts.filter(p => p.pinned) as item, i}
 				{#if item.pinned && checkIndex(i, [1, 2, 4, 6, 7, 9])}
 					<AfterBreakpoint>
 						<PostHorizontal bind:post={item} />
@@ -68,7 +64,7 @@
 			{/each}
 		</div>
 		<div class="col-md-4">
-			{#each showedPosts.filter((p) => p.pinned) as item, i}
+			{#each showedPosts.filter(p => p.pinned) as item, i}
 				{#if item.pinned && checkIndex(i, [0, 3, 5, 8])}
 					<Post bind:post={item} />
 				{/if}
@@ -79,14 +75,14 @@
 	<!--Для не закреплённых-->
 	<div class="row gx-4">
 		<div class="col-md-4">
-			{#each showedPosts.filter((p) => !p.pinned) as item, i}
+			{#each showedPosts.filter(p => !p.pinned) as item, i}
 				{#if !item.pinned && checkIndex(i, [0, 3, 5, 8])}
 					<Post bind:post={item} />
 				{/if}
 			{/each}
 		</div>
 		<div class="col-md-8">
-			{#each showedPosts.filter((p) => !p.pinned) as item, i}
+			{#each showedPosts.filter(p => !p.pinned) as item, i}
 				{#if !item.pinned && checkIndex(i, [1, 2, 4, 6, 7, 9])}
 					<AfterBreakpoint>
 						<PostHorizontal bind:post={item} />
@@ -103,13 +99,9 @@
 		<button
 			class="btn btn-light text-dark w-100"
 			on:click={() => {
-				$mapShowedPostsLength.set(
-					$page.params.tag,
-					$mapShowedPostsLength.get($page.params.tag) + showedPostsStep
-				);
+				$mapShowedPostsLength.set($page.params.tag, $mapShowedPostsLength.get($page.params.tag) + showedPostsStep);
 				showedPosts = filteredPosts.slice(0, $mapShowedPostsLength.get($page.params.tag));
-			}}>Загрузить ещё...</button
-		>
+			}}>Загрузить ещё...</button>
 	{/if}
 {:else}
 	<Spinner />

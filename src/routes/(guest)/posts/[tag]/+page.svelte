@@ -37,7 +37,7 @@
 			<button
 				class="btn btn-light text-nowrap {item.name == $page.params.tag ? 'active' : ''}"
 				on:click={async () => {
-					goto(`/guest/posts/${item.name}`);
+					goto(`/posts/${item.name}`);
 				}}>{item.name}</button>
 		{/each}
 	</div>

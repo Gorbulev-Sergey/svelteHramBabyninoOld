@@ -5,19 +5,19 @@
 
 	let routesLeft = [
 		{
-			url: '/guest/posts',
+			url: '/posts',
 			title: 'Публикации'
 		},
 		{
-			url: '/guest/schedule',
+			url: '/schedule',
 			title: 'Расписание'
 		},
 		{
-			url: '/guest/photos',
+			url: '/photos',
 			title: 'Фотографии'
 		},
 		{
-			url: '/guest/contacts',
+			url: '/contacts',
 			title: 'Контакты'
 		}
 	];

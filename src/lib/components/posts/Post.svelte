@@ -11,14 +11,8 @@
 </script>
 
 <div id={uid ? uid : ''} class="col">
-	<div
-		class="card {!post.inverted
-			? 'bg-light text-dark'
-			: 'bg-dark text-light'} border-0 h-100 border {_class}"
-	>
-		<div
-			class="card-header {!post.inverted ? 'bg-light text-dark' : 'bg-dark text-light'} border-0"
-		>
+	<div class="card {!post.inverted ? 'bg-light text-dark' : 'bg-dark text-light'} border-0 h-100 border {_class}">
+		<div class="card-header {!post.inverted ? 'bg-light text-dark' : 'bg-dark text-light'} border-0">
 			<div class="d-flex justify-content-between">
 				<h5 class="card-title my-1">{@html post.title}</h5>
 				{#if post.pinned}
@@ -40,8 +34,7 @@
 									: 'bg-secondary text-light'} text-decoration-none p-1 ms-1 border-0"
 								on:click={() => {
 									goto(`/${$page.url.pathname.split('/')[1]}/posts/${tag.name}`);
-								}}>{tag.name}</button
-							>
+								}}>{tag.name}</button>
 						{/each}
 					{/if}
 				</div>
@@ -56,28 +49,25 @@
 						allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
 						allowfullscreen
 						class="embed-responsive-item"
-						src={post.cover.video.replace('https://youtu.be', 'https://youtube.com/embed')}
-					/>
+						src={post.cover.video.replace('https://youtu.be', 'https://youtube.com/embed')} />
 				{:else if post.cover.video.includes('https://vk.com/video')}
 					<iframe
 						class="embed-responsive-item"
 						src={post.cover.video
 							.replace(
 								'https://vk.com/video',
-								`https://vk.com/video_ext.php?oid=-${
-									post.cover.video?.split('-')[1]?.split('_')[0]
-								}&id=${post.cover.video?.split('-')[1]?.split('_')[1]}&hash=d46c7611ec96988b`
+								`https://vk.com/video_ext.php?oid=-${post.cover.video?.split('-')[1]?.split('_')[0]}&id=${
+									post.cover.video?.split('-')[1]?.split('_')[1]
+								}&hash=d46c7611ec96988b`
 							)
-							.replace('-' + post.cover.video?.split('-')[1], '')}
-					/>
+							.replace('-' + post.cover.video?.split('-')[1], '')} />
 				{/if}
 			</div>
 		{:else if post.cover && post.cover.image}
 			<div
 				class="img-fluid"
 				style="background-image: url({post.cover.image});
-					 background-repeat: no-repeat; background-position: center; background-size: cover; min-height:12em;"
-			/>
+					 background-repeat: no-repeat; background-position: center; background-size: cover; min-height:12em;" />
 		{/if}
 		{#if post.description}
 			<div class="card-body" style="font-size:1em;">
@@ -89,9 +79,8 @@
 				<button
 					class="btn btn-sm btn-primary text-dark"
 					on:click={() => {
-						if (uid) goto(`/guest/posts/details/${uid}?returnUrl=${$page.url.pathname}`);
-					}}><i class="fa-solid fa-circle-arrow-right me-1" />...</button
-				>
+						if (uid) goto(`/posts/details/${uid}?returnUrl=${$page.url.pathname}`);
+					}}><i class="fa-solid fa-circle-arrow-right me-1" />...</button>
 			</div>
 		{/if}
 		<slot name="admin" />

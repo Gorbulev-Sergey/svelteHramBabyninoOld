@@ -3,19 +3,19 @@
   xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" 
   xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/siteindex.xsd">
   <url>
-    <loc>https://hram-babynino.ru/guest/posts</loc>
+    <loc>https://hram-babynino.ru/posts</loc>
     <changefreq>daily</changefreq>
   </url>
   <url>
-    <loc>https://hram-babynino.ru/guest/schedule</loc>
+    <loc>https://hram-babynino.ru/schedule</loc>
     <changefreq>daily</changefreq>
   </url>
   <url>
-    <loc>https://hram-babynino.ru/guest/photos</loc>
+    <loc>https://hram-babynino.ru/photos</loc>
     <changefreq>daily</changefreq>
   </url>
   <url>
-    <loc>https://hram-babynino.ru/guest/contacts</loc>
+    <loc>https://hram-babynino.ru/contacts</loc>
     <changefreq>daily</changefreq>
   </url>
 </urlset>

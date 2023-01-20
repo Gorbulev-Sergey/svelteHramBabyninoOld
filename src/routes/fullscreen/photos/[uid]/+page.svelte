@@ -11,14 +11,12 @@
 
 	onMount(async () => {
 		document.documentElement.requestFullscreen();
-		document.onfullscreenchange = (e) => {
+		document.onfullscreenchange = e => {
 			if (!document.fullscreenElement) {
-				$page.url.searchParams.get('returnTo')
-					? goto($page.url.searchParams.get('returnTo'))
-					: goto('/guest/photos');
+				$page.url.searchParams.get('returnTo') ? goto($page.url.searchParams.get('returnTo')) : goto('/photos');
 			}
 		};
-		onValue(ref(db, `/photos/${$page.params.uid}`), (s) => {
+		onValue(ref(db, `/photos/${$page.params.uid}`), s => {
 			if (s.exists()) album = s.val();
 		});
 	});
@@ -30,20 +28,13 @@
 		style="z-index: 1000; right:0; top:0"
 		on:click={() => {
 			if (document.fullscreenElement) document.exitFullscreen();
-			$page.url.searchParams.get('returnTo')
-				? goto($page.url.searchParams.get('returnTo'))
-				: goto('/guest/photos');
-		}}
-	/>
+			$page.url.searchParams.get('returnTo') ? goto($page.url.searchParams.get('returnTo')) : goto('/photos');
+		}} />
 	<div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
 		{#if album.photos.length > 1}
 			<div class="carousel-indicators">
 				{#each album.photos as photo, i}
-					<button
-						data-bs-target="#carouselExampleIndicators"
-						class={i == 0 ? 'active' : ''}
-						data-bs-slide-to={i.toString()}
-					/>
+					<button data-bs-target="#carouselExampleIndicators" class={i == 0 ? 'active' : ''} data-bs-slide-to={i.toString()} />
 				{/each}
 			</div>
 		{/if}
@@ -53,8 +44,7 @@
 					<div
 						class="img-fluid h-100"
 						style="background-image: url({photo.url});
-							background-repeat: no-repeat; background-position: center; background-size: contain; min-height:100vh;"
-					/>
+							background-repeat: no-repeat; background-position: center; background-size: contain; min-height:100vh;" />
 					{#if photo.title}
 						<div class="carousel-caption d-none d-md-block mb-2">
 							{photo.title}
@@ -64,19 +54,11 @@
 			{/each}
 		</div>
 		{#if album.photos.length > 1}
-			<button
-				class="carousel-control-prev"
-				data-bs-target="#carouselExampleIndicators"
-				data-bs-slide="prev"
-			>
+			<button class="carousel-control-prev" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
 				<span class="carousel-control-prev-icon" />
 				<span class="visually-hidden">Предыдущий</span>
 			</button>
-			<button
-				class="carousel-control-next"
-				data-bs-target="#carouselExampleIndicators"
-				data-bs-slide="next"
-			>
+			<button class="carousel-control-next" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
 				<span class="carousel-control-next-icon" />
 				<span class="visually-hidden">Следующий</span>
 			</button>

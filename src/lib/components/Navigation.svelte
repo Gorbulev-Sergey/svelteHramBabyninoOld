@@ -25,7 +25,8 @@
 				<div>
 					{#each routesLeft as item}
 						<a
-							class="btn btn-light text-dark border-0 me-1 {item.url.split('/')[2] == $page.url.pathname.split('/')[2]
+							class="btn btn-light text-dark border-0 me-1 {item.url == $page.url.pathname ||
+							item.url + '/' == $page.url.pathname.replace($page.url.pathname.split('/')[2], '')
 								? 'fw-bold'
 								: ''}"
 							href={item.url}>{item.title}</a>
