@@ -5,11 +5,12 @@
 	onMount(() => {
 		setTimeout(() => {
 			goto('/');
-		}, 3000);
+		}, 2500);
 	});
 </script>
 
 <Theme />
-<div class="d-flex justify-content-center align-items-center w-100" style="height: 100vh;">
-	<h5 class="text-dark">404 | Страница не найдена</h5>
+<div class="d-flex flex-column justify-content-center align-items-center text-dark w-100" style="height: 100vh;">
+	<h4>Страница не найдена.</h4>
+	<div>Через несколко секунд вы будете направлены на главную страницу сайта.</div>
 </div>

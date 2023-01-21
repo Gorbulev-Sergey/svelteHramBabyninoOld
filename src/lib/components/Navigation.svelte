@@ -16,7 +16,7 @@
 	};
 </script>
 
-<div class="fixed-top bg-light text-dark no-print py-2">
+<nav class="fixed-top bg-light text-dark no-print py-2">
 	<AfterBreakpoint>
 		<div class="container-fluid d-flex justify-content-between align-items-center">
 			<div class="flex-grow-1 d-flex justify-content-start align-items-center">
@@ -87,4 +87,4 @@
 			</div>
 		</div>
 	</BeforeBreakpoint>
-</div>
+</nav>
