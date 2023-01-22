@@ -62,8 +62,7 @@
 				{#each routesLeft as item}
 					<div class="bg-light text-dark">
 						<a
-							class="btn btn-light text-dark w-100 text-start rounded-0 ps-3 {item.url.split('/')[2] ==
-							$page.url.pathname.split('/')[2]
+							class="btn btn-light text-dark w-100 text-start rounded-0 ps-3 {decodeURI($page.url.pathname).indexOf(item.url) >= 0
 								? 'fw-bold'
 								: ''}"
 							href={item.url}>{item.title}</a>
