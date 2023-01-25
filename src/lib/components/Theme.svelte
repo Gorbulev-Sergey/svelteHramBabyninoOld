@@ -1,8 +1,8 @@
 <script>
 	import { theme } from '$lib/scripts/writableData';
-	import { onMount } from 'svelte';
+	import { beforeUpdate, onMount } from 'svelte';
 
-	onMount(async () => {
+	beforeUpdate(async () => {
 		if (!localStorage.getItem('theme')) {
 			localStorage.setItem('theme', 'light');
 		}
