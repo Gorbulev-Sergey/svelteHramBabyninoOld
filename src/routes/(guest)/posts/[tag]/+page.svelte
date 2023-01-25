@@ -18,6 +18,8 @@
 		.sort(([k1, v1], [k2, v2]) => new Date(v2.created) - new Date(v1.created));
 	$: mapShowedPosts = mapFilteredPosts.slice(0, $mapShowedPostsLength.get($page.params.tag));
 
+	//let title = tags.length > 0 ? tags.find(i => i.name == $page.params.tag).description : '';
+
 	onMount(async () => {
 		onValue(ref(db, '/tags'), s => {
 			tags = Object.values(s.val());
@@ -29,8 +31,7 @@
 </script>
 
 <PageTitle
-	title={tags.length > 0 ? tags.find(i => i.name == $page.params.tag).description : ''}
-	titleSpecial="Публикации"
+	title={$page.params.tag[0].toUpperCase() + $page.params.tag.slice(1)}
 	description="Объявления, новости, видео, статьи из жизни нашего храма">
 	<div slot="navigation" class="btn-group btn-group-sm flex-nowrap overflow-auto scroll mt-md-0 mt-1">
 		{#each tags as item}
