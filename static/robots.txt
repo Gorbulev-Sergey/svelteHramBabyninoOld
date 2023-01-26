@@ -1,7 +1,7 @@
 ﻿User-agent: *
 
 Allow: /
-Allow: /posts*
+Allow: /posts
 Allow: /schedule
 Allow: /photos
 Allow: /contacts
