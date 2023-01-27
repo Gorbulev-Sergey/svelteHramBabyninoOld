@@ -33,7 +33,7 @@
 									? 'bg-primary text-dark'
 									: 'bg-secondary text-light'} text-decoration-none p-1 ms-1 border-0"
 								on:click={() => {
-									goto(`/${$page.url.pathname.split('/')[1]}/posts/${tag.name}`);
+									goto(`/posts/${tag.name}`);
 								}}>{tag.name}</button>
 						{/each}
 					{/if}
