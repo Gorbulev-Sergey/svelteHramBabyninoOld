@@ -10,6 +10,8 @@
 	import PageTitleWrap from '$lib/components/PageTitleWrap.svelte';
 
 	let m = '';
+	let title = 'Расписание богослужений';
+	let keywords = `бабынино храм ${title}, храм бабынино ${title}`;
 
 	function loadData() {
 		onValue(ref(db, `schedule/${$month.year}/${$month.monthName()}`), result => {
@@ -24,10 +26,7 @@
 	});
 </script>
 
-<PageTitleWrap
-	title="Расписание богослужений"
-	description="Расписание богослужений в нашем храме"
-	keywords="бабынино храм расписание">
+<PageTitleWrap {title} description="Расписание богослужений в нашем храме" keywords+={keywords}>
 	<div slot="navigation" class="d-flex">
 		<div class="btn btn-primary text-dark text-nowrap me-2" on:click={() => window.print()}>
 			<i class="fa-solid fa-print me-2" />Печать

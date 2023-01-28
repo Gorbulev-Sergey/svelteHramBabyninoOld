@@ -9,6 +9,9 @@
 	import { onMount } from 'svelte';
 
 	let albums = new Object();
+	let title = 'Фотографии';
+	let keywords = `бабынино храм ${title}, храм бабынино ${title}`;
+
 	onMount(async () => {
 		onValue(ref(db, '/photos'), s => {
 			if (s.exists()) albums = s.val();
@@ -16,7 +19,7 @@
 	});
 </script>
 
-<PageTitle title="Фотографии" description="Фотографии различных мероприятий, происходящих в нашем храме" />
+<PageTitle {title} description="Фотографии различных мероприятий, происходящих в нашем храме" keywords+={keywords} />
 
 {#if Object.entries(albums).length > 0}
 	<div class="row row-cols-1 row-cols-md-3 g-3">

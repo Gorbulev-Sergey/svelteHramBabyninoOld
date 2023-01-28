@@ -6,6 +6,9 @@
 	import { onMount } from 'svelte';
 
 	let contacts;
+	let title = 'Контакты';
+	let keywords = `бабынино храм ${title}, храм бабынино ${title}`;
+
 	onMount(() => {
 		onValue(ref(db, '/contacts'), s => {
 			if (s.exists()) contacts = s.val();
@@ -13,7 +16,7 @@
 	});
 </script>
 
-<PageTitle title="Контакты" description="Контактная информация: номера телефонов, расписание работы храма, адрес" />
+<PageTitle {title} description="Контактная информация: номера телефонов, расписание работы храма, адрес" keywords+={keywords} />
 
 {#if contacts}
 	<div class="row row-cols-1 row-cols-md-4 g-3">
