@@ -10,8 +10,8 @@
 	import PageTitleWrap from '$lib/components/PageTitleWrap.svelte';
 
 	let m = '';
-	let title = 'Расписание богослужений';
-	let keywords = `бабынино храм ${title}, храм бабынино ${title}`;
+	$: title = 'Расписание богослужений';
+	$: keywords = `бабынино храм ${title}, храм бабынино ${title}`;
 
 	function loadData() {
 		onValue(ref(db, `schedule/${$month.year}/${$month.monthName()}`), result => {

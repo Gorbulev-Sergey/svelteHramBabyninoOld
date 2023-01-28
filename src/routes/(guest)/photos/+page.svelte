@@ -9,8 +9,8 @@
 	import { onMount } from 'svelte';
 
 	let albums = new Object();
-	let title = 'Фотографии';
-	let keywords = `бабынино храм ${title}, храм бабынино ${title}`;
+	$: title = 'Фотографии';
+	$: keywords = `бабынино храм ${title}, храм бабынино ${title}`;
 
 	onMount(async () => {
 		onValue(ref(db, '/photos'), s => {

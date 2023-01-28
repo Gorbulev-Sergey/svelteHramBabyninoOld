@@ -6,8 +6,8 @@
 	import { onMount } from 'svelte';
 
 	let contacts;
-	let title = 'Контакты';
-	let keywords = `бабынино храм ${title}, храм бабынино ${title}`;
+	$: title = 'Контакты';
+	$: keywords = `бабынино храм ${title}, храм бабынино ${title}`;
 
 	onMount(() => {
 		onValue(ref(db, '/contacts'), s => {

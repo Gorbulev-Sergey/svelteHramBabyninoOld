@@ -18,8 +18,8 @@
 		.sort(([k1, v1], [k2, v2]) => new Date(v2.created) - new Date(v1.created));
 	$: mapShowedPosts = mapFilteredPosts.slice(0, $mapShowedPostsLength.get($page.params.tag));
 
-	let title = $page.params.tag[0].toUpperCase() + $page.params.tag.slice(1);
-	let keywords = `бабынино храм ${title}, храм бабынино ${title}`;
+	$: title = $page.params.tag[0].toUpperCase() + $page.params.tag.slice(1);
+	$: keywords = `бабынино храм ${title}, храм бабынино ${title}`;
 
 	//let title = tags.length > 0 ? tags.find(i => i.name == $page.params.tag).description : '';
 
