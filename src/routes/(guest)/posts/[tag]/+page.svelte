@@ -33,7 +33,7 @@
 	});
 </script>
 
-<PageTitle {title} description="Объявления, новости, видео, статьи из жизни нашего храма" keywords+={keywords}>
+<PageTitle {title} description="Объявления, новости, видео, статьи из жизни нашего храма" {keywords}>
 	<div slot="navigation" class="btn-group btn-group-sm flex-nowrap overflow-auto scroll mt-md-0 mt-1">
 		{#each tags as item}
 			<button
