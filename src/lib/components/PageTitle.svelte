@@ -15,10 +15,10 @@
 	<meta name="author" content={author} />
 	<meta name="copyright" content={copyright} />
 	<meta name="address" content={address} />
+	<meta name="keywords" content={keywords} />
 	<meta
 		name="keywords"
 		content="храм бабынино, бабынино храм, бабынино храм Вознесения, храм Вознесения Господня, церковь бабынино, храм поселок бабынино, калуга храм, калужская область храм, бабынинский район храм, Вознесение Господне" />
-	<meta name="keywords" content={keywords} />
 </svelte:head>
 
 <div class="d-flex justify-content-between flex-nowrap align-items-center mb-3 no-print {_class}">

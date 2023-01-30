@@ -16,7 +16,7 @@
 	});
 </script>
 
-<PageTitle {title} description="Контактная информация: номера телефонов, расписание работы храма, адрес" {keywords} />
+<PageTitle {title} description="Контакты: адрес, телефоны, расписание работы" {keywords} />
 
 {#if contacts}
 	<div class="row row-cols-1 row-cols-md-4 g-3">
