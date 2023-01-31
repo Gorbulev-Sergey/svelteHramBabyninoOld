@@ -1,16 +1,8 @@
 export class Album {
-	constructor(
-		title = '',
-		description = null,
-		date = new Date(Date.now()),
-		photos = new Array(),
-		cover = null
-	) {
+	constructor(title = '', description = null, date = new Date().toISOString().slice(0, 10), photos = new Array(), cover = null) {
 		this.title = title;
 		this.description = description;
-		this.date = `${date.getFullYear()}-${date.getMonth() < 10 ? '0' : ''}${date.getMonth() + 1}-${
-			date.getDate() < 10 ? '0' : ''
-		}${date.getDate()}`;
+		this.date = date;
 		this.photos = photos;
 		this.cover = cover;
 	}
