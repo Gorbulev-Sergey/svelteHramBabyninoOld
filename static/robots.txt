@@ -3,6 +3,7 @@
 Allow: /
 
 Disallow: /posts/details
+Disallow: /guest
 Disallow: /admin
 Disallow: /auth
 Disallow: /android
