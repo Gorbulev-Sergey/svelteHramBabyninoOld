@@ -1,6 +1,6 @@
 <script>
 	export let title = 'Храм Вознесения Господня';
-	export let description = 'Официальный сайт храма Вознесения Господня пос. Бабынино';
+	export let description = 'Храм Вознесения Господня пос. Бабынино';
 	export let author = 'Сергей Горбулёв';
 	export let copyright = 'Храм Вознесения Господня пос. Бабынино';
 	export let address = '249210, Калужская обл., пос. Бабынино, Базарная пл., 1';
