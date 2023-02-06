@@ -17,7 +17,6 @@
 		onValue(ref(db, '/tags'), s => {
 			if (s.exists()) {
 				tags = s.val();
-				console.log(tags);
 			}
 		});
 	});
@@ -52,7 +51,9 @@
 	<h5 class="mb-3">Доступные теги</h5>
 	{#each tags as item, i}
 		<div class="btn-group btn-group-sm me-2 mb-2">
-			<div class="text-dark border border-primary py-1 px-2 rounded-start">{item.name}</div>
+			<div class="d-flex text-dark border border-primary pb-1 px-2 rounded-start align-items-center" style="cursor:default;">
+				{item.name}
+			</div>
 			<div
 				class="btn btn-primary text-dark"
 				on:click={async () => {
