@@ -16,7 +16,7 @@
 	let showCode = false;
 
 	onMount(async () => {
-		onValue(ref(db, '/tags1'), s => {
+		onValue(ref(db, '/tags'), s => {
 			if (s.exists()) tags = s.val();
 		});
 	});

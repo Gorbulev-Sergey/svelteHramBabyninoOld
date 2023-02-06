@@ -10,11 +10,11 @@
 	$: tags = new Array();
 	$: tag = new Tag();
 	let saveToDb = async () => {
-		set(ref(db, `/tags1`), tags);
+		set(ref(db, `/tags`), tags);
 	};
 
 	onMount(async () => {
-		onValue(ref(db, '/tags1'), s => {
+		onValue(ref(db, '/tags'), s => {
 			if (s.exists()) {
 				tags = s.val();
 				console.log(tags);

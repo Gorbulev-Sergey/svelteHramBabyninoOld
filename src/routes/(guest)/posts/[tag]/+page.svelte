@@ -24,7 +24,7 @@
 	//let title = tags.length > 0 ? tags.find(i => i.name == $page.params.tag).description : '';
 
 	onMount(async () => {
-		onValue(ref(db, '/tags1'), s => {
+		onValue(ref(db, '/tags'), s => {
 			tags = s.val();
 		});
 		onValue(ref(db, '/posts'), s => {
