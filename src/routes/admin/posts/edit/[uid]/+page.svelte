@@ -20,8 +20,8 @@
 			if (s.exists()) post = s.val();
 			if (!post.cover) post.cover = new Cover();
 		});
-		onValue(ref(db, 'tags/'), s => {
-			if (s.exists()) tags = Object.values(s.val());
+		onValue(ref(db, '/tags'), s => {
+			if (s.exists()) tags = s.val();
 		});
 	});
 </script>

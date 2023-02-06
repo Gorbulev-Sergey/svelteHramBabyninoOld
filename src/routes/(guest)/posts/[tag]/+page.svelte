@@ -25,7 +25,7 @@
 
 	onMount(async () => {
 		onValue(ref(db, '/tags'), s => {
-			tags = Object.values(s.val());
+			tags = s.val();
 		});
 		onValue(ref(db, '/posts'), s => {
 			mapPosts = Object.entries(s.val()).filter(([k, v]) => v.published);
