@@ -46,8 +46,8 @@
 		onValue(ref(db, '/posts'), s => {
 			if (s.exists()) posts = s.val();
 		});
-		onValue(ref(db, '/tags'), s => {
-			if (s.exists()) tags = Object.values(s.val());
+		onValue(ref(db, '/tags1'), s => {
+			if (s.exists()) tags = s.val();
 			tags.push(new Tag('все вместе', 'Все вместе'));
 			tags.push(new Tag('без тега', 'Без тега'));
 		});

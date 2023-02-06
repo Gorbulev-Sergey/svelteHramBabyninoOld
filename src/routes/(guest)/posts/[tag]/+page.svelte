@@ -24,8 +24,8 @@
 	//let title = tags.length > 0 ? tags.find(i => i.name == $page.params.tag).description : '';
 
 	onMount(async () => {
-		onValue(ref(db, '/tags'), s => {
-			tags = Object.values(s.val());
+		onValue(ref(db, '/tags1'), s => {
+			tags = s.val();
 		});
 		onValue(ref(db, '/posts'), s => {
 			mapPosts = Object.entries(s.val()).filter(([k, v]) => v.published);
