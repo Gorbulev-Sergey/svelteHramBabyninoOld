@@ -14,8 +14,8 @@
 	$: keywords = `бабынино храм ${title}, храм бабынино ${title}`;
 
 	function loadData() {
-		onValue(ref(db, `schedule/${$month.year}/${$month.monthName()}`), result => {
-			$month.fildsDayNotEmpty = result.val();
+		onValue(ref(db, `schedule/${$month.year}/${$month.monthName()}`), s => {
+			$month.fildsDayNotEmpty = s.val();
 			$month.updateFildsDayAll();
 		});
 	}

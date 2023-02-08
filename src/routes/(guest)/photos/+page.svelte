@@ -1,6 +1,5 @@
 <script>
 	// @ts-nocheck
-
 	import PageTitle from '$lib/components/PageTitle.svelte';
 	import Album from '$lib/components/photos/Album.svelte';
 	import Spinner from '$lib/components/Spinner.svelte';
@@ -8,14 +7,17 @@
 	import { onValue, ref } from 'firebase/database';
 	import { onMount } from 'svelte';
 
+	export let data;
+
 	let albums = new Object();
 	$: title = 'Фотографии';
 	$: keywords = `бабынино храм ${title}, храм бабынино ${title}`;
 
 	onMount(async () => {
-		onValue(ref(db, '/photos'), s => {
-			if (s.exists()) albums = s.val();
-		});
+		albums = data.albums;
+		// onValue(ref(db, '/photos'), s => {
+		// 	if (s.exists()) albums = s.val();
+		// });
 	});
 </script>
 

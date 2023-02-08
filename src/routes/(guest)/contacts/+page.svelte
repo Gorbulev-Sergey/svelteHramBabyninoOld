@@ -5,14 +5,18 @@
 	import { onValue, push, ref, set } from 'firebase/database';
 	import { onMount } from 'svelte';
 
+	export let data;
+
 	let contacts;
 	$: title = 'Контакты';
 	$: keywords = `бабынино храм ${title}, храм бабынино ${title}`;
 
 	onMount(() => {
-		onValue(ref(db, '/contacts'), s => {
-			if (s.exists()) contacts = s.val();
-		});
+		contacts = data.contacts;
+
+		// onValue(ref(db, '/contacts'), s => {
+		// 	if (s.exists()) contacts = s.val();
+		// });
 	});
 </script>
 
