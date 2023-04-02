@@ -11,8 +11,6 @@
 	import { mapShowedPostsLength, showedPostsStep } from '$lib/scripts/writableData';
 	import PostHorizontal from '$lib/components/posts/PostHorizontal.svelte';
 
-	export let data;
-
 	let tags = new Array();
 	let mapPosts = new Array();
 	$: mapFilteredPosts = mapPosts
@@ -23,17 +21,13 @@
 	$: title = $page.params.tag[0].toUpperCase() + $page.params.tag.slice(1);
 	$: keywords = `бабынино храм ${title}, храм бабынино ${title}`;
 
-	//let title = tags.length > 0 ? tags.find(i => i.name == $page.params.tag).description : '';
-
 	onMount(async () => {
-		mapPosts = Object.entries(data.posts).filter(([k, v]) => v.published);
-		tags = data.tags;
-		// onValue(ref(db, '/tags'), s => {
-		// 	tags = s.val();
-		// });
-		// onValue(ref(db, '/posts'), s => {
-		// 	//mapPosts = Object.entries(s.val()).filter(([k, v]) => v.published);
-		// });
+		onValue(ref(db, '/tags'), s => {
+			tags = s.val();
+		});
+		onValue(ref(db, '/posts'), s => {
+			mapPosts = Object.entries(s.val()).filter(([k, v]) => v.published);
+		});
 	});
 </script>
 
