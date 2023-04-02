@@ -3,8 +3,8 @@
 	import { goto } from '$app/navigation';
 	import { page } from '$app/stores';
 	import { theme } from '$lib/scripts/writableData';
-	import AfterBreakpoint from '$lib/components/Breakpoint/AfterBreakpoint.svelte';
-	import BeforeBreakpoint from '$lib/components/Breakpoint/BeforeBreakpoint.svelte';
+	import After from '$lib/components/Breakpoint/After.svelte';
+	import Before from '$lib/components/Breakpoint/Before.svelte';
 	import IsAuth from '$lib/components/IsAuth.svelte';
 
 	export let title = 'Название';
@@ -17,7 +17,7 @@
 </script>
 
 <nav class="fixed-top bg-light text-dark no-print py-2">
-	<AfterBreakpoint>
+	<After>
 		<div class="container-fluid d-flex justify-content-between align-items-center">
 			<div class="flex-grow-1 d-flex justify-content-start align-items-center">
 				<button
@@ -45,8 +45,8 @@
 			<button class="btn btn-light text-dark border-0" on:click={async () => changeTheme()}
 				><i class="fa-regular fa-sun" /></button>
 		</div>
-	</AfterBreakpoint>
-	<BeforeBreakpoint>
+	</After>
+	<Before>
 		<div class="container-fluid d-flex justify-content-between align-items-center dropdown">
 			<div class="flex-grow-1 d-flex justify-content-between align-items-center">
 				<button
@@ -85,5 +85,5 @@
 				</IsAuth>
 			</div>
 		</div>
-	</BeforeBreakpoint>
+	</Before>
 </nav>

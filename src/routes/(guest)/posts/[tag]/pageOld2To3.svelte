@@ -9,8 +9,8 @@
 	import Post from '$lib/components/posts/Post.svelte';
 	import PostHorizontal from '$lib/components/posts/PostHorizontal.svelte';
 	import Spinner from '$lib/components/Spinner.svelte';
-	import AfterBreakpoint from '$lib/components/Breakpoint/AfterBreakpoint.svelte';
-	import BeforeBreakpoint from '$lib/components/Breakpoint/BeforeBreakpoint.svelte';
+	import After from '$lib/components/Breakpoint/After.svelte';
+	import Before from '$lib/components/Breakpoint/Before.svelte';
 	import { mapShowedPostsLength, showedPostsStep } from '$lib/scripts/writableData';
 
 	let checkIndex = (i, array = new Array()) => array.includes(Number(String(i).substring(-1)));
@@ -54,12 +54,12 @@
 		<div class="col-md-8">
 			{#each showedPosts.filter(p => p.pinned) as item, i}
 				{#if item.pinned && checkIndex(i, [1, 2, 4, 6, 7, 9])}
-					<AfterBreakpoint>
+					<After>
 						<PostHorizontal bind:post={item} />
-					</AfterBreakpoint>
-					<BeforeBreakpoint>
+					</After>
+					<Before>
 						<Post bind:post={item} />
-					</BeforeBreakpoint>
+					</Before>
 				{/if}
 			{/each}
 		</div>
@@ -84,12 +84,12 @@
 		<div class="col-md-8">
 			{#each showedPosts.filter(p => !p.pinned) as item, i}
 				{#if !item.pinned && checkIndex(i, [1, 2, 4, 6, 7, 9])}
-					<AfterBreakpoint>
+					<After>
 						<PostHorizontal bind:post={item} />
-					</AfterBreakpoint>
-					<BeforeBreakpoint>
+					</After>
+					<Before>
 						<Post bind:post={item} />
-					</BeforeBreakpoint>
+					</Before>
 				{/if}
 			{/each}
 		</div>
