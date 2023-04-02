@@ -3,8 +3,8 @@
 	import { goto } from '$app/navigation';
 	import { page } from '$app/stores';
 	import { theme } from '$lib/scripts/writableData';
-	import After from '$lib/components/breakpoint/After.svelte';
-	import Before from '$lib/components/breakpoint/Before.svelte';
+	import After from '$lib/components/Breakpoint/After.svelte';
+	import Before from '$lib/components/Breakpoint/Before.svelte';
 	import IsAuth from '$lib/components/IsAuth.svelte';
 
 	export let title = 'Название';

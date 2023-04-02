@@ -9,8 +9,8 @@
 	import Post from '$lib/components/posts/Post.svelte';
 	import PostHorizontal from '$lib/components/posts/PostHorizontal.svelte';
 	import Spinner from '$lib/components/Spinner.svelte';
-	import After from '$lib/components/breakpoint/After.svelte';
-	import Before from '$lib/components/breakpoint/Before.svelte';
+	import After from '$lib/components/Breakpoint/After.svelte';
+	import Before from '$lib/components/Breakpoint/Before.svelte';
 	import { mapShowedPostsLength, showedPostsStep } from '$lib/scripts/writableData';
 
 	let checkIndex = (i, array = new Array()) => array.includes(Number(String(i).substring(-1)));
