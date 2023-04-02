@@ -4,7 +4,7 @@
 	import Seo from '$lib/components/SEO.svelte';
 	import { onMount } from 'svelte';
 
-	onMount(() => {
+	onMount(async () => {
 		goto('/posts');
 	});
 </script>
