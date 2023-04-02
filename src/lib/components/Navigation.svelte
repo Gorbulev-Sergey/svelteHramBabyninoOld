@@ -16,36 +16,7 @@
 	};
 </script>
 
-<nav class="fixed-top bg-light text-dark no-print py-2">
-	<After>
-		<div class="container-fluid d-flex justify-content-between align-items-center">
-			<div class="flex-grow-1 d-flex justify-content-start align-items-center">
-				<button
-					class="btn btn-light bg-transparent text-dark border-0 text-uppercase text-start me-2"
-					on:click={() => goto(routesLeft[0].url)}><b class="text-nowrap">{@html title}</b></button>
-				<div>
-					{#each routesLeft as item}
-						<a
-							class="btn btn-light text-dark border-0 me-1 {decodeURI($page.url.pathname).indexOf(item.url) >= 0
-								? 'fw-bold'
-								: ''}"
-							href={item.url}
-							>{item.title}
-						</a>
-					{/each}
-				</div>
-			</div>
-			<IsAuth>
-				<div>
-					{#each routesRight as item}
-						<a class="btn btn-light text-dark border-0 me-1" href={item.url}>{item.title}</a>
-					{/each}
-				</div>
-			</IsAuth>
-			<button class="btn btn-light text-dark border-0" on:click={async () => changeTheme()}
-				><i class="fa-regular fa-sun" /></button>
-		</div>
-	</After>
+<nav class=" sticky-top bg-light text-dark no-print py-2 shadow-sm">
 	<Before>
 		<div class="container-fluid d-flex justify-content-between align-items-center dropdown">
 			<div class="flex-grow-1 d-flex justify-content-between align-items-center">
@@ -86,4 +57,33 @@
 			</div>
 		</div>
 	</Before>
+	<After>
+		<div class="container-fluid d-flex justify-content-between align-items-center">
+			<div class="flex-grow-1 d-flex justify-content-start align-items-center">
+				<button
+					class="btn btn-light bg-transparent text-dark border-0 text-uppercase text-start me-2"
+					on:click={() => goto(routesLeft[0].url)}><b class="text-nowrap">{@html title}</b></button>
+				<div>
+					{#each routesLeft as item}
+						<a
+							class="btn btn-light text-dark border-0 me-1 {decodeURI($page.url.pathname).indexOf(item.url) >= 0
+								? 'fw-bold'
+								: ''}"
+							href={item.url}
+							>{item.title}
+						</a>
+					{/each}
+				</div>
+			</div>
+			<IsAuth>
+				<div>
+					{#each routesRight as item}
+						<a class="btn btn-light text-dark border-0 me-1" href={item.url}>{item.title}</a>
+					{/each}
+				</div>
+			</IsAuth>
+			<button class="btn btn-light text-dark border-0" on:click={async () => changeTheme()}
+				><i class="fa-regular fa-sun" /></button>
+		</div>
+	</After>
 </nav>
