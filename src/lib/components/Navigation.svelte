@@ -3,8 +3,8 @@
 	import { goto } from '$app/navigation';
 	import { page } from '$app/stores';
 	import { theme } from '$lib/scripts/writableData';
-	import After from '$lib/components/Breakpoint/After.svelte';
-	import Before from '$lib/components/Breakpoint/Before.svelte';
+	import After from '$lib/components/breakpoint/After.svelte';
+	import Before from '$lib/components/breakpoint/Before.svelte';
 	import IsAuth from '$lib/components/IsAuth.svelte';
 
 	export let title = 'Название';
@@ -16,7 +16,7 @@
 	};
 </script>
 
-<nav class=" sticky-top bg-light text-dark no-print py-2 shadow-sm">
+<nav class="sticky-top bg-light text-dark no-print py-2 shadow-sm">
 	<Before>
 		<div class="container-fluid d-flex justify-content-between align-items-center dropdown">
 			<div class="flex-grow-1 d-flex justify-content-between align-items-center">
