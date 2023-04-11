@@ -31,7 +31,7 @@
 
 {#if album.photos.length > 0}
 	<button class="btn btn-close btn-close-white position-absolute m-3" style="z-index: 1000; right:0; top:0" on:click={goBack} />
-	<div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+	<div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="false" data-bs-touch="true">
 		{#if album.photos.length > 1}
 			<div class="carousel-indicators">
 				{#each album.photos as photo, i}
