@@ -27,7 +27,7 @@
 	<PageTitleWrap title="Расписание богослужений" _class="mx-0 mx-md-1">
 		<div slot="navigation">
 			<div class="input-group me-3 no-print mt-md-0 mt-2">
-				<span class="input-group-text bg-primary text-dark border-0">выберите дату:</span>
+				<span class="input-group-text bg-primary text-dark border-0">дата:</span>
 				<input
 					class="form-control bg-light text-dark border-0"
 					type="month"

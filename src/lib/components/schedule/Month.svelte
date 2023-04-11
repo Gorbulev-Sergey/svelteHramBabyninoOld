@@ -11,14 +11,11 @@
 			<div class="py-2 ps-4 print-title">
 				<b>Расписание на {month.monthName()?.toUpperCase()} {month.year} года</b>
 			</div>
-			<div
-				class="no-print"
-				style="display: grid; grid-template-columns: .11fr 1fr; min-height: 2.3em"
-			>
+			<div class="no-print" style="display: grid; grid-template-columns: .12fr 1fr; min-height: 2.3em">
 				<div class="text-center px-3" style="min-width: 8.2em;">
 					<span class="badge bg-primary text-dark">Дата</span>
 				</div>
-				<div style="display: grid; grid-template-columns: 1fr .3fr .1fr">
+				<div style="display: grid; grid-template-columns: 1fr .4fr .1fr">
 					<div class="ps-3" style="min-width: 13em;">
 						<span class="badge bg-primary text-dark">Праздник</span>
 					</div>
