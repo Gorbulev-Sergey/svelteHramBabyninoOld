@@ -16,14 +16,14 @@
 		}
 	};
 
-	async function downloadImage(imageSrc) {
+	async function downloadImage(imageSrc, i) {
 		const image = await fetch(imageSrc);
 		const imageBlog = await image.blob();
 		const imageURL = URL.createObjectURL(imageBlog);
 
 		const link = document.createElement('a');
 		link.href = imageURL;
-		link.download = 'фотография';
+		link.download = i + '_' + album.title;
 		document.body.appendChild(link);
 		link.click();
 		document.body.removeChild(link);
@@ -67,7 +67,7 @@
 						class="btn btn-light text-dark bg-light border-0 bg-opacity-75 position-absolute m-3"
 						style="z-index: 1000; left:0; top:0"
 						title="Скачать фотографию"
-						on:click={downloadImage(photo.url)}>
+						on:click={downloadImage(photo.url, i)}>
 						<i class="fa-solid fa-download" />
 					</button>
 					<div
