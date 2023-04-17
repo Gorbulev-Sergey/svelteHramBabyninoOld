@@ -23,7 +23,7 @@
 
 		const link = document.createElement('a');
 		link.href = imageURL;
-		link.download = i + '_' + album.title;
+		link.download = album.title + '(' + (i + 1).toString() + ')';
 		document.body.appendChild(link);
 		link.click();
 		document.body.removeChild(link);
