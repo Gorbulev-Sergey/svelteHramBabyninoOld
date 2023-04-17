@@ -16,6 +16,19 @@
 		}
 	};
 
+	async function downloadImage(imageSrc) {
+		const image = await fetch(imageSrc);
+		const imageBlog = await image.blob();
+		const imageURL = URL.createObjectURL(imageBlog);
+
+		const link = document.createElement('a');
+		link.href = imageURL;
+		link.download = 'фотография';
+		document.body.appendChild(link);
+		link.click();
+		document.body.removeChild(link);
+	}
+
 	let goBack = () => {
 		if (document.fullscreenElement) document.exitFullscreen();
 		goto(`/photos`);
@@ -24,24 +37,39 @@
 
 	onMount(async () => {
 		onValue(ref(db, `/photos/${$page.params.uid}`), s => {
-			if (s.exists()) album = s.val();
+			if (s.exists()) {
+				album = s.val();
+			}
 		});
 	});
 </script>
 
 {#if album.photos.length > 0}
-	<button class="btn btn-close btn-close-white position-absolute m-3" style="z-index: 1000; right:0; top:0" on:click={goBack} />
-	<div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="false" data-bs-touch="true">
+	<button
+		class="btn btn-light text-dark bg-light border-0 bg-opacity-75 position-absolute m-3"
+		style="z-index: 1000; right:0; top:0"
+		title="Закрыть"
+		on:click={goBack}>
+		<i class="fa-solid fa-xmark" />
+	</button>
+	<div id="carouselExample" class="carousel slide" data-bs-ride="false" data-bs-touch="true">
 		{#if album.photos.length > 1}
 			<div class="carousel-indicators">
 				{#each album.photos as photo, i}
-					<button data-bs-target="#carouselExampleIndicators" class={i == 0 ? 'active' : ''} data-bs-slide-to={i.toString()} />
+					<button data-bs-target="#carouselExample" class={i == 0 ? 'active' : ''} data-bs-slide-to={i.toString()} />
 				{/each}
 			</div>
 		{/if}
 		<div class="carousel-inner">
 			{#each album.photos as photo, i}
 				<div class="carousel-item {i == 0 ? 'active' : ''}">
+					<button
+						class="btn btn-light text-dark bg-light border-0 bg-opacity-75 position-absolute m-3"
+						style="z-index: 1000; left:0; top:0"
+						title="Скачать фотографию"
+						on:click={downloadImage(photo.url)}>
+						<i class="fa-solid fa-download" />
+					</button>
 					<div
 						class="img-fluid h-100"
 						style="background-image: url({photo.url});
@@ -55,11 +83,11 @@
 			{/each}
 		</div>
 		{#if album.photos.length > 1}
-			<button class="carousel-control-prev" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+			<button class="carousel-control-prev" data-bs-target="#carouselExample" data-bs-slide="prev">
 				<span class="carousel-control-prev-icon" />
 				<span class="visually-hidden">Предыдущий</span>
 			</button>
-			<button class="carousel-control-next" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+			<button class="carousel-control-next" data-bs-target="#carouselExample" data-bs-slide="next">
 				<span class="carousel-control-next-icon" />
 				<span class="visually-hidden">Следующий</span>
 			</button>
