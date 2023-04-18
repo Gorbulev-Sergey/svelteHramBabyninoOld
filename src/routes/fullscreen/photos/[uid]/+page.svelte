@@ -41,13 +41,13 @@
 			if (s.exists()) {
 				album = s.val();
 
-				// это нужно, чтобы с первого раза заработал свайп в карусели
-				let x = new bootstrap.Carousel('#carouselExample');
-
 				let carousel = document.querySelector('#carouselExample');
 				carousel.addEventListener('slide.bs.carousel', function (e) {
 					activeImage = e.to;
 				});
+
+				// это нужно, чтобы с первого раза заработал свайп в карусели
+				let x = new bootstrap.Carousel('#carouselExample');
 			}
 		});
 	});
