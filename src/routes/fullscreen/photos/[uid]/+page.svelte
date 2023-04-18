@@ -44,21 +44,8 @@
 				carousel.addEventListener('slide.bs.carousel', function (e) {
 					activeImage = e.to;
 				});
-				carousel.addEventListener('touchstart', function (event) {
-					const xClick = event.originalEvent.touches[0].pageX;
-					carousel.addEventListener('touchmove', function (event) {
-						const xMove = event.originalEvent.touches[0].pageX;
-						const sensitivityInPx = 5;
-						if (Math.floor(xClick - xMove) > sensitivityInPx) {
-							carousel.carousel('next');
-						} else if (Math.floor(xClick - xMove) < -sensitivityInPx) {
-							carousel.carousel('prev');
-						}
-					});
-					carousel.addEventListener('touchend', function () {
-						carousel.removeEventListener('touchmove');
-					});
-				});
+				// это нужно, чтобы с первого раза заработал свайп в карусели
+				let x = new bootstrap.Carousel('#carouselExample');
 			}
 		});
 	});
