@@ -40,12 +40,14 @@
 		onValue(ref(db, `/photos/${$page.params.uid}`), s => {
 			if (s.exists()) {
 				album = s.val();
+
+				// это нужно, чтобы с первого раза заработал свайп в карусели
+				let x = new bootstrap.Carousel('#carouselExample');
+
 				let carousel = document.querySelector('#carouselExample');
 				carousel.addEventListener('slide.bs.carousel', function (e) {
 					activeImage = e.to;
 				});
-				// это нужно, чтобы с первого раза заработал свайп в карусели
-				let x = new bootstrap.Carousel('#carouselExample');
 			}
 		});
 	});
@@ -69,7 +71,7 @@
 	{#if album.photos.length > 1}
 		<div class="carousel-indicators">
 			{#each album.photos as photo, i}
-				<button data-bs-target="#carouselExample" class={i == 0 ? 'active' : ''} data-bs-slide-to={i.toString()} />
+				<button data-bs-target="#carouselExample" class={i == activeImage ? 'active' : ''} data-bs-slide-to={i.toString()} />
 			{/each}
 		</div>
 	{/if}
