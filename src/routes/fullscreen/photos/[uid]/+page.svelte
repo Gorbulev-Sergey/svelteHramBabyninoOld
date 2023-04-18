@@ -40,8 +40,24 @@
 		onValue(ref(db, `/photos/${$page.params.uid}`), s => {
 			if (s.exists()) {
 				album = s.val();
-				document.querySelector('#carouselExample').addEventListener('slide.bs.carousel', function (e) {
+				let carousel = document.querySelector('#carouselExample');
+				carousel.addEventListener('slide.bs.carousel', function (e) {
 					activeImage = e.to;
+				});
+				carousel.addEventListener('touchstart', function (event) {
+					const xClick = event.originalEvent.touches[0].pageX;
+					carousel.addEventListener('touchmove', function (event) {
+						const xMove = event.originalEvent.touches[0].pageX;
+						const sensitivityInPx = 5;
+						if (Math.floor(xClick - xMove) > sensitivityInPx) {
+							carousel.carousel('next');
+						} else if (Math.floor(xClick - xMove) < -sensitivityInPx) {
+							carousel.carousel('prev');
+						}
+					});
+					carousel.addEventListener('touchend', function () {
+						carousel.removeEventListener('touchmove');
+					});
 				});
 			}
 		});
