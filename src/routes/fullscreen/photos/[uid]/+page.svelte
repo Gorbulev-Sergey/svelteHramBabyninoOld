@@ -70,10 +70,12 @@
 						on:click={downloadImage(photo.url, i)}>
 						<i class="fa-solid fa-download" />
 					</button>
+					<!-- svelte-ignore a11y-autofocus -->
 					<div
 						class="img-fluid h-100"
 						style="background-image: url({photo.url});
-							background-repeat: no-repeat; background-position: center; background-size: contain; min-height:100vh;" />
+							background-repeat: no-repeat; background-position: center; background-size: contain; min-height:100vh;"
+						autofocus />
 					{#if photo.title}
 						<div class="carousel-caption d-none d-md-block mb-2">
 							{photo.title}
