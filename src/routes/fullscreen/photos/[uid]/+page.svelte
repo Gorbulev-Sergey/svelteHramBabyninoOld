@@ -52,7 +52,8 @@
 		on:click={goBack}>
 		<i class="fa-solid fa-xmark" />
 	</button>
-	<div id="carouselExample" class="carousel slide" data-bs-ride="false" data-bs-touch="true">
+	<!-- svelte-ignore a11y-autofocus -->
+	<div id="carouselExample" class="carousel slide" data-bs-ride="false" autofocus>
 		{#if album.photos.length > 1}
 			<div class="carousel-indicators">
 				{#each album.photos as photo, i}
@@ -70,12 +71,10 @@
 						on:click={downloadImage(photo.url, i)}>
 						<i class="fa-solid fa-download" />
 					</button>
-					<!-- svelte-ignore a11y-autofocus -->
 					<div
 						class="img-fluid h-100"
 						style="background-image: url({photo.url});
-							background-repeat: no-repeat; background-position: center; background-size: contain; min-height:100vh;"
-						autofocus />
+							background-repeat: no-repeat; background-position: center; background-size: contain; min-height:100vh;" />
 					{#if photo.title}
 						<div class="carousel-caption d-none d-md-block mb-2">
 							{photo.title}
