@@ -39,7 +39,7 @@
 					<a
 						class="text-success"
 						style="text-decoration: none;"
-						href="https://api.whatsapp.com/send?phone=89208768928"
+						href="https://api.whatsapp.com/send?phone=79208768928"
 						target="_blank"
 						title="Написать в Whatsapp"
 						rel="noopener noreferrer">
@@ -52,7 +52,7 @@
 					<a
 						class="text-success"
 						style="text-decoration: none;"
-						href="https://api.whatsapp.com/send?phone=89105163686"
+						href="https://api.whatsapp.com/send?phone=79105163686"
 						target="_blank"
 						title="Написать в Whatsapp"
 						rel="noopener noreferrer">

@@ -42,7 +42,7 @@
 								<a
 									class="text-success"
 									style="text-decoration: none;"
-									href="https://api.whatsapp.com/send?phone={item.phone.replaceAll('-', '')}"
+									href="https://api.whatsapp.com/send?phone={item.phone.replaceAll('-', '').replace('89', '79')}"
 									target="_blank"
 									title="Написать в Whatsapp"
 									rel="noopener noreferrer">
