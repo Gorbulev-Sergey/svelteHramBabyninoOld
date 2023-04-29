@@ -35,13 +35,30 @@
 					>,
 				</span>
 				<span>
-					иерей Алексий: <a class="badge bg-primary text-dark" style="text-decoration: none;" href="tel:8-902-934-63-62"
-						>8-920-876-89-28</a
-					>,
+					иерей Алексий:
+					<a
+						class="text-success"
+						style="text-decoration: none;"
+						href="https://api.whatsapp.com/send?phone=89208768928"
+						target="_blank"
+						title="Написать в Whatsapp"
+						rel="noopener noreferrer">
+						<i class="fa-brands fa-whatsapp" />
+					</a>
+					<a class="badge bg-primary text-dark" style="text-decoration: none;" href="tel:8-920-876-89-28">8-920-876-89-28</a>,
 				</span>
 				<span>
-					иерей Сергий: <a class="badge bg-primary text-dark" style="text-decoration: none;" href="tel:8-902-934-63-62"
-						>8-910-516-36-86</a>
+					иерей Сергий:
+					<a
+						class="text-success"
+						style="text-decoration: none;"
+						href="https://api.whatsapp.com/send?phone=89105163686"
+						target="_blank"
+						title="Написать в Whatsapp"
+						rel="noopener noreferrer">
+						<i class="fa-brands fa-whatsapp" />
+					</a>
+					<a class="badge bg-primary text-dark" style="text-decoration: none;" href="tel:8-910-516-36-86">8-910-516-36-86</a>
 				</span>
 			</div>
 			<img

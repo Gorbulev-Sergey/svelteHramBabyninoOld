@@ -33,11 +33,24 @@
 		</div>
 		<div class="col-md-5">
 			<div class="bg-light text-dark rounded p-3 w-100 h-100">
-				<h5>Контактные телефоны:</h5>
+				<h5>Контактные телефоны + whatsapp:</h5>
 				{#each contacts.phones as item}
 					<div class="d-flex justify-content-between align-items-center mb-1">
 						{item.title}
-						<a class="badge bg-primary text-dark" style="text-decoration: none;" href="tel:{item.phone}">{item.phone}</a>
+						<div class="d-flex align-items-center gap-1">
+							{#if item.title != 'храм'}
+								<a
+									class="text-success"
+									style="text-decoration: none;"
+									href="https://api.whatsapp.com/send?phone={item.phone.replaceAll('-', '')}"
+									target="_blank"
+									title="Написать в Whatsapp"
+									rel="noopener noreferrer">
+									<i class="fa-brands fa-whatsapp" />
+								</a>
+							{/if}
+							<a class="badge bg-primary text-dark" style="text-decoration: none;" href="tel:{item.phone}">{item.phone}</a>
+						</div>
 					</div>
 				{/each}
 			</div>
