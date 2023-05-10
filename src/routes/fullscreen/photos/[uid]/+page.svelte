@@ -14,6 +14,7 @@
 	document.onfullscreenchange = e => {
 		if (!document.fullscreenElement) {
 			goto(`/photos`);
+			document.onfullscreenchange = r => {};
 		}
 	};
 
