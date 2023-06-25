@@ -33,7 +33,7 @@
 </script>
 
 <Navigation title="<span class='text-danger'>Храм</span> ВОЗНЕСЕНИЯ ГОСПОДНЯ" {routesLeft} {routesRight} />
-<div class="container my-4" style=" min-height:90vh;">
+<div class="container my-4 py-1" style=" min-height:90vh;">
 	<slot />
 </div>
 <Footer />

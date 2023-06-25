@@ -15,10 +15,10 @@
 		localStorage.setItem('theme', $theme);
 	};
 
-	let color = 'rgba(255,50,60,.24)';
+	let color = 'rgba(255,50,60,.3)';
 </script>
 
-<nav class="sticky-top bg-light text-dark no-print py-2 shadow-sm">
+<nav class="sticky-top bg-light text-dark bg-opacity-75 no-print py-2" style="backdrop-filter:blur(.5em)">
 	<Before>
 		<div class="container-fluid d-flex justify-content-between align-items-center dropdown">
 			<div class="flex-grow-1 d-flex justify-content-between align-items-center">
@@ -28,11 +28,11 @@
 					on:click={() => goto(routesLeft[0].url)}>
 					<b>{@html title}</b>
 				</button>
-				<button class="btn btn-light text-dark border-0" on:click={async () => changeTheme()}>
+				<button class="btn btn-light bg-transparent text-dark border-0" on:click={async () => changeTheme()}>
 					<i class="fa-regular fa-sun" />
 				</button>
 			</div>
-			<button class="btn btn-light text-dark border-0 text-uppercase" data-bs-toggle="dropdown"
+			<button class="btn btn-light text-dark bg-transparent border-0 text-uppercase" data-bs-toggle="dropdown"
 				><i class="fa-solid fa-bars" /></button>
 
 			<div class="dropdown-menu border-0 rounded-0 w-100 bg-light text-dark shadow-sm">
@@ -49,7 +49,7 @@
 					{#each routesRight as item}
 						<div class="bg-light text-dark">
 							<button
-								class="btn btn-light text-dark w-100 text-start rounded-0 ps-3"
+								class="btn btn-light bg-transparent text-dark w-100 text-start rounded-0 ps-3"
 								on:click={async () => {
 									goto(item.url);
 								}}>
@@ -67,13 +67,15 @@
 		<div class="container-fluid d-flex justify-content-between align-items-center">
 			<div class="flex-grow-1 d-flex justify-content-start align-items-center">
 				<button
-					class="btn btn-light text-dark border-0 text-uppercase text-start me-2"
+					class="btn btn-light text-dark border-0 text-uppercase text-start me-3 rounded-1"
 					style="background-color: {color}"
 					on:click={() => goto(routesLeft[0].url)}><b class="text-nowrap">{@html title}</b></button>
 				<div>
 					{#each routesLeft as item}
 						<a
-							class="btn btn-light text-dark border-0 me-1 {decodeURI($page.url.pathname).indexOf(item.url) >= 0
+							class="btn btn-light bg-light text-dark bg-transparent border-0 me-1 {decodeURI($page.url.pathname).indexOf(
+								item.url
+							) >= 0
 								? 'fw-bold'
 								: ''}"
 							href={item.url}
@@ -85,11 +87,11 @@
 			<IsAuth>
 				<div>
 					{#each routesRight as item}
-						<a class="btn btn-light text-dark border-0 me-1" href={item.url}>{item.title}</a>
+						<a class="btn btn-light bg-light text-dark bg-transparent border-0 me-1" href={item.url}>{item.title}</a>
 					{/each}
 				</div>
 			</IsAuth>
-			<button class="btn btn-light text-dark border-0" on:click={async () => changeTheme()}
+			<button class="btn btn-light bg-light text-dark bg-transparent border-0" on:click={async () => changeTheme()}
 				><i class="fa-regular fa-sun" /></button>
 		</div>
 	</After>
