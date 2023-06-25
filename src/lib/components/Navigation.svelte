@@ -65,7 +65,7 @@
 	</Before>
 	<After>
 		<div class="container-fluid d-flex justify-content-between align-items-center">
-			<div class="flex-grow-1 d-flex justify-content-start align-items-center">
+			<div class="flex-grow-1 d-flex justify-content-between align-items-center">
 				<button
 					class="btn btn-light text-dark border-0 text-uppercase text-start me-3 rounded-1"
 					style="background-color: {color}"
@@ -87,7 +87,7 @@
 			<IsAuth>
 				<div>
 					{#each routesRight as item}
-						<a class="btn btn-light bg-light text-dark bg-transparent border-0 me-1" href={item.url}>{item.title}</a>
+						<a class="btn btn-dark text-light border-0 me-1" href={item.url}>{item.title}</a>
 					{/each}
 				</div>
 			</IsAuth>
