@@ -14,6 +14,8 @@
 		$theme = $theme == 'light' ? 'dark' : 'light';
 		localStorage.setItem('theme', $theme);
 	};
+
+	let color = 'rgba(255,50,60,.24)';
 </script>
 
 <nav class="sticky-top bg-light text-dark no-print py-2 shadow-sm">
@@ -21,10 +23,14 @@
 		<div class="container-fluid d-flex justify-content-between align-items-center dropdown">
 			<div class="flex-grow-1 d-flex justify-content-between align-items-center">
 				<button
-					class="btn btn-light text-dark bg-transparent border-0 text-uppercase ps-1 me-1"
-					on:click={() => goto(routesLeft[0].url)}><b>{@html title}</b></button
-				><button class="btn btn-light text-dark border-0" on:click={async () => changeTheme()}
-					><i class="fa-regular fa-sun" /></button>
+					class="btn btn-light text-dark border-0 text-uppercase me-1"
+					style="background-color: {color}"
+					on:click={() => goto(routesLeft[0].url)}>
+					<b>{@html title}</b>
+				</button>
+				<button class="btn btn-light text-dark border-0" on:click={async () => changeTheme()}>
+					<i class="fa-regular fa-sun" />
+				</button>
 			</div>
 			<button class="btn btn-light text-dark border-0 text-uppercase" data-bs-toggle="dropdown"
 				><i class="fa-solid fa-bars" /></button>
@@ -61,7 +67,8 @@
 		<div class="container-fluid d-flex justify-content-between align-items-center">
 			<div class="flex-grow-1 d-flex justify-content-start align-items-center">
 				<button
-					class="btn btn-light bg-transparent text-dark border-0 text-uppercase text-start me-2"
+					class="btn btn-light text-dark border-0 text-uppercase text-start me-2"
+					style="background-color: {color}"
 					on:click={() => goto(routesLeft[0].url)}><b class="text-nowrap">{@html title}</b></button>
 				<div>
 					{#each routesLeft as item}
