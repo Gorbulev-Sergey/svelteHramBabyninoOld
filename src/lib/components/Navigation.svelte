@@ -15,7 +15,7 @@
 		localStorage.setItem('theme', $theme);
 	};
 
-	let color = 'rgba(255,50,60,.3)';
+	let color = 'rgba(255,50,60,0)';
 </script>
 
 <nav class="sticky-top bg-light text-dark bg-opacity-75 no-print py-2" style="backdrop-filter:blur(.5em)">
